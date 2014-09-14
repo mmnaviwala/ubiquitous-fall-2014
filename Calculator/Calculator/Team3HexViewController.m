@@ -8,7 +8,7 @@
 
 #import "Team3HexViewController.h"
 #define BINARY_ACCEPTABLE_CHARACTERS @"01"
-#define DECIMAL_ACCEPTABLE_CHARACTERS @"0123456789"
+#define DECIMAL_ACCEPTABLE_CHARACTERS @"-0123456789"
 #define HEX_ACCEPTABLE_CHARACTERS @"0123456789ABCDEFabcdef"
 
 @interface Team3HexViewController ()
@@ -29,55 +29,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Sets delegates for delegate methods
     [self.binaryInput setDelegate:self];
     [self.decimalInput setDelegate:self];
     [self.hexInput setDelegate:self];
+    //allows dynamic text fields by reading text via the textFieldDidChnageMethod
     [self.binaryInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.decimalInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.hexInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    //adds the "clear" button (stylized as a cutout 'x' in a grey circle) when a text field is active
     self.binaryInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.decimalInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.hexInput.clearButtonMode = UITextFieldViewModeWhileEditing;
-
-    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
     
     if(textField == self.binaryInput){
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:BINARY_ACCEPTABLE_CHARACTERS] invertedSet];
-        
         NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        
         return [string isEqualToString:filtered];
+    }
     
-    }
     if(textField == self.decimalInput){
-        
-
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:DECIMAL_ACCEPTABLE_CHARACTERS] invertedSet];
-        
         NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        
-        
-        
         return [string isEqualToString:filtered];
-        
     }
+    
     if(textField == self.hexInput){
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:HEX_ACCEPTABLE_CHARACTERS] invertedSet];
-        
         NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        
         return [string isEqualToString:filtered];
-        
     }
     return YES;
     
 }
 
 -(void)textFieldDidChange :(UITextField *)textField{
-    
+    //converts and sends text to other two text fields
     if(textField == self.binaryInput){
         [self binaryToDecimal:textField];
         [self binaryToHex:textField];
@@ -92,24 +82,42 @@
         [self HexToBinary:textField];
         [self HexToDecimal:textField];
     }
-
-    
-
+    //writes to console to check whats being passed
     NSLog( @"text changed: %@", textField.text);
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    //removes keyboard when return key is pressed
+    [self.binaryInput resignFirstResponder];
+    [self.decimalInput resignFirstResponder];
+    [self.hexInput resignFirstResponder];
+    return YES;
+}
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //removes keyboard when touch even occurs outside of keyboard and/or active text field
+    [self.binaryInput resignFirstResponder];
+    [self.decimalInput resignFirstResponder];
+    [self.hexInput resignFirstResponder];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//binary input
 - (void)binaryToDecimal:(UITextField *)textField{
     long decimal = strtol([textField.text UTF8String], NULL, 2);
     self.decimalInput.text = [[NSNumber numberWithLong:decimal] stringValue];
 }
 
-
 - (void)binaryToHex:(UITextField *)textField{
     self.hexInput.text = textField.text;
 }
 
-
+//decimal input
 - (void)decimalToBinary:(UITextField *)textField{
     self.binaryInput.text = textField.text;
 }
@@ -120,38 +128,31 @@
     self.hexInput.text = hexString;
 }
 
+//hexadecimal input
 - (void)HexToBinary:(UITextField *)textField{
     
-    self.binaryInput.text = textField.text;
+    NSString *hexValue = textField.text;
+    if ([textField.text length] > 0) {
+        NSUInteger hexInteger;
+        [[NSScanner scannerWithString:hexValue] scanHexInt:&hexInteger];
+        self.binaryInput.text = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
+    }
+    else{
+        self.binaryInput.text = @"";
+    }
 }
 
 - (void)HexToDecimal:(UITextField *)textField{
     self.decimalInput.text = textField.text;
 }
 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    [self.binaryInput resignFirstResponder];
-    [self.decimalInput resignFirstResponder];
-    [self.hexInput resignFirstResponder];
-    return YES;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.binaryInput resignFirstResponder];
-    [self.decimalInput resignFirstResponder];
-    [self.hexInput resignFirstResponder];
-}
-
-
-
-
-- (void)didReceiveMemoryWarning
+- (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (inputValue == 1 || inputValue == 0)
+        return [NSString stringWithFormat:@"%u", inputValue];
+    return [NSString stringWithFormat:@"%@%u", [self recursiveConvertToBinary:inputValue / 2], inputValue % 2];
 }
+
 
 /*
 #pragma mark - Navigation
