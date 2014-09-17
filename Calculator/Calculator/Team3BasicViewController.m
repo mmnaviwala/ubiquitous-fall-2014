@@ -29,6 +29,7 @@
     // Do any additional setup after loading the view.
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -46,4 +47,36 @@
 }
 */
 
+- (IBAction)calculationPressed:(id)sender {
+    self.typingNumber = NO;
+    self.firstNumber = [self.calculationDisplay.text intValue];
+    self.operation = [sender currentTitle];
+}
+
+- (IBAction)equalsPressed:(UIButton *)sender {
+    self.typingNumber = NO;
+    self.secondNumber = [self.calculationDisplay.text intValue];
+    int result = 0;
+    if ([self.operation isEqualToString:@"+"]) {
+        result = self.firstNumber + self.secondNumber;
+    }else if([self.operation isEqualToString:@"-"])
+    {
+        result = self.firstNumber - self.secondNumber;
+    }
+    self.calculationDisplay.text = [NSString stringWithFormat:@"%d", result];
+}
+
+- (IBAction)numberPressed:(UIButton *)sender {
+    NSString *number = sender.currentTitle;
+    if (self.typingNumber) {
+        
+        self.calculationDisplay.text = [self.calculationDisplay.text stringByAppendingString:number];
+        }else
+        {
+            self.calculationDisplay.text = number;
+            self.typingNumber = YES;
+        }
+}
+- (IBAction)clear:(UIButton *)sender {
+}
 @end
