@@ -57,12 +57,30 @@
     self.typingNumber = NO;
     self.secondNumber = [self.calculationDisplay.text intValue];
     int result = 0;
+
     if ([self.operation isEqualToString:@"+"]) {
         result = self.firstNumber + self.secondNumber;
     }else if([self.operation isEqualToString:@"-"])
     {
         result = self.firstNumber - self.secondNumber;
     }
+    else if ([self.operation isEqualToString:@"*"])
+    {
+        result = self.firstNumber * self.secondNumber;
+    }else if([self.operation isEqualToString:@"/"])
+    {
+        if (self.secondNumber !=0) {
+            result = self.firstNumber / self.secondNumber;
+        }else
+        {
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Input" message:@"The divisor has to be a non-zero number " delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            
+            [alert show ];
+            
+        }
+        
+    }
+    
     self.calculationDisplay.text = [NSString stringWithFormat:@"%d", result];
 }
 
@@ -78,5 +96,6 @@
         }
 }
 - (IBAction)clear:(UIButton *)sender {
+    self.calculationDisplay.text = @" ";
 }
 @end
