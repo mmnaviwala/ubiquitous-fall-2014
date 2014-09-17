@@ -13,6 +13,8 @@
 
 @interface Team3HexViewController ()
 
+@property NSString *interfaceMode;
+
 @end
 
 @implementation Team3HexViewController
@@ -21,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initializatio
+        // Custom initialization
     }
     return self;
 }
@@ -29,101 +31,133 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //Sets delegates for delegate methods
-    [self.binaryInput setDelegate:self];
-    [self.decimalInput setDelegate:self];
-    [self.hexInput setDelegate:self];
-    //allows dynamic text fields by reading text via the textFieldDidChnageMethod
-    [self.binaryInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    [self.decimalInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    [self.hexInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    //adds the "clear" button (stylized as a cutout 'x' in a grey circle) when a text field is active
-    self.binaryInput.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.decimalInput.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.hexInput.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self hideBinInput:NO];
+    [self hideDecInput:YES];
+    [self hideHexInput:YES];
+    self.interfaceMode = @"binary";
+    
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
-    
-    if(textField == self.binaryInput){
-        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:BINARY_ACCEPTABLE_CHARACTERS] invertedSet];
-        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
-    }
-    
-    if(textField == self.decimalInput){
-        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:DECIMAL_ACCEPTABLE_CHARACTERS] invertedSet];
-        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
-    }
-    
-    if(textField == self.hexInput){
-        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:HEX_ACCEPTABLE_CHARACTERS] invertedSet];
-        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
-    }
-    return YES;
-    
-}
-/* BEGIN MOVE textField FOCUS */
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)pressNumber:(NSString *)inputField :(NSString *)inputValue
 {
-    [self animateTextField: textField up: YES];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: NO];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 0; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+    NSLog(@"inputField: %@",inputField);
+    NSLog(@"inputField: %@",inputValue);
     
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
-/* END MOVE textField FOCUS */
-
--(void)textFieldDidChange :(UITextField *)textField{
-    //converts and sends text to other two text fields
-    if(textField == self.binaryInput){
-        [self binaryToDecimal:textField];
-        [self binaryToHex:textField];
+    if ([inputField  isEqual: @"binary"]) {
+        
+        if ([inputValue  isEqual: @"backspace"]) {
+            if (![self.binaryOutput.text  isEqual: @""]) {
+                self.binaryOutput.text = [self.binaryOutput.text substringToIndex:[self.binaryOutput.text length] - 1];
+                self.decimalOutput.text = [self binaryToDecimal:self.binaryOutput.text];
+                self.hexOutput.text = [self binaryToHex:self.binaryOutput.text];
+            }
+        }else{
+            NSMutableString *texter = [[NSMutableString alloc] init];
+            [texter setString: self.binaryOutput.text];
+            if (texter.length > 31) {
+                [texter appendString:@""];
+            }else{
+                [texter appendString:inputValue];
+            }
+            self.binaryOutput.text = texter;
+            self.decimalOutput.text = [self binaryToDecimal:self.binaryOutput.text];
+            self.hexOutput.text = [self binaryToHex:self.binaryOutput.text];
+        }
+        
     }
     
-    if(textField == self.decimalInput){
-        [self decimalToBinary:textField];
-        [self decimalToHex:textField];
+    if ([inputField  isEqual: @"decimal"]) {
+        
+        if ([inputValue  isEqual: @"backspace"]) {
+            if (![self.decimalOutput.text  isEqual: @""]) {
+                self.decimalOutput.text = [self.decimalOutput.text substringToIndex:[self.decimalOutput.text length] - 1];
+                self.binaryOutput.text = [self decimalToBinary:self.decimalOutput.text];
+                self.hexOutput.text = [self decimalToHex:self.decimalOutput.text];
+            }
+        }else{
+            NSMutableString *texter = [[NSMutableString alloc] init];
+            [texter setString: self.decimalOutput.text];
+            if (texter.length > 31) {
+                [texter appendString:@""];
+            }else{
+                [texter appendString:inputValue];
+            }
+            self.decimalOutput.text = texter;
+            self.binaryOutput.text = [self decimalToBinary:self.decimalOutput.text];
+            self.hexOutput.text = [self decimalToHex:self.decimalOutput.text];
+        }
+    }
+}
+
+- (IBAction)pressButton:(UIButton *)sender {
+    //clear
+    if (sender == self.clearButton) {
+        self.binaryOutput.text = @"";
+        self.hexOutput.text = @"";
+        self.decimalOutput.text = @"";
+    }
+    //backspace
+    if (sender == self.backspaceButton) {
+        [self pressNumber:self.interfaceMode :@"backspace"];
     }
     
-    if(textField == self.hexInput){
-        [self HexToBinary:textField];
-        [self HexToDecimal:textField];
+    //dec interface
+    if (sender == self.binButton) {
+        [self hideBinInput:NO];
+        [self hideDecInput:YES];
+        [self hideHexInput:YES];
     }
-    //writes to console to check whats being passed
-    NSLog( @"text changed: %@", textField.text);
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    //removes keyboard when return key is pressed
-    [self.binaryInput resignFirstResponder];
-    [self.decimalInput resignFirstResponder];
-    [self.hexInput resignFirstResponder];
-    return YES;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    //removes keyboard when touch even occurs outside of keyboard and/or active text field
-    [self.binaryInput resignFirstResponder];
-    [self.decimalInput resignFirstResponder];
-    [self.hexInput resignFirstResponder];
+    if (sender == self.decButton) {
+        [self hideBinInput:YES];
+        [self hideDecInput:NO];
+        [self hideHexInput:YES];
+    }
+    if (sender == self.hexButton) {
+        [self hideBinInput:YES];
+        [self hideDecInput:YES];
+        [self hideHexInput:NO];
+    }
+    
+    
+    //bin input
+    if (sender == self.buttonZero) {
+        [self pressNumber:@"binary" :@"0"];
+    }
+    if (sender == self.buttonOne) {
+        [self pressNumber:@"binary" :@"1"];
+    }
+    
+    //decimal input
+    if (sender == self.decButtonZero) {
+        [self pressNumber:@"decimal" :@"0"];
+    }
+    if (sender == self.decButtonOne) {
+        [self pressNumber:@"decimal" :@"1"];
+    }
+    if (sender == self.decButtonTwo) {
+        [self pressNumber:@"decimal" :@"2"];
+    }
+    if (sender == self.decButtonThree) {
+        [self pressNumber:@"decimal" :@"3"];
+    }
+    if (sender == self.decButtonFour) {
+        [self pressNumber:@"decimal" :@"4"];
+    }
+    if (sender == self.decButtonFive) {
+        [self pressNumber:@"decimal" :@"5"];
+    }
+    if (sender == self.decButtonSix) {
+        [self pressNumber:@"decimal" :@"6"];
+    }
+    if (sender == self.decButtonSeven) {
+        [self pressNumber:@"decimal" :@"7"];
+    }
+    if (sender == self.decButtonEight) {
+        [self pressNumber:@"decimal" :@"8"];
+    }
+    if (sender == self.decButtonNine) {
+        [self pressNumber:@"decimal" :@"9"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,51 +167,80 @@
 }
 
 //binary input
-- (void)binaryToDecimal:(UITextField *)textField{
-    long decimal = strtol([textField.text UTF8String], NULL, 2);
-    NSString *decimalString = [[NSNumber numberWithLong:decimal] stringValue];
-    self.decimalInput.text = decimalString;
+- (NSString *)binaryToDecimal:(NSString *)textField{
+    
+    if ([textField length] > 0) {
+        long decimal = strtol([textField UTF8String], NULL, 2);
+        NSString *decimalString = [[NSNumber numberWithLong:decimal] stringValue];
+        return decimalString;
+        
+    }
+    else{
+        return @"";
+    }
+    
 }
 
-- (void)binaryToHex:(UITextField *)textField{
-# warning unfinished method binary to hex
-    self.hexInput.text = textField.text;
+- (NSString *)binaryToHex:(NSString *)textField{
+    
+    if ([textField length] > 0) {
+        return [self decimalToHex:[self binaryToDecimal:textField]];
+    }
+    else{
+        return @"";
+    }
 }
 
 //decimal input
-- (void)decimalToBinary:(UITextField *)textField{
-# warning unfinished method decimal to binary
-    self.binaryInput.text = textField.text;
+- (NSString *)decimalToBinary:(NSString *)textField{
+    
+    if ([textField length] > 0) {
+        return [self HexToBinary: [self decimalToHex:textField]];
+    }
+    else{
+        return @"";
+    }
 }
 
-- (void)decimalToHex:(UITextField *)textField{
-    NSString *dec = textField.text;
-    NSString *hexString = [NSString stringWithFormat:@"%lX", (unsigned long)[dec integerValue]];
-    self.hexInput.text = hexString;
+- (NSString *)decimalToHex:(NSString *)textField{
+    
+    if ([textField length] > 0) {
+        NSString *decValue = textField;
+        NSString *hexString = [NSString stringWithFormat:@"%lX", (unsigned long)[decValue integerValue]];
+        return hexString;
+    }
+    else{
+        return @"";
+    }
 }
 
 //hexadecimal input
-- (void)HexToBinary:(UITextField *)textField{
+- (NSString *)HexToBinary:(NSString *)textField{
     
-    NSString *hexValue = textField.text;
-    if ([textField.text length] > 0) {
+    if ([textField length] > 0) {
+        NSString *hexValue = textField;
         NSUInteger hexInteger;
         [[NSScanner scannerWithString:hexValue] scanHexInt:&hexInteger];
         NSString *binaryString = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
-        self.binaryInput.text = binaryString;
+        return binaryString;
     }
     else{
-        self.binaryInput.text = @"";
+        return @"";
     }
 }
 
-- (void)HexToDecimal:(UITextField *)textField{
+- (NSString *)HexToDecimal:(NSString *)textField{
     
-    unsigned result = 0;
-    NSScanner *scanner = [NSScanner scannerWithString:textField.text];
-    [scanner scanHexInt:&result];
-    NSString *decimalString = [NSString stringWithFormat:@"%u",result];
-    self.decimalInput.text = decimalString;
+    if ([textField length] > 0) {
+        unsigned result = 0;
+        NSScanner *scanner = [NSScanner scannerWithString:textField];
+        [scanner scanHexInt:&result];
+        NSString *decimalString = [NSString stringWithFormat:@"%u",result];
+        return decimalString;
+    }
+    else{
+        return @"";
+    }
 }
 
 - (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue
@@ -187,16 +250,63 @@
     return [NSString stringWithFormat:@"%@%u", [self recursiveConvertToBinary:inputValue / 2], inputValue % 2];
 }
 
+- (void)hideBinInput:(BOOL) option
+{
+    if (!option) {
+        [self.binButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:0.5] forState:UIControlStateNormal];
+        [self.decButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.hexButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        self.interfaceMode = @"binary";
+    }
+    [self.buttonZero setHidden:option];
+    [self.buttonOne setHidden:option];
+}
+
+- (void)hideDecInput:(BOOL) option
+{
+    if (!option) {
+        [self.binButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.decButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:0.5] forState:UIControlStateNormal];
+        [self.hexButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        self.interfaceMode = @"decimal";
+    }
+    
+    [self.decButtoneBlank1 setHidden:option];
+    [self.decButtonBlank2 setHidden:option];
+    [self.decButtonZero setHidden:option];
+    [self.decButtonOne setHidden:option];
+    [self.decButtonTwo setHidden:option];
+    [self.decButtonThree setHidden:option];
+    [self.decButtonFour setHidden:option];
+    [self.decButtonFive setHidden:option];
+    [self.decButtonSix setHidden:option];
+    [self.decButtonSeven setHidden:option];
+    [self.decButtonEight setHidden:option];
+    [self.decButtonNine setHidden:option];
+    
+}
+
+- (void)hideHexInput:(BOOL) option
+{
+    if (!option) {
+        [self.binButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.decButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.hexButton setTitleColor:[UIColor colorWithRed:60.0/256.0 green:62.0/256.0 blue:80.0/256.0 alpha:0.5] forState:UIControlStateNormal];
+        self.interfaceMode = @"hexadecimal";
+    }
+}
+
+
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
