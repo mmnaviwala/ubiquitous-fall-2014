@@ -135,15 +135,18 @@
 //binary input
 - (void)binaryToDecimal:(UITextField *)textField{
     long decimal = strtol([textField.text UTF8String], NULL, 2);
-    self.decimalInput.text = [[NSNumber numberWithLong:decimal] stringValue];
+    NSString *decimalString = [[NSNumber numberWithLong:decimal] stringValue];
+    self.decimalInput.text = decimalString;
 }
 
 - (void)binaryToHex:(UITextField *)textField{
+# warning unfinished method binary to hex
     self.hexInput.text = textField.text;
 }
 
 //decimal input
 - (void)decimalToBinary:(UITextField *)textField{
+# warning unfinished method decimal to binary
     self.binaryInput.text = textField.text;
 }
 
@@ -160,7 +163,8 @@
     if ([textField.text length] > 0) {
         NSUInteger hexInteger;
         [[NSScanner scannerWithString:hexValue] scanHexInt:&hexInteger];
-        self.binaryInput.text = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
+        NSString *binaryString = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
+        self.binaryInput.text = binaryString;
     }
     else{
         self.binaryInput.text = @"";
@@ -168,7 +172,12 @@
 }
 
 - (void)HexToDecimal:(UITextField *)textField{
-    self.decimalInput.text = textField.text;
+    
+    unsigned result = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:textField.text];
+    [scanner scanHexInt:&result];
+    NSString *decimalString = [NSString stringWithFormat:@"%u",result];
+    self.decimalInput.text = decimalString;
 }
 
 - (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue
