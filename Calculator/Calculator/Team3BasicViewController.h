@@ -11,9 +11,10 @@
 @interface Team3BasicViewController : Team3DataViewController<UITextFieldDelegate>
 
 @property (nonatomic) BOOL typingNumber; //check if user is typing a number
-@property (nonatomic) int firstNumber;
-@property (nonatomic) int secondNumber;
+@property (nonatomic) float firstNumber;
+@property (nonatomic) float secondNumber;
 @property (nonatomic, copy) NSString *operation; // +,-,*,/ operation
+//@property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 
 - (IBAction)clear:(UIButton *)sender;
 
@@ -25,6 +26,8 @@
 
 
 - (IBAction)numberPressed:(UIButton *)sender;
+
+
 
 
 

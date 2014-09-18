@@ -49,14 +49,14 @@
 
 - (IBAction)calculationPressed:(id)sender {
     self.typingNumber = NO;
-    self.firstNumber = [self.calculationDisplay.text intValue];
+    self.firstNumber = [self.calculationDisplay.text floatValue];
     self.operation = [sender currentTitle];
 }
 
 - (IBAction)equalsPressed:(UIButton *)sender {
     self.typingNumber = NO;
-    self.secondNumber = [self.calculationDisplay.text intValue];
-    int result = 0;
+    self.secondNumber = [self.calculationDisplay.text floatValue];
+    float result = 0;
 
     if ([self.operation isEqualToString:@"+"]) {
         result = self.firstNumber + self.secondNumber;
@@ -81,20 +81,33 @@
         
     }
     
-    self.calculationDisplay.text = [NSString stringWithFormat:@"%d", result];
+    self.calculationDisplay.text = [NSString stringWithFormat:@"%f", result];
 }
 
 - (IBAction)numberPressed:(UIButton *)sender {
     NSString *number = sender.currentTitle;
+    NSRange isNumberDecimal = [self.calculationDisplay.text rangeOfString:@"."];
     if (self.typingNumber) {
-        
-        self.calculationDisplay.text = [self.calculationDisplay.text stringByAppendingString:number];
-        }else
-        {
-            self.calculationDisplay.text = number;
-            self.typingNumber = YES;
+        if ([number isEqualToString:@"."]) {
+            // the number inside display label is not decimal
+            if (isNumberDecimal.location == NSNotFound) {
+                self.calculationDisplay.text = [self.calculationDisplay.text stringByAppendingString:number];
+            }
+        }else{ //user did not press . button
+            self.calculationDisplay.text = [self.calculationDisplay.text stringByAppendingString:number];
         }
+    }else{//if user start with . assume the number starts with 0
+        if ([number isEqualToString:@"."]) {
+            number = @"0.";
+        }
+        self.calculationDisplay.text = number;
+        self.typingNumber = YES;
+    }
+    
+
 }
+
+
 - (IBAction)clear:(UIButton *)sender {
     self.calculationDisplay.text = @" ";
 }
