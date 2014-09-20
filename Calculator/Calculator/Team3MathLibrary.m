@@ -26,5 +26,36 @@
     return firstFloat / secondFloat;
 }
 
++ (float)sineUsingDegrees:(float)degrees {
+    return sin( degrees * M_PI / 180.0 );
+}
+
++ (float)sineUsingRadians:(float)radians {
+    return sin( radians );
+}
+
++ (float)log:(float)value {
+    return log(value);
+}
+
++ (float)modulusOperand1:(float)firstFloat withOperand2:(double)secondFloat {
+    return modf(firstFloat, &secondFloat);
+}
+
++ (float)squareRoot:(float)value {
+    return sqrtf(value);
+}
+
++ (float)exponetBase:(float)base raiseTo:(float)exponet {
+    return powf(base, exponet);
+}
+
++ (int)factorial:(int)value {
+    if (value <= 1)
+        return 1;
+    else
+        return value * [Team3MathLibrary factorial:(value-1)];
+}
+
 
 @end
