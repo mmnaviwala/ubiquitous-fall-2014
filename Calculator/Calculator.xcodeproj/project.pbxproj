@@ -38,6 +38,14 @@
 		ACC7B0B719CDDA36001513D8 /* timeIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AF19CDDA36001513D8 /* timeIconDark.png */; };
 		ACC7B0B819CDDA36001513D8 /* timeIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0B019CDDA36001513D8 /* timeIconLight.png */; };
 		ACC7B0BD19CDDAE6001513D8 /* Team3UnitConversionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC7B0BC19CDDAE6001513D8 /* Team3UnitConversionHelper.m */; };
+		ACC7B0D919CDF2A4001513D8 /* lengthIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D119CDF2A4001513D8 /* lengthIconDark.png */; };
+		ACC7B0DA19CDF2A4001513D8 /* lengthIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D219CDF2A4001513D8 /* lengthIconLight.png */; };
+		ACC7B0DB19CDF2A4001513D8 /* massIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D319CDF2A4001513D8 /* massIconDark.png */; };
+		ACC7B0DC19CDF2A4001513D8 /* massIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D419CDF2A4001513D8 /* massIconLight.png */; };
+		ACC7B0DD19CDF2A4001513D8 /* temperatureIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D519CDF2A4001513D8 /* temperatureIconDark.png */; };
+		ACC7B0DE19CDF2A4001513D8 /* temperatureIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D619CDF2A4001513D8 /* temperatureIconLight.png */; };
+		ACC7B0DF19CDF2A4001513D8 /* timeIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D719CDF2A4001513D8 /* timeIconDark.png */; };
+		ACC7B0E019CDF2A4001513D8 /* timeIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0D819CDF2A4001513D8 /* timeIconLight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +104,14 @@
 		ACC7B0B019CDDA36001513D8 /* timeIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeIconLight.png; sourceTree = "<group>"; };
 		ACC7B0BC19CDDAE6001513D8 /* Team3UnitConversionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team3UnitConversionHelper.m; sourceTree = "<group>"; };
 		ACC7B0BF19CDDB2C001513D8 /* Team3UnitConversionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team3UnitConversionHelper.h; sourceTree = "<group>"; };
+		ACC7B0D119CDF2A4001513D8 /* lengthIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lengthIconDark.png; path = png/lengthIconDark.png; sourceTree = "<group>"; };
+		ACC7B0D219CDF2A4001513D8 /* lengthIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lengthIconLight.png; path = png/lengthIconLight.png; sourceTree = "<group>"; };
+		ACC7B0D319CDF2A4001513D8 /* massIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = massIconDark.png; path = png/massIconDark.png; sourceTree = "<group>"; };
+		ACC7B0D419CDF2A4001513D8 /* massIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = massIconLight.png; path = png/massIconLight.png; sourceTree = "<group>"; };
+		ACC7B0D519CDF2A4001513D8 /* temperatureIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temperatureIconDark.png; path = png/temperatureIconDark.png; sourceTree = "<group>"; };
+		ACC7B0D619CDF2A4001513D8 /* temperatureIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temperatureIconLight.png; path = png/temperatureIconLight.png; sourceTree = "<group>"; };
+		ACC7B0D719CDF2A4001513D8 /* timeIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timeIconDark.png; path = png/timeIconDark.png; sourceTree = "<group>"; };
+		ACC7B0D819CDF2A4001513D8 /* timeIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timeIconLight.png; path = png/timeIconLight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +171,14 @@
 		9D2E05DB19C43921004131F1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				ACC7B0D119CDF2A4001513D8 /* lengthIconDark.png */,
+				ACC7B0D219CDF2A4001513D8 /* lengthIconLight.png */,
+				ACC7B0D319CDF2A4001513D8 /* massIconDark.png */,
+				ACC7B0D419CDF2A4001513D8 /* massIconLight.png */,
+				ACC7B0D519CDF2A4001513D8 /* temperatureIconDark.png */,
+				ACC7B0D619CDF2A4001513D8 /* temperatureIconLight.png */,
+				ACC7B0D719CDF2A4001513D8 /* timeIconDark.png */,
+				ACC7B0D819CDF2A4001513D8 /* timeIconLight.png */,
 				00A2E50D19CDD75D008AB653 /* Team3MathLibrary.m */,
 				00A2E50C19CDD5A8008AB653 /* Team3MathLibrary.h */,
 				9D2E05E419C43921004131F1 /* Team3AppDelegate.h */,
@@ -290,10 +314,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC7B0DC19CDF2A4001513D8 /* massIconLight.png in Resources */,
 				ACC7B0B619CDDA36001513D8 /* temperatureIconLight.png in Resources */,
 				ACC7B0B819CDDA36001513D8 /* timeIconLight.png in Resources */,
+				ACC7B0DD19CDF2A4001513D8 /* temperatureIconDark.png in Resources */,
+				ACC7B0DB19CDF2A4001513D8 /* massIconDark.png in Resources */,
+				ACC7B0DF19CDF2A4001513D8 /* timeIconDark.png in Resources */,
+				ACC7B0D919CDF2A4001513D8 /* lengthIconDark.png in Resources */,
+				ACC7B0E019CDF2A4001513D8 /* timeIconLight.png in Resources */,
 				9D2E05F419C43921004131F1 /* Images.xcassets in Resources */,
 				ACC7B0B419CDDA36001513D8 /* massIconLight.png in Resources */,
+				ACC7B0DE19CDF2A4001513D8 /* temperatureIconLight.png in Resources */,
 				9D2E05E019C43921004131F1 /* InfoPlist.strings in Resources */,
 				ACC7B0B519CDDA36001513D8 /* temperatureIconDark.png in Resources */,
 				ACC7B0B719CDDA36001513D8 /* timeIconDark.png in Resources */,
@@ -301,6 +332,7 @@
 				ACC7B0B119CDDA36001513D8 /* lengthIconDark.png in Resources */,
 				ACC7B0B219CDDA36001513D8 /* lengthIconLight.png in Resources */,
 				9D2E05F219C43921004131F1 /* Main.storyboard in Resources */,
+				ACC7B0DA19CDF2A4001513D8 /* lengthIconLight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
