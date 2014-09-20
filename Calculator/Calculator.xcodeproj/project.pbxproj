@@ -29,6 +29,15 @@
 		9D2E061819C43A4A004131F1 /* Team3ScientificViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E061719C43A4A004131F1 /* Team3ScientificViewController.m */; };
 		9D2E061B19C43A5C004131F1 /* Team3MatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E061A19C43A5C004131F1 /* Team3MatrixViewController.m */; };
 		9D2E061E19C43A6E004131F1 /* Team3UnitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E061D19C43A6E004131F1 /* Team3UnitViewController.m */; };
+		ACC7B0B119CDDA36001513D8 /* lengthIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0A919CDDA36001513D8 /* lengthIconDark.png */; };
+		ACC7B0B219CDDA36001513D8 /* lengthIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AA19CDDA36001513D8 /* lengthIconLight.png */; };
+		ACC7B0B319CDDA36001513D8 /* massIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AB19CDDA36001513D8 /* massIconDark.png */; };
+		ACC7B0B419CDDA36001513D8 /* massIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AC19CDDA36001513D8 /* massIconLight.png */; };
+		ACC7B0B519CDDA36001513D8 /* temperatureIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AD19CDDA36001513D8 /* temperatureIconDark.png */; };
+		ACC7B0B619CDDA36001513D8 /* temperatureIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AE19CDDA36001513D8 /* temperatureIconLight.png */; };
+		ACC7B0B719CDDA36001513D8 /* timeIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0AF19CDDA36001513D8 /* timeIconDark.png */; };
+		ACC7B0B819CDDA36001513D8 /* timeIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC7B0B019CDDA36001513D8 /* timeIconLight.png */; };
+		ACC7B0BD19CDDAE6001513D8 /* Team3UnitConversionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC7B0BC19CDDAE6001513D8 /* Team3UnitConversionHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +86,16 @@
 		9D2E061A19C43A5C004131F1 /* Team3MatrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team3MatrixViewController.m; sourceTree = "<group>"; };
 		9D2E061C19C43A6E004131F1 /* Team3UnitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team3UnitViewController.h; sourceTree = "<group>"; };
 		9D2E061D19C43A6E004131F1 /* Team3UnitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team3UnitViewController.m; sourceTree = "<group>"; };
+		ACC7B0A919CDDA36001513D8 /* lengthIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lengthIconDark.png; sourceTree = "<group>"; };
+		ACC7B0AA19CDDA36001513D8 /* lengthIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lengthIconLight.png; sourceTree = "<group>"; };
+		ACC7B0AB19CDDA36001513D8 /* massIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = massIconDark.png; sourceTree = "<group>"; };
+		ACC7B0AC19CDDA36001513D8 /* massIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = massIconLight.png; sourceTree = "<group>"; };
+		ACC7B0AD19CDDA36001513D8 /* temperatureIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperatureIconDark.png; sourceTree = "<group>"; };
+		ACC7B0AE19CDDA36001513D8 /* temperatureIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperatureIconLight.png; sourceTree = "<group>"; };
+		ACC7B0AF19CDDA36001513D8 /* timeIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeIconDark.png; sourceTree = "<group>"; };
+		ACC7B0B019CDDA36001513D8 /* timeIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeIconLight.png; sourceTree = "<group>"; };
+		ACC7B0BC19CDDAE6001513D8 /* Team3UnitConversionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team3UnitConversionHelper.m; sourceTree = "<group>"; };
+		ACC7B0BF19CDDB2C001513D8 /* Team3UnitConversionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team3UnitConversionHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +178,8 @@
 				9D2E061A19C43A5C004131F1 /* Team3MatrixViewController.m */,
 				9D2E061C19C43A6E004131F1 /* Team3UnitViewController.h */,
 				9D2E061D19C43A6E004131F1 /* Team3UnitViewController.m */,
+				ACC7B0BC19CDDAE6001513D8 /* Team3UnitConversionHelper.m */,
+				ACC7B0BF19CDDB2C001513D8 /* Team3UnitConversionHelper.h */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -269,8 +290,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC7B0B619CDDA36001513D8 /* temperatureIconLight.png in Resources */,
+				ACC7B0B819CDDA36001513D8 /* timeIconLight.png in Resources */,
 				9D2E05F419C43921004131F1 /* Images.xcassets in Resources */,
+				ACC7B0B419CDDA36001513D8 /* massIconLight.png in Resources */,
 				9D2E05E019C43921004131F1 /* InfoPlist.strings in Resources */,
+				ACC7B0B519CDDA36001513D8 /* temperatureIconDark.png in Resources */,
+				ACC7B0B719CDDA36001513D8 /* timeIconDark.png in Resources */,
+				ACC7B0B319CDDA36001513D8 /* massIconDark.png in Resources */,
+				ACC7B0B119CDDA36001513D8 /* lengthIconDark.png in Resources */,
+				ACC7B0B219CDDA36001513D8 /* lengthIconLight.png in Resources */,
 				9D2E05F219C43921004131F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +321,7 @@
 			files = (
 				9D2E05E219C43921004131F1 /* main.m in Sources */,
 				9D2E05E919C43921004131F1 /* Team3RootViewController.m in Sources */,
+				ACC7B0BD19CDDAE6001513D8 /* Team3UnitConversionHelper.m in Sources */,
 				9D2E061B19C43A5C004131F1 /* Team3MatrixViewController.m in Sources */,
 				9D2E061519C43A3C004131F1 /* Team3BasicViewController.m in Sources */,
 				9D2E05EF19C43921004131F1 /* Team3ModelController.m in Sources */,
