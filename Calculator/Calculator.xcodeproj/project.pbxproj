@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A2E50E19CDD75D008AB653 /* Team3MathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A2E50D19CDD75D008AB653 /* Team3MathLibrary.m */; };
 		9D2E05D619C43921004131F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2E05D519C43921004131F1 /* Foundation.framework */; };
 		9D2E05D819C43921004131F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2E05D719C43921004131F1 /* CoreGraphics.framework */; };
 		9D2E05DA19C43921004131F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2E05D919C43921004131F1 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00A2E50C19CDD5A8008AB653 /* Team3MathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team3MathLibrary.h; sourceTree = "<group>"; };
+		00A2E50D19CDD75D008AB653 /* Team3MathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team3MathLibrary.m; sourceTree = "<group>"; };
 		9D2E05D219C43921004131F1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2E05D519C43921004131F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9D2E05D719C43921004131F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 		9D2E05DB19C43921004131F1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				00A2E50D19CDD75D008AB653 /* Team3MathLibrary.m */,
+				00A2E50C19CDD5A8008AB653 /* Team3MathLibrary.h */,
 				9D2E05E419C43921004131F1 /* Team3AppDelegate.h */,
 				9D2E05E519C43921004131F1 /* Team3AppDelegate.m */,
 				9D2E05E719C43921004131F1 /* Team3RootViewController.h */,
@@ -291,6 +296,7 @@
 				9D2E061519C43A3C004131F1 /* Team3BasicViewController.m in Sources */,
 				9D2E05EF19C43921004131F1 /* Team3ModelController.m in Sources */,
 				9D2E061819C43A4A004131F1 /* Team3ScientificViewController.m in Sources */,
+				00A2E50E19CDD75D008AB653 /* Team3MathLibrary.m in Sources */,
 				9D2E061219C43941004131F1 /* Team3HexViewController.m in Sources */,
 				9D2E061E19C43A6E004131F1 /* Team3UnitViewController.m in Sources */,
 				9D2E05E619C43921004131F1 /* Team3AppDelegate.m in Sources */,
@@ -499,6 +505,7 @@
 				9D2E060C19C43921004131F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D2E060D19C43921004131F1 /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +514,7 @@
 				9D2E060F19C43921004131F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
