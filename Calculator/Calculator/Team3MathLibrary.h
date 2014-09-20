@@ -21,6 +21,7 @@
 + (float)sineUsingDegrees:(float)degrees;
 + (float)sineUsingRadians:(float)radians;
 
+
 + (float)log:(float)value;
 + (float)modulusOperand1:(float)firstFloat withOperand2:(double)secondFloat;
 + (float)squareRoot:(float)value;
