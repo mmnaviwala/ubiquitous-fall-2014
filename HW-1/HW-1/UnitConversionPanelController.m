@@ -129,6 +129,9 @@
             default:
                 break;
         }
+        self.currentConvertFromRowNum = self.currentConvertToRowNum = 0;
+        [self.pickerConvertFrom selectRow:0 inComponent:0 animated:YES];
+        [self.pickerConvertTo selectRow:0 inComponent:0 animated:YES];
         [self.pickerConvertFrom reloadAllComponents];
         [self.pickerConvertTo reloadAllComponents];
     }
