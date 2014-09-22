@@ -17,6 +17,8 @@
 @property NSArray *measurementUnitTime;
 @property NSArray *measurementUnitTemperature;
 @property NSArray *currentMeasurementUnit;
+@property NSArray *measurmentIconNamesLight;
+@property NSArray *measurmentIconNamesDark;
 @property NSInteger currentConvertFromRowNum;
 @property NSInteger currentConvertToRowNum;
 @end
@@ -33,6 +35,8 @@
     self.measurementUnitMass = @[@" Metric Ton", @"Kilogram", @"Gram", @"Milligram"];
     self.measurementUnitTime = @[@"Days", @"Hour", @"Minutes"];
     self.measurementUnitTemperature = @[@"Celsius", @"Fahrenheit", @"Kelvin"];
+    self.measurmentIconNamesLight = @[@"lengthIconLight", @"massIconLight", @"timeIconLight", @"temperatureIconLight"];
+    self.measurmentIconNamesDark = @[@"lengthIconDark", @"massIconDark", @"timeIconDark", @"temperatureIconDark"];
     
     // Setting the deafult measurement unit
     self.currentMeasurementUnit = self.measurementUnitLength;
@@ -88,10 +92,11 @@
         tView = [[UILabel alloc] init];
         [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
         tView.textAlignment = NSTextAlignmentCenter;
-        // tView.textColor = [UIColor whiteColor];
         
         if([pickerView isEqual: self.pickerMeasurementType]){
-            tView.text = [[self.measurementTypes objectAtIndex:row] substringToIndex:2];
+            UIImageView *dot =[[UIImageView alloc] initWithFrame:CGRectMake(1,2,20,20)];
+            dot.image=[UIImage imageNamed:[self.measurmentIconNamesDark objectAtIndex:row]];
+            [tView addSubview:dot];
         }
         if([pickerView isEqual: self.pickerConvertFrom] || [pickerView isEqual: self.pickerConvertTo]){
             tView.text = [self.currentMeasurementUnit objectAtIndex:row];
@@ -100,6 +105,13 @@
         if([pickerView selectedRowInComponent:component] == row){
             tView.backgroundColor = [UIColor darkGrayColor];
             tView.textColor = [UIColor whiteColor];
+            
+            if([pickerView isEqual: self.pickerMeasurementType]){
+                UIImageView *dot =[[UIImageView alloc] initWithFrame:CGRectMake(1,2,20,20)];
+                dot.image=[UIImage imageNamed:[self.measurmentIconNamesLight objectAtIndex:row]];
+                dot.layer.zPosition = 1;
+                [tView addSubview:dot];
+            }
         }
         
     }
