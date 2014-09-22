@@ -293,4 +293,9 @@
     [self startConversion:([self.userInput.text doubleValue])];
 }
 
+- (IBAction)numPadButtonTapped:(UIButton *)sender {
+    NSLog(@"%@", sender.titleLabel.text);
+}
+
+
 @end

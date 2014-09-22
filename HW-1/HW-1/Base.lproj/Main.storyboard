@@ -931,6 +931,9 @@
                                 <state key="normal" title="⌫">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="9RD-oG-WXt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfn-gM-ih6">
                                 <rect key="frame" x="161" y="277" width="79" height="50"/>
@@ -958,6 +961,9 @@
                                 <state key="normal" title="8">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="ESZ-PR-zLO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38b-Uf-x5P">
                                 <rect key="frame" x="161" y="328" width="79" height="50"/>
@@ -967,6 +973,9 @@
                                 <state key="normal" title="9">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="lp6-d9-G3t"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xi-Av-O3S">
                                 <rect key="frame" x="241" y="328" width="79" height="50"/>
@@ -985,6 +994,9 @@
                                 <state key="normal" title="5">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="Lpn-fr-fqu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrA-Jh-Psg">
                                 <rect key="frame" x="161" y="379" width="79" height="50"/>
@@ -994,6 +1006,9 @@
                                 <state key="normal" title="6">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="rP4-Qh-7uF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6U-KM-iUF">
                                 <rect key="frame" x="241" y="379" width="79" height="50"/>
@@ -1012,6 +1027,9 @@
                                 <state key="normal" title="4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="aAT-yo-Et9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pg-cx-C0q">
                                 <rect key="frame" x="81" y="430" width="79" height="50"/>
@@ -1021,6 +1039,9 @@
                                 <state key="normal" title="2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="ahz-t2-Y3d"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVf-mp-QHD">
                                 <rect key="frame" x="161" y="430" width="79" height="50"/>
@@ -1030,6 +1051,9 @@
                                 <state key="normal" title="3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="SI1-y1-Tu2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBI-1L-VEF">
                                 <rect key="frame" x="241" y="430" width="79" height="50"/>
@@ -1048,6 +1072,9 @@
                                 <state key="normal" title="1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="PuJ-V9-uQf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adW-hC-6GG">
                                 <rect key="frame" x="81" y="481" width="79" height="50"/>
@@ -1057,6 +1084,9 @@
                                 <state key="normal" title="0">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="0fv-8l-qif"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPu-pQ-jW7">
                                 <rect key="frame" x="161" y="481" width="79" height="50"/>
@@ -1066,6 +1096,9 @@
                                 <state key="normal" title="=">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="XOS-UD-d7b"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnB-F2-Ac7">
                                 <rect key="frame" x="241" y="481" width="79" height="50"/>
@@ -1084,6 +1117,9 @@
                                 <state key="normal" title=".">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="WvE-Zq-2n9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Vp-hRX">
                                 <rect key="frame" x="0.0" y="328" width="80" height="50"/>
@@ -1093,6 +1129,9 @@
                                 <state key="normal" title="7">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="Wac-0g-4fS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5D-uL-JRO">
                                 <rect key="frame" x="0.0" y="277" width="80" height="50"/>
@@ -1102,6 +1141,9 @@
                                 <state key="normal" title="C">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="numPadButtonTapped:" destination="tAf-Gh-q8K" eventType="touchUpInside" id="UbW-wl-rdI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
