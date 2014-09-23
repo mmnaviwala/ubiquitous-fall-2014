@@ -69,9 +69,22 @@
             textField.text = [textField.text substringWithRange:NSMakeRange(0, [textField.text length] - 1 )];
         }
     }
+}
+
+- (IBAction)pressKey:(UIButton *)sender {
+    NSArray *textFields = @[_matrix1textField00, _matrix1textField01,
+                            _matrix1textField10, _matrix1textField11,
+                            _matrix2textField00, _matrix2textField01,
+                            _matrix2textField10, _matrix2textField11];
     
+    for (UITextField *textField in textFields) {
+        if ([textField isFirstResponder]) {
+            textField.text = [[NSString alloc] initWithFormat:@"%@%@", textField.text, sender.currentTitle];
+        }
+    }
     
 }
+
 
 
 - (IBAction)nextFieldFocus:(UIButton *)sender {
