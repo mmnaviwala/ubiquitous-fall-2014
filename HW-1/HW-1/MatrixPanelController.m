@@ -57,6 +57,27 @@
     
     _operationLabel.text = @"";
 }
+- (IBAction)nextFieldFocus:(UIButton *)sender {
+    NSArray *textFields = @[_matrix1textField00, _matrix1textField01,
+                            _matrix1textField10, _matrix1textField11,
+                            _matrix2textField00, _matrix2textField01,
+                            _matrix2textField10, _matrix2textField11];
+    
+    for (int i = 0; i < [textFields count]; i++) {
+        if ( [[textFields objectAtIndex:i] isFirstResponder]) {
+            
+            if (i == [textFields count] - 1) {
+                [[textFields objectAtIndex:0] becomeFirstResponder];
+                return;
+            }
+            [[textFields objectAtIndex: i + 1] becomeFirstResponder];
+            return;
+        }
+    }
+    
+    [[textFields objectAtIndex:0] becomeFirstResponder];
+    
+}
 
 - (IBAction)clear:(UIButton *)sender {
     _matrix1textField00.text = @"";
@@ -97,12 +118,10 @@
 }
 
 - (void)setResultMatrixValues:(NSArray *)matrix {
-    
     _resultMatrixLabel00.text = [[NSString alloc] initWithFormat:@"%d", [[matrix objectAtIndex:0] intValue] ];
     _resultMatrixLabel01.text = [[NSString alloc] initWithFormat:@"%d", [[matrix objectAtIndex:1] intValue] ];
     _resultMatrixLabel10.text = [[NSString alloc] initWithFormat:@"%d", [[matrix objectAtIndex:2] intValue] ];
     _resultMatrixLabel11.text = [[NSString alloc] initWithFormat:@"%d", [[matrix objectAtIndex:3] intValue] ];
-    
 }
 
 
@@ -151,7 +170,6 @@
     }
 
     [self setResultMatrixValues:resultMatrix];
-    
 }
 
 
