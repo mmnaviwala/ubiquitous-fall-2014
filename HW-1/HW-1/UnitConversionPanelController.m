@@ -51,6 +51,9 @@
     self.pickerConvertTo.dataSource = self;
     self.pickerConvertTo.delegate = self;
     
+    // To hide the default keyboard
+    self.userInput.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 - (void)didReceiveMemoryWarning
