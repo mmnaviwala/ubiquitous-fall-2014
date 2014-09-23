@@ -292,12 +292,25 @@
 }
 
 
+// This only works with the when the default iOS keyboard is used
 - (IBAction)userInputChanged:(id)sender {
     [self startConversion:([self.userInput.text doubleValue])];
 }
 
 - (IBAction)numPadButtonTapped:(UIButton *)sender {
-    NSLog(@"%@", sender.titleLabel.text);
+    if ([sender.titleLabel.text  isEqual: @"C"]) {
+        self.userInput.text = @"";
+    }
+    if ([sender.titleLabel.text  isEqual: @"⌫"]) {
+        if ([self.userInput.text length] > 0) {
+            self.userInput.text = [self.userInput.text substringToIndex:[self.userInput.text length] - 1];
+        }
+    }
+    if (![sender.titleLabel.text   isEqual: @"C"] && ![sender.titleLabel.text   isEqual: @"⌫"]){
+        self.userInput.text = [self.userInput.text stringByAppendingString:sender.titleLabel.text];
+    }
+    [self startConversion:([self.userInput.text doubleValue])];
+    NSLog(@"%@, %@", sender.titleLabel.text, self.userInput.text);
 }
 
 
