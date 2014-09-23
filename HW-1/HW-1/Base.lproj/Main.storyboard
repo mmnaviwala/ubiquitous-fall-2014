@@ -693,6 +693,9 @@
                                 <state key="normal" title="⌫">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backpace:" destination="vOT-Bn-I2i" eventType="touchUpInside" id="1zE-Vz-R4x"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-Rs-d6l">
                                 <rect key="frame" x="161" y="277" width="79" height="50"/>
