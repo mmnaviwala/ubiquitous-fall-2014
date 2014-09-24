@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895ABE5219D117E000581C08 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895ABE5119D117E000581C08 /* Default-568h@2x.png */; };
 		ACE796C619CEA91D0052A6FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE796C519CEA91D0052A6FF /* main.m */; };
 		ACE796C919CEA91D0052A6FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE796C819CEA91D0052A6FF /* AppDelegate.m */; };
 		ACE796CC19CEA91D0052A6FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE796CB19CEA91D0052A6FF /* ViewController.m */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		895ABE5119D117E000581C08 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		ACE796C019CEA91D0052A6FF /* HW-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE796C419CEA91D0052A6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACE796C519CEA91D0052A6FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		ACE796B719CEA91D0052A6FF = {
 			isa = PBXGroup;
 			children = (
+				895ABE5119D117E000581C08 /* Default-568h@2x.png */,
 				ACE796C219CEA91D0052A6FF /* HW-1 */,
 				ACE796DC19CEA91D0052A6FF /* HW-1Tests */,
 				ACE796C119CEA91D0052A6FF /* Products */,
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE796CF19CEA91D0052A6FF /* Main.storyboard in Resources */,
+				895ABE5219D117E000581C08 /* Default-568h@2x.png in Resources */,
 				ACE796D419CEA91D0052A6FF /* LaunchScreen.xib in Resources */,
 				ACE796D119CEA91D0052A6FF /* Images.xcassets in Resources */,
 			);
@@ -454,6 +458,7 @@
 				ACE796E519CEA91D0052A6FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACE796E619CEA91D0052A6FF /* Build configuration list for PBXNativeTarget "HW-1Tests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +467,7 @@
 				ACE796E819CEA91D0052A6FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
