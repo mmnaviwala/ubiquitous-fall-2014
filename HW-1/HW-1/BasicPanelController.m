@@ -27,7 +27,7 @@
 }
 - (IBAction)backSpace:(UIButton *)sender {
     NSString *string = [self.calculationDisplay text];
-    int length = [string length];
+    int length = (int)[string length];
     NSString *temp = [string substringToIndex:length-1];
     [self.calculationDisplay setText:temp];
     
