@@ -310,7 +310,6 @@
         self.userInput.text = [self.userInput.text stringByAppendingString:sender.titleLabel.text];
     }
     [self startConversion:([self.userInput.text doubleValue])];
-    NSLog(@"%@, %@", sender.titleLabel.text, self.userInput.text);
 }
 
 
