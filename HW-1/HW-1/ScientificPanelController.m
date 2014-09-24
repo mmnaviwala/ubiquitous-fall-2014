@@ -41,8 +41,9 @@
     
     //Modulus Button
     if([self.operation isEqualToString:@"Modulus"]){
-        self.inputLabel.text = self.operation;
-        self.inputLabel.text = [NSString stringWithFormat:@"%d", (int)[MathLibrary modulusOperand1:self.firstNumber withOperand2:self.secondNumber]];
+        //self.inputLabel.text = self.operation;
+        //self.inputLabel.text = [NSString stringWithFormat:@"%f", self.secondNumber];
+        self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary modulusOperand1:self.firstNumber withOperand2:self.secondNumber]];
         self.modulusButton.alpha = 1.00;
         self.modulusButton.enabled = YES;
     }
@@ -52,13 +53,6 @@
         self.powerButton.alpha = 1.00;
         self.powerButton.enabled = YES;
     }
-    //Exponent Button
-    if([self.operation isEqualToString:@"Exponent"]){
-        //self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary exponetBase:self.firstNumber raiseTo:self.secondNumber]];
-        
-        self.exponentButton.alpha = 1.00;
-        self.exponentButton.enabled = 1.00;
-    }
 }
 
 - (IBAction)clearButtonPressed:(id)sender {
@@ -67,7 +61,7 @@
 
 - (IBAction)backspaceButtonPressed:(id)sender {
     if(self.inputLabel.text.length > 0 )
-        self.inputLabel.text =  [self.inputLabel.text substringWithRange:NSMakeRange(0, self.inputLabel.text.length - 1)];    
+        self.inputLabel.text =  [self.inputLabel.text substringWithRange:NSMakeRange(0, self.inputLabel.text.length - 1)];
 }
 
 - (IBAction)sinButtonPressed:(id)sender {
@@ -88,15 +82,15 @@
     self.firstNumber = [self.inputLabel.text floatValue];
     self.inputLabel.text = @"";
     
-    if(self.modulusButton.enabled == YES){
+    self.modulusButton.enabled = !self.modulusButton.enabled;
+    if(self.modulusButton.enabled == NO){
         self.operation = @"Modulus";
-        self.modulusButton.alpha = 1.00;
+        self.modulusButton.alpha = 0.50;
     }else{
         self.operation = @"";
-        self.modulusButton.alpha = 0.50;
+        self.modulusButton.alpha = 1.00;
     }
     
-    self.modulusButton.enabled = !self.modulusButton.enabled;
 }
 
 - (IBAction)sqrtButtonPressed:(id)sender {
@@ -110,15 +104,15 @@
     self.firstNumber = [self.inputLabel.text floatValue];
     self.inputLabel.text = @"";
     
-    if(self.powerButton.enabled == YES){
+    self.powerButton.enabled = !self.powerButton.enabled;
+    if(self.powerButton.enabled == NO){
         self.operation = @"Power";
-        self.powerButton.alpha = 1.00;
+        self.powerButton.alpha = 0.50;
     }else{
         self.operation = @"";
-        self.powerButton.alpha = 0.50;
+        self.powerButton.alpha = 1.00;
     }
     
-    self.powerButton.enabled = !self.powerButton.enabled;
 }
 
 - (IBAction)exponentButtonPressed:(id)sender {

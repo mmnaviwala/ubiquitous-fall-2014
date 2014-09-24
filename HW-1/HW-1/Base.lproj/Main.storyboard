@@ -253,18 +253,6 @@
                                     <action selector="factorialButtonPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="ick-AL-c8x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-F7-Od3">
-                                <rect key="frame" x="0.0" y="481" width="80" height="50"/>
-                                <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <size key="titleShadowOffset" width="100" height="0.0"/>
-                                <state key="normal" title=".">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="numberPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="8PA-p2-Ys4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-Ob-J8T">
                                 <rect key="frame" x="0.0" y="328" width="80" height="50"/>
                                 <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -317,6 +305,18 @@
                                 </state>
                                 <connections>
                                     <action selector="equalsButtonPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="Nxg-Jh-DTL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-F7-Od3">
+                                <rect key="frame" x="0.0" y="481" width="80" height="50"/>
+                                <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <size key="titleShadowOffset" width="100" height="0.0"/>
+                                <state key="normal" title=".">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="numberPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="8PA-p2-Ys4"/>
                                 </connections>
                             </button>
                         </subviews>
