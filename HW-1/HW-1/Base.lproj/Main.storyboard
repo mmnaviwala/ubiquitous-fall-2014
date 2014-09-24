@@ -253,6 +253,18 @@
                                     <action selector="factorialButtonPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="ick-AL-c8x"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-F7-Od3">
+                                <rect key="frame" x="0.0" y="481" width="80" height="50"/>
+                                <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <size key="titleShadowOffset" width="100" height="0.0"/>
+                                <state key="normal" title=".">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="numberPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="8PA-p2-Ys4"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-Ob-J8T">
                                 <rect key="frame" x="0.0" y="328" width="80" height="50"/>
                                 <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -278,7 +290,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cx9-3Z-17S">
-                                <rect key="frame" x="72" y="98" width="232" height="86"/>
+                                <rect key="frame" x="16" y="151" width="288" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -307,18 +319,12 @@
                                     <action selector="equalsButtonPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="Nxg-Jh-DTL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-F7-Od3">
-                                <rect key="frame" x="0.0" y="481" width="80" height="50"/>
-                                <color key="backgroundColor" red="0.1136888873" green="0.66491165649999995" blue="0.98323567710000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <size key="titleShadowOffset" width="100" height="0.0"/>
-                                <state key="normal" title=".">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="numberPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="8PA-p2-Ys4"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKw-FE-VZc">
+                                <rect key="frame" x="16" y="66" width="288" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -339,6 +345,7 @@
                         <outlet property="nineButton" destination="PYB-Og-XbT" id="71b-oh-Q3t"/>
                         <outlet property="oneButton" destination="sET-no-fza" id="mTn-WT-SiM"/>
                         <outlet property="powerButton" destination="NgQ-tM-1uW" id="aRp-dI-dSv"/>
+                        <outlet property="previousOperationLabel" destination="KKw-FE-VZc" id="7Jz-9l-IPP"/>
                         <outlet property="sevenButton" destination="Knj-Ob-J8T" id="URQ-QY-IT8"/>
                         <outlet property="sinButton" destination="ssJ-D2-hka" id="eMO-hY-ltU"/>
                         <outlet property="sixButton" destination="JXT-NM-4nl" id="1fI-UJ-djs"/>

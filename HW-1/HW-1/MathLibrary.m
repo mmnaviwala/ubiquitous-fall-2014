@@ -40,7 +40,7 @@
 }
 
 + (float)modulusOperand1:(float)firstFloat withOperand2:(float)secondFloat {
-    return modff(firstFloat, &secondFloat);
+    return fmod(firstFloat, secondFloat);
 }
 
 + (float)squareRoot:(float)value {

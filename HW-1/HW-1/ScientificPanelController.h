@@ -34,5 +34,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *decimalButton;
 @property (weak, nonatomic) IBOutlet UIButton *equalsButton;
 @property (weak, nonatomic) IBOutlet UILabel *inputLabel;
+@property (weak, nonatomic) IBOutlet UILabel *previousOperationLabel;
 
 @end
