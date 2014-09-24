@@ -63,5 +63,12 @@
 + (double)convertKelvinToCelsius:(double)numberToConvert;
 + (double)convertKelvinToFahrenheit:(double)numberToConvert;
 
-
+#pragma mark - Hex
++ (NSString *)binaryToDecimal:(NSString *)textField;
++ (NSString *)binaryToHex:(NSString *)textField;
++ (NSString *)decimalToBinary:(NSString *)textField;
++ (NSString *)decimalToHex:(NSString *)textField;
++ (NSString *)hexToBinary:(NSString *)textField;
++ (NSString *)hexToDecimal:(NSString *)textField;
++ (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue;
 @end

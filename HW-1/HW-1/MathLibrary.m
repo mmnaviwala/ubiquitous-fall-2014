@@ -156,5 +156,57 @@
     return (((numberToConvert-273.15)*1.8)+32);
 }
 
+#pragma mark - Hex
+
+//binary input
++ (NSString *)binaryToDecimal:(NSString *)textField{
+    long decimal = strtol([textField UTF8String], NULL, 2);
+    NSString *decimalString = [[NSNumber numberWithLong:decimal] stringValue];
+    return decimalString;
+    
+}
++ (NSString *)binaryToHex:(NSString *)textField{
+    return [self decimalToHex:[self binaryToDecimal:textField]];
+}
+//decimal input
++ (NSString *)decimalToBinary:(NSString *)textField{
+    
+    NSString *binaryString = @"" ;
+    NSUInteger x = [textField intValue] ;
+    do {
+        binaryString = [[NSString stringWithFormat: @"%lu", x&1] stringByAppendingString:binaryString];
+    } while (x >>= 1);
+    return binaryString;
+    
+    
+    //return [self hexToBinary: [self decimalToHex:textField]];
+}
++ (NSString *)decimalToHex:(NSString *)textField{
+    NSString *decValue = textField;
+    NSString *hexString = [NSString stringWithFormat:@"%lX", (unsigned long)[decValue integerValue]];
+    return hexString;
+}
+//hexadecimal input
++ (NSString *)hexToBinary:(NSString *)textField{
+    NSString *hexValue = textField;
+    NSUInteger hexInteger;
+    [[NSScanner scannerWithString:hexValue] scanHexInt:&hexInteger];
+    NSString *binaryString = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
+    return binaryString;
+}
++ (NSString *)hexToDecimal:(NSString *)textField{
+    unsigned result = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:textField];
+    [scanner scanHexInt:&result];
+    NSString *decimalString = [NSString stringWithFormat:@"%u",result];
+    return decimalString;
+}
++ (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue
+{
+    if (inputValue == 1 || inputValue == 0)
+        return [NSString stringWithFormat:@"%lu", (unsigned long)inputValue];
+    return [NSString stringWithFormat:@"%@%lu", [self recursiveConvertToBinary:inputValue / 2], inputValue % 2];
+}
+
 
 @end
