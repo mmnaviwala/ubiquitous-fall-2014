@@ -229,13 +229,6 @@
 }
 //decimal input
 + (NSString *)decimalToBinary:(NSString *)textField{
-//    NSString *binaryString = @"" ;
-//    NSUInteger x = [textField intValue] ;
-//    do {
-//        binaryString = [[NSString stringWithFormat: @"%lu", x&1] stringByAppendingString:binaryString];
-//    } while (x >>= 1);
-//    return binaryString;
-    
     NSString *binaryString = @"";
     NSUInteger x = [textField integerValue];
     int i = 0;

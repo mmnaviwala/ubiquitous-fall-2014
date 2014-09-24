@@ -104,9 +104,6 @@
 }
 - (void)pressNumber:(NSString *)inputField :(NSString *)inputValue
 {
-    NSLog(@"inputField: %@",inputField);
-    NSLog(@"inputField: %@",inputValue);
-    
     if ([inputField  isEqual: @"binary"]) {
         
         if ([inputValue  isEqual: @"backspace"]) {
