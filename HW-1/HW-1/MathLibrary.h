@@ -25,6 +25,16 @@
 + (float)exponetBase:(float)base raiseTo:(float)exponet;
 + (int)factorial:(int)value;
 
++ (BOOL)is2x2Invertible:(NSArray *)matrix;
+
++ (NSArray *)add2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)subtract2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)multiply2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)divide2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
+
+
+
+
 #pragma mark - Length
 + (double)convertKilometerToMeter:(double)numberToConvert;
 + (double)convertKilometerToCentimeter:(double)numberToConvert;
