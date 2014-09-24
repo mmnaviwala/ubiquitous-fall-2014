@@ -62,11 +62,17 @@
     [self clear];
 }
 
+/*
+ Removes one number from the end of the current input label until empty, and then does nothing
+ */
 - (IBAction)backspaceButtonPressed:(id)sender {
     if(self.inputLabel.text.length > 0 )
         self.inputLabel.text =  [self.inputLabel.text substringWithRange:NSMakeRange(0, self.inputLabel.text.length - 1)];
 }
 
+/*  uses "MathLibrary.h"
+ Checks if input is empty or 0, if not it calls sineUsingDegrees with the current input
+ */
 - (IBAction)sinButtonPressed:(id)sender {
     if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
@@ -74,6 +80,9 @@
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary sineUsingDegrees:[self.inputLabel.text floatValue]]];
 }
 
+/*  uses "MathLibrary.h"
+ Checks if input is empty or 0, if not it calls log with the current input
+ */
 - (IBAction)logButtonPressed:(id)sender {
     if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
@@ -81,6 +90,13 @@
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary log:[self.inputLabel.text floatValue]]];
 }
 
+/*
+ Performs some setup for the modulus function:
+    1) assigns current input to self.firstNumber
+    2) clears input
+    3) sets current operation to Modulus
+    4) enables/disables self.modulusButton
+ */
 - (IBAction)modulusButtonPressed:(id)sender {
     self.firstNumber = [self.inputLabel.text floatValue];
     self.inputLabel.text = @"";
@@ -96,6 +112,9 @@
     
 }
 
+/*  uses "MathLibrary.h"
+ Checks if input is empty or 0, if not it calls squareRoot with the current input
+ */
 - (IBAction)sqrtButtonPressed:(id)sender {
     if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
@@ -103,6 +122,13 @@
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary squareRoot:[self.inputLabel.text floatValue]]];
 }
 
+/*
+ Performs some setup for the power function:
+    1) assigns current input to self.firstNumber
+    2) clears input
+    3) sets current operation to Power
+    3) enables/disables self.modulusButton
+ */
 - (IBAction)powerButtonPressed:(id)sender {
     self.firstNumber = [self.inputLabel.text floatValue];
     self.inputLabel.text = @"";
@@ -118,6 +144,10 @@
     
 }
 
+/* uses "MathLibrary.h"
+ Checks to see if the input is empty, if so the input becomes the value of 'e'
+ otherwise raise the current input to the power of e
+ */
 - (IBAction)exponentButtonPressed:(id)sender {
     if([self.inputLabel.text isEqualToString:@""]){
         self.inputLabel.text = [NSString stringWithFormat:@"%f", self.e];
@@ -128,15 +158,19 @@
     
 }
 
+/* uses "MathLibrary.h"
+ Checks if input is empty or 0, if not it calls factorial with the current input
+ */
 - (IBAction)factorialButtonPressed:(id)sender {
-   
-    if(self.firstNumber == 0)
+    if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
     else
-        self.inputLabel.text = [NSString stringWithFormat:@"%d", [MathLibrary factorial:(int)self.firstNumber]];
-    
+        self.inputLabel.text = [NSString stringWithFormat:@"%d", [MathLibrary factorial:[self.inputLabel.text intValue]]];
 }
 
+/*
+ Reset all buttons, clear all input
+ */
 - (void)clear{
     self.inputLabel.text = @"";
     self.firstNumber = 0;
@@ -157,8 +191,6 @@
     self.powerButton.enabled = YES;
     self.exponentButton.enabled = YES;
     self.factorialButton.enabled = YES;
-
-
 }
 
 - (void)viewDidLoad
@@ -167,6 +199,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.e = 2.71828182845904523536;
     [self clear];
+    self.previousOperationLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
