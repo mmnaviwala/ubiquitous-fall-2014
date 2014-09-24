@@ -298,18 +298,37 @@
 }
 
 - (IBAction)numPadButtonTapped:(UIButton *)sender {
-    if ([sender.titleLabel.text  isEqual: @"C"]) {
-        self.userInput.text = @"";
+    BOOL noError = true;
+    if ([sender.titleLabel.text  isEqual: @"."] && [[self.userInput.text componentsSeparatedByString:@"."] count]-1 > 0) {
+        noError = false;
+        [self createAlertBox:@"Error!" : @"You can only have one decimal in the number"];
     }
-    if ([sender.titleLabel.text  isEqual: @"⌫"]) {
-        if ([self.userInput.text length] > 0) {
-            self.userInput.text = [self.userInput.text substringToIndex:[self.userInput.text length] - 1];
+    if ([sender.titleLabel.text  isEqual: @"-"] && [self.userInput.text length] >= 1) {
+        noError = false;
+        [self createAlertBox:@"Error!" : @"The negative sign goes at the beginning of the number"];
+    }
+    
+    // All error checks complete at this point
+    if (noError) {
+        if ([sender.titleLabel.text  isEqual: @"C"]) {
+            self.userInput.text = @"";
         }
+        if ([sender.titleLabel.text  isEqual: @"⌫"]) {
+            if ([self.userInput.text length] > 0) {
+                self.userInput.text = [self.userInput.text substringToIndex:[self.userInput.text length] - 1];
+            }
+        }
+        if (![sender.titleLabel.text   isEqual: @"C"] && ![sender.titleLabel.text   isEqual: @"⌫"]){
+            self.userInput.text = [self.userInput.text stringByAppendingString:sender.titleLabel.text];
+        }
+        [self startConversion:([self.userInput.text doubleValue])];
     }
-    if (![sender.titleLabel.text   isEqual: @"C"] && ![sender.titleLabel.text   isEqual: @"⌫"]){
-        self.userInput.text = [self.userInput.text stringByAppendingString:sender.titleLabel.text];
-    }
-    [self startConversion:([self.userInput.text doubleValue])];
+    
+}
+
+- (void) createAlertBox :(NSString*)title :(NSString*)message{
+    UIAlertView *alertBox = [[UIAlertView alloc] initWithTitle: title message: message delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+    [alertBox show];
 }
 
 
