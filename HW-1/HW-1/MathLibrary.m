@@ -16,7 +16,7 @@
 }
 
 + (float)subtractOperand1:(float)firstFloat fromOperand2:(float)secondFloat {
-    return firstFloat + secondFloat;
+    return firstFloat - secondFloat;
 }
 
 + (float)multiplyOperand1:(float)firstFloat byOperand2:(float)secondFloat {
@@ -57,6 +57,66 @@
     else
         return value * [MathLibrary factorial:(value-1)];
 }
+
++ (BOOL)is2x2Invertible:(NSArray *)matrix {
+    
+    if ( ([[matrix objectAtIndex:0] intValue] * [[matrix objectAtIndex:3] intValue] - [[matrix objectAtIndex:1] intValue] * [[matrix objectAtIndex:2] intValue]) == 0) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
++ (NSArray *)add2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2 {
+    int a = [[operand1 objectAtIndex:0] intValue] + [[operand2 objectAtIndex:0] intValue];
+    int b = [[operand1 objectAtIndex:1] intValue] + [[operand2 objectAtIndex:1] intValue];
+    int c = [[operand1 objectAtIndex:2] intValue] + [[operand2 objectAtIndex:2] intValue];
+    int d = [[operand1 objectAtIndex:3] intValue] + [[operand2 objectAtIndex:3] intValue];
+    
+    return @[ [[NSNumber alloc] initWithInt:a],
+                          [[NSNumber alloc] initWithInt:b],
+                          [[NSNumber alloc] initWithInt:c],
+                          [[NSNumber alloc] initWithInt:d] ];
+    
+}
++ (NSArray *)subtract2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2 {
+    int a = [[operand1 objectAtIndex:0] intValue] - [[operand2 objectAtIndex:0] intValue];
+    int b = [[operand1 objectAtIndex:1] intValue] - [[operand2 objectAtIndex:1] intValue];
+    int c = [[operand1 objectAtIndex:2] intValue] - [[operand2 objectAtIndex:2] intValue];
+    int d = [[operand1 objectAtIndex:3] intValue] - [[operand2 objectAtIndex:3] intValue];
+    
+    return @[ [[NSNumber alloc] initWithInt:a],
+              [[NSNumber alloc] initWithInt:b],
+              [[NSNumber alloc] initWithInt:c],
+              [[NSNumber alloc] initWithInt:d] ];
+    
+}
++ (NSArray *)multiply2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2 {
+    int a = [[operand1 objectAtIndex:0] intValue] * [[operand2 objectAtIndex:0] intValue] + [[operand1 objectAtIndex:1] intValue] * [[operand2 objectAtIndex:2] intValue];
+    int b = [[operand1 objectAtIndex:0] intValue] * [[operand2 objectAtIndex:1] intValue] + [[operand1 objectAtIndex:1] intValue] * [[operand2 objectAtIndex:3] intValue];
+    int c = [[operand1 objectAtIndex:2] intValue] * [[operand2 objectAtIndex:0] intValue] + [[operand1 objectAtIndex:3] intValue] * [[operand2 objectAtIndex:2] intValue];
+    int d = [[operand1 objectAtIndex:2] intValue] * [[operand2 objectAtIndex:1] intValue] + [[operand1 objectAtIndex:3] intValue] * [[operand2 objectAtIndex:3] intValue];
+    return @[ [[NSNumber alloc] initWithInt:a],
+              [[NSNumber alloc] initWithInt:b],
+              [[NSNumber alloc] initWithInt:c],
+              [[NSNumber alloc] initWithInt:d] ];
+    
+}
++ (NSArray *)divide2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2 {
+    
+    int determinate = [[operand2 objectAtIndex:0] intValue] * [[operand2 objectAtIndex:3] intValue] - [[operand2 objectAtIndex:1] intValue] * [[operand2 objectAtIndex:2] intValue];
+    
+    
+    NSArray *inversedOperand2 = @[ [[NSNumber alloc] initWithInt: ([[operand2 objectAtIndex:0] intValue] / determinate )],
+                                   [[NSNumber alloc] initWithInt: ([[operand2 objectAtIndex:1] intValue] / determinate )],
+                                   [[NSNumber alloc] initWithInt: ([[operand2 objectAtIndex:2] intValue] / determinate )],
+                                   [[NSNumber alloc] initWithInt: ([[operand2 objectAtIndex:3] intValue] / determinate )] ];
+    
+    return [MathLibrary multiply2x2Matrix:operand1 withOperand2:inversedOperand2];
+    
+}
+
 
 #pragma mark - Length
 + (double)convertKilometerToMeter:(double)numberToConvert{
@@ -154,6 +214,58 @@
 }
 + (double)convertKelvinToFahrenheit:(double)numberToConvert{
     return (((numberToConvert-273.15)*1.8)+32);
+}
+
+#pragma mark - Hex
+
+//binary input
++ (NSString *)binaryToDecimal:(NSString *)textField{
+    long decimal = strtol([textField UTF8String], NULL, 2);
+    NSString *decimalString = [[NSNumber numberWithLong:decimal] stringValue];
+    return decimalString;
+    
+}
++ (NSString *)binaryToHex:(NSString *)textField{
+    return [self decimalToHex:[self binaryToDecimal:textField]];
+}
+//decimal input
++ (NSString *)decimalToBinary:(NSString *)textField{
+    
+    NSString *binaryString = @"" ;
+    NSUInteger x = [textField intValue] ;
+    do {
+        binaryString = [[NSString stringWithFormat: @"%lu", x&1] stringByAppendingString:binaryString];
+    } while (x >>= 1);
+    return binaryString;
+    
+    
+    //return [self hexToBinary: [self decimalToHex:textField]];
+}
++ (NSString *)decimalToHex:(NSString *)textField{
+    NSString *decValue = textField;
+    NSString *hexString = [NSString stringWithFormat:@"%lX", (unsigned long)[decValue integerValue]];
+    return hexString;
+}
+//hexadecimal input
++ (NSString *)hexToBinary:(NSString *)textField{
+    NSString *hexValue = textField;
+    NSUInteger hexInteger;
+    [[NSScanner scannerWithString:hexValue] scanHexInt:&hexInteger];
+    NSString *binaryString = [NSString stringWithFormat:@"%@", [self recursiveConvertToBinary:hexInteger]];
+    return binaryString;
+}
++ (NSString *)hexToDecimal:(NSString *)textField{
+    unsigned result = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:textField];
+    [scanner scanHexInt:&result];
+    NSString *decimalString = [NSString stringWithFormat:@"%u",result];
+    return decimalString;
+}
++ (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue
+{
+    if (inputValue == 1 || inputValue == 0)
+        return [NSString stringWithFormat:@"%lu", (unsigned long)inputValue];
+    return [NSString stringWithFormat:@"%@%lu", [self recursiveConvertToBinary:inputValue / 2], inputValue % 2];
 }
 
 
