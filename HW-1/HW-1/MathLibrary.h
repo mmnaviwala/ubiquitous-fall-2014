@@ -25,6 +25,16 @@
 + (float)exponetBase:(float)base raiseTo:(float)exponet;
 + (int)factorial:(int)value;
 
++ (BOOL)is2x2Invertible:(NSArray *)matrix;
+
++ (NSArray *)add2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)subtract2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)multiply2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
++ (NSArray *)divide2x2Matrix:(NSArray *)operand1 withOperand2:(NSArray *)operand2;
+
+
+
+
 #pragma mark - Length
 + (double)convertKilometerToMeter:(double)numberToConvert;
 + (double)convertKilometerToCentimeter:(double)numberToConvert;
@@ -63,5 +73,12 @@
 + (double)convertKelvinToCelsius:(double)numberToConvert;
 + (double)convertKelvinToFahrenheit:(double)numberToConvert;
 
-
+#pragma mark - Hex
++ (NSString *)binaryToDecimal:(NSString *)textField;
++ (NSString *)binaryToHex:(NSString *)textField;
++ (NSString *)decimalToBinary:(NSString *)textField;
++ (NSString *)decimalToHex:(NSString *)textField;
++ (NSString *)hexToBinary:(NSString *)textField;
++ (NSString *)hexToDecimal:(NSString *)textField;
++ (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue;
 @end

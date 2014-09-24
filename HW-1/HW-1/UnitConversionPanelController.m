@@ -17,6 +17,8 @@
 @property NSArray *measurementUnitTime;
 @property NSArray *measurementUnitTemperature;
 @property NSArray *currentMeasurementUnit;
+@property NSArray *measurmentIconNamesLight;
+@property NSArray *measurmentIconNamesDark;
 @property NSInteger currentConvertFromRowNum;
 @property NSInteger currentConvertToRowNum;
 @end
@@ -33,6 +35,8 @@
     self.measurementUnitMass = @[@" Metric Ton", @"Kilogram", @"Gram", @"Milligram"];
     self.measurementUnitTime = @[@"Days", @"Hour", @"Minutes"];
     self.measurementUnitTemperature = @[@"Celsius", @"Fahrenheit", @"Kelvin"];
+    self.measurmentIconNamesLight = @[@"lengthIconLight", @"massIconLight", @"timeIconLight", @"temperatureIconLight"];
+    self.measurmentIconNamesDark = @[@"lengthIconDark", @"massIconDark", @"timeIconDark", @"temperatureIconDark"];
     
     // Setting the deafult measurement unit
     self.currentMeasurementUnit = self.measurementUnitLength;
@@ -46,6 +50,9 @@
     
     self.pickerConvertTo.dataSource = self;
     self.pickerConvertTo.delegate = self;
+    
+    // To hide the default keyboard
+    self.userInput.inputView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
@@ -88,10 +95,11 @@
         tView = [[UILabel alloc] init];
         [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
         tView.textAlignment = NSTextAlignmentCenter;
-        // tView.textColor = [UIColor whiteColor];
         
         if([pickerView isEqual: self.pickerMeasurementType]){
-            tView.text = [[self.measurementTypes objectAtIndex:row] substringToIndex:2];
+            UIImageView *dot =[[UIImageView alloc] initWithFrame:CGRectMake(1,2,20,20)];
+            dot.image=[UIImage imageNamed:[self.measurmentIconNamesDark objectAtIndex:row]];
+            [tView addSubview:dot];
         }
         if([pickerView isEqual: self.pickerConvertFrom] || [pickerView isEqual: self.pickerConvertTo]){
             tView.text = [self.currentMeasurementUnit objectAtIndex:row];
@@ -100,6 +108,13 @@
         if([pickerView selectedRowInComponent:component] == row){
             tView.backgroundColor = [UIColor darkGrayColor];
             tView.textColor = [UIColor whiteColor];
+            
+            if([pickerView isEqual: self.pickerMeasurementType]){
+                UIImageView *dot =[[UIImageView alloc] initWithFrame:CGRectMake(1,2,20,20)];
+                dot.image=[UIImage imageNamed:[self.measurmentIconNamesLight objectAtIndex:row]];
+                dot.layer.zPosition = 1;
+                [tView addSubview:dot];
+            }
         }
         
     }
@@ -129,6 +144,9 @@
             default:
                 break;
         }
+        self.currentConvertFromRowNum = self.currentConvertToRowNum = 0;
+        [self.pickerConvertFrom selectRow:0 inComponent:0 animated:YES];
+        [self.pickerConvertTo selectRow:0 inComponent:0 animated:YES];
         [self.pickerConvertFrom reloadAllComponents];
         [self.pickerConvertTo reloadAllComponents];
     }
@@ -274,8 +292,26 @@
 }
 
 
+// This only works with the when the default iOS keyboard is used
 - (IBAction)userInputChanged:(id)sender {
     [self startConversion:([self.userInput.text doubleValue])];
 }
+
+- (IBAction)numPadButtonTapped:(UIButton *)sender {
+    if ([sender.titleLabel.text  isEqual: @"C"]) {
+        self.userInput.text = @"";
+    }
+    if ([sender.titleLabel.text  isEqual: @"⌫"]) {
+        if ([self.userInput.text length] > 0) {
+            self.userInput.text = [self.userInput.text substringToIndex:[self.userInput.text length] - 1];
+        }
+    }
+    if (![sender.titleLabel.text   isEqual: @"C"] && ![sender.titleLabel.text   isEqual: @"⌫"]){
+        self.userInput.text = [self.userInput.text stringByAppendingString:sender.titleLabel.text];
+    }
+    [self startConversion:([self.userInput.text doubleValue])];
+    NSLog(@"%@, %@", sender.titleLabel.text, self.userInput.text);
+}
+
 
 @end
