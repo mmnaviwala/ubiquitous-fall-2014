@@ -16,7 +16,7 @@
 }
 
 + (float)subtractOperand1:(float)firstFloat fromOperand2:(float)secondFloat {
-    return firstFloat + secondFloat;
+    return firstFloat - secondFloat;
 }
 
 + (float)multiplyOperand1:(float)firstFloat byOperand2:(float)secondFloat {
