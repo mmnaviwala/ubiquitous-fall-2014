@@ -43,7 +43,9 @@
     if([self.operation isEqualToString:@"Modulus"]){
         //self.inputLabel.text = self.operation;
         //self.inputLabel.text = [NSString stringWithFormat:@"%f", self.secondNumber];
-        self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary modulusOperand1:self.firstNumber withOperand2:self.secondNumber]];
+        //float temp = (int)self.firstNumber % (int)self.secondNumber;
+        //self.inputLabel.text = [NSString stringWithFormat:@"%f", temp];
+        self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary modulusOperand1:(int)self.firstNumber withOperand2:(int)self.secondNumber]];
         self.modulusButton.alpha = 1.00;
         self.modulusButton.enabled = YES;
     }
