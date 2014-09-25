@@ -13,7 +13,6 @@
 @interface HexPanelController ()
 
 @property NSString *interfaceMode;
-@property BOOL minusOn;
 
 @end
 
@@ -23,7 +22,6 @@
     [super viewDidLoad];
     self.interfaceMode = @"binary";
     [self changeInterFace:self.interfaceMode];
-    self.minusOn = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -103,22 +101,22 @@
     if (sender == self.FButton) {
         [self pressNumber:self.interfaceMode :@"F"];
     }
-    if (sender == self.minusButton) {
-        [self pressNumber:self.interfaceMode :@"-"];
-    }
 }
 - (void)pressNumber:(NSString *)inputField :(NSString *)inputValue
 {
-    NSLog(@"inputField: %@",inputField);
-    NSLog(@"inputField: %@",inputValue);
-    
     if ([inputField  isEqual: @"binary"]) {
         
         if ([inputValue  isEqual: @"backspace"]) {
             if (![self.binaryOutput.text  isEqual: @""]) {
                 self.binaryOutput.text = [self.binaryOutput.text substringToIndex:[self.binaryOutput.text length] - 1];
-                self.decimalOutput.text = [MathLibrary binaryToDecimal:self.binaryOutput.text];
-                self.hexOutput.text = [MathLibrary binaryToHex:self.binaryOutput.text];
+                if ([self.binaryOutput.text  isEqual: @""]) {
+                    self.decimalOutput.text = @"";
+                    self.hexOutput.text = @"";
+                }else{
+                    self.decimalOutput.text = [MathLibrary binaryToDecimal:self.binaryOutput.text];
+                    self.hexOutput.text = [MathLibrary binaryToHex:self.binaryOutput.text];
+
+                }
             }
         }else{
             NSMutableString *texter = [[NSMutableString alloc] init];
@@ -140,8 +138,13 @@
         if ([inputValue  isEqual: @"backspace"]) {
             if (![self.decimalOutput.text  isEqual: @""]) {
                 self.decimalOutput.text = [self.decimalOutput.text substringToIndex:[self.decimalOutput.text length] - 1];
-                self.binaryOutput.text = [MathLibrary decimalToBinary:self.decimalOutput.text];
-                self.hexOutput.text = [MathLibrary decimalToHex:self.decimalOutput.text];
+                if ([self.decimalOutput.text  isEqual: @""]) {
+                    self.binaryOutput.text = @"";
+                    self.hexOutput.text = @"";
+                }else{
+                    self.binaryOutput.text = [MathLibrary decimalToBinary:self.decimalOutput.text];
+                    self.hexOutput.text = [MathLibrary decimalToHex:self.decimalOutput.text];
+                }
             }
         }else{
             
@@ -152,20 +155,6 @@
                 [minusSign setString: @"-"];
                 if (texter.length > 11) {
                     [texter appendString:@""];
-                }else{
-                    if (self.minusOn) {
-                        self.minusOn = NO;
-                        if (![self.decimalOutput isEqual:@""]) {
-                           self.decimalOutput.text = [self.decimalOutput.text substringFromIndex:1];
-                        }else{
-                            self.decimalOutput.text = @"";
-                        }
-                        
-                    }else{
-                        [minusSign appendString:texter];
-                        self.minusOn = YES;
-                        self.decimalOutput.text = minusSign;
-                    }
                 }
                 
                 self.binaryOutput.text = [MathLibrary decimalToBinary:self.decimalOutput.text];
@@ -193,8 +182,14 @@
         if ([inputValue  isEqual: @"backspace"]) {
             if (![self.hexOutput.text  isEqual: @""]) {
                 self.hexOutput.text = [self.hexOutput.text substringToIndex:[self.hexOutput.text length] - 1];
-                self.binaryOutput.text = [MathLibrary hexToBinary:self.hexOutput.text];
-                self.decimalOutput.text = [MathLibrary hexToDecimal:self.hexOutput.text];
+                if ([self.hexOutput.text  isEqual: @""]) {
+                    self.binaryOutput.text = @"";
+                    self.decimalOutput.text = @"";
+                }else{
+                    self.binaryOutput.text = [MathLibrary hexToBinary:self.hexOutput.text];
+                    self.decimalOutput.text = [MathLibrary hexToDecimal:self.hexOutput.text];
+            
+                }
             }
         }else{
             NSMutableString *texter = [[NSMutableString alloc] init];
@@ -213,15 +208,16 @@
 
 - (void)changeInterFace:(NSString *) interface
 {
+    [self.minusButton setAlpha:0.50];
     [self.equalsButton setAlpha:0.50];
     self.equalsButton.enabled = NO;
+    self.minusButton.enabled = NO;
 
     if ([interface  isEqual: @"binary"]) {
         [self.zeroButton setAlpha:1.0];
         [self.oneButton setAlpha:1.0];
         self.zeroButton.enabled = YES;
         self.oneButton.enabled = YES;
-        
         
         [self.twoButton setAlpha:0.50];
         [self.threeButton setAlpha:0.50];
@@ -237,7 +233,6 @@
         [self.DButton setAlpha:0.50];
         [self.EButton setAlpha:0.50];
         [self.FButton setAlpha:0.50];
-        [self.minusButton setAlpha:0.50];
         self.twoButton.enabled = NO;
         self.threeButton.enabled = NO;
         self.fourButton.enabled = NO;
@@ -255,7 +250,6 @@
         self.DButton.enabled = NO;
         self.EButton.enabled = NO;
         self.FButton.enabled = NO;
-        self.minusButton.enabled = NO;
     }
     
     if ([interface  isEqual: @"decimal"]) {
@@ -270,7 +264,6 @@
         [self.sevenButton setAlpha:1.0];
         [self.eightButton setAlpha:1.0];
         [self.nineButton setAlpha:1.0];
-        [self.minusButton setAlpha:1.0];
         self.zeroButton.enabled = YES;
         self.oneButton.enabled = YES;
         self.twoButton.enabled = YES;
@@ -281,7 +274,6 @@
         self.sevenButton.enabled = YES;
         self.eightButton.enabled = YES;
         self.nineButton.enabled = YES;
-        self.minusButton.enabled = YES;
         
         [self.AButton setAlpha:0.50];
         [self.BButton setAlpha:0.50];
@@ -331,9 +323,6 @@
         self.DButton.enabled = YES;
         self.EButton.enabled = YES;
         self.FButton.enabled = YES;
-        
-        [self.minusButton setAlpha:0.50];
-        self.minusButton.enabled = NO;
     }
 }
 
