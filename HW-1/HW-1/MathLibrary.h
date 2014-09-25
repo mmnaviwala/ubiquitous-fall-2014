@@ -80,5 +80,4 @@
 + (NSString *)decimalToHex:(NSString *)textField;
 + (NSString *)hexToBinary:(NSString *)textField;
 + (NSString *)hexToDecimal:(NSString *)textField;
-+ (NSString *)recursiveConvertToBinary:(NSUInteger)inputValue;
 @end
