@@ -156,6 +156,21 @@
 
 
 - (IBAction)compute:(UIButton *)sender {
+    NSArray *textFields = @[_matrix1textField00, _matrix1textField01,
+                            _matrix1textField10, _matrix1textField11,
+                            _matrix2textField00, _matrix2textField01,
+                            _matrix2textField10, _matrix2textField11];
+    for (UITextField *textField in textFields) {
+        if ([textField.text length] > 2 ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Integer Size"
+                                                            message:@"Please use no greater than 2 digit numbers!"
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+            return;
+        }
+    }
     NSArray *resultMatrix = @[@0, @0, @0, @0];
     
     [self setAllBlankFieldsToZero];
