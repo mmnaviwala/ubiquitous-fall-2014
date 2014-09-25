@@ -75,7 +75,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssJ-D2-hka">
                                 <rect key="frame" x="134" y="277" width="52" height="50"/>
-                                <color key="backgroundColor" red="0.089428165585649963" green="0.54868055330866128" blue="0.86746651785714279" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.08898728954" green="0.57468373399999995" blue="0.86281331380000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <size key="titleShadowOffset" width="100" height="0.0"/>
                                 <state key="normal" title="sin">
@@ -297,7 +297,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dri-e3-Mjq">
                                 <rect key="frame" x="187" y="277" width="53" height="50"/>
-                                <color key="backgroundColor" red="0.089428165589999997" green="0.54868055329999998" blue="0.86746651789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.08898728954" green="0.57468373399999995" blue="0.86281331380000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="log">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
