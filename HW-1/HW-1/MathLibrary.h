@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "math.h"
 
-@interface MathLibrary : NSObject 
+@interface MathLibrary : NSObject
 
 + (float)addOperand1:(float)firstFloat toOperand2:(float)secondFloat;
 + (float)subtractOperand1:(float)firstFloat fromOperand2:(float)secondFloat;
@@ -20,7 +20,7 @@
 + (float)sineUsingDegrees:(float)degrees;
 + (float)sineUsingRadians:(float)radians;
 + (float)log:(float)value;
-+ (float)modulusOperand1:(float)firstFloat withOperand2:(double)secondFloat;
++ (float)modulusOperand1:(float)firstFloat withOperand2:(float)secondFloat;
 + (float)squareRoot:(float)value;
 + (float)exponetBase:(float)base raiseTo:(float)exponet;
 + (int)factorial:(int)value;

@@ -39,8 +39,8 @@
     return log(value);
 }
 
-+ (float)modulusOperand1:(float)firstFloat withOperand2:(double)secondFloat {
-    return modf(firstFloat, &secondFloat);
++ (float)modulusOperand1:(float)firstFloat withOperand2:(float)secondFloat {
+    return fmod(firstFloat, secondFloat);
 }
 
 + (float)squareRoot:(float)value {

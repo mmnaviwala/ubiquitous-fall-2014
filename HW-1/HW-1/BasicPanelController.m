@@ -26,11 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)backSpace:(UIButton *)sender {
-    NSString *string = [self.calculationDisplay text];
-    int length = (int)[string length];
-    NSString *temp = [string substringToIndex:length-1];
-    [self.calculationDisplay setText:temp];
-    
+    if ( [[self.calculationDisplay text] length] > 0 ) {
+        [self.calculationDisplay setText: [[self.calculationDisplay text] substringWithRange:NSMakeRange(0, [[self.calculationDisplay text] length] - 1)] ];
+    }
 }
 
 - (IBAction)numberPressed:(UIButton *)sender {
