@@ -319,12 +319,6 @@
                                     <action selector="equalsButtonPressed:" destination="cFF-qg-Jqy" eventType="touchUpInside" id="Nxg-Jh-DTL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKw-FE-VZc">
-                                <rect key="frame" x="16" y="66" width="288" height="86"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -345,7 +339,6 @@
                         <outlet property="nineButton" destination="PYB-Og-XbT" id="71b-oh-Q3t"/>
                         <outlet property="oneButton" destination="sET-no-fza" id="mTn-WT-SiM"/>
                         <outlet property="powerButton" destination="NgQ-tM-1uW" id="aRp-dI-dSv"/>
-                        <outlet property="previousOperationLabel" destination="KKw-FE-VZc" id="7Jz-9l-IPP"/>
                         <outlet property="sevenButton" destination="Knj-Ob-J8T" id="URQ-QY-IT8"/>
                         <outlet property="sinButton" destination="ssJ-D2-hka" id="eMO-hY-ltU"/>
                         <outlet property="sixButton" destination="JXT-NM-4nl" id="1fI-UJ-djs"/>

@@ -16,7 +16,6 @@
 @property float secondNumber;
 @property NSString *operation;
 @property float e;
-@property NSString *previousOperation;
 
 @end
 
@@ -39,7 +38,6 @@
     if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
     else{
-        self.previousOperationLabel.text = self.previousOperation;
         self.secondNumber = [self.inputLabel.text floatValue];
         self.inputLabel.text = @"";
     }
@@ -51,21 +49,18 @@
         //float temp = (int)self.firstNumber % (int)self.secondNumber;
         //self.inputLabel.text = [NSString stringWithFormat:@"%f", temp];
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary modulusOperand1:self.firstNumber withOperand2:self.secondNumber]];
-        self.previousOperation = self.inputLabel.text;
         self.modulusButton.alpha = 1.00;
         self.modulusButton.enabled = YES;
     }
     //Power Button
     if([self.operation isEqualToString:@"Power"]){
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary exponetBase:self.firstNumber raiseTo:self.secondNumber]];
-        self.previousOperation = self.inputLabel.text;
         self.powerButton.alpha = 1.00;
         self.powerButton.enabled = YES;
     }
 }
 
 - (IBAction)clearButtonPressed:(id)sender {
-    self.previousOperationLabel.text = self.previousOperation;
     [self clear];
 }
 
@@ -85,7 +80,6 @@
         self.inputLabel.text = @"0";
     else
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary sineUsingDegrees:[self.inputLabel.text floatValue]]];
-    self.previousOperation = self.inputLabel.text;
 }
 
 /*  uses "MathLibrary.h"
@@ -96,7 +90,6 @@
         self.inputLabel.text = @"0";
     else
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary log:[self.inputLabel.text floatValue]]];
-    self.previousOperation = self.inputLabel.text;
 }
 
 /*
@@ -125,12 +118,10 @@
  Checks if input is empty or 0, if not it calls squareRoot with the current input
  */
 - (IBAction)sqrtButtonPressed:(id)sender {
-    self.previousOperation = @"sqrt(";
     if([self.inputLabel.text isEqualToString:@""] || [self.inputLabel.text isEqualToString:@"0"])
         self.inputLabel.text = @"0";
     else
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary squareRoot:[self.inputLabel.text floatValue]]];
-    self.previousOperation = self.inputLabel.text;
 }
 
 /*
@@ -166,7 +157,6 @@
         self.firstNumber = [self.inputLabel.text floatValue];
         self.inputLabel.text = [NSString stringWithFormat:@"%f", [MathLibrary exponetBase:self.firstNumber raiseTo: self.e]];
     }
-    self.previousOperation = self.inputLabel.text;
 }
 
 /* uses "MathLibrary.h"
@@ -177,7 +167,6 @@
         self.inputLabel.text = @"0";
     else
         self.inputLabel.text = [NSString stringWithFormat:@"%d", [MathLibrary factorial:[self.inputLabel.text intValue]]];
-    self.previousOperation = self.inputLabel.text;
 }
 
 /*
