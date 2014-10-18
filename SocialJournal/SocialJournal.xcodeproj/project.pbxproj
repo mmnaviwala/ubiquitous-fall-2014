@@ -16,6 +16,7 @@
 		003B1C3919F1DC5D008E53B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 003B1C3819F1DC5D008E53B5 /* Images.xcassets */; };
 		003B1C3C19F1DC5D008E53B5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003B1C3A19F1DC5D008E53B5 /* LaunchScreen.xib */; };
 		003B1C4819F1DC5D008E53B5 /* SocialJournalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003B1C4719F1DC5D008E53B5 /* SocialJournalTests.m */; };
+		003B1C5219F1F63D008E53B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003B1C5119F1F63D008E53B5 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		003B1C4119F1DC5D008E53B5 /* SocialJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		003B1C4619F1DC5D008E53B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		003B1C4719F1DC5D008E53B5 /* SocialJournalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialJournalTests.m; sourceTree = "<group>"; };
+		003B1C5119F1F63D008E53B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				003B1C5219F1F63D008E53B5 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 		003B1C1919F1DC5D008E53B5 = {
 			isa = PBXGroup;
 			children = (
+				003B1C5119F1F63D008E53B5 /* CoreData.framework */,
 				003B1C2419F1DC5D008E53B5 /* SocialJournal */,
 				003B1C4419F1DC5D008E53B5 /* SocialJournalTests */,
 				003B1C2319F1DC5D008E53B5 /* Products */,
