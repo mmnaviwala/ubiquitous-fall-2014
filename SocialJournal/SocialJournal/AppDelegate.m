@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -27,6 +28,27 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    
+    //Parse Code
+    [Parse setApplicationId:@"5AtBGsEGqyv7QZLKWmITcDpIa0SqOhkfX61cdw57"
+                  clientKey:@"XQDbwIqtcnVuNFIcOAmfukOorlPu7s7VFSeggIqt"];
+    
+    // Register for Push Notitications, if running iOS 8
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                        UIUserNotificationTypeBadge |
+                                                        UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                 categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    } else {
+        // Register for Push Notifications before iOS 8
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                         UIRemoteNotificationTypeAlert |
+                                                         UIRemoteNotificationTypeSound)];
+    }
+    
     return YES;
 }
 
@@ -52,6 +74,17 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 #pragma mark - Split view
