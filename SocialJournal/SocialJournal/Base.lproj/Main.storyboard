@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -720,52 +720,6 @@
             </objects>
             <point key="canvasLocation" x="-40" y="4393"/>
         </scene>
-        <!--Detail-->
-        <scene sceneID="Pu6-is-hXL">
-            <objects>
-                <viewController title="Detail" id="sls-hZ-Xio" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hWE-ht-nef"/>
-                        <viewControllerLayoutGuide type="bottom" id="xuM-uV-u4k"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TO6-7W-GTh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Notification View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-LN-IAU">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UYX-LN-IAU" firstAttribute="leading" secondItem="TO6-7W-GTh" secondAttribute="leading" constant="20" symbolic="YES" id="DZ2-bj-u7G"/>
-                            <constraint firstItem="UYX-LN-IAU" firstAttribute="centerY" secondItem="TO6-7W-GTh" secondAttribute="centerY" id="bvH-Ez-kLV"/>
-                            <constraint firstAttribute="trailing" secondItem="UYX-LN-IAU" secondAttribute="trailing" constant="20" symbolic="YES" id="nNX-s0-G8j"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Notifications" id="tEh-GQ-WYE"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="UYX-LN-IAU" id="Fmf-ow-lPu"/>
-                        <outlet property="searchDisplayController" destination="OVc-46-C6Z" id="JsY-8a-q4I"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QwJ-Xi-wMT" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="YgB-pP-u3n">
-                    <connections>
-                        <outlet property="delegate" destination="sls-hZ-Xio" id="Hmu-GY-2bb"/>
-                        <outlet property="searchContentsController" destination="sls-hZ-Xio" id="fym-Xz-G2u"/>
-                        <outlet property="searchResultsDataSource" destination="sls-hZ-Xio" id="a5D-Tc-eiq"/>
-                        <outlet property="searchResultsDelegate" destination="sls-hZ-Xio" id="Kd2-uh-IMz"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="694" y="5091"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tEl-l7-imC">
             <objects>
@@ -774,12 +728,39 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="sls-hZ-Xio" kind="relationship" relationship="rootViewController" id="QRV-uo-rj6"/>
+                        <segue destination="WrM-6l-Y2w" kind="relationship" relationship="rootViewController" id="7Rq-Az-JoR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAW-RB-M0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-40" y="5091"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="egx-gs-Kn6">
+            <objects>
+                <tableViewController id="WrM-6l-Y2w" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o2y-XC-hUN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CUH-Zl-ibd">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CUH-Zl-ibd" id="Em0-Mo-8lm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WrM-6l-Y2w" id="Sol-gp-Dwe"/>
+                            <outlet property="delegate" destination="WrM-6l-Y2w" id="PaY-Xt-l03"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" id="B8y-PA-iGq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpa-RI-CZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="5091"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Tpf-IV-OX7">
