@@ -16,7 +16,6 @@
 @property (strong, nonatomic) UIImageView *currentImage;
 @property (weak, nonatomic) IBOutlet UILabel *indexController;
 @property (strong, nonatomic) NSArray *photos;
-@property (weak, nonatomic) IBOutlet UIImageView *imageToDisplay;
 @property BOOL newMedia;
 @end
 
@@ -52,8 +51,6 @@
     
     
     self.currentImage = [self.photos objectAtIndex:currentIndex];
-    NSLog(@"%@", NSStringFromClass([[self.photos objectAtIndex:currentIndex] class]));
-    //self.imageToDisplay.image = self.currentImage.image;
     //[self filterSepia];
     self.currentImage.userInteractionEnabled = YES;
     self.currentImage.multipleTouchEnabled = YES;
@@ -103,9 +100,6 @@
                     imageView.contentMode = UIViewContentModeScaleAspectFit;
                     imageView.image = someImage;
                     
-                    // =============================================
-                    // =============================================
-                    // =============================================
                     [collector addObject:imageView];
                     
                     [self.scrollView addSubview:imageView];
@@ -146,7 +140,6 @@
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
 //        self.currentImage.image = image;
-        NSLog(@"HOLA!");
         if (self.newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
