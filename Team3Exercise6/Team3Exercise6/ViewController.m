@@ -66,6 +66,8 @@
     UIRotationGestureRecognizer *rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotate:)];
     [rotationRecognizer setDelegate:self];
     [self.currentImage addGestureRecognizer:rotationRecognizer];
+    CGFloat scale = 1.0;
+    [self.currentImage setTransform:(CGAffineTransformMakeScale(scale, scale))];
 
 }
 
