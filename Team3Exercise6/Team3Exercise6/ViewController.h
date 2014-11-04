@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate> {
+    
+    CGFloat _lastScale;
+    CGFloat _lastRotation;
+    CGFloat _firstX;
+    CGFloat _firstY;
+    
+    UIView *canvas;
+    
+    CAShapeLayer *_marque;
+}
+
 
 
 @end

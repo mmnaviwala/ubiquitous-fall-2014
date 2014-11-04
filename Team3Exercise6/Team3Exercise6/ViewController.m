@@ -34,8 +34,7 @@
         UIImagePickerControllerSourceTypeCamera;
         imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
         imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
+        [self presentViewController:imagePicker animated:YES completion:nil];
         self.newMedia = YES;
     }
 }
@@ -54,8 +53,20 @@
     
     self.currentImage = [self.photos objectAtIndex:currentIndex];
     NSLog(@"%@", NSStringFromClass([[self.photos objectAtIndex:currentIndex] class]));
-    self.imageToDisplay.image = self.currentImage.image;
-    [self filterSepia];
+    //self.imageToDisplay.image = self.currentImage.image;
+    //[self filterSepia];
+    self.currentImage.userInteractionEnabled = YES;
+    self.currentImage.multipleTouchEnabled = YES;
+    self.currentImage.hidden = NO;
+    
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
+    [pinchRecognizer setDelegate:self];
+    [self.currentImage addGestureRecognizer:pinchRecognizer];
+    
+    UIRotationGestureRecognizer *rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotate:)];
+    [rotationRecognizer setDelegate:self];
+    [self.currentImage addGestureRecognizer:rotationRecognizer];
+
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -98,6 +109,7 @@
                     [collector addObject:imageView];
                     
                     [self.scrollView addSubview:imageView];
+                    imageView.hidden = YES;
                 }
                 
             }
@@ -163,6 +175,68 @@
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)scale:(id)sender {
+    
+    NSLog(@"Scale");
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
+        _lastScale = 1.0;
+    }
+    
+    CGFloat scale = 1.0 - (_lastScale - [(UIPinchGestureRecognizer*)sender scale]);
+    
+    CGAffineTransform currentTransform = self.currentImage.transform;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
+    
+    [self.currentImage setTransform:newTransform];
+    
+    _lastScale = [(UIPinchGestureRecognizer*)sender scale];
+    [self showOverlayWithFrame:self.currentImage.frame];
+}
+
+-(void)rotate:(id)sender {
+    NSLog(@"Rotate");
+    
+    if([(UIRotationGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        
+        _lastRotation = 0.0;
+        return;
+    }
+    
+    CGFloat rotation = 0.0 - (_lastRotation - [(UIRotationGestureRecognizer*)sender rotation]);
+    
+    CGAffineTransform currentTransform = self.currentImage.transform;
+    CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform,rotation);
+    
+    [self.currentImage setTransform:newTransform];
+    
+    _lastRotation = [(UIRotationGestureRecognizer*)sender rotation];
+    [self showOverlayWithFrame:self.currentImage.frame];
+}
+
+-(void)showOverlayWithFrame:(CGRect)frame {
+    
+    if (![_marque actionForKey:@"linePhase"]) {
+        CABasicAnimation *dashAnimation;
+        dashAnimation = [CABasicAnimation animationWithKeyPath:@"lineDashPhase"];
+        [dashAnimation setFromValue:[NSNumber numberWithFloat:0.0f]];
+        [dashAnimation setToValue:[NSNumber numberWithFloat:15.0f]];
+        [dashAnimation setDuration:0.5f];
+        [dashAnimation setRepeatCount:HUGE_VALF];
+        [_marque addAnimation:dashAnimation forKey:@"linePhase"];
+    }
+    
+    _marque.bounds = CGRectMake(frame.origin.x, frame.origin.y, 0, 0);
+    _marque.position = CGPointMake(frame.origin.x + canvas.frame.origin.x, frame.origin.y + canvas.frame.origin.y);
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, frame);
+    [_marque setPath:path];
+    CGPathRelease(path);
+    
+    _marque.hidden = NO;
+    
 }
 
 @end
