@@ -28,6 +28,7 @@
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.center = CGPointMake(380, 880);
     self.spinner.hidesWhenStopped = YES;
+    self.spinner.backgroundColor = [UIColor whiteColor];
     CGAffineTransform transform = CGAffineTransformMakeScale(1.5f, 1.5f);
     self.spinner.transform = transform;
     [self.view addSubview:self.spinner];
