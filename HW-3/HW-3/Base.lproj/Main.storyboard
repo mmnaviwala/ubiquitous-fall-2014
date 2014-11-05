@@ -40,7 +40,6 @@
                                         <size key="customSize" width="190" height="190"/>
                                         <connections>
                                             <outlet property="photoImageView" destination="uRy-XM-jOv" id="8Jy-IY-wXo"/>
-                                            <segue destination="FsK-CE-JgV" kind="push" identifier="SegueToDetailImageView" id="erp-Tv-wrV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -57,6 +56,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="e8d-R2-e4l" id="r65-aK-qE3"/>
+                        <segue destination="FsK-CE-JgV" kind="push" identifier="SegueToDetailImageView" id="nC4-Zl-xuf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

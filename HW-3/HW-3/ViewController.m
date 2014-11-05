@@ -101,8 +101,8 @@
     ALAssetRepresentation *defaultRep = [asset defaultRepresentation];
     UIImage *image = [UIImage imageWithCGImage:[defaultRep fullScreenImage] scale:[defaultRep scale] orientation:0];
     // Do something with the image
-    NSLog(@"Image selected");
     self.imageToPass = image;
+    [self performSegueWithIdentifier:@"SegueToDetailImageView" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
