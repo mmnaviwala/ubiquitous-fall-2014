@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00477D191A0ABEA400B22CC6 /* Grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 00477D181A0ABEA400B22CC6 /* Grid.png */; };
 		ACD193951A099D6400631C2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193941A099D6400631C2D /* main.m */; };
 		ACD193981A099D6400631C2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193971A099D6400631C2D /* AppDelegate.m */; };
 		ACD1939B1A099D6400631C2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1939A1A099D6400631C2D /* ViewController.m */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00477D181A0ABEA400B22CC6 /* Grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid.png; sourceTree = "<group>"; };
 		ACD1938F1A099D6400631C2D /* HW-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD193931A099D6400631C2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD193941A099D6400631C2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		ACD193911A099D6400631C2D /* HW-3 */ = {
 			isa = PBXGroup;
 			children = (
+				00477D181A0ABEA400B22CC6 /* Grid.png */,
 				ACD193961A099D6400631C2D /* AppDelegate.h */,
 				ACD193971A099D6400631C2D /* AppDelegate.m */,
 				ACD193991A099D6400631C2D /* ViewController.h */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD1939E1A099D6400631C2D /* Main.storyboard in Resources */,
+				00477D191A0ABEA400B22CC6 /* Grid.png in Resources */,
 				ACD193A31A099D6400631C2D /* LaunchScreen.xib in Resources */,
 				ACD193A01A099D6400631C2D /* Images.xcassets in Resources */,
 			);
