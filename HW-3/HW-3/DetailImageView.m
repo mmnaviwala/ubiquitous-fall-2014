@@ -11,6 +11,9 @@
 @interface DetailImageView ()
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property UIImage* originalImage;
+@property UIBarButtonItem *originalRightBarButton;
+@property UIBarButtonItem *originalLeftBarButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *imageFiltersScrollView;
 @end
 
 @implementation DetailImageView
@@ -29,6 +32,9 @@
     self.spinner.transform = transform;
     [self.view addSubview:self.spinner];
     
+    self.originalRightBarButton = self.navigationItem.rightBarButtonItem;
+    self.originalLeftBarButton = self.navigationItem.leftBarButtonItem;
+    
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
     [pinchRecognizer setDelegate:self];
     [self.theImage addGestureRecognizer:pinchRecognizer];
@@ -36,6 +42,7 @@
     UIRotationGestureRecognizer *rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotate:)];
     [rotationRecognizer setDelegate:self];
     [self.theImage addGestureRecognizer:rotationRecognizer];
+
 
 }
 
@@ -253,6 +260,43 @@
     _marque.hidden = NO;
     
 }
+
+- (IBAction)imageFiltersButtonTapped:(UIBarButtonItem *)sender {
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.imageFiltersScrollView.frame = CGRectMake(0, 914, 768, 90);
+    [UIView commitAnimations];
+    
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+
+}
+
+- (void) saveImageAfterFilterIsApplied:(id)sender
+{
+
+}
+
+- (void) cancelButtonTapped:(id)sender
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.imageFiltersScrollView.frame = CGRectMake(0, 1030, 768, 90);
+    [UIView commitAnimations];
+    
+    self.navigationItem.rightBarButtonItem = self.originalRightBarButton;
+    self.navigationItem.leftBarButtonItem = self.originalLeftBarButton;
+    
+}
+
+
 
 
 @end
