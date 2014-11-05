@@ -364,6 +364,7 @@
 				INFOPLIST_FILE = "HW-3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9380563b-f2a1-4b13-ab04-e07ab6f3c248";
 			};
 			name = Debug;
 		};
@@ -374,6 +375,7 @@
 				INFOPLIST_FILE = "HW-3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9380563b-f2a1-4b13-ab04-e07ab6f3c248";
 			};
 			name = Release;
 		};
@@ -430,6 +432,7 @@
 				ACD193B41A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACD193B51A099D6400631C2D /* Build configuration list for PBXNativeTarget "HW-3Tests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +441,7 @@
 				ACD193B71A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

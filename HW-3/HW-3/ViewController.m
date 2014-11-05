@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "PhotoCell.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "DetailImageView.h"
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -34,6 +35,61 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)cameraPushed:(UIBarButtonItem *)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+-(void)reloadCollectionData {
+    [self fetchAssets];
+    NSLog(@"Reload collection called");
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    
+    
+    if ([mediaType isEqualToString:(NSString *) kUTTypeImage]) {
+        
+        UIImage *image = info[UIImagePickerControllerOriginalImage];
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(savedFailed:didFinishSavingWithError:contextInfo:), nil);
+        
+    }else if ([mediaType isEqualToString:(NSString *) kUTTypeMovie]) {
+        
+        NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"] relativePath];
+        UISaveVideoAtPathToSavedPhotosAlbum(sourcePath, self, @selector(savedFailed:didFinishSavingWithError:contextInfo:), nil);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) savedFailed:(UIImage*)image didFinishSavingWithError:(NSError *)error contextInfo: (void *)contextInfo
+{
+    if (error) {
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:nil
+                                   message:@"Save Failed"
+                                   delegate:nil
+                                   cancelButtonTitle:@"ОК"
+                                   otherButtonTitles:nil];
+        [errorAlert show];
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    UIAlertView *saveComplete = [[UIAlertView alloc]
+                               initWithTitle:@"Success"
+                               message:@"Media Saved Successfully"
+                               delegate:nil
+                               cancelButtonTitle:@"ОК"
+                               otherButtonTitles:nil];
+    [saveComplete show];
+    [self fetchAssets];
+    
+}
+
+
 
 + (ALAssetsLibrary *)defaultAssetsLibrary
 {

@@ -52,7 +52,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Media" id="CFk-Fo-Kc0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="W7Z-yZ-7BH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="W7Z-yZ-7BH">
+                            <connections>
+                                <action selector="cameraPushed:" destination="BYZ-38-t0r" id="x8u-z3-9Ex"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="e8d-R2-e4l" id="r65-aK-qE3"/>
