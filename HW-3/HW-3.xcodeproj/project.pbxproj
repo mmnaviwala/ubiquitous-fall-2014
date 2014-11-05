@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89815D491A0ACDB200B4061E /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89815D481A0ACDB200B4061E /* VideoViewController.m */; };
 		ACD193951A099D6400631C2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193941A099D6400631C2D /* main.m */; };
 		ACD193981A099D6400631C2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193971A099D6400631C2D /* AppDelegate.m */; };
 		ACD1939B1A099D6400631C2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1939A1A099D6400631C2D /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89815D471A0ACDB200B4061E /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		89815D481A0ACDB200B4061E /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		ACD1938F1A099D6400631C2D /* HW-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD193931A099D6400631C2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD193941A099D6400631C2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				ACD193C11A09AC1900631C2D /* DetailImageView.h */,
 				ACD193C21A09AC1900631C2D /* DetailImageView.m */,
 				ACD1939C1A099D6400631C2D /* Main.storyboard */,
+				89815D471A0ACDB200B4061E /* VideoViewController.h */,
+				89815D481A0ACDB200B4061E /* VideoViewController.m */,
 				ACD1939F1A099D6400631C2D /* Images.xcassets */,
 				ACD193A11A099D6400631C2D /* LaunchScreen.xib */,
 				ACD193921A099D6400631C2D /* Supporting Files */,
@@ -235,6 +240,7 @@
 			files = (
 				ACD1939B1A099D6400631C2D /* ViewController.m in Sources */,
 				ACD193981A099D6400631C2D /* AppDelegate.m in Sources */,
+				89815D491A0ACDB200B4061E /* VideoViewController.m in Sources */,
 				ACD193BC1A09A26600631C2D /* PhotoCell.m in Sources */,
 				ACD193951A099D6400631C2D /* main.m in Sources */,
 				ACD193C31A09AC1900631C2D /* DetailImageView.m in Sources */,
@@ -430,6 +436,7 @@
 				ACD193B41A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACD193B51A099D6400631C2D /* Build configuration list for PBXNativeTarget "HW-3Tests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +445,7 @@
 				ACD193B71A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

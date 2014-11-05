@@ -8,13 +8,18 @@
 
 #import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "PhotoCell.h"
 #import "DetailImageView.h"
+#import "VideoViewController.h"
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property(nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property(nonatomic, strong) NSArray *assets;
 @property UIImage *imageToPass;
+@property (strong, nonatomic) NSURL *passURL;
+
 @end
 
 @implementation ViewController
@@ -101,6 +106,20 @@
     // Do something with the image
     self.imageToPass = image;
     [self performSegueWithIdentifier:@"SegueToDetailImageView" sender:self];
+    
+    
+    
+    
+    if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {
+        // asset is a video
+        ALAssetRepresentation *rep = [asset defaultRepresentation];
+        self.passURL = [rep url];
+        
+        [self performSegueWithIdentifier:@"segueToVideoView" sender:self];
+        
+    }
+    
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -111,7 +130,19 @@
         transferViewController.imageToAssign = self.imageToPass;
     }
     
+    if([segue.identifier isEqualToString:@"segueToVideoView"])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        
+        VideoViewController  *transferViewController = segue.destinationViewController;
+        transferViewController.videoURL = self.passURL;
+        
+    }
+    
+    
 }
+
 
 
 @end
