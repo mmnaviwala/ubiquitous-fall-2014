@@ -196,7 +196,6 @@
 
 -(void)scale:(id)sender {
     
-    NSLog(@"Scale");
     if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
         _lastScale = 1.0;
     }
@@ -213,7 +212,6 @@
 }
 
 -(void)rotate:(id)sender {
-    NSLog(@"Rotate");
     
     if([(UIRotationGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
         
