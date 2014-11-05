@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailImageView : UIViewController
+@interface DetailImageView : UIViewController {
+    
+    CGFloat _lastScale;
+    CGFloat _lastRotation;
+    CGFloat _firstX;
+    CGFloat _firstY;
+    
+    UIView *canvas;
+    
+    CAShapeLayer *_marque;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *theImage;
 @property UIImage *imageToAssign;
 @end
