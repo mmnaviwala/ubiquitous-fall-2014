@@ -199,6 +199,56 @@
     
 }
 
+- (IBAction)imageFiltersButtonTapped:(UIBarButtonItem *)sender {
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.imageFiltersScrollView.frame = CGRectMake(0, 914, 768, 90);
+    [UIView commitAnimations];
+    
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveImageAfterFilterIsApplied:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
+}
+
+- (void) saveImageAfterFilterIsApplied:(id)sender
+{
+    UIImageWriteToSavedPhotosAlbum(self.theImage.image, nil, nil, nil);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Image successfully saved to device" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.imageFiltersScrollView.frame = CGRectMake(0, 1030, 768, 90);
+    [UIView commitAnimations];
+    
+    self.navigationItem.rightBarButtonItem = self.originalRightBarButton;
+    self.navigationItem.leftBarButtonItem = self.originalLeftBarButton;
+    
+}
+
+- (void) cancelButtonTapped:(id)sender
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.imageFiltersScrollView.frame = CGRectMake(0, 1030, 768, 90);
+    [UIView commitAnimations];
+    
+    self.theImage.image = self.originalImage;
+    
+    self.navigationItem.rightBarButtonItem = self.originalRightBarButton;
+    self.navigationItem.leftBarButtonItem = self.originalLeftBarButton;
+    
+}
+
+
 # pragma Scale and Rotate
 
 -(void)scale:(id)sender {
@@ -260,43 +310,6 @@
     _marque.hidden = NO;
     
 }
-
-- (IBAction)imageFiltersButtonTapped:(UIBarButtonItem *)sender {
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.imageFiltersScrollView.frame = CGRectMake(0, 914, 768, 90);
-    [UIView commitAnimations];
-    
-    
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:nil action:nil];
-    self.navigationItem.rightBarButtonItem = rightButton;
-    
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped:)];
-    self.navigationItem.leftBarButtonItem = leftButton;
-
-}
-
-- (void) saveImageAfterFilterIsApplied:(id)sender
-{
-
-}
-
-- (void) cancelButtonTapped:(id)sender
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.imageFiltersScrollView.frame = CGRectMake(0, 1030, 768, 90);
-    [UIView commitAnimations];
-    
-    self.navigationItem.rightBarButtonItem = self.originalRightBarButton;
-    self.navigationItem.leftBarButtonItem = self.originalLeftBarButton;
-    
-}
-
-
 
 
 @end
