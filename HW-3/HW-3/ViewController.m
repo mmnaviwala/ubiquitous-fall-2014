@@ -52,7 +52,6 @@
         overlayGraphicView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [overLayView addSubview:overlayGraphicView];
         imagePicker.cameraOverlayView = overLayView;
-        NSLog(@"Screen width:%f, Screen Height:%f", self.view.frame.size.width, self.view.frame.size.height);
     }
 }
 -(void)reloadCollectionData {
