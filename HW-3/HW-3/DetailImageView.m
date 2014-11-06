@@ -14,6 +14,9 @@
 @property UIBarButtonItem *originalRightBarButton;
 @property UIBarButtonItem *originalLeftBarButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageFiltersScrollView;
+
+@property NSString *currentAddress;
+
 @end
 
 @implementation DetailImageView
@@ -42,6 +45,9 @@
     
     self.originalRightBarButton = self.navigationItem.rightBarButtonItem;
     self.originalLeftBarButton = self.navigationItem.leftBarButtonItem;
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
+    [longPressGestureRecognizer setDelegate:self];
+    [self.theImage addGestureRecognizer:longPressGestureRecognizer];
     
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
     [pinchRecognizer setDelegate:self];
