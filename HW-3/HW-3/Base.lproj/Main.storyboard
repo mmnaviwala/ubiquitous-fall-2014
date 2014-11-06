@@ -162,6 +162,10 @@
                             <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2fn-by-wxj">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1030"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0HZ-Ae-7tf" appends="YES" id="g96-Lz-qX2"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,16 +174,11 @@
                         <barButtonItem key="rightBarButtonItem" title="Image Filters" id="EvP-CL-FNg"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="longPressGestureRecognizer" destination="P4D-2g-Un5" id="SDK-Nq-ENM"/>
                         <outlet property="theImage" destination="2fn-by-wxj" id="H0W-Rn-aqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ty-AU-Jnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="P4D-2g-Un5">
-                    <connections>
-                        <action selector="longPressDetected:" destination="FsK-CE-JgV" id="6lz-Gd-vps"/>
-                    </connections>
-                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="0HZ-Ae-7tf"/>
             </objects>
             <point key="canvasLocation" x="2234" y="622"/>
         </scene>

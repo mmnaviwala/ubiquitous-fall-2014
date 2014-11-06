@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface DetailImageView : UIViewController <CLLocationManagerDelegate> {
+@interface DetailImageView : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate> {
     
     CGFloat _lastScale;
     CGFloat _lastRotation;
@@ -21,8 +21,11 @@
     CAShapeLayer *_marque;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *theImage;
+@property (strong, nonatomic)CLLocationManager *locationManager;
+
 @property UIImage *imageToAssign;
 
 - (IBAction)longPressDetected:(UILongPressGestureRecognizer *)sender;
-- (NSString *)deviceLocation;
+- (UIImage*)drawWatermarkText:(NSString*)text;
+
 @end
