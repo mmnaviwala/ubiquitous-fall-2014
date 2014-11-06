@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00477D191A0ABEA400B22CC6 /* Grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 00477D181A0ABEA400B22CC6 /* Grid.png */; };
+		89815D491A0ACDB200B4061E /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89815D481A0ACDB200B4061E /* VideoViewController.m */; };
 		ACD193951A099D6400631C2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193941A099D6400631C2D /* main.m */; };
 		ACD193981A099D6400631C2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193971A099D6400631C2D /* AppDelegate.m */; };
 		ACD1939B1A099D6400631C2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1939A1A099D6400631C2D /* ViewController.m */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		00477D181A0ABEA400B22CC6 /* Grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid.png; sourceTree = "<group>"; };
+		89815D471A0ACDB200B4061E /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		89815D481A0ACDB200B4061E /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		ACD1938F1A099D6400631C2D /* HW-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD193931A099D6400631C2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD193941A099D6400631C2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };

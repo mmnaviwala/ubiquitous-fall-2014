@@ -50,13 +50,6 @@
         imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePicker animated:YES completion:nil];
-        
-        UIView *overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        UIImage *overlayGraphic = [UIImage imageNamed:@"Grid.png"];
-        UIImageView *overlayGraphicView = [[UIImageView alloc] initWithImage:overlayGraphic];
-        overlayGraphicView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [overLayView addSubview:overlayGraphicView];
-        imagePicker.cameraOverlayView = overLayView;
     }
 }
 -(void)reloadCollectionData {
