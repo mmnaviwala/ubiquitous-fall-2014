@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface DetailImageView : UIViewController {
+@interface DetailImageView : UIViewController <CLLocationManagerDelegate> {
     
     CGFloat _lastScale;
     CGFloat _lastRotation;
@@ -21,4 +22,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *theImage;
 @property UIImage *imageToAssign;
+
+- (IBAction)longPressDetected:(UILongPressGestureRecognizer *)sender;
+- (NSString *)deviceLocation;
 @end

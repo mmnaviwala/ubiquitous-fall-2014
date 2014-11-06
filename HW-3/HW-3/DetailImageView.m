@@ -11,12 +11,26 @@
 @interface DetailImageView ()
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property UIImage* originalImage;
+
+@property (strong, nonatomic)CLLocationManager *locationManager;
+@property CLGeocoder *geocoder;
+@property CLPlacemark *placemark;
+
 @end
 
 @implementation DetailImageView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.geocoder = [[CLGeocoder alloc] init];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [self.locationManager setDelegate:self];
+    [self.locationManager startUpdatingLocation];
+    
     self.theImage.image = self.imageToAssign;
     self.theImage.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -29,6 +43,10 @@
     self.spinner.transform = transform;
     [self.view addSubview:self.spinner];
     
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
+    [longPressGestureRecognizer setDelegate:self];
+    [self.theImage addGestureRecognizer:longPressGestureRecognizer];
+    
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
     [pinchRecognizer setDelegate:self];
     [self.theImage addGestureRecognizer:pinchRecognizer];
@@ -37,6 +55,10 @@
     [rotationRecognizer setDelegate:self];
     [self.theImage addGestureRecognizer:rotationRecognizer];
 
+}
+
+- (NSString *)deviceLocation {
+    return [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
 }
 
 - (IBAction)revertToOriginalImage:(id)sender {
@@ -254,5 +276,8 @@
     
 }
 
+- (IBAction)longPressDetected:(UILongPressGestureRecognizer *)sender {
+    NSLog(@"%@", [self deviceLocation]);
+}
 
 @end

@@ -71,10 +71,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2fn-by-wxj">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1030"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="m47-VK-3fh">
                                 <rect key="frame" x="0.0" y="914" width="768" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,6 +159,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                             </scrollView>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2fn-by-wxj">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1030"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -170,10 +170,16 @@
                         <barButtonItem key="rightBarButtonItem" title="Image Filters" id="EvP-CL-FNg"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="longPressGestureRecognizer" destination="P4D-2g-Un5" id="SDK-Nq-ENM"/>
                         <outlet property="theImage" destination="2fn-by-wxj" id="H0W-Rn-aqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ty-AU-Jnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="P4D-2g-Un5">
+                    <connections>
+                        <action selector="longPressDetected:" destination="FsK-CE-JgV" id="6lz-Gd-vps"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2234" y="622"/>
         </scene>

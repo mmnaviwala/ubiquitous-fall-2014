@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29818AA61A09D190006B7F1A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29818AA51A09D190006B7F1A /* CoreLocation.framework */; };
 		ACD193951A099D6400631C2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193941A099D6400631C2D /* main.m */; };
 		ACD193981A099D6400631C2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD193971A099D6400631C2D /* AppDelegate.m */; };
 		ACD1939B1A099D6400631C2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1939A1A099D6400631C2D /* ViewController.m */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29818AA51A09D190006B7F1A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ACD1938F1A099D6400631C2D /* HW-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD193931A099D6400631C2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD193941A099D6400631C2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29818AA61A09D190006B7F1A /* CoreLocation.framework in Frameworks */,
 				ACD193B91A09A16F00631C2D /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +75,7 @@
 		ACD193861A099D6400631C2D = {
 			isa = PBXGroup;
 			children = (
+				29818AA51A09D190006B7F1A /* CoreLocation.framework */,
 				ACD193B81A09A16F00631C2D /* AssetsLibrary.framework */,
 				ACD193911A099D6400631C2D /* HW-3 */,
 				ACD193AB1A099D6400631C2D /* HW-3Tests */,
@@ -430,6 +434,7 @@
 				ACD193B41A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACD193B51A099D6400631C2D /* Build configuration list for PBXNativeTarget "HW-3Tests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +443,7 @@
 				ACD193B71A099D6400631C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
