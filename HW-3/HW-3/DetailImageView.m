@@ -285,8 +285,8 @@
     // the user clicked OK
     if (buttonIndex == 0) {
         [self getAddressFromCoords:self.locationManager.location.coordinate.latitude: self.locationManager.location.coordinate.longitude];
-        //self.theImage.image = [self drawWatermarkText:self.currentAddress];
-        self.theImage.image = [self drawWatermarkText:@"Test"];
+        self.theImage.image = [self drawWatermarkText:self.currentAddress];
+        //self.theImage.image = [self drawWatermarkText:@"Test"];
     }else{
         return;
     }
