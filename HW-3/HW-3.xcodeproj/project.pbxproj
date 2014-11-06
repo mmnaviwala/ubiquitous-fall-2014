@@ -103,6 +103,8 @@
 				ACD193C11A09AC1900631C2D /* DetailImageView.h */,
 				ACD193C21A09AC1900631C2D /* DetailImageView.m */,
 				ACD1939C1A099D6400631C2D /* Main.storyboard */,
+				89815D471A0ACDB200B4061E /* VideoViewController.h */,
+				89815D481A0ACDB200B4061E /* VideoViewController.m */,
 				ACD1939F1A099D6400631C2D /* Images.xcassets */,
 				ACD193A11A099D6400631C2D /* LaunchScreen.xib */,
 				ACD193921A099D6400631C2D /* Supporting Files */,
@@ -239,6 +241,7 @@
 			files = (
 				ACD1939B1A099D6400631C2D /* ViewController.m in Sources */,
 				ACD193981A099D6400631C2D /* AppDelegate.m in Sources */,
+				89815D491A0ACDB200B4061E /* VideoViewController.m in Sources */,
 				ACD193BC1A09A26600631C2D /* PhotoCell.m in Sources */,
 				ACD193951A099D6400631C2D /* main.m in Sources */,
 				ACD193C31A09AC1900631C2D /* DetailImageView.m in Sources */,
