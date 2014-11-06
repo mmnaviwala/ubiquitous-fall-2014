@@ -346,7 +346,7 @@
         return;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add location"
-                                                    message:@"Would you like to add this location to the image?."
+                                                    message:@"Would you like to add this location as a watermark and save as a new image?"
                                                    delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:@"Cancel", nil];
@@ -357,7 +357,7 @@
     if (buttonIndex == 0) {
         [self getAddressFromCoords:self.locationManager.location.coordinate.latitude: self.locationManager.location.coordinate.longitude];
         self.theImage.image = [self drawWatermarkText:self.currentAddress];
-        //self.theImage.image = [self drawWatermarkText:@"Test"];
+        UIImageWriteToSavedPhotosAlbum(self.theImage.image, nil, nil, nil);
     }else{
         return;
     }
@@ -382,7 +382,7 @@
                        if (placemarks && placemarks.count > 0) {
                            CLPlacemark *topResult = [placemarks objectAtIndex:0];
                            self.currentAddress = [[topResult.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-                           NSLog(@"%@", self.currentAddress);
+                           //NSLog(@"%@", self.currentAddress);
                        }
                    }];
 }
