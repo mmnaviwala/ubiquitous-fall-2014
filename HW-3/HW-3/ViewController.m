@@ -164,9 +164,6 @@
     UIImage *image = [UIImage imageWithCGImage:[defaultRep fullScreenImage] scale:[defaultRep scale] orientation:0];
     // Do something with the image
     self.imageToPass = image;
-    [self performSegueWithIdentifier:@"SegueToDetailImageView" sender:self];
-    
-    
     
     
     if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {
@@ -176,6 +173,8 @@
         
         [self performSegueWithIdentifier:@"segueToVideoView" sender:self];
         
+    }else{
+        [self performSegueWithIdentifier:@"SegueToDetailImageView" sender:self];
     }
     
     
