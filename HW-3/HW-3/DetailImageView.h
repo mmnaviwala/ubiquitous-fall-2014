@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface DetailImageView : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate> {
+@interface DetailImageView : UIViewController < UIAlertViewDelegate> {
     
     CGFloat _lastScale;
     CGFloat _lastRotation;
@@ -21,7 +21,6 @@
     CAShapeLayer *_marque;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *theImage;
-@property (strong, nonatomic)CLLocationManager *locationManager;
 
 @property UIImage *imageToAssign;
 

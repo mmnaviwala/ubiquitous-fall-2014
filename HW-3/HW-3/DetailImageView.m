@@ -8,14 +8,15 @@
 
 #import "DetailImageView.h"
 
-@interface DetailImageView ()
+@interface DetailImageView () <CLLocationManagerDelegate>
+
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property UIImage* originalImage;
 @property UIBarButtonItem *originalRightBarButton;
 @property UIBarButtonItem *originalLeftBarButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageFiltersScrollView;
-
 @property NSString *currentAddress;
+@property (strong, nonatomic)CLLocationManager *locationManager;
 
 @end
 
@@ -24,10 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+//    [self.locationManager requestWhenInUseAuthorization];
+//    [self.locationManager startUpdatingLocation];
+    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
     
     self.theImage.image = self.imageToAssign;
@@ -58,6 +64,14 @@
     [self.theImage addGestureRecognizer:rotationRecognizer];
 
 
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    self.locationManager.distanceFilter = kCLDistanceFilterNone; //Whenever we move
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (IBAction)revertToOriginalImage:(id)sender {
