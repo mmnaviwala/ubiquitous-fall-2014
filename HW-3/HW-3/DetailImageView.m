@@ -20,6 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
     self.theImage.image = self.imageToAssign;
     self.theImage.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -312,5 +319,73 @@
     
 }
 
+- (IBAction)longPressDetected:(UILongPressGestureRecognizer *)sender {
+    //NSLog(@"%@", [self deviceLocation]);
+    
+    if ( sender.state != UIGestureRecognizerStateBegan )
+        return;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add location"
+                                                    message:@"Would you like to add this location to the image?."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:@"Cancel", nil];
+    [alert show];
+}
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked OK
+    if (buttonIndex == 0) {
+        [self getAddressFromCoords:self.locationManager.location.coordinate.latitude: self.locationManager.location.coordinate.longitude];
+        self.theImage.image = [self drawWatermarkText:self.currentAddress];
+        //self.theImage.image = [self drawWatermarkText:@"Test"];
+    }else{
+        return;
+    }
+}
+
+- (void)getAddressFromCoords:(double)latitude :(double)longitude {
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:latitude longitude:longitude]
+                   completionHandler:^(NSArray* placemarks, NSError* error){
+                       if (placemarks && placemarks.count > 0) {
+                           CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                           self.currentAddress = [[topResult.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                       }
+                   }];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:[locations objectAtIndex:0]
+                   completionHandler:^(NSArray* placemarks, NSError* error){
+                       if (placemarks && placemarks.count > 0) {
+                           CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                           self.currentAddress = [[topResult.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                           NSLog(@"%@", self.currentAddress);
+                       }
+                   }];
+}
+
+- (UIImage*)drawWatermarkText:(NSString*)text {
+    UIColor *textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    UIFont *font = [UIFont systemFontOfSize:50];
+    CGFloat paddingX = 20.f;
+    CGFloat paddingY = 20.f;
+    
+    // Compute rect to draw the text inside
+    CGSize imageSize = self.imageToAssign.size;
+    NSDictionary *attr = @{NSForegroundColorAttributeName: textColor, NSFontAttributeName: font};
+    CGSize textSize = [text sizeWithAttributes:attr];
+    CGRect textRect = CGRectMake(imageSize.width - textSize.width - paddingX, imageSize.height - textSize.height - paddingY, textSize.width, textSize.height);
+    
+    // Create the image
+    UIGraphicsBeginImageContext(imageSize);
+    [self.imageToAssign drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    [text drawInRect:CGRectIntegral(textRect) withAttributes:attr];
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
 
 @end

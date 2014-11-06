@@ -60,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29818AA61A09D190006B7F1A /* CoreLocation.framework in Frameworks */,
 				ACD193B91A09A16F00631C2D /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +78,7 @@
 		ACD193861A099D6400631C2D = {
 			isa = PBXGroup;
 			children = (
+				29818AA51A09D190006B7F1A /* CoreLocation.framework */,
 				ACD193B81A09A16F00631C2D /* AssetsLibrary.framework */,
 				ACD193911A099D6400631C2D /* HW-3 */,
 				ACD193AB1A099D6400631C2D /* HW-3Tests */,
