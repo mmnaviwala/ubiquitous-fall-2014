@@ -436,7 +436,7 @@ document layout — There is some information that is relevant for navigation th
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="aq8-D3-NQE" kind="relationship" relationship="rootViewController" id="vY0-jR-vJN"/>
+                        <segue destination="dLN-mz-b2E" kind="relationship" relationship="rootViewController" id="AQ2-rF-efV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRh-dt-dWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -566,7 +566,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Notifications-->
         <scene sceneID="egx-gs-Kn6">
             <objects>
-                <tableViewController id="WrM-6l-Y2w" sceneMemberID="viewController">
+                <tableViewController id="WrM-6l-Y2w" customClass="NotificationsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o2y-XC-hUN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -760,7 +760,7 @@ document layout — There is some information that is relevant for navigation th
         <!--My Entries-->
         <scene sceneID="WdR-4f-3m2">
             <objects>
-                <tableViewController id="jOK-yO-Eaf" sceneMemberID="viewController">
+                <tableViewController id="jOK-yO-Eaf" customClass="MyEntriesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Np5-ir-5dO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -814,7 +814,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Why I love Code-->
         <scene sceneID="Yjr-4z-w4f">
             <objects>
-                <viewController id="LHk-NA-tAy" sceneMemberID="viewController">
+                <viewController id="LHk-NA-tAy" customClass="EntryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r9B-y1-1IP"/>
                         <viewControllerLayoutGuide type="bottom" id="tol-Hw-DyX"/>
@@ -869,64 +869,10 @@ document layout — There is some information that is relevant for navigation th
             </objects>
             <point key="canvasLocation" x="1416" y="122"/>
         </scene>
-        <!--All Entries-->
-        <scene sceneID="OPf-Ea-l6i">
-            <objects>
-                <tableViewController id="aq8-D3-NQE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a33-Cz-ZMC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="a7W-Vo-F42">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kIK-Pq-mAZ">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kIK-Pq-mAZ" id="qvA-aD-Zeu">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" text="[] User - Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWD-pS-oBa">
-                                                    <rect key="frame" x="8" y="0.0" width="344" height="43"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="uj4-kX-kge" kind="show" id="Qt0-7R-t03"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yBQ-eS-c00">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yBQ-eS-c00" id="Yfu-ih-cEG">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="e3g-cO-OC8">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3g-cO-OC8" id="x7O-im-qCd">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="aq8-D3-NQE" id="OH3-xQ-zQO"/>
-                            <outlet property="delegate" destination="aq8-D3-NQE" id="ESx-ug-VnG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="All Entries" id="LEE-RM-N2w"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mXI-BM-C3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="704" y="1516"/>
-        </scene>
         <!--Top Entries-->
         <scene sceneID="pXT-8o-H5b">
             <objects>
-                <tableViewController id="1qC-sf-Kd6" sceneMemberID="viewController">
+                <tableViewController id="1qC-sf-Kd6" customClass="TopEntriesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="v4B-9s-bPa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -980,7 +926,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Top Tags-->
         <scene sceneID="5Yu-vg-QnM">
             <objects>
-                <tableViewController id="zfY-YO-v8y" sceneMemberID="viewController">
+                <tableViewController id="zfY-YO-v8y" customClass="TopTagsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vCQ-JB-djb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1034,7 +980,7 @@ document layout — There is some information that is relevant for navigation th
         <!--My Followers-->
         <scene sceneID="jJJ-mX-z09">
             <objects>
-                <tableViewController id="hai-R8-orQ" sceneMemberID="viewController">
+                <tableViewController id="hai-R8-orQ" customClass="MyFollowersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RmQ-N3-DmY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1084,6 +1030,36 @@ document layout — There is some information that is relevant for navigation th
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TT-Id-XII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="694" y="3687"/>
+        </scene>
+        <!--All Entries-->
+        <scene sceneID="oKe-cL-CnW">
+            <objects>
+                <tableViewController id="dLN-mz-b2E" customClass="AllEntriesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="56o-FT-R79">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nu3-i7-4iZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nu3-i7-4iZ" id="3Yp-8x-kqb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dLN-mz-b2E" id="qlu-gM-CXl"/>
+                            <outlet property="delegate" destination="dLN-mz-b2E" id="n0X-LB-je9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="All Entries" id="Sl8-kE-jOO"/>
+                    <connections>
+                        <segue destination="uj4-kX-kge" kind="show" identifier="AllEntriesToJournalDetail" id="3gm-hb-wGX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKb-Qj-3eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="701" y="1517"/>
         </scene>
         <!--All Entries-->
         <scene sceneID="HSm-zd-3Mv">
@@ -1146,7 +1122,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Top Entries-->
         <scene sceneID="1Bb-UJ-aO5">
             <objects>
-                <viewController id="GGg-ZM-lP6" sceneMemberID="viewController">
+                <viewController id="GGg-ZM-lP6" customClass="EntryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AeQ-qa-3cv"/>
                         <viewControllerLayoutGuide type="bottom" id="DnI-Tl-rPv"/>
@@ -1258,7 +1234,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Top Tags-->
         <scene sceneID="bNo-07-tOU">
             <objects>
-                <viewController id="kr0-AS-F1Q" sceneMemberID="viewController">
+                <viewController id="kr0-AS-F1Q" customClass="EntryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSQ-eh-m8X"/>
                         <viewControllerLayoutGuide type="bottom" id="7no-DW-n9c"/>
@@ -1370,7 +1346,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Quack Quack-->
         <scene sceneID="aTT-is-vhS">
             <objects>
-                <viewController id="nCr-2o-Riu" sceneMemberID="viewController">
+                <viewController id="nCr-2o-Riu" customClass="EntryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gGW-SG-GhI"/>
                         <viewControllerLayoutGuide type="bottom" id="SUV-sQ-DMM"/>
