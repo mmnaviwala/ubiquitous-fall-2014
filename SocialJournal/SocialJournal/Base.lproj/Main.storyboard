@@ -1021,19 +1021,19 @@ document layout — There is some information that is relevant for navigation th
         <!--Hearbeat-->
         <scene sceneID="DEi-0j-ZAg">
             <objects>
-                <tableViewController id="3bA-uT-gCW" customClass="AllEntriesTableViewController" sceneMemberID="viewController">
+                <tableViewController id="3bA-uT-gCW" customClass="HeartbeatTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PCS-A6-t3M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uTb-Ac-d9G">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="test" id="uTb-Ac-d9G">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uTb-Ac-d9G" id="juL-Mw-UHF">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GGg-ZM-lP6" kind="show" id="sq8-SY-5Dh"/>
+                                    <segue destination="GGg-ZM-lP6" kind="show" identifier="HeartbeatToJournalDetail" id="sq8-SY-5Dh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

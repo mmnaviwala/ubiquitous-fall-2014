@@ -32,9 +32,11 @@
 		9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */; };
 		9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D612B3A1A01D1B8004A3D63 /* AllEntriesTableViewController.m */; };
 		9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D612B3E1A01D2A1004A3D63 /* AllEntriesTableViewCell.m */; };
+		9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D811C0A1A118B1D004C41D1 /* HeartbeatTableViewController.m */; };
+		9D811C0F1A118C71004C41D1 /* HeartbeatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D811C0D1A118C71004C41D1 /* HeartbeatTableViewCell.m */; };
+		9D811C101A118C71004C41D1 /* HeartbeatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */; };
 		9DB667531A10061E004BCF88 /* MyEntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667521A10061E004BCF88 /* MyEntriesTableViewController.m */; };
 		9DB667561A10062B004BCF88 /* TopTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667551A10062B004BCF88 /* TopTagsTableViewController.m */; };
-		9DB667591A10063E004BCF88 /* TopEntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667581A10063E004BCF88 /* TopEntriesTableViewController.m */; };
 		9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */; };
 		9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */; };
 		9DB667621A1006B8004BCF88 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667611A1006B8004BCF88 /* EntryViewController.m */; };
@@ -85,12 +87,15 @@
 		9D612B3C1A01D25D004A3D63 /* AllEntriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllEntriesTableViewCell.h; sourceTree = "<group>"; };
 		9D612B3D1A01D28F004A3D63 /* AllEntriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEntriesTableViewController.h; sourceTree = "<group>"; };
 		9D612B3E1A01D2A1004A3D63 /* AllEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEntriesTableViewCell.m; sourceTree = "<group>"; };
+		9D811C091A118B1D004C41D1 /* HeartbeatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartbeatTableViewController.h; sourceTree = "<group>"; };
+		9D811C0A1A118B1D004C41D1 /* HeartbeatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartbeatTableViewController.m; sourceTree = "<group>"; };
+		9D811C0C1A118C71004C41D1 /* HeartbeatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartbeatTableViewCell.h; sourceTree = "<group>"; };
+		9D811C0D1A118C71004C41D1 /* HeartbeatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartbeatTableViewCell.m; sourceTree = "<group>"; };
+		9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartbeatTableViewCell.xib; sourceTree = "<group>"; };
 		9DB667511A10061E004BCF88 /* MyEntriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEntriesTableViewController.h; sourceTree = "<group>"; };
 		9DB667521A10061E004BCF88 /* MyEntriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEntriesTableViewController.m; sourceTree = "<group>"; };
 		9DB667541A10062B004BCF88 /* TopTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTagsTableViewController.h; sourceTree = "<group>"; };
 		9DB667551A10062B004BCF88 /* TopTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTagsTableViewController.m; sourceTree = "<group>"; };
-		9DB667571A10063E004BCF88 /* TopEntriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopEntriesTableViewController.h; sourceTree = "<group>"; };
-		9DB667581A10063E004BCF88 /* TopEntriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopEntriesTableViewController.m; sourceTree = "<group>"; };
 		9DB6675A1A100656004BCF88 /* MyFollowersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFollowersTableViewController.h; sourceTree = "<group>"; };
 		9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFollowersTableViewController.m; sourceTree = "<group>"; };
 		9DB6675D1A10065F004BCF88 /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
@@ -184,14 +189,17 @@
 				9DB667521A10061E004BCF88 /* MyEntriesTableViewController.m */,
 				9DB667541A10062B004BCF88 /* TopTagsTableViewController.h */,
 				9DB667551A10062B004BCF88 /* TopTagsTableViewController.m */,
-				9DB667571A10063E004BCF88 /* TopEntriesTableViewController.h */,
-				9DB667581A10063E004BCF88 /* TopEntriesTableViewController.m */,
 				9DB6675A1A100656004BCF88 /* MyFollowersTableViewController.h */,
 				9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */,
 				9DB6675D1A10065F004BCF88 /* NotificationsTableViewController.h */,
 				9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */,
 				9DB667601A1006B8004BCF88 /* EntryViewController.h */,
 				9DB667611A1006B8004BCF88 /* EntryViewController.m */,
+				9D811C091A118B1D004C41D1 /* HeartbeatTableViewController.h */,
+				9D811C0A1A118B1D004C41D1 /* HeartbeatTableViewController.m */,
+				9D811C0C1A118C71004C41D1 /* HeartbeatTableViewCell.h */,
+				9D811C0D1A118C71004C41D1 /* HeartbeatTableViewCell.m */,
+				9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D811C101A118C71004C41D1 /* HeartbeatTableViewCell.xib in Resources */,
 				003B1C3719F1DC5D008E53B5 /* Main.storyboard in Resources */,
 				003B1C3C19F1DC5D008E53B5 /* LaunchScreen.xib in Resources */,
 				9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */,
@@ -324,14 +333,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DB667591A10063E004BCF88 /* TopEntriesTableViewController.m in Sources */,
 				9DB667531A10061E004BCF88 /* MyEntriesTableViewController.m in Sources */,
 				9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */,
 				9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */,
 				9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */,
 				003B1C3419F1DC5D008E53B5 /* DetailViewController.m in Sources */,
 				003B1C3119F1DC5D008E53B5 /* MasterViewController.m in Sources */,
+				9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */,
 				9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */,
+				9D811C0F1A118C71004C41D1 /* HeartbeatTableViewCell.m in Sources */,
 				003B1C2B19F1DC5D008E53B5 /* AppDelegate.m in Sources */,
 				9DB667561A10062B004BCF88 /* TopTagsTableViewController.m in Sources */,
 				003B1C2819F1DC5D008E53B5 /* main.m in Sources */,

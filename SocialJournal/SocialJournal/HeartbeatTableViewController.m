@@ -1,18 +1,19 @@
 //
-//  TopEntriesTableViewController.m
+//  HeartbeatTableViewController.m
 //  SocialJournal
 //
-//  Created by James Garcia on 11/9/14.
+//  Created by James Garcia on 11/10/14.
 //  Copyright (c) 2014 UH. All rights reserved.
 //
 
-#import "TopEntriesTableViewController.h"
+#import "HeartbeatTableViewController.h"
+#import "HeartbeatTableViewCell.h"
 
-@interface TopEntriesTableViewController ()
+@interface HeartbeatTableViewController ()
 
 @end
 
-@implementation TopEntriesTableViewController
+@implementation HeartbeatTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,24 +35,43 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 10;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    HeartbeatTableViewCell *cell = (HeartbeatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HearbeatTableCell"];
+    if (cell == nil)
+    {
+        NSArray *xib = [[NSBundle mainBundle] loadNibNamed:@"HeartbeatTableViewCell" owner:self options:nil];
+        cell = [xib objectAtIndex:0];
+    }
+    
+    
+    //    //Alternate Code
+    //    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground.png"]];
+    //    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected.png"]];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"HeartbeatToJournalDetail" sender:self];
+    dispatch_async(dispatch_get_main_queue(), ^{});
+}
 
 /*
 // Override to support conditional editing of the table view.
