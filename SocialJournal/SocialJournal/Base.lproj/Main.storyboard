@@ -1065,7 +1065,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Top Tags-->
         <scene sceneID="Axu-RV-fgC">
             <objects>
-                <tableViewController id="2Za-z2-Uga" customClass="AllEntriesTableViewController" sceneMemberID="viewController">
+                <tableViewController id="2Za-z2-Uga" customClass="TopTagsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jFB-Cu-hnw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
