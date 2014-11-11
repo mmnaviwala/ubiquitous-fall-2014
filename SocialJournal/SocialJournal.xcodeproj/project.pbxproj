@@ -29,6 +29,8 @@
 		003B1C6619F20064008E53B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003B1C6519F20064008E53B5 /* Security.framework */; };
 		003B1C6819F2006D008E53B5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003B1C6719F2006D008E53B5 /* StoreKit.framework */; };
 		003B1C6A19F20075008E53B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003B1C6919F20075008E53B5 /* SystemConfiguration.framework */; };
+		29C6C58A1A12740E0092A311 /* TopTagsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */; };
+		29C6C58B1A12740E0092A311 /* TopTagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */; };
 		9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */; };
 		9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D612B3A1A01D1B8004A3D63 /* AllEntriesTableViewController.m */; };
 		9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D612B3E1A01D2A1004A3D63 /* AllEntriesTableViewCell.m */; };
@@ -86,6 +88,9 @@
 		003B1C6519F20064008E53B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		003B1C6719F2006D008E53B5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		003B1C6919F20075008E53B5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		29C6C5871A12740E0092A311 /* TopTagsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTagsTableViewCell.h; sourceTree = "<group>"; };
+		29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTagsTableViewCell.m; sourceTree = "<group>"; };
+		29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopTagsTableViewCell.xib; sourceTree = "<group>"; };
 		9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllEntriesTableViewCell.xib; sourceTree = "<group>"; };
 		9D612B3A1A01D1B8004A3D63 /* AllEntriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEntriesTableViewController.m; sourceTree = "<group>"; };
 		9D612B3C1A01D25D004A3D63 /* AllEntriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllEntriesTableViewCell.h; sourceTree = "<group>"; };
@@ -216,6 +221,9 @@
 				9D811C0C1A118C71004C41D1 /* HeartbeatTableViewCell.h */,
 				9D811C0D1A118C71004C41D1 /* HeartbeatTableViewCell.m */,
 				9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */,
+				29C6C5871A12740E0092A311 /* TopTagsTableViewCell.h */,
+				29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */,
+				29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 				9DDE8A131A12211E0079E8FA /* MyFollowersTableViewCell.xib in Resources */,
 				003B1C3C19F1DC5D008E53B5 /* LaunchScreen.xib in Resources */,
 				9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */,
+				29C6C58B1A12740E0092A311 /* TopTagsTableViewCell.xib in Resources */,
 				003B1C3919F1DC5D008E53B5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +366,7 @@
 				9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */,
 				9DDE8A0D1A121FF30079E8FA /* NotificationsTableViewCell.m in Sources */,
 				003B1C3419F1DC5D008E53B5 /* DetailViewController.m in Sources */,
+				29C6C58A1A12740E0092A311 /* TopTagsTableViewCell.m in Sources */,
 				003B1C3119F1DC5D008E53B5 /* MasterViewController.m in Sources */,
 				9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */,
 				9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */,
