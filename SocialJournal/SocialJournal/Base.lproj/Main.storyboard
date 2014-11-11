@@ -356,6 +356,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonClicked:" destination="Zeb-zd-bK7" eventType="touchUpInside" id="kpT-P7-DGZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039215686274" green="0.25490196078431371" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -364,6 +367,7 @@
                     <navigationItem key="navigationItem" title="New Entry" id="NFf-Ve-gqI"/>
                     <connections>
                         <outlet property="journalEntryTextView" destination="yjD-eF-cuy" id="gwT-6O-99C"/>
+                        <outlet property="titleText" destination="knb-hz-Qsh" id="6c3-wA-vfn"/>
                         <outlet property="whiteBackgroundView" destination="XJb-LV-3wW" id="fYC-Jm-4hC"/>
                     </connections>
                 </viewController>
