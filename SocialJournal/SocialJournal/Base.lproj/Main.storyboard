@@ -470,6 +470,11 @@ document layout — There is some information that is relevant for navigation th
                                 <state key="normal" title="Add Video">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o5G-i5-4BM">
                                 <rect key="frame" x="430" y="462" width="64" height="30"/>
@@ -477,11 +482,17 @@ document layout — There is some information that is relevant for navigation th
                                 <state key="normal" title="Add Tags">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SoX-fa-Kdj">
                                 <rect key="frame" x="172" y="532" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -493,10 +504,15 @@ document layout — There is some information that is relevant for navigation th
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.25098039215686274" green="0.25490196078431371" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Entry" id="NFf-Ve-gqI"/>
+                    <connections>
+                        <outlet property="journalEntryTextView" destination="yjD-eF-cuy" id="gwT-6O-99C"/>
+                        <outlet property="titleText" destination="knb-hz-Qsh" id="6c3-wA-vfn"/>
+                        <outlet property="whiteBackgroundView" destination="XJb-LV-3wW" id="fYC-Jm-4hC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6H-TR-5Ma" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="aT4-Ay-1S2">
