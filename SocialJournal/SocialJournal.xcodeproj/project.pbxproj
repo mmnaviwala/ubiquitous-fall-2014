@@ -40,6 +40,10 @@
 		9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */; };
 		9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */; };
 		9DB667621A1006B8004BCF88 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667611A1006B8004BCF88 /* EntryViewController.m */; };
+		9DDE8A0D1A121FF30079E8FA /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8A0B1A121FF30079E8FA /* NotificationsTableViewCell.m */; };
+		9DDE8A0E1A121FF30079E8FA /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE8A0C1A121FF30079E8FA /* NotificationsTableViewCell.xib */; };
+		9DDE8A121A12211E0079E8FA /* MyFollowersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8A101A12211E0079E8FA /* MyFollowersTableViewCell.m */; };
+		9DDE8A131A12211E0079E8FA /* MyFollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +106,12 @@
 		9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
 		9DB667601A1006B8004BCF88 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
 		9DB667611A1006B8004BCF88 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		9DDE8A0A1A121FF30079E8FA /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
+		9DDE8A0B1A121FF30079E8FA /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
+		9DDE8A0C1A121FF30079E8FA /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		9DDE8A0F1A12211E0079E8FA /* MyFollowersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFollowersTableViewCell.h; sourceTree = "<group>"; };
+		9DDE8A101A12211E0079E8FA /* MyFollowersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFollowersTableViewCell.m; sourceTree = "<group>"; };
+		9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFollowersTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +201,14 @@
 				9DB667551A10062B004BCF88 /* TopTagsTableViewController.m */,
 				9DB6675A1A100656004BCF88 /* MyFollowersTableViewController.h */,
 				9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */,
+				9DDE8A0F1A12211E0079E8FA /* MyFollowersTableViewCell.h */,
+				9DDE8A101A12211E0079E8FA /* MyFollowersTableViewCell.m */,
+				9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */,
 				9DB6675D1A10065F004BCF88 /* NotificationsTableViewController.h */,
 				9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */,
+				9DDE8A0A1A121FF30079E8FA /* NotificationsTableViewCell.h */,
+				9DDE8A0B1A121FF30079E8FA /* NotificationsTableViewCell.m */,
+				9DDE8A0C1A121FF30079E8FA /* NotificationsTableViewCell.xib */,
 				9DB667601A1006B8004BCF88 /* EntryViewController.h */,
 				9DB667611A1006B8004BCF88 /* EntryViewController.m */,
 				9D811C091A118B1D004C41D1 /* HeartbeatTableViewController.h */,
@@ -313,6 +329,8 @@
 			files = (
 				9D811C101A118C71004C41D1 /* HeartbeatTableViewCell.xib in Resources */,
 				003B1C3719F1DC5D008E53B5 /* Main.storyboard in Resources */,
+				9DDE8A0E1A121FF30079E8FA /* NotificationsTableViewCell.xib in Resources */,
+				9DDE8A131A12211E0079E8FA /* MyFollowersTableViewCell.xib in Resources */,
 				003B1C3C19F1DC5D008E53B5 /* LaunchScreen.xib in Resources */,
 				9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */,
 				003B1C3919F1DC5D008E53B5 /* Images.xcassets in Resources */,
@@ -337,12 +355,14 @@
 				9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */,
 				9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */,
 				9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */,
+				9DDE8A0D1A121FF30079E8FA /* NotificationsTableViewCell.m in Sources */,
 				003B1C3419F1DC5D008E53B5 /* DetailViewController.m in Sources */,
 				003B1C3119F1DC5D008E53B5 /* MasterViewController.m in Sources */,
 				9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */,
 				9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */,
 				9D811C0F1A118C71004C41D1 /* HeartbeatTableViewCell.m in Sources */,
 				003B1C2B19F1DC5D008E53B5 /* AppDelegate.m in Sources */,
+				9DDE8A121A12211E0079E8FA /* MyFollowersTableViewCell.m in Sources */,
 				9DB667561A10062B004BCF88 /* TopTagsTableViewController.m in Sources */,
 				003B1C2819F1DC5D008E53B5 /* main.m in Sources */,
 				003B1C2E19F1DC5D008E53B5 /* SocialJournal.xcdatamodeld in Sources */,

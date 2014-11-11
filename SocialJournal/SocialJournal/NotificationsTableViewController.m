@@ -7,6 +7,7 @@
 //
 
 #import "NotificationsTableViewController.h"
+#import "NotificationsTableViewCell.h"
 
 @interface NotificationsTableViewController ()
 
@@ -16,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0]}];
+    self.navigationController.navigationBar.translucent = YES;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,24 +40,39 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 10;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    NotificationsTableViewCell *cell = (NotificationsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"NotificationsTableCell"];
+    if (cell == nil)
+    {
+        NSArray *xib = [[NSBundle mainBundle] loadNibNamed:@"NotificationsTableViewCell" owner:self options:nil];
+        cell = [xib objectAtIndex:0];
+    }
+    
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+}
+
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    [self performSegueWithIdentifier:@"HeartbeatToJournalDetail" sender:self];
+//    dispatch_async(dispatch_get_main_queue(), ^{});
+//}
 
 /*
 // Override to support conditional editing of the table view.

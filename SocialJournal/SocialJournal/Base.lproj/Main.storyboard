@@ -46,7 +46,7 @@
                         <sections>
                             <tableViewSection headerTitle="My Journal" id="FA7-g8-XVY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My Entries" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My Entries" textLabel="Arm-wq-HPj" rowHeight="82" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
@@ -61,13 +61,14 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.011764705882352941" green="0.21176470588235294" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="WHK-2t-y8N" kind="showDetail" id="5mn-79-rbf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="New Entry" textLabel="0e2-wi-P3W" style="IBUITableViewCellStyleDefault" id="07J-on-xgy">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="New Entry" textLabel="0e2-wi-P3W" rowHeight="82" style="IBUITableViewCellStyleDefault" id="07J-on-xgy">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="07J-on-xgy" id="5JJ-9N-jlt">
@@ -82,6 +83,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -92,7 +94,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Discover" id="UB1-0w-lbD">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="All Entries" textLabel="vun-zF-7fk" style="IBUITableViewCellStyleDefault" id="84B-Ze-XTo">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="All Entries" textLabel="vun-zF-7fk" rowHeight="82" style="IBUITableViewCellStyleDefault" id="84B-Ze-XTo">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="84B-Ze-XTo" id="dM1-Fb-EgU">
@@ -107,13 +109,14 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="0HY-Ta-DVL" kind="showDetail" id="IK1-fD-RCL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Entries" textLabel="Z9B-c5-ojk" style="IBUITableViewCellStyleDefault" id="EBg-4L-JKA">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Entries" textLabel="Z9B-c5-ojk" rowHeight="82" style="IBUITableViewCellStyleDefault" id="EBg-4L-JKA">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EBg-4L-JKA" id="eno-MA-Fbx">
@@ -128,13 +131,14 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="kxx-uY-ONV" kind="showDetail" id="NPB-1h-LAH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Tags" textLabel="MB3-fa-ah2" style="IBUITableViewCellStyleDefault" id="xrE-Hq-Gyg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Tags" textLabel="MB3-fa-ah2" rowHeight="82" style="IBUITableViewCellStyleDefault" id="xrE-Hq-Gyg">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrE-Hq-Gyg" id="zSx-ZZ-QL5">
@@ -149,6 +153,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -159,7 +164,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="My Account" id="Rca-1z-dMc">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My Followers" textLabel="PTC-uv-3a6" style="IBUITableViewCellStyleDefault" id="W4F-Is-HTx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My Followers" textLabel="PTC-uv-3a6" rowHeight="82" style="IBUITableViewCellStyleDefault" id="W4F-Is-HTx">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W4F-Is-HTx" id="hji-hn-nxe">
@@ -174,13 +179,14 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="GsC-yU-H1C" kind="showDetail" id="BPE-jM-INY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Notifications" textLabel="cL4-kh-0bG" style="IBUITableViewCellStyleDefault" id="t8d-Zd-5q4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Notifications" textLabel="cL4-kh-0bG" rowHeight="82" style="IBUITableViewCellStyleDefault" id="t8d-Zd-5q4">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t8d-Zd-5q4" id="wqe-nL-WFs">
@@ -195,6 +201,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.01176470588" green="0.21176470589999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -205,7 +212,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Moar" id="2y0-37-4Z4">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" textLabel="eZf-Uf-4o2" style="IBUITableViewCellStyleDefault" id="vLU-Ru-5FN">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" textLabel="eZf-Uf-4o2" rowHeight="82" style="IBUITableViewCellStyleDefault" id="vLU-Ru-5FN">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vLU-Ru-5FN" id="ivP-t7-ZUp">
@@ -236,7 +243,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Social Journal" id="Zdf-7t-Un8"/>
                     <connections>
+                        <outlet property="entryLabel" destination="0e2-wi-P3W" id="KXe-KD-XUC"/>
+                        <outlet property="feedLabel" destination="vun-zF-7fk" id="0u8-1z-rio"/>
+                        <outlet property="followersLabel" destination="PTC-uv-3a6" id="AVe-nr-Nxr"/>
+                        <outlet property="heartbeatLabel" destination="Z9B-c5-ojk" id="PvR-gR-cRb"/>
+                        <outlet property="notificationsLabel" destination="cL4-kh-0bG" id="V6F-x7-XUs"/>
+                        <outlet property="profileLabel" destination="Arm-wq-HPj" id="Z97-R6-AlY"/>
                         <outlet property="searchDisplayController" destination="SDm-7k-uut" id="INB-PU-hGi"/>
+                        <outlet property="topTagsLabel" destination="MB3-fa-ah2" id="wlK-S4-Qfl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -1081,7 +1095,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Followers-->
         <scene sceneID="v2D-g2-gIE">
             <objects>
-                <tableViewController id="mP8-YJ-Hlc" customClass="AllEntriesTableViewController" sceneMemberID="viewController">
+                <tableViewController id="mP8-YJ-Hlc" customClass="MyFollowersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8zd-Vm-JRp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1093,7 +1107,7 @@ document layout — There is some information that is relevant for navigation th
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WdI-rN-IeW" kind="show" id="0sh-dn-JDd"/>
+                                    <segue destination="WdI-rN-IeW" kind="show" identifier="MyFollowersToProfile" id="0sh-dn-JDd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1111,7 +1125,7 @@ document layout — There is some information that is relevant for navigation th
         <!--Notifications-->
         <scene sceneID="AZP-7w-mb0">
             <objects>
-                <tableViewController id="zqC-QE-MKA" customClass="AllEntriesTableViewController" sceneMemberID="viewController">
+                <tableViewController id="zqC-QE-MKA" customClass="NotificationsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yTW-Mn-g7X">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

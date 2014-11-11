@@ -28,7 +28,30 @@
 
 //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 //    self.navigationItem.rightBarButtonItem = addButton;
+    
+    
 //    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    
+    //earth earth [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    //profound water [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
+    //abyss [UIColor colorWithRed:(3/255.0) green:(22/255.0) blue:(52/255.0) alpha:1.0];
+    
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0]}];
+    self.navigationController.navigationBar.translucent = YES;
+    
+    self.profileLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.feedLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.heartbeatLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.topTagsLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.entryLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.followersLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    self.notificationsLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,5 +234,42 @@
     [self.tableView reloadData];
 }
  */
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 15)];
+    UILabel *tempLabel=[[UILabel alloc]initWithFrame:CGRectMake(15 ,5,tableView.bounds.size.width,30)];
+    
+    [headerView setBackgroundColor:[UIColor colorWithRed:(3/255.0) green:(22/255.0) blue:(52/255.0) alpha:1.0]];
+    tempLabel.backgroundColor= [UIColor clearColor];
+    tempLabel.shadowColor = [UIColor blackColor];
+    tempLabel.shadowOffset = CGSizeMake(0,2);
+    tempLabel.textColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
+    tempLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    tempLabel.font = [UIFont boldSystemFontOfSize:12];
+    if (section == 0) {
+        tempLabel.text=@"My Journal";
+    }
+    if (section == 1) {
+        tempLabel.text=@"Discover";
+    }
+    if (section == 2) {
+        tempLabel.text=@"My Account";
+    }
+    if (section == 3) {
+        tempLabel.text=@"Moar";
+    }
+    
+    
+    [headerView addSubview:tempLabel];
+        
+   
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
 
 @end

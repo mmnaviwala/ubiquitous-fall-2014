@@ -17,6 +17,13 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) IBOutlet UILabel *profileLabel;
+@property (weak, nonatomic) IBOutlet UILabel *feedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *heartbeatLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topTagsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *entryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
 
 
 @end
