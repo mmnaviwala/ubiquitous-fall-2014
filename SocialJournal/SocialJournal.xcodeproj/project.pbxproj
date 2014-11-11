@@ -40,6 +40,7 @@
 		9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */; };
 		9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */; };
 		9DB667621A1006B8004BCF88 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667611A1006B8004BCF88 /* EntryViewController.m */; };
+		AC034C9C1A12B323003A22BD /* SignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC034C9B1A12B323003A22BD /* SignInController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
 		9DB667601A1006B8004BCF88 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
 		9DB667611A1006B8004BCF88 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		AC034C9A1A12B323003A22BD /* SignInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInController.h; sourceTree = "<group>"; };
+		AC034C9B1A12B323003A22BD /* SignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 		003B1C2419F1DC5D008E53B5 /* SocialJournal */ = {
 			isa = PBXGroup;
 			children = (
+				AC034C9A1A12B323003A22BD /* SignInController.h */,
+				AC034C9B1A12B323003A22BD /* SignInController.m */,
 				003B1C2919F1DC5D008E53B5 /* AppDelegate.h */,
 				003B1C2A19F1DC5D008E53B5 /* AppDelegate.m */,
 				003B1C2F19F1DC5D008E53B5 /* MasterViewController.h */,
@@ -341,6 +346,7 @@
 				003B1C3119F1DC5D008E53B5 /* MasterViewController.m in Sources */,
 				9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */,
 				9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */,
+				AC034C9C1A12B323003A22BD /* SignInController.m in Sources */,
 				9D811C0F1A118C71004C41D1 /* HeartbeatTableViewCell.m in Sources */,
 				003B1C2B19F1DC5D008E53B5 /* AppDelegate.m in Sources */,
 				9DB667561A10062B004BCF88 /* TopTagsTableViewController.m in Sources */,
