@@ -10,11 +10,13 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AllEntriesTableViewCell.h"
 #import <Parse/Parse.h>
+#import "EntryViewController.h"
 
 @interface AllEntriesTableViewController ()
 @property CGSize constraint;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property NSMutableArray *dataFromParse;
+@property PFObject *currentEntry;
 @end
 
 @implementation AllEntriesTableViewController
@@ -61,7 +63,6 @@
 
 - (void) fetchDataFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"Entries"];
-    [query selectKeys:@[@"title", @"entry"]];
     self.dataFromParse = [[query findObjects] copy];
 }
 
@@ -109,7 +110,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    self.currentEntry = [self.dataFromParse objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"AllEntriesToJournalDetail" sender:self];
     dispatch_async(dispatch_get_main_queue(), ^{});
 }
@@ -154,6 +155,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AllEntriesToJournalDetail"]) {
+        EntryViewController *entryViewController = segue.destinationViewController;
+        entryViewController.entry = self.currentEntry;
+    }
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

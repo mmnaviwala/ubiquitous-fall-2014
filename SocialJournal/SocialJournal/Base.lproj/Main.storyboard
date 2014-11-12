@@ -884,6 +884,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="All Entries" id="d5C-bn-ZdX"/>
                     <connections>
+                        <outlet property="contentTextField" destination="K2F-ah-jb1" id="hoZ-Vl-2n5"/>
+                        <outlet property="tagsTextField" destination="0iY-V3-sTT" id="yib-Xs-AWM"/>
+                        <outlet property="titleTextField" destination="Hai-M6-49g" id="qJE-DV-oeO"/>
                         <outlet property="whiteBackgroundView" destination="urB-iJ-21W" id="1LE-6n-0cP"/>
                     </connections>
                 </viewController>
@@ -894,7 +897,6 @@
         <!--Map-->
         <scene sceneID="icj-G7-IBs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jI6-S7-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Map" id="YYe-Tx-l4G" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7N-tf-Z00">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
@@ -909,6 +911,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fvy-6e-xLx"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jI6-S7-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3681.5" y="3810"/>
         </scene>

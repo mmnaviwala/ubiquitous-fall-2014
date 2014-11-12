@@ -11,6 +11,9 @@
 @interface EntryViewController ()
 @property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
 @property UITextField *commentAlertTextField;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextField;
 @end
 
 @implementation EntryViewController
@@ -22,6 +25,10 @@
     self.whiteBackgroundView.layer.shadowOffset = CGSizeMake(-15, 0);
     self.whiteBackgroundView.layer.shadowRadius = 5;
     self.whiteBackgroundView.layer.shadowOpacity = 0.7;
+    self.titleTextField.text = self.entry[@"title"];
+    self.contentTextField.text = self.entry[@"entry"];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
