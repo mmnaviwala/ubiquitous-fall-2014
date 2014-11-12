@@ -29,7 +29,7 @@
                         <rect key="frame" x="38" y="15" width="70" height="70"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSo-b1-POU">
-                        <rect key="frame" x="0.0" y="1" width="30" height="98"/>
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="98"/>
                         <color key="backgroundColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>

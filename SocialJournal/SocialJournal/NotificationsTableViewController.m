@@ -66,6 +66,11 @@
     return 100;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"NotificationsToProfile" sender:self];
+    dispatch_async(dispatch_get_main_queue(), ^{});
+}
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    
