@@ -9,9 +9,12 @@
 #import "AllEntriesTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AllEntriesTableViewCell.h"
+#import <Parse/Parse.h>
 
 @interface AllEntriesTableViewController ()
 @property CGSize constraint;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property NSMutableArray *dataFromParse;
 @end
 
 @implementation AllEntriesTableViewController
@@ -37,11 +40,34 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = CGPointMake(340, 285);
+    self.spinner.hidesWhenStopped = YES;
+    CGAffineTransform transform = CGAffineTransformMakeScale(1.5f, 1.5f);
+    self.spinner.transform = transform;
+    [self.view addSubview:self.spinner];
+    
+    [self.spinner startAnimating];
+    dispatch_queue_t queue = dispatch_get_global_queue(0,0);
+    dispatch_async(queue, ^{
+        [self fetchDataFromParse];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) fetchDataFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"Entries"];
+    [query selectKeys:@[@"title", @"entry"]];
+    self.dataFromParse = [[query findObjects] copy];
 }
 
 #pragma mark - Table view data source
@@ -52,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 10;
+    return self.dataFromParse.count;
 }
 
 
@@ -67,12 +93,9 @@
     
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
-    //cell.profilePhoto.image = [self imageWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdn.meme.am/instances/500x/51501899.jpg"]]] scaledToSize:self.constraint]; //set image from api
-
-    
-//    //Alternate Code
-//    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground.png"]];
-//    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected.png"]];
+    PFObject *currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
+    cell.postTitle.text = currentCellObject[@"title"];
+    cell.postPreview.text = currentCellObject[@"entry"];
     
     return cell;
 }
