@@ -910,6 +910,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fvy-6e-xLx"/>
+                    <connections>
+                        <outlet property="mapView" destination="F4e-xn-DPw" id="18f-qh-9NR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jI6-S7-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
