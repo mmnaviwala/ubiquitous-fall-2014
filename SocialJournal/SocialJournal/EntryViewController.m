@@ -40,16 +40,16 @@
 }
 
 - (IBAction)commentButtonClicked:(id)sender {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Submit new comment" message:nil delegate:self cancelButtonTitle:@"Submit" otherButtonTitles:@"Cancel", nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Submit new comment" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Submit", nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     self.commentAlertTextField = [alert textFieldAtIndex:0];
     self.commentAlertTextField.placeholder = @"Enter your comment...";
-    [alert dismissWithClickedButtonIndex:1 animated:YES];
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
     [alert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
+    if (buttonIndex == 1) {
         NSLog(@"Comment: %@", self.commentAlertTextField.text);
     }
 }
