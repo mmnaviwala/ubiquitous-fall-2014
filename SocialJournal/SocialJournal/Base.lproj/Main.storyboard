@@ -362,38 +362,20 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Moar" id="2y0-37-4Z4">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" textLabel="eZf-Uf-4o2" rowHeight="82" style="IBUITableViewCellStyleDefault" id="vLU-Ru-5FN">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vLU-Ru-5FN" id="ivP-t7-ZUp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eZf-Uf-4o2">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="Amu-Y2-fcn" kind="replace" splitViewControllerTargetIndex="1" id="dLo-Tz-Tqt"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="7bK-jq-Zjz" id="Gho-Na-rnu"/>
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Social Journal" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Social Journal" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="5Sa-1q-XSx">
+                            <color key="tintColor" red="0.25098039220000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Amu-Y2-fcn" kind="replace" splitViewControllerTargetIndex="1" id="XeV-kF-kgc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="entryLabel" destination="0e2-wi-P3W" id="KXe-KD-XUC"/>
                         <outlet property="feedLabel" destination="vun-zF-7fk" id="0u8-1z-rio"/>
@@ -681,7 +663,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="888.32000000000005" y="8715.9466666666667"/>
+            <point key="canvasLocation" x="2466.5" y="-1076"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7yb-5F-aAs">
@@ -696,7 +678,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLC-EX-cZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-51.200000000000003" y="8715.9466666666667"/>
+            <point key="canvasLocation" x="1527.5" y="-1076"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="huQ-Cq-78I">
