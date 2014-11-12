@@ -19,13 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //earth earth [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
-    //profound water [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
-    NSLog(@"TEST");
+    //broken white [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
+    //H [UIColor colorWithRed:(135/255.0) green:(136/255.0) blue:(140/255.0) alpha:1.0];
+    //trapped [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0];
+    //chinese laque [UIColor colorWithRed:(224/255.0) green:(22/255.0) blue:(22/255.0) alpha:1.0];
+    //coulour [UIColor colorWithRed:(6/255.0) green:(20/255.0) blue:(77/255.0) alpha:1.0];
+    
+    
     self.constraint = CGSizeMake(70, 70);
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(232/255.0) green:(221/255.0) blue:(203/255.0) alpha:1.0]}];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0]}];
     self.navigationController.navigationBar.translucent = YES;
     
     // Uncomment the following line to preserve selection between presentations.
@@ -61,7 +65,7 @@
         cell = [xib objectAtIndex:0];
     }
     
-    cell.tintColor = [UIColor colorWithRed:(3/255.0) green:(54/255.0) blue:(73/255.0) alpha:1.0];
+    cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
     cell.profilePhoto.image = [self imageWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdn.meme.am/instances/500x/51501899.jpg"]]] scaledToSize:self.constraint]; //set image from api
 
