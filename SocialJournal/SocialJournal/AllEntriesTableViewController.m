@@ -32,11 +32,6 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0]}];
     self.navigationController.navigationBar.translucent = YES;
     
-    self.view.layer.masksToBounds = NO;
-    self.view.layer.shadowOffset = CGSizeMake(-15, 0);
-    self.view.layer.shadowRadius = 5;
-    self.view.layer.shadowOpacity = 0.7;
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

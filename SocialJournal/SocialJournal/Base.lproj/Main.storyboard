@@ -1022,7 +1022,7 @@
             <objects>
                 <viewController id="GGg-ZM-lP6" customClass="EntryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIf-78-gBt">
-                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnonDrake - October 8th" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nzx-PI-iAH">
@@ -1319,7 +1319,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GGg-ZM-lP6" kind="push" identifier="HeartbeatToJournalDetail" id="sq8-SY-5Dh"/>
+                                    <segue destination="uj4-kX-kge" kind="push" identifier="HeartbeatToJournalDetail" id="kDi-cP-MYo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1453,5 +1453,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="5mn-79-rbf"/>
+        <segue reference="kDi-cP-MYo"/>
     </inferredMetricsTieBreakers>
 </document>

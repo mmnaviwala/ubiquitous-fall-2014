@@ -214,6 +214,9 @@
 				9DB667521A10061E004BCF88 /* MyEntriesTableViewController.m */,
 				9DB667541A10062B004BCF88 /* TopTagsTableViewController.h */,
 				9DB667551A10062B004BCF88 /* TopTagsTableViewController.m */,
+				29C6C5871A12740E0092A311 /* TopTagsTableViewCell.h */,
+				29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */,
+				29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */,
 				9DB6675A1A100656004BCF88 /* MyFollowersTableViewController.h */,
 				9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */,
 				9DDE8A0F1A12211E0079E8FA /* MyFollowersTableViewCell.h */,
@@ -231,9 +234,6 @@
 				9D811C0C1A118C71004C41D1 /* HeartbeatTableViewCell.h */,
 				9D811C0D1A118C71004C41D1 /* HeartbeatTableViewCell.m */,
 				9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */,
-				29C6C5871A12740E0092A311 /* TopTagsTableViewCell.h */,
-				29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */,
-				29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
