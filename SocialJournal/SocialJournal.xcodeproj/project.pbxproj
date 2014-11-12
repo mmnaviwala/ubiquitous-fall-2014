@@ -31,6 +31,8 @@
 		003B1C6A19F20075008E53B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003B1C6919F20075008E53B5 /* SystemConfiguration.framework */; };
 		29C6C58A1A12740E0092A311 /* TopTagsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */; };
 		29C6C58B1A12740E0092A311 /* TopTagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */; };
+		29C966631A13CEDA000F9CEA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C966621A13CEDA000F9CEA /* MapKit.framework */; };
+		29C966691A13CF8F000F9CEA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C966681A13CF8F000F9CEA /* MapViewController.m */; };
 		9D4F5E2A1A134DC20006BF52 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F5E291A134DC20006BF52 /* ProfileViewController.m */; };
 		9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */; };
 		9D612B3B1A01D1B8004A3D63 /* AllEntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D612B3A1A01D1B8004A3D63 /* AllEntriesTableViewController.m */; };
@@ -94,6 +96,9 @@
 		29C6C5871A12740E0092A311 /* TopTagsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTagsTableViewCell.h; sourceTree = "<group>"; };
 		29C6C5881A12740E0092A311 /* TopTagsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTagsTableViewCell.m; sourceTree = "<group>"; };
 		29C6C5891A12740E0092A311 /* TopTagsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopTagsTableViewCell.xib; sourceTree = "<group>"; };
+		29C966621A13CEDA000F9CEA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		29C966671A13CF8F000F9CEA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		29C966681A13CF8F000F9CEA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9D4F5E281A134DC20006BF52 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		9D4F5E291A134DC20006BF52 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllEntriesTableViewCell.xib; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C966631A13CEDA000F9CEA /* MapKit.framework in Frameworks */,
 				003B1C6A19F20075008E53B5 /* SystemConfiguration.framework in Frameworks */,
 				003B1C6819F2006D008E53B5 /* StoreKit.framework in Frameworks */,
 				003B1C6619F20064008E53B5 /* Security.framework in Frameworks */,
@@ -162,6 +168,7 @@
 		003B1C1919F1DC5D008E53B5 = {
 			isa = PBXGroup;
 			children = (
+				29C966621A13CEDA000F9CEA /* MapKit.framework */,
 				003B1C6919F20075008E53B5 /* SystemConfiguration.framework */,
 				003B1C6719F2006D008E53B5 /* StoreKit.framework */,
 				003B1C6519F20064008E53B5 /* Security.framework */,
@@ -239,6 +246,8 @@
 				9D811C0E1A118C71004C41D1 /* HeartbeatTableViewCell.xib */,
 				9D4F5E281A134DC20006BF52 /* ProfileViewController.h */,
 				9D4F5E291A134DC20006BF52 /* ProfileViewController.m */,
+				29C966671A13CF8F000F9CEA /* MapViewController.h */,
+				29C966681A13CF8F000F9CEA /* MapViewController.m */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -381,6 +390,7 @@
 				9D612B3F1A01D2A1004A3D63 /* AllEntriesTableViewCell.m in Sources */,
 				9DDE8A0D1A121FF30079E8FA /* NotificationsTableViewCell.m in Sources */,
 				003B1C3419F1DC5D008E53B5 /* DetailViewController.m in Sources */,
+				29C966691A13CF8F000F9CEA /* MapViewController.m in Sources */,
 				29C6C58A1A12740E0092A311 /* TopTagsTableViewCell.m in Sources */,
 				003B1C3119F1DC5D008E53B5 /* MasterViewController.m in Sources */,
 				9D811C0B1A118B1D004C41D1 /* HeartbeatTableViewController.m in Sources */,
