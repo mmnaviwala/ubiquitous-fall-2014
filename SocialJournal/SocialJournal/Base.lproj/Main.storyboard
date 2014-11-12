@@ -1343,13 +1343,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Fy1-rb-RHz">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopTagsTableViewCell" id="Fy1-rb-RHz" customClass="TopTagsTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fy1-rb-RHz" id="Cng-u7-mf1">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="qih-EJ-Kbu" kind="push" id="21y-cR-SNG"/>
+                                    <segue destination="qih-EJ-Kbu" kind="show" identifier="TopTagsToJournalDetail" id="21y-cR-SNG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1379,7 +1379,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WdI-rN-IeW" kind="push" id="0sh-dn-JDd"/>
+                                    <segue destination="WdI-rN-IeW" kind="show" identifier="MyFollowersToProfile" id="0sh-dn-JDd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1452,6 +1452,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gnw-JH-eGf"/>
+        <segue reference="5mn-79-rbf"/>
     </inferredMetricsTieBreakers>
 </document>

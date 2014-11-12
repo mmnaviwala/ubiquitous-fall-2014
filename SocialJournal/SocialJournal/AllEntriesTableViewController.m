@@ -32,6 +32,11 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0]}];
     self.navigationController.navigationBar.translucent = YES;
     
+    self.view.layer.masksToBounds = NO;
+    self.view.layer.shadowOffset = CGSizeMake(-15, 0);
+    self.view.layer.shadowRadius = 5;
+    self.view.layer.shadowOpacity = 0.7;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -52,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    return 10;
 }
 
 
@@ -67,7 +72,7 @@
     
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
-    cell.profilePhoto.image = [self imageWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdn.meme.am/instances/500x/51501899.jpg"]]] scaledToSize:self.constraint]; //set image from api
+    //cell.profilePhoto.image = [self imageWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdn.meme.am/instances/500x/51501899.jpg"]]] scaledToSize:self.constraint]; //set image from api
 
     
 //    //Alternate Code
@@ -79,7 +84,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    return 100;
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {

@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *postDate;
 @property (weak, nonatomic) IBOutlet UIImageView *postFavorite;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhoto;
+@property (weak, nonatomic) IBOutlet UIView *cellContent;
 
 @end

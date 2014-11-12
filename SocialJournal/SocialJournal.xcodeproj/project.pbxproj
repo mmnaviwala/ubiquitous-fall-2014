@@ -42,6 +42,10 @@
 		9DB6675C1A100656004BCF88 /* MyFollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675B1A100656004BCF88 /* MyFollowersTableViewController.m */; };
 		9DB6675F1A10065F004BCF88 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */; };
 		9DB667621A1006B8004BCF88 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB667611A1006B8004BCF88 /* EntryViewController.m */; };
+		9DDE8A0D1A121FF30079E8FA /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8A0B1A121FF30079E8FA /* NotificationsTableViewCell.m */; };
+		9DDE8A0E1A121FF30079E8FA /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE8A0C1A121FF30079E8FA /* NotificationsTableViewCell.xib */; };
+		9DDE8A121A12211E0079E8FA /* MyFollowersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8A101A12211E0079E8FA /* MyFollowersTableViewCell.m */; };
+		9DDE8A131A12211E0079E8FA /* MyFollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */; };
 		AC034C9C1A12B323003A22BD /* SignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC034C9B1A12B323003A22BD /* SignInController.m */; };
 		AC034C9F1A12B4C3003A22BD /* RegisterationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC034C9E1A12B4C3003A22BD /* RegisterationController.m */; };
 /* End PBXBuildFile section */
@@ -109,6 +113,12 @@
 		9DB6675E1A10065F004BCF88 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
 		9DB667601A1006B8004BCF88 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
 		9DB667611A1006B8004BCF88 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		9DDE8A0A1A121FF30079E8FA /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
+		9DDE8A0B1A121FF30079E8FA /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
+		9DDE8A0C1A121FF30079E8FA /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		9DDE8A0F1A12211E0079E8FA /* MyFollowersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFollowersTableViewCell.h; sourceTree = "<group>"; };
+		9DDE8A101A12211E0079E8FA /* MyFollowersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFollowersTableViewCell.m; sourceTree = "<group>"; };
+		9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFollowersTableViewCell.xib; sourceTree = "<group>"; };
 		AC034C9A1A12B323003A22BD /* SignInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInController.h; sourceTree = "<group>"; };
 		AC034C9B1A12B323003A22BD /* SignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInController.m; sourceTree = "<group>"; };
 		AC034C9D1A12B4C3003A22BD /* RegisterationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterationController.h; sourceTree = "<group>"; };

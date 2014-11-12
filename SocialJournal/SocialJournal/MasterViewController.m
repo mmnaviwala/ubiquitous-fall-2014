@@ -53,6 +53,8 @@
     self.notificationsLabel.textColor = [UIColor whiteColor];
     
     
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
