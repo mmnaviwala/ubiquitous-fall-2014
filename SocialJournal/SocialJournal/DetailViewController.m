@@ -78,7 +78,6 @@
             //more in depth hashtag checking to make sure its a valid format
             //could potentially change to regex if someone wants to get fancy
             if(temp.length > 1 &&
-               ![temp hasPrefix:@"##"] &&
                ![[temp substringFromIndex:1] containsString:@"#"]){
                 
                 //add the correct hashtag to the result array
