@@ -104,6 +104,7 @@
     PFObject *eachEntry = [PFObject objectWithClassName:@"Entries"];
     eachEntry[@"title"] = self.titleText.text;
     eachEntry[@"entry"] = self.journalEntryTextView.text;
+    eachEntry[@"username"] = [PFUser currentUser];
     [eachEntry saveEventually];
 }
 
