@@ -57,6 +57,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
+        PFObject *newComment = [PFObject objectWithClassName:@"Comments"];
+        newComment[@"content"] = self.commentAlertTextField.text;
+        newComment[@"user"] = [PFUser currentUser];
+        newComment[@"entry"] = self.entry;
+        [newComment saveEventually];
         NSLog(@"Comment: %@", self.commentAlertTextField.text);
     }
 }
