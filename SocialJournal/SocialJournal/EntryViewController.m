@@ -30,7 +30,6 @@
 }
 
 - (IBAction)heartButtonClicked:(UIButton *)sender {
-    NSLog(@"%@", [sender.imageView accessibilityIdentifier]);
     if ([[sender.imageView accessibilityIdentifier] isEqualToString:@"HeartWhite"]) {
         UIImageView *newImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeartRed"]];
         [sender setImage:newImageView.image forState:UIControlStateNormal];
