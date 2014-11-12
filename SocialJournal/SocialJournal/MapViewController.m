@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 
 @interface MapViewController ()
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -26,11 +27,13 @@
 }
 - (void) showMapLocation:(double)latitude :(double)longitude {
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    [mapItem setName:@"test"];
-    [mapItem openInMapsWithLaunchOptions:nil];
+    CLLocationCoordinate2D location;
+    location.latitude = latitude;
+    location.longitude = longitude;
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = location;
+    [self.mapView addAnnotation:annotation];
+    //[self.mapView setShowsUserLocation:YES];
 }
 /*
 #pragma mark - Navigation

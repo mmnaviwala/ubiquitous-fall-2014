@@ -894,7 +894,6 @@
         <!--Map-->
         <scene sceneID="icj-G7-IBs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jI6-S7-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Map" id="YYe-Tx-l4G" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7N-tf-Z00">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
@@ -908,7 +907,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fvy-6e-xLx"/>
+                    <connections>
+                        <outlet property="mapView" destination="F4e-xn-DPw" id="18f-qh-9NR"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jI6-S7-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3681.5" y="3810"/>
         </scene>
