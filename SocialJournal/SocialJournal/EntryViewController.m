@@ -10,7 +10,7 @@
 
 @interface EntryViewController ()
 @property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
-
+@property UITextField *commentAlertTextField;
 @end
 
 @implementation EntryViewController
@@ -36,6 +36,21 @@
     }else{
         UIImageView *newImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeartWhite"]];
         [sender setImage:newImageView.image forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)commentButtonClicked:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Submit new comment" message:nil delegate:self cancelButtonTitle:@"Submit" otherButtonTitles:@"Cancel", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    self.commentAlertTextField = [alert textFieldAtIndex:0];
+    self.commentAlertTextField.placeholder = @"Enter your comment...";
+    [alert dismissWithClickedButtonIndex:1 animated:YES];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        NSLog(@"Comment: %@", self.commentAlertTextField.text);
     }
 }
 

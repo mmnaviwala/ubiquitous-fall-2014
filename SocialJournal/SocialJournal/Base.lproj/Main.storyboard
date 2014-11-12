@@ -816,6 +816,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="commentButtonClicked:" destination="uj4-kX-kge" eventType="touchUpInside" id="blT-pr-t7l"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="enh-oO-A3Q">
                                 <rect key="frame" x="40" y="335" width="64" height="64"/>
