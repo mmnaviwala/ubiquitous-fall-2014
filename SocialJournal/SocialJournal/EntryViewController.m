@@ -9,6 +9,7 @@
 #import "EntryViewController.h"
 
 @interface EntryViewController ()
+@property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
 
 @end
 
@@ -16,12 +17,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.whiteBackgroundView.layer.masksToBounds = NO;
+    self.whiteBackgroundView.layer.shadowOffset = CGSizeMake(-15, 0);
+    self.whiteBackgroundView.layer.shadowRadius = 5;
+    self.whiteBackgroundView.layer.shadowOpacity = 0.7;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)heartButtonClicked:(UIButton *)sender {
+    NSLog(@"%@", [sender.imageView accessibilityIdentifier]);
+    if ([[sender.imageView accessibilityIdentifier] isEqualToString:@"HeartWhite"]) {
+        UIImageView *newImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeartRed"]];
+        [sender setImage:newImageView.image forState:UIControlStateNormal];
+    }else{
+        UIImageView *newImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeartWhite"]];
+        [sender setImage:newImageView.image forState:UIControlStateNormal];
+    }
 }
 
 /*
