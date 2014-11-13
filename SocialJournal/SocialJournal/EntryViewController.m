@@ -112,31 +112,6 @@
     return 100;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"All Comments";
-}
-
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
-    UILabel *tempLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 22)];
-    
-    [headerView setBackgroundColor:[UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0]];
-    tempLabel.backgroundColor= [UIColor clearColor];
-    tempLabel.textColor = [UIColor colorWithRed:(224/255.0) green:(22/255.0) blue:(22/255.0) alpha:1.0];
-    tempLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
-    tempLabel.textAlignment = NSTextAlignmentCenter;
-    if (section == 0) {
-        tempLabel.text = @"All Comments";
-    }
-    
-    [headerView addSubview:tempLabel];
-    
-    
-    return headerView;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Comment clicked!");
