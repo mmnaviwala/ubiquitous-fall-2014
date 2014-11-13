@@ -129,6 +129,9 @@
     eachEntry[@"username"] = [PFUser currentUser];
 //    eachEntry[@"location"] = [PFGeoPoint geoPointWithLatitude:40.0 longitude:40.0];
     [eachEntry saveEventually];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Your journal entry has been saved" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
 }
 
 
