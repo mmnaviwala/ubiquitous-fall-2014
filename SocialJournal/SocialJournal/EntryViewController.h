@@ -11,5 +11,7 @@
 
 @interface EntryViewController : UIViewController
 @property PFObject *entry;
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSArray *pfComments;
 
 @end

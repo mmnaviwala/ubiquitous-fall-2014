@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextField;
+@property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 @end
 
 @implementation EntryViewController
@@ -27,8 +28,6 @@
     self.whiteBackgroundView.layer.shadowOpacity = 0.7;
     self.titleTextField.text = self.entry[@"title"];
     self.contentTextField.text = self.entry[@"entry"];
-    
-
 }
 
 - (void)didReceiveMemoryWarning {

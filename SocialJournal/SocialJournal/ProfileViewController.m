@@ -20,12 +20,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *dataFromParse;
 @property PFObject *currentEntry;
+@property NSMutableArray *comments;
 @end
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.comments = [NSMutableArray new];
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0];
@@ -128,8 +130,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.currentEntry = [self.dataFromParse objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"ProfileToPost" sender:self];
-    dispatch_async(dispatch_get_main_queue(), ^{});
+    
+    [self.spinner startAnimating];
+    dispatch_queue_t queue = dispatch_get_global_queue(0,0);
+    dispatch_async(queue, ^{
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
+        [query whereKey:@"entry" equalTo:self.currentEntry];
+        self.comments = [[query findObjects] copy];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
+            [self performSegueWithIdentifier:@"ProfileToPost" sender:self];
+        });
+    });
 }
 
 
@@ -141,6 +155,9 @@
     if ([segue.identifier isEqualToString:@"ProfileToPost"]) {
         EntryViewController *entryViewController = segue.destinationViewController;
         entryViewController.entry = self.currentEntry;
+        entryViewController.username = [PFUser currentUser].username;
+        entryViewController.pfComments = [self.comments copy];
+        
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
