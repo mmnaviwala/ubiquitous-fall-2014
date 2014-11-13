@@ -879,6 +879,15 @@
                                     <segue destination="YYe-Tx-l4G" kind="push" identifier="LocationButtonToMapView" id="bM2-Of-pE9"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iyc-hg-LA8">
+                                <rect key="frame" x="147" y="548" width="556" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uj4-kX-kge" id="5rF-uM-q0U"/>
+                                    <outlet property="delegate" destination="uj4-kX-kge" id="jo4-U6-xKH"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
