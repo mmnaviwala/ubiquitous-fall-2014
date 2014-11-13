@@ -21,7 +21,7 @@
 @property NSMutableArray *comments;
 @property NSString *currentUserName;
 
-
+@property (nonatomic, strong) NSMutableArray *searchResult;
 
 @end
 
@@ -60,6 +60,9 @@
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self.spinner stopAnimating];
             [self.tableView reloadData];
+            
+            self.searchResult = [NSMutableArray arrayWithCapacity:[self.dataFromParse count]];
+            
         });
     });
 }
@@ -84,7 +87,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.dataFromParse.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView){
+        return [self.searchResult count];
+    }else{
+        return self.dataFromParse.count;
+    }
 }
 
 
@@ -99,7 +106,15 @@
     
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
-    PFObject *currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
+    PFObject *currentCellObject;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        currentCellObject = [self.searchResult objectAtIndex:indexPath.row];
+    }else{
+        currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
+    }
+    
+    
     PFObject *userCellObject = currentCellObject[@"username"];
     cell.postTitle.text = currentCellObject[@"title"];
     cell.postPreview.text = currentCellObject[@"entry"];
@@ -132,7 +147,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.currentEntry = [self.dataFromParse objectAtIndex:indexPath.row];
+    if (tableView == self.searchDisplayController.searchResultsTableView){
+        self.currentEntry = [self.searchResult objectAtIndex:indexPath.row];
+    }else{
+        self.currentEntry = [self.dataFromParse objectAtIndex:indexPath.row];
+    }
     PFObject *userOfComment = self.currentEntry[@"username"];
     self.currentUserName = userOfComment[@"username"];
     [self.spinner startAnimating];
@@ -148,6 +167,21 @@
         [self.spinner stopAnimating];
         [self performSegueWithIdentifier:@"AllEntriesToJournalDetail" sender:self];
     }];
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.searchResult removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.%K contains[c] %@",@"title", searchText];
+    
+    self.searchResult = [NSMutableArray arrayWithArray: [self.dataFromParse filteredArrayUsingPredicate:resultPredicate]];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return YES;
 }
 
 -(NSString*)getNearestCity :(double)latitude :(double)longitude{
