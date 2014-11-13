@@ -17,6 +17,9 @@
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property NSMutableArray *dataFromParse;
 @property PFObject *currentEntry;
+@property NSMutableArray *usersOfComments;
+@property NSMutableArray *comments;
+@property NSString *currentUserName;
 @end
 
 @implementation AllEntriesTableViewController
@@ -24,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.usersOfComments = [NSMutableArray new];
+    self.comments = [NSMutableArray new];
     //broken white [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     //H [UIColor colorWithRed:(135/255.0) green:(136/255.0) blue:(140/255.0) alpha:1.0];
     //trapped [UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0];
@@ -63,6 +68,8 @@
 
 - (void) fetchDataFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"Entries"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"username"];
     self.dataFromParse = [[query findObjects] copy];
 }
 
@@ -111,8 +118,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.currentEntry = [self.dataFromParse objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"AllEntriesToJournalDetail" sender:self];
-    dispatch_async(dispatch_get_main_queue(), ^{});
+    PFObject *userOfComment = self.currentEntry[@"username"];
+    self.currentUserName = userOfComment[@"username"];
+    [self.spinner startAnimating];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
+    [query whereKey:@"entry" equalTo:self.currentEntry];
+    [query includeKey:@"user"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *queryComments, NSError *error) {
+        for (PFObject *comment in queryComments) {
+            [self.comments addObject:comment];
+            [self.usersOfComments addObject:comment[@"user"]];
+        }
+        [self.spinner stopAnimating];
+        [self performSegueWithIdentifier:@"AllEntriesToJournalDetail" sender:self];
+    }];
 }
 
 
@@ -158,6 +178,9 @@
     if ([segue.identifier isEqualToString:@"AllEntriesToJournalDetail"]) {
         EntryViewController *entryViewController = segue.destinationViewController;
         entryViewController.entry = self.currentEntry;
+        entryViewController.pfComments = [self.comments copy];
+        entryViewController.usersOfComments = [self.usersOfComments copy];
+        entryViewController.username = self.currentUserName;
     }
 
     // Get the new view controller using [segue destinationViewController].

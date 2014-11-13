@@ -906,8 +906,8 @@
                     <navigationItem key="navigationItem" title="All Entries" id="d5C-bn-ZdX"/>
                     <connections>
                         <outlet property="contentTextField" destination="K2F-ah-jb1" id="hoZ-Vl-2n5"/>
-                        <outlet property="tableView" destination="iyc-hg-LA8" id="FbE-wM-siU"/>
                         <outlet property="profileNameLabel" destination="eAY-hT-1uM" id="n9o-RE-ejW"/>
+                        <outlet property="tableView" destination="iyc-hg-LA8" id="FbE-wM-siU"/>
                         <outlet property="tagsTextField" destination="0iY-V3-sTT" id="yib-Xs-AWM"/>
                         <outlet property="titleTextField" destination="Hai-M6-49g" id="qJE-DV-oeO"/>
                         <outlet property="whiteBackgroundView" destination="urB-iJ-21W" id="1LE-6n-0cP"/>

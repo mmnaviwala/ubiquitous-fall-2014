@@ -99,7 +99,8 @@
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
     PFObject *currentCellObject = [self.pfComments objectAtIndex:indexPath.row];
-    cell.userName.text = @"The user name goes here";
+    PFObject *userNameForComment = [self.usersOfComments objectAtIndex:indexPath.row];
+    cell.userName.text = userNameForComment[@"username"];
     cell.commentText.text = currentCellObject[@"content"];
     cell.dateAndCoordinates.text = @"Date and coordinates go here";
     
