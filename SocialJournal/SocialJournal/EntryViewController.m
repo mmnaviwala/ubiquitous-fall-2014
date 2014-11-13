@@ -102,9 +102,10 @@
     
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
-//    PFObject *currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
-//    cell.postTitle.text = currentCellObject[@"title"];
-//    cell.postPreview.text = currentCellObject[@"entry"];
+//    PFObject *currentCellObject = [self.allComments objectAtIndex:indexPath.row];
+    cell.userName.text = @"The user name goes here";
+    cell.commentText.text = @"The actual comment goes here";
+    cell.dateAndCoordinates.text = @"Date and coordinates go here";
     
     return cell;
 }
