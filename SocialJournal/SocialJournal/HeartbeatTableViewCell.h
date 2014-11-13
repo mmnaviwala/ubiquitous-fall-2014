@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HeartbeatTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *postLocation;
 
 @end

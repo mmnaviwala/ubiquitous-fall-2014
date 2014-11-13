@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelDay;
 @property (weak, nonatomic) IBOutlet UILabel *labelMonth;
 @property (weak, nonatomic) IBOutlet UILabel *labelYear;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation DetailViewController
@@ -40,6 +42,15 @@
     }
 }
 
+- (NSString *)deviceLocation {
+    return [NSString stringWithFormat:@"lat: %f lon: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+}
+
+// Location Manager Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    //NSLog(@"%@", [locations lastObject]);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -50,8 +61,15 @@
     self.whiteBackgroundView.layer.shadowOpacity = 0.7;
     [self assignDate];
     
-    
     [self configureView];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [self.locationManager setDelegate:self];
+    [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager startUpdatingLocation];
+    NSLog(@"Device Location: %@", [self deviceLocation]);
 }
 
 - (void) assignDate{
@@ -127,7 +145,8 @@
     eachEntry[@"title"] = self.titleText.text;
     eachEntry[@"entry"] = self.journalEntryTextView.text;
     eachEntry[@"username"] = [PFUser currentUser];
-//    eachEntry[@"location"] = [PFGeoPoint geoPointWithLatitude:40.0 longitude:40.0];
+    eachEntry[@"location"] = [PFGeoPoint geoPointWithLatitude:self.locationManager.location.coordinate.latitude
+                                                    longitude:self.locationManager.location.coordinate.longitude];
     [eachEntry saveEventually];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Your journal entry has been saved" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];

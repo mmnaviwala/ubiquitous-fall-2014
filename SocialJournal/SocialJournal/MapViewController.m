@@ -10,6 +10,7 @@
 
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property CLPlacemark *placmark;
 
 @end
 
@@ -37,16 +38,18 @@
     //[self.mapView setShowsUserLocation:YES];
 }
 
--(void)getNearestCity :(double)latitude :(double)longitude{
+-(NSString*)getNearestCity :(double)latitude :(double)longitude{
+    __block NSString *result;
     CLGeocoder *ceo = [[CLGeocoder alloc]init];
     CLLocation *loc = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
     
     [ceo reverseGeocodeLocation: loc completionHandler:
      ^(NSArray *placemarks, NSError *error) {
          CLPlacemark *placemark = [placemarks objectAtIndex:0];
-         NSLog(@"%@",placemark.locality); // Extract the city name
+         result = placemark.locality; // Extract the city name
         }
      ];
+    return result;
 }
 /*
 #pragma mark - Navigation

@@ -104,8 +104,10 @@
     [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
     NSString *datestring = [dateFormatter stringFromDate:[currentCellObject createdAt]];
     
-    NSString *coordinatesString = @"  |  the coordinates go here as well";
-    cell.postDate.text = [datestring stringByAppendingString:coordinatesString];
+    //NSString *coordinatesString = @"  |  the coordinates go here as well";
+    cell.postDate.text = datestring;//[datestring stringByAppendingString:coordinatesString];
+    
+    cell.postLocation.text = [self getNearestCity:[currentCellObject[@"location"] latitude] :[currentCellObject[@"location"] longitude]];
     
     return cell;
 }
@@ -142,7 +144,21 @@
     }];
 }
 
+-(NSString*)getNearestCity :(double)latitude :(double)longitude{
+    __block NSString *result;
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    CLLocation *loc = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+    
+    [ceo reverseGeocodeLocation: loc completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         CLPlacemark *placemark = [placemarks objectAtIndex:0];
+         result = placemark.locality; // Extract the city name
+         NSLog(@"Locality1: %@", result);
+     }];
+    NSLog(@"Locality2: %@", result);
 
+    return result;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

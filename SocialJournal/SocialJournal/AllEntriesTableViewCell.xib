@@ -14,7 +14,6 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMl-T0-pAc">
-                        <rect key="frame" x="0.0" y="0.0" width="30" height="98"/>
                         <color key="backgroundColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
@@ -47,7 +46,7 @@
                         <color key="textColor" red="0.87843137250000003" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="October 29th, 2014  51° 28' 38&quot; N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rW-LK-uxJ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="October 29th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rW-LK-uxJ">
                         <rect key="frame" x="215" y="-8" width="498" height="44"/>
                         <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="10"/>
                         <color key="textColor" red="0.023529411760000001" green="0.078431372550000003" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,6 +61,12 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultUserBlack" translatesAutoresizingMaskIntoConstraints="NO" id="eGK-EL-ie6">
                         <rect key="frame" x="46" y="12" width="70" height="70"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="51° 28' 38&quot; N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcO-Gi-fUB">
+                        <rect key="frame" x="330" y="-8" width="136" height="44"/>
+                        <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="10"/>
+                        <color key="textColor" red="0.023529411760000001" green="0.078431372550000003" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </tableViewCellContentView>
@@ -69,13 +74,14 @@
                 <outlet property="cellContent" destination="Fex-AY-9DK" id="SWi-fi-bFo"/>
                 <outlet property="postDate" destination="1rW-LK-uxJ" id="hbY-Yg-ja1"/>
                 <outlet property="postFavorite" destination="DCM-nC-bLm" id="nld-YB-n11"/>
+                <outlet property="postLocation" destination="tcO-Gi-fUB" id="H5n-xp-HI0"/>
                 <outlet property="postPreview" destination="mby-uS-qfS" id="ZY9-SA-46e"/>
                 <outlet property="postTags" destination="BT5-AK-U7w" id="vln-dG-Cpg"/>
                 <outlet property="postTitle" destination="kEC-uz-SyP" id="JKV-6V-PAC"/>
                 <outlet property="profilePhoto" destination="eGK-EL-ie6" id="m6O-04-t9Y"/>
                 <outlet property="username" destination="p8W-bI-Oa5" id="IDi-Ta-kmh"/>
             </connections>
-            <point key="canvasLocation" x="240" y="276"/>
+            <point key="canvasLocation" x="240" y="275"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -41,7 +41,7 @@
                         <color key="textColor" red="0.87843137250000003" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="October 29th, 2014  51° 28' 38&quot; N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecj-3k-OWm">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="October 29th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecj-3k-OWm">
                         <rect key="frame" x="215" y="-8" width="498" height="44"/>
                         <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="10"/>
                         <color key="textColor" red="0.023529411760000001" green="0.078431372550000003" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,9 +62,18 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultUserBlack" translatesAutoresizingMaskIntoConstraints="NO" id="1BB-zF-DMx">
                         <rect key="frame" x="46" y="12" width="70" height="70"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="51° 28' 38&quot; N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-Sg-glI">
+                        <rect key="frame" x="368" y="-8" width="498" height="44"/>
+                        <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="10"/>
+                        <color key="textColor" red="0.023529411760000001" green="0.078431372550000003" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="postLocation" destination="Py8-Sg-glI" id="Bh7-ti-P4v"/>
+            </connections>
             <point key="canvasLocation" x="240" y="276"/>
         </tableViewCell>
     </objects>

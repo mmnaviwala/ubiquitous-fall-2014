@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postFavorite;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhoto;
 @property (weak, nonatomic) IBOutlet UIView *cellContent;
+@property (weak, nonatomic) IBOutlet UILabel *postLocation;
 
 @end
