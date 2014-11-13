@@ -96,6 +96,7 @@
     PFObject *currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
     cell.postTitle.text = currentCellObject[@"title"];
     cell.postPreview.text = currentCellObject[@"entry"];
+    cell.username.text = [PFUser currentUser].username;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
