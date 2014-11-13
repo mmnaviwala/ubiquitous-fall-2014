@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *allComments;
 @end
 
@@ -87,7 +88,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //    return self.allComments.count;
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,7 +130,7 @@
     tempLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
     tempLabel.textAlignment = NSTextAlignmentCenter;
     if (section == 0) {
-        tempLabel.text=@"All Comments";
+        tempLabel.text = @"All Comments";
     }
     
     [headerView addSubview:tempLabel];
@@ -142,5 +143,24 @@
 {
     NSLog(@"Comment clicked!");
 }
+
+- (IBAction)showCommentsButtonClicked:(UIButton *)sender
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    if (sender.frame.origin.y > 700) {
+        sender.frame = CGRectMake(147, 506, 556, 44);
+        [sender setTitle:@"Hide Comments" forState:UIControlStateNormal];
+        self.tableView.frame = CGRectMake(147, 548, 556, 220);
+    }else{
+        sender.frame = CGRectMake(147, 724, 556, 44);
+        [sender setTitle:@"Show Comments" forState:UIControlStateNormal];
+        self.tableView.frame = CGRectMake(147, 771, 556, 220);
+    }
+    
+    [UIView commitAnimations];
+}
+
 
 @end

@@ -880,7 +880,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iyc-hg-LA8">
-                                <rect key="frame" x="147" y="548" width="556" height="220"/>
+                                <rect key="frame" x="147" y="771" width="556" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -888,12 +888,25 @@
                                     <outlet property="delegate" destination="uj4-kX-kge" id="jo4-U6-xKH"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ijh-Uq-W7x">
+                                <rect key="frame" x="147" y="724" width="556" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.023529411764705882" green="0.078431372549019607" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Show comments">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showCommentsButtonClicked:" destination="uj4-kX-kge" eventType="touchUpInside" id="mPi-mz-nNo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Entries" id="d5C-bn-ZdX"/>
                     <connections>
                         <outlet property="contentTextField" destination="K2F-ah-jb1" id="hoZ-Vl-2n5"/>
+                        <outlet property="tableView" destination="iyc-hg-LA8" id="FbE-wM-siU"/>
                         <outlet property="tagsTextField" destination="0iY-V3-sTT" id="yib-Xs-AWM"/>
                         <outlet property="titleTextField" destination="Hai-M6-49g" id="qJE-DV-oeO"/>
                         <outlet property="whiteBackgroundView" destination="urB-iJ-21W" id="1LE-6n-0cP"/>
