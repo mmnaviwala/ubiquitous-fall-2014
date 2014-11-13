@@ -484,7 +484,7 @@
                                 <rect key="frame" x="5" y="93" width="134" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kec-91-fij">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Kec-91-fij">
                                         <rect key="frame" x="5" y="3" width="134" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
@@ -522,6 +522,10 @@
                     <navigationItem key="navigationItem" title="New Entry" id="NFf-Ve-gqI"/>
                     <connections>
                         <outlet property="journalEntryTextView" destination="yjD-eF-cuy" id="gwT-6O-99C"/>
+                        <outlet property="labelDay" destination="aYR-r9-XDE" id="hH7-SJ-80K"/>
+                        <outlet property="labelDayName" destination="Kec-91-fij" id="e2S-cO-IYu"/>
+                        <outlet property="labelMonth" destination="G5F-xD-2pN" id="FrI-0B-u2w"/>
+                        <outlet property="labelYear" destination="QsU-07-y7p" id="Io5-cv-E3U"/>
                         <outlet property="titleText" destination="knb-hz-Qsh" id="6c3-wA-vfn"/>
                         <outlet property="whiteBackgroundView" destination="XJb-LV-3wW" id="fYC-Jm-4hC"/>
                     </connections>

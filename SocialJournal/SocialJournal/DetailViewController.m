@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextView *journalEntryTextView;
 @property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *labelDayName;
+@property (weak, nonatomic) IBOutlet UILabel *labelDay;
+@property (weak, nonatomic) IBOutlet UILabel *labelMonth;
+@property (weak, nonatomic) IBOutlet UILabel *labelYear;
 @end
 
 @implementation DetailViewController
@@ -44,9 +48,27 @@
     self.whiteBackgroundView.layer.shadowOffset = CGSizeMake(-15, 0);
     self.whiteBackgroundView.layer.shadowRadius = 5;
     self.whiteBackgroundView.layer.shadowOpacity = 0.7;
+    [self assignDate];
     
     
     [self configureView];
+}
+
+- (void) assignDate{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"EEEE"];
+    self.labelDayName.text = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [dateFormatter setDateFormat:@"dd"];
+    self.labelDay.text = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [dateFormatter setDateFormat:@"MMMM"];
+    self.labelMonth.text = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [dateFormatter setDateFormat:@"YYYY"];
+    self.labelYear.text = [dateFormatter stringFromDate:[NSDate date]];
 }
 
 /*
