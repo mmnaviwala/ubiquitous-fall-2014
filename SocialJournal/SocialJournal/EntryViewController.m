@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 @end
 
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.profileNameLabel.text = self.username;
     self.whiteBackgroundView.layer.masksToBounds = NO;
     self.whiteBackgroundView.layer.shadowOffset = CGSizeMake(-15, 0);
     self.whiteBackgroundView.layer.shadowRadius = 5;
@@ -62,7 +63,6 @@
         newComment[@"user"] = [PFUser currentUser];
         newComment[@"entry"] = self.entry;
         [newComment saveEventually];
-        NSLog(@"Comment: %@", self.commentAlertTextField.text);
     }
 }
 
@@ -84,8 +84,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.allComments.count;
-    return 3;
+    return self.pfComments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,9 +98,9 @@
     
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
-//    PFObject *currentCellObject = [self.allComments objectAtIndex:indexPath.row];
+    PFObject *currentCellObject = [self.pfComments objectAtIndex:indexPath.row];
     cell.userName.text = @"The user name goes here";
-    cell.commentText.text = @"The actual comment goes here";
+    cell.commentText.text = currentCellObject[@"content"];
     cell.dateAndCoordinates.text = @"Date and coordinates go here";
     
     return cell;
