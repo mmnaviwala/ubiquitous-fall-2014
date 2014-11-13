@@ -100,6 +100,13 @@
     cell.postTitle.text = currentCellObject[@"title"];
     cell.postPreview.text = currentCellObject[@"entry"];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
+    NSString *datestring = [dateFormatter stringFromDate:[currentCellObject createdAt]];
+    
+    NSString *coordinatesString = @"  |  the coordinates go here as well";
+    cell.postDate.text = [datestring stringByAppendingString:coordinatesString];
+    
     return cell;
 }
 

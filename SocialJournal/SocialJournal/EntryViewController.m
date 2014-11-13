@@ -125,7 +125,7 @@
     PFObject *userNameForComment = [self.usersOfComments objectAtIndex:indexPath.row];
     cell.userName.text = userNameForComment[@"username"];
     cell.commentText.text = currentCellObject[@"content"];
-    cell.dateAndCoordinates.text = @"Date and coordinates go here";
+    cell.dateAndCoordinates.text = @"Coordinates go here";
     
     return cell;
 }
