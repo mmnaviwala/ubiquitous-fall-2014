@@ -7,6 +7,7 @@
 //
 
 #import "EntryViewController.h"
+#import "CommentTableViewCell.h"
 
 @interface EntryViewController ()
 @property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
@@ -74,5 +75,90 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//    return self.allComments.count;
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentTableViewCell *cell = (CommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell"];
+    if (cell == nil)
+    {
+        NSArray *xib = [[NSBundle mainBundle] loadNibNamed:@"CommentTableViewCell" owner:self options:nil];
+        cell = [xib objectAtIndex:0];
+    }
+    
+    cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
+    
+//    PFObject *currentCellObject = [self.allComments objectAtIndex:indexPath.row];
+    cell.userName.text = @"The user name goes here";
+    cell.commentText.text = @"The actual comment goes here";
+    cell.dateAndCoordinates.text = @"Date and coordinates go here";
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"All Comments";
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
+    UILabel *tempLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 22)];
+    
+    [headerView setBackgroundColor:[UIColor colorWithRed:(49/255.0) green:(50/255.0) blue:(51/255.0) alpha:1.0]];
+    tempLabel.backgroundColor= [UIColor clearColor];
+    tempLabel.textColor = [UIColor colorWithRed:(224/255.0) green:(22/255.0) blue:(22/255.0) alpha:1.0];
+    tempLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+    tempLabel.textAlignment = NSTextAlignmentCenter;
+    if (section == 0) {
+        tempLabel.text = @"All Comments";
+    }
+    
+    [headerView addSubview:tempLabel];
+    
+    
+    return headerView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Comment clicked!");
+}
+
+- (IBAction)showCommentsButtonClicked:(UIButton *)sender
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    if (sender.frame.origin.y > 700) {
+        sender.frame = CGRectMake(147, 506, 556, 44);
+        [sender setTitle:@"Hide Comments" forState:UIControlStateNormal];
+        self.tableView.frame = CGRectMake(147, 548, 556, 220);
+    }else{
+        sender.frame = CGRectMake(147, 724, 556, 44);
+        [sender setTitle:@"Show Comments" forState:UIControlStateNormal];
+        self.tableView.frame = CGRectMake(147, 771, 556, 220);
+    }
+    
+    [UIView commitAnimations];
+}
+
 
 @end

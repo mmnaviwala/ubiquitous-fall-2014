@@ -51,6 +51,8 @@
 		9DDE8A131A12211E0079E8FA /* MyFollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE8A111A12211E0079E8FA /* MyFollowersTableViewCell.xib */; };
 		AC034C9C1A12B323003A22BD /* SignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC034C9B1A12B323003A22BD /* SignInController.m */; };
 		AC034C9F1A12B4C3003A22BD /* RegisterationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC034C9E1A12B4C3003A22BD /* RegisterationController.m */; };
+		ACAF5F071A142D5D00D74420 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAF5F061A142D5D00D74420 /* CommentTableViewCell.m */; };
+		ACAF5F0A1A142E1900D74420 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAF5F091A142E1900D74420 /* CommentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,9 @@
 		AC034C9B1A12B323003A22BD /* SignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInController.m; sourceTree = "<group>"; };
 		AC034C9D1A12B4C3003A22BD /* RegisterationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterationController.h; sourceTree = "<group>"; };
 		AC034C9E1A12B4C3003A22BD /* RegisterationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterationController.m; sourceTree = "<group>"; };
+		ACAF5F061A142D5D00D74420 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		ACAF5F081A142D9E00D74420 /* CommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		ACAF5F091A142E1900D74420 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +218,9 @@
 				9D612B361A01D186004A3D63 /* AllEntriesTableViewCell.xib */,
 				9D612B3C1A01D25D004A3D63 /* AllEntriesTableViewCell.h */,
 				9D612B3E1A01D2A1004A3D63 /* AllEntriesTableViewCell.m */,
+				ACAF5F061A142D5D00D74420 /* CommentTableViewCell.m */,
+				ACAF5F091A142E1900D74420 /* CommentTableViewCell.xib */,
+				ACAF5F081A142D9E00D74420 /* CommentTableViewCell.h */,
 				9D612B3A1A01D1B8004A3D63 /* AllEntriesTableViewController.m */,
 				9D612B3D1A01D28F004A3D63 /* AllEntriesTableViewController.h */,
 				003B1C3519F1DC5D008E53B5 /* Main.storyboard */,
@@ -366,6 +374,7 @@
 				003B1C3C19F1DC5D008E53B5 /* LaunchScreen.xib in Resources */,
 				9D612B391A01D186004A3D63 /* AllEntriesTableViewCell.xib in Resources */,
 				29C6C58B1A12740E0092A311 /* TopTagsTableViewCell.xib in Resources */,
+				ACAF5F0A1A142E1900D74420 /* CommentTableViewCell.xib in Resources */,
 				003B1C3919F1DC5D008E53B5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +410,7 @@
 				003B1C2B19F1DC5D008E53B5 /* AppDelegate.m in Sources */,
 				9D4F5E2A1A134DC20006BF52 /* ProfileViewController.m in Sources */,
 				9DDE8A121A12211E0079E8FA /* MyFollowersTableViewCell.m in Sources */,
+				ACAF5F071A142D5D00D74420 /* CommentTableViewCell.m in Sources */,
 				9DB667561A10062B004BCF88 /* TopTagsTableViewController.m in Sources */,
 				003B1C2819F1DC5D008E53B5 /* main.m in Sources */,
 				003B1C2E19F1DC5D008E53B5 /* SocialJournal.xcdatamodeld in Sources */,

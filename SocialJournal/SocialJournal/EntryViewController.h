@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface EntryViewController : UIViewController
+@interface EntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property PFObject *entry;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSArray *pfComments;

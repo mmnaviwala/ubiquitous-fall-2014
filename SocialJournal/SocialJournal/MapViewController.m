@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showMapLocation:10.000 :0.000];
+    [self getNearestCity:29.76 :-95.36];
+    [self showMapLocation:29.76 :-95.36];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +35,18 @@
     annotation.coordinate = location;
     [self.mapView addAnnotation:annotation];
     //[self.mapView setShowsUserLocation:YES];
+}
+
+-(void)getNearestCity :(double)latitude :(double)longitude{
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    CLLocation *loc = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+    
+    [ceo reverseGeocodeLocation: loc completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         CLPlacemark *placemark = [placemarks objectAtIndex:0];
+         NSLog(@"%@",placemark.locality); // Extract the city name
+        }
+     ];
 }
 /*
 #pragma mark - Navigation
