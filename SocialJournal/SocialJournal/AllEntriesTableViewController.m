@@ -20,6 +20,9 @@
 @property NSMutableArray *usersOfComments;
 @property NSMutableArray *comments;
 @property NSString *currentUserName;
+
+
+
 @end
 
 @implementation AllEntriesTableViewController
@@ -97,8 +100,11 @@
     cell.tintColor = [UIColor colorWithRed:(242/255.0) green:(242/255.0) blue:(242/255.0) alpha:1.0];
     
     PFObject *currentCellObject = [self.dataFromParse objectAtIndex:indexPath.row];
+    PFObject *userCellObject = currentCellObject[@"username"];
     cell.postTitle.text = currentCellObject[@"title"];
     cell.postPreview.text = currentCellObject[@"entry"];
+    cell.username.text = userCellObject[@"username"];
+    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
