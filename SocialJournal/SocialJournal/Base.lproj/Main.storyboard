@@ -819,7 +819,7 @@
                                 <rect key="frame" x="3" y="84" width="134" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KfN-oC-eI8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="KfN-oC-eI8">
                                         <rect key="frame" x="5" y="3" width="134" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
@@ -906,6 +906,10 @@
                     <navigationItem key="navigationItem" title="All Entries" id="d5C-bn-ZdX"/>
                     <connections>
                         <outlet property="contentTextField" destination="K2F-ah-jb1" id="hoZ-Vl-2n5"/>
+                        <outlet property="labelDay" destination="O7N-py-q9s" id="9mY-3Q-iAl"/>
+                        <outlet property="labelDayName" destination="KfN-oC-eI8" id="azv-aA-KAS"/>
+                        <outlet property="labelMonth" destination="Cv0-Sw-t9c" id="sxD-I9-RRp"/>
+                        <outlet property="labelYear" destination="4JY-Ke-0vH" id="6sx-Kj-IJ2"/>
                         <outlet property="profileNameLabel" destination="eAY-hT-1uM" id="n9o-RE-ejW"/>
                         <outlet property="tableView" destination="iyc-hg-LA8" id="FbE-wM-siU"/>
                         <outlet property="tagsTextField" destination="0iY-V3-sTT" id="yib-Xs-AWM"/>

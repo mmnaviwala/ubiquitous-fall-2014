@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelDayName;
+@property (weak, nonatomic) IBOutlet UILabel *labelDay;
+@property (weak, nonatomic) IBOutlet UILabel *labelMonth;
+@property (weak, nonatomic) IBOutlet UILabel *labelYear;
+
 @end
 
 @implementation EntryViewController
@@ -30,6 +35,24 @@
     self.whiteBackgroundView.layer.shadowOpacity = 0.7;
     self.titleTextField.text = self.entry[@"title"];
     self.contentTextField.text = self.entry[@"entry"];
+    [self assignDate];
+}
+
+- (void) assignDate{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"EEEE"];
+    self.labelDayName.text = [dateFormatter stringFromDate:[self.entry createdAt]];
+    
+    [dateFormatter setDateFormat:@"dd"];
+    self.labelDay.text = [dateFormatter stringFromDate:[self.entry createdAt]];
+    
+    [dateFormatter setDateFormat:@"MMMM"];
+    self.labelMonth.text = [dateFormatter stringFromDate:[self.entry createdAt]];
+    
+    [dateFormatter setDateFormat:@"YYYY"];
+    self.labelYear.text = [dateFormatter stringFromDate:[self.entry createdAt]];
 }
 
 - (void)didReceiveMemoryWarning {
