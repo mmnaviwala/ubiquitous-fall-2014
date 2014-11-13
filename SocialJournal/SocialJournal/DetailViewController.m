@@ -105,6 +105,7 @@
     eachEntry[@"title"] = self.titleText.text;
     eachEntry[@"entry"] = self.journalEntryTextView.text;
     eachEntry[@"username"] = [PFUser currentUser];
+//    eachEntry[@"location"] = [PFGeoPoint geoPointWithLatitude:40.0 longitude:40.0];
     [eachEntry saveEventually];
 }
 
