@@ -52,6 +52,8 @@
     self.followersLabel.textColor = [UIColor whiteColor];
     self.notificationsLabel.textColor = [UIColor whiteColor];
     
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.tableView.separatorColor = [UIColor clearColor];
     
     
     
