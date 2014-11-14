@@ -54,7 +54,7 @@
     
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.tableView.separatorColor = [UIColor clearColor];
-    
+    [self.splitViewController setValue:[NSNumber numberWithFloat:100.0] forKey:@"_masterColumnWidth"];
     
     
 }
