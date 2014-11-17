@@ -10,9 +10,18 @@ import UIKit
 
 class SideBarTableViewController: UITableViewController {
     
-
+    
+    var menuItems:[(name: String, image: UIImage!)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuItems.insert(("Profile", UIImage(named: "AnonDawg")), atIndex: 0)
+        menuItems.insert(("Feed", UIImage(named: "feedIcon")), atIndex: 1)
+        menuItems.insert(("Search", UIImage(named: "searchIcon")), atIndex: 2)
+        menuItems.insert(("Notifications", UIImage(named: "bellIcon")), atIndex: 3)
+        menuItems.insert(("Settings", UIImage(named: "gearIcon")), atIndex: 4)
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,26 +39,30 @@ class SideBarTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return menuItems.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("sideBarCell", forIndexPath: indexPath) as UITableViewCell
+        cell.imageView.image = menuItems[indexPath.row].1
+        cell.imageView.layer.cornerRadius = 10
+        cell.imageView.layer.borderWidth = 2
+        cell.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.imageView.clipsToBounds = true
+        cell.textLabel.text = menuItems[indexPath.row].0
+        cell.backgroundColor = UIColor(red: 140, green: 168, blue: 41, alpha: 1)
+        
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
