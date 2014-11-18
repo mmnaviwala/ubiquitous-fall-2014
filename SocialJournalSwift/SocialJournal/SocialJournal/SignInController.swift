@@ -48,7 +48,9 @@ class SignInController: UIViewController {
             if user != nil {
                 self.basicAnimation()
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                    self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("swRevealController") as UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
                 });
                 // Do stuff after successful login.
             } else {
