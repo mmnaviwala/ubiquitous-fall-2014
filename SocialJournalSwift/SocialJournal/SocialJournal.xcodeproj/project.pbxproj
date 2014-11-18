@@ -20,6 +20,8 @@
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
 		AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5731A195F8100BE697D /* SignInController.swift */; };
 		AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */; };
+		AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */; };
+		AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AC9DE5731A195F8100BE697D /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionViewCell.swift; sourceTree = "<group>"; };
+		AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 				AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */,
 				AC9DE5731A195F8100BE697D /* SignInController.swift */,
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
+				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
+				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				008CD4FC1A1930270024BB9A /* MainCollectionViewController.swift */,
@@ -239,11 +245,13 @@
 			files = (
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
 				008CD4FD1A1930270024BB9A /* MainCollectionViewController.swift in Sources */,
+				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
 				008CD4D71A192DB50024BB9A /* AppDelegate.swift in Sources */,
 				AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */,
 				AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */,
 				008CD4F91A192DCA0024BB9A /* SWRevealViewController.m in Sources */,
+				AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */,
 				AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */,
 				008CD4FF1A1934220024BB9A /* HamburgerButton.swift in Sources */,
 			);
