@@ -13,6 +13,9 @@ class SignInController: UIViewController {
     @IBOutlet weak var smallImage: UIImageView!
     @IBOutlet weak var whiteView: UIView!
     
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,12 +35,23 @@ class SignInController: UIViewController {
 //            })
 //        })
 
-        let delayTime = 0.7
+//        let delayTime = 0.7
+//        
+//        basicAnimation()
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+//            self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+//        });
+//        
+        PFUser.logInWithUsernameInBackground(usernameTextField.text, password:passwordTextField.text) {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user != nil {
+                self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+                // Do stuff after successful login.
+            } else {
+                // The login failed. Check error to see why.
+            }
+        }
         
-        basicAnimation()
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-            self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
-        });
     }
     
     func basicAnimation() {

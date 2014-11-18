@@ -427,7 +427,9 @@
                     <navigationItem key="navigationItem" id="rPr-Qa-iOD"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="passwordTextField" destination="nh4-xe-J9q" id="0Kc-RD-gXH"/>
                         <outlet property="smallImage" destination="fWK-pF-gve" id="gbC-HK-8or"/>
+                        <outlet property="usernameTextField" destination="fb4-hm-Jv5" id="QvZ-cA-NYW"/>
                         <outlet property="whiteView" destination="bSI-KA-uXd" id="Ztd-gT-8Ut"/>
                     </connections>
                 </viewController>
