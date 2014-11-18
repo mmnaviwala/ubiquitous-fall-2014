@@ -41,11 +41,15 @@ class SignInController: UIViewController {
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
 //            self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
 //        });
-//        
+
+        
         PFUser.logInWithUsernameInBackground(usernameTextField.text, password:passwordTextField.text) {
             (user: PFUser!, error: NSError!) -> Void in
             if user != nil {
-                self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+                self.basicAnimation()
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+                });
                 // Do stuff after successful login.
             } else {
                 // The login failed. Check error to see why.
