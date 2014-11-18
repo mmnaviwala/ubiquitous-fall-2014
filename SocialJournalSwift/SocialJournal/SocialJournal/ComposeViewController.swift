@@ -26,12 +26,18 @@ class ComposeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func postNewEntry() {
+//        var newPost = PFObject(className: "Entry")
+//        newPost["content"] = <SomeContentField>
+//        newPost["user"] = PFUser.currentUser()
+//        newPost["title"] = <SomeTitleField>
+//        // add for geolat and geolong
+//        //add for image and video
+    }
     
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
