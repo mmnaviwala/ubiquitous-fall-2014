@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="26X-xq-UXv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -15,7 +15,7 @@
                     </view>
                     <connections>
                         <segue destination="8gc-JE-RtH" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="O1c-5D-6Ba"/>
-                        <segue destination="llj-Ak-r2W" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="yiM-i1-kpL"/>
+                        <segue destination="Om0-h5-ZLX" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="rWJ-xo-X90"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -55,7 +55,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="llj-Ak-r2W" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="poS-EF-a9Q"/>
+                                            <segue destination="Om0-h5-ZLX" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hYT-zi-chh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="110" id="JXr-jC-X17">
@@ -287,22 +287,6 @@
             </objects>
             <point key="canvasLocation" x="3255" y="-3557"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="H3q-28-MAl">
-            <objects>
-                <navigationController id="llj-Ak-r2W" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7aK-Zp-3Wg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="L6l-lm-KXi" kind="relationship" relationship="rootViewController" id="jax-s7-QbZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uoW-id-x6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1133" y="2130"/>
-        </scene>
         <!--Profile View Controller-->
         <scene sceneID="O7G-At-A7U">
             <objects>
@@ -310,7 +294,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ZC5-ea-k27">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="1" id="SRb-eP-Scf">
                             <size key="itemSize" width="365" height="300"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -380,7 +363,106 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdg-F6-e4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="2130"/>
+            <point key="canvasLocation" x="3280" y="2226"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="XXy-pI-ZpT">
+            <objects>
+                <viewController id="KnP-Dv-HUE" customClass="ProfileViewController" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IyF-8L-rKX">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lake" id="XZO-ii-vP0">
+                                <rect key="frame" x="0.0" y="-7" width="768" height="967"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="QKd-0u-dyh">
+                                <rect key="frame" x="16" y="270" width="736" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Following"/>
+                                    <segment title="Followers"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentClicked:" destination="KnP-Dv-HUE" eventType="valueChanged" id="a5Q-bW-wLb"/>
+                                </connections>
+                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treeSunsetBlur" id="XAc-SV-LAO">
+                                <rect key="frame" x="309" y="26" width="170" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JFz-vu-iqW">
+                                <rect key="frame" x="0.0" y="324" width="768" height="636"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="40" minimumInteritemSpacing="1" id="akG-Ui-eWN">
+                                    <size key="itemSize" width="200" height="250"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <visualEffectView key="backgroundView" opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" id="foy-d5-kpA">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="636"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CY5-1L-jAh">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="636"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="light"/>
+                                </visualEffectView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="b1e-58-jjb" customClass="collectionViewCell" customModule="SocialJournal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treeSunsetBlur" id="un4-K0-QV8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999984" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@userName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7bM-vn-eSG">
+                                                    <rect key="frame" x="0.0" y="200" width="200" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="userNameLabel" destination="7bM-vn-eSG" id="4ke-tU-CId"/>
+                                            <outlet property="userProfilePicture" destination="un4-K0-QV8" id="Uue-ZH-3pC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@daBaws" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Qx-9U-WZG">
+                                <rect key="frame" x="266" y="204" width="237" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="dhD-zC-KI3"/>
+                    <connections>
+                        <outlet property="currentUserName" destination="1Qx-9U-WZG" id="rwJ-dP-RGW"/>
+                        <outlet property="currentUserProfilePicture" destination="XAc-SV-LAO" id="AEm-qC-qHf"/>
+                        <outlet property="theCollectionView" destination="JFz-vu-iqW" id="i4q-OS-y5v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3r-ae-W0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2271" y="2226"/>
         </scene>
         <!--Sign In Controller-->
         <scene sceneID="86E-pc-28C">
@@ -641,6 +723,24 @@
             </objects>
             <point key="canvasLocation" x="-135" y="-1013"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rjs-9m-rFe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Om0-h5-ZLX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t2n-S4-LWK">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KnP-Dv-HUE" kind="relationship" relationship="rootViewController" id="ce0-5R-9At"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecB-dI-66k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1133" y="2210"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AnonDawg" width="215" height="215"/>
@@ -659,6 +759,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yiM-i1-kpL"/>
+        <segue reference="hYT-zi-chh"/>
     </inferredMetricsTieBreakers>
 </document>

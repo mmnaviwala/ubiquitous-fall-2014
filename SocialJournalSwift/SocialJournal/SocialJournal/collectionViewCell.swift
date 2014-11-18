@@ -9,10 +9,9 @@
 import UIKit
 
 class collectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var previewText: UILabel!
-    @IBOutlet weak var whiteView: UIView!
-    @IBOutlet weak var headerImage: UIImageView!
+    
+    
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
     
 //    override func viewDidLoad() {

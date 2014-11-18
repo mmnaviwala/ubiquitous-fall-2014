@@ -9,10 +9,14 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    @IBOutlet weak var currentUserProfilePicture: UIImageView!
+    @IBOutlet weak var currentUserName: UILabel!
     
     var button: HamburgerButton! = nil
     @IBOutlet weak var theCollectionView: UICollectionView!
-    var titleArray = ["So this programmer goes out on a date with a hot chick", "What is the difference between snowmen and snowwomen? Snowballs", "What do you call a bear with no teeth? A gummy bear", "How do astronomers organize a party? They planet", "Whats the object-oriented way to become wealthy? Inheritance", "How many prolog programmers does it take to change a lightbulb? Yes", "To understand what recursion is, you must first understand recursion."]
+    var currentCollectionViewDataArray = [""]
+    var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
+    var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         theCollectionView.delegate = self
         theCollectionView.dataSource = self
+        
+        currentCollectionViewDataArray = followingArray // following is the default selection
+        
+        currentUserProfilePicture.layer.cornerRadius = currentUserProfilePicture.frame.size.width / 2;
+        currentUserProfilePicture.clipsToBounds = true;
+        currentUserProfilePicture.layer.borderWidth = 6.0
+        currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
     }
     
     func toggle(sender: AnyObject!) {
@@ -42,32 +53,30 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func segmentClicked(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            println("Following users")
+            currentCollectionViewDataArray = followingArray
+        case 1:
+            println("Followers")
+            currentCollectionViewDataArray = followersArray
+        default:
+            break;
+        }
+        theCollectionView.reloadData()
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleArray.count
+        return currentCollectionViewDataArray.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as collectionViewCell
-        cell.title.text = titleArray[indexPath.row]
-        cell.previewText.text = "The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex."
-        // cell.layer.cornerRadius = 10
-        // cell.layer.borderWidth = 1.0
-        // cell.layer.borderColor = UIColor.grayColor().CGColor;
-        cell.layer.masksToBounds = false
-        cell.layer.shadowOffset = CGSizeMake(-5, 5);
-        cell.layer.shadowRadius = 5;
-        cell.layer.shadowOpacity = 0.7;
-        
-        cell.userProfilePicture.layer.cornerRadius = cell.userProfilePicture.frame.size.width / 2;
-        cell.userProfilePicture.clipsToBounds = true;
-        cell.userProfilePicture.layer.borderWidth = 3.0
-        cell.userProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
-        
-        var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
-        gradientMaskLayer.frame = cell.whiteView.bounds
-        gradientMaskLayer.colors = [UIColor.clearColor().CGColor!, UIColor.blackColor().CGColor!]
-        gradientMaskLayer.locations = [0.0, 0.05]
-        cell.whiteView.layer.mask = gradientMaskLayer
+        cell.userNameLabel.text = currentCollectionViewDataArray[indexPath.row]
+         cell.layer.cornerRadius = 6
+         cell.layer.borderWidth = 1.0
+         cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
         
         return cell
     }
