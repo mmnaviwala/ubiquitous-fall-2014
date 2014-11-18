@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007435A01A1B7E8F0013A576 /* RegisterViewController.swift */; };
 		0087BB0B1A1B0F4F00E08E2F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB091A1B0F4F00E08E2F /* Bolts.framework */; };
 		0087BB0C1A1B0F4F00E08E2F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB0A1A1B0F4F00E08E2F /* Parse.framework */; };
 		0087BB0E1A1B0F9C00E08E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB0D1A1B0F9C00E08E2F /* AudioToolbox.framework */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		007435A01A1B7E8F0013A576 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0087BB091A1B0F4F00E08E2F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0087BB0A1A1B0F4F00E08E2F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0087BB0D1A1B0F9C00E08E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -164,6 +166,7 @@
 				008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */,
 				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
 				008CD4D41A192DB50024BB9A /* Supporting Files */,
+				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */,
 				AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */,
 				00CB83971A1AFD2D000A613F /* SettingsViewController.swift in Sources */,
+				007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */,
 				008CD4F91A192DCA0024BB9A /* SWRevealViewController.m in Sources */,
 				AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */,
 				AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */,
