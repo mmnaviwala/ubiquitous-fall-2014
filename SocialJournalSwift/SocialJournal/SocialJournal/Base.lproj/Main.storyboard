@@ -206,22 +206,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pr3-gE-bbY">
-                                <rect key="frame" x="16" y="314" width="736" height="690"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="La0-IW-IXO" id="Ko4-wN-XQJ"/>
-                                    <outlet property="delegate" destination="La0-IW-IXO" id="4Na-sB-CZC"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iqR-tU-whL"/>
-                    <connections>
-                        <outlet property="tableView" destination="pr3-gE-bbY" id="vCz-T6-R2d"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaE-lL-4su" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

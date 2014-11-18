@@ -8,12 +8,8 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ComposeViewController: UIViewController {
     var button: HamburgerButton! = nil
-    
-    @IBOutlet
-    var tableView: UITableView!
-    var items: [String] = ["We", "Heart", "Swift"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +25,6 @@ class ComposeViewController: UIViewController, UITableViewDataSource, UITableVie
 
 
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        verticallyCenterTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,38 +45,5 @@ class ComposeViewController: UIViewController, UITableViewDataSource, UITableVie
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        
-        cell.textLabel.text = self.items[indexPath.row]
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
-    }
-    
-    func verticallyCenterTableView() {
-        self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight|UIViewAutoresizing.FlexibleWidth
-        var contentSize = self.tableView.contentSize
-        var boundsSize = self.tableView.bounds.size
-        var yOffset:CGFloat = 0.0
-        if (contentSize.height < boundsSize.height){
-            yOffset = floor((boundsSize.height - contentSize.height)/3)
-        }
-        // self.tableView.contentOffset = CGPointMake(0, yOffset);
-        self.tableView.contentInset = UIEdgeInsets(top: yOffset, left: 0, bottom: 0, right: 0)
-
-    }
 
 }
