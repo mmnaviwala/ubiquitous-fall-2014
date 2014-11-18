@@ -9,6 +9,9 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var smallImage: UIImageView!
+    @IBOutlet weak var whiteView: UIView!
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -25,8 +28,42 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func registerButtonPushed(sender: UIButton) {
+        if !verifyFields() {
+            //pop alertView or notify user
+            return
+        }
+        var user = PFUser()
+        user.username = usernameTextField.text
+        user.password = passwordTextField.text
+        
+        user.signUpInBackgroundWithBlock {
+            (succeeded: Bool!, error: NSError!) -> Void in
+            if error == nil {
+                self.basicAnimation()
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
+                });
+                println(PFUser.currentUser().username)
+            } else {
+                let errorString = error.userInfo!["error"] as NSString
+                // Show the errorString somewhere and let the user try again.
+            }
+        }
     }
     
+    func verifyFields() -> Bool {
+        return (usernameTextField.text != nil && passwordTextField.text != nil && passwordTextField.text == confirmPasswordTextField.text)
+    }
+    
+    func basicAnimation() {
+        self.whiteView.alpha = 0
+        self.whiteView.layer.zPosition = 10 // make sure the white view is on the very top
+        UIView.animateWithDuration(0.7, delay: 0.0, options: .CurveEaseOut, animations: {
+            self.whiteView.alpha = 1
+            }, completion: { finished in
+                // do something for completion of needed
+        })
+    }
 
     /*
     // MARK: - Navigation

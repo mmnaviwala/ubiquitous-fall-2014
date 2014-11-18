@@ -634,7 +634,7 @@
                         <outlet property="passwordTextField" destination="9CO-wx-0jr" id="Edy-fn-f1P"/>
                         <outlet property="smallImage" destination="pia-qV-fNS" id="IyY-IN-xSG"/>
                         <outlet property="usernameTextField" destination="cMp-pa-u90" id="AoI-HS-FN0"/>
-                        <outlet property="whiteView" destination="Yzw-qt-efP" id="3Wd-hM-cxF"/>
+                        <outlet property="whiteView" destination="Yzw-qt-efP" id="P3Y-g3-pHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v75-nm-dBx" sceneMemberID="firstResponder"/>
