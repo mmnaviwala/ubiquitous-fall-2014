@@ -15,7 +15,6 @@
 		008CD4ED1A192DB50024BB9A /* SocialJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CD4EC1A192DB50024BB9A /* SocialJournalTests.swift */; };
 		008CD4F91A192DCA0024BB9A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008CD4F81A192DCA0024BB9A /* SWRevealViewController.m */; };
 		008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */; };
-		008CD4FD1A1930270024BB9A /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CD4FC1A1930270024BB9A /* MainCollectionViewController.swift */; };
 		008CD4FF1A1934220024BB9A /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CD4FE1A1934220024BB9A /* HamburgerButton.swift */; };
 		00CB83971A1AFD2D000A613F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CB83961A1AFD2D000A613F /* SettingsViewController.swift */; };
 		00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */; };
@@ -52,7 +51,6 @@
 		008CD4F71A192DCA0024BB9A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		008CD4F81A192DCA0024BB9A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
-		008CD4FC1A1930270024BB9A /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		008CD4FE1A1934220024BB9A /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerButton.swift; sourceTree = "<group>"; };
 		00CB83961A1AFD2D000A613F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
-				008CD4FC1A1930270024BB9A /* MainCollectionViewController.swift */,
 				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
 				008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */,
 				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
@@ -253,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
-				008CD4FD1A1930270024BB9A /* MainCollectionViewController.swift in Sources */,
 				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
 				008CD4D71A192DB50024BB9A /* AppDelegate.swift in Sources */,
