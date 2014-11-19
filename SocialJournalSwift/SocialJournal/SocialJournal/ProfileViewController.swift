@@ -56,10 +56,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            println("Following users")
             currentCollectionViewDataArray = followingArray
         case 1:
-            println("Followers")
             currentCollectionViewDataArray = followersArray
         default:
             break;
@@ -81,4 +79,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
+    @IBAction func addRemovePerson(sender: AnyObject) {
+                if (sender.backgroundImageForState(UIControlState.Normal) == UIImage(named: "AddPerson")){
+            sender.setBackgroundImage(UIImage(named: "RemovePerson"), forState: .Normal)
+            sender.layer.backgroundColor = UIColor.redColor().CGColor
+        }else {
+            sender.setBackgroundImage(UIImage(named: "AddPerson"), forState: .Normal)
+            sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
+        }
+    }
 }
