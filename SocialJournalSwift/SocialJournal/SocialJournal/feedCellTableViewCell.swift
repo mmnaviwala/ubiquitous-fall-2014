@@ -11,16 +11,20 @@ import UIKit
 class feedCellTableViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var usernameBackground: UIImageView!
+    @IBOutlet weak var userProfilePicture: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        usernameBackground.layer.masksToBounds = true
-        usernameBackground.layer.cornerRadius = 10
+        // usernameBackground.layer.masksToBounds = true
+        // usernameBackground.layer.cornerRadius = 10
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10
         
-        self.layer.borderColor = UIColor.whiteColor().CGColor
-        self.layer.borderWidth = 2.0
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderWidth = 1.0
+        
+        self.userProfilePicture.layer.cornerRadius = 50
+        self.userProfilePicture.layer.masksToBounds = true
         // Initialization code
     }
 

@@ -67,12 +67,12 @@ class FeedViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 10.0
+        return 30.0
     }
     
     func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 100
+        return 150
     }
 
     
