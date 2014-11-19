@@ -11,8 +11,19 @@ import UIKit
 class ComposeViewController: UIViewController {
     var button: HamburgerButton! = nil
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var heartImageView: UIImageView!
+    
     @IBOutlet weak var titleText: UITextField!    
     @IBOutlet weak var contentText: UITextView!
+    
+    @IBOutlet weak var addMediaButton: UIButton!
+    
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var heartCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
