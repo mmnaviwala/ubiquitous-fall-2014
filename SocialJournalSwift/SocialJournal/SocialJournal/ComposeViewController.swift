@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     var button: HamburgerButton! = nil
+    var locationManager: CLLocationManager!
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var heartImageView: UIImageView!
@@ -27,6 +29,13 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
 
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
@@ -51,19 +60,32 @@ class ComposeViewController: UIViewController {
     
     @IBAction func postNewEntry(sender: AnyObject) {
         var newPost = PFObject(className: "Entry")
-        newPost["content"] = self.contentText.text;
+        newPost["content"] = self.contentText.text
 //        newPost["user"] = PFUser.currentUser()
-        newPost["title"] = self.titleText.text;
-        println("Title: " + self.titleText.text);
-        println("Content: " + self.contentText.text);
+        newPost["title"] = self.titleText.text
         
-        //add for geolat and geolong
-        //add for image and video
+        println("Title: " + self.titleText.text)
+        println("Content: " + self.contentText.text)
+        
+        //println("Latitude: " + NSString(format: "%@", self.locationManager.location.coordinate.latitude))
+        //println("Longitude: " + self.locationManager.location.coordinate.longitude.description);
+        //println("Nearest City: " + self.contentText.text);
     }
     
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        println("updating location")
+//        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
+//            if placemarks.count > 0 {
+//                let pm = placemarks[0] as CLPlacemark
+//                println(pm.locality);2
+//            }
+//        })
+    }
+    
     /*
     // MARK: - Navigation
 
