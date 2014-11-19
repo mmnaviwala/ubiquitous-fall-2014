@@ -162,6 +162,7 @@
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
 				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
 				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
+				9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */,
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
@@ -169,7 +170,6 @@
 				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
 				008CD4D41A192DB50024BB9A /* Supporting Files */,
 				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
-				9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";

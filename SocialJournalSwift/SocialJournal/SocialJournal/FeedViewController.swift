@@ -39,21 +39,18 @@ class FeedViewController: UIViewController {
     // UITableViewDataSource methods
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 10
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:feedCellTableViewCell?=tableView.dequeueReusableCellWithIdentifier("feedCell") as? feedCellTableViewCell
+        var cell:feedCellTableViewCell=tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         
-        if(indexPath.row == 2) {
-            cell?.testLabel.text = "MEW"
-        }
-        return cell!
+        return cell
     }
     
     // UITableViewDelegate methods
@@ -62,9 +59,20 @@ class FeedViewController: UIViewController {
         
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        var headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 1))
+        headerView.backgroundColor = UIColor.clearColor()
+        
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        return 30.0
+    }
+    
     func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 100
+        return 150
     }
 
     
