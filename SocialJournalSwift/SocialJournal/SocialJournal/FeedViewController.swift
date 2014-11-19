@@ -50,6 +50,20 @@ class FeedViewController: UIViewController {
         
         var cell:feedCellTableViewCell=tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         
+        cell.username.text = "anonDawg"
+//        cell.userProfilePicture.image =
+
+//        if(favorited) {
+//            cell.hearted.image =
+//        }
+
+        cell.heartCount.text = "9999"
+        cell.postTitle.text = "Post Title"
+        cell.postBody.text = "Post Body"
+        cell.dateWeekday.text = "Monday"
+        cell.dateDay.text = "24"
+        cell.dateMonth.text = "December"
+        cell.dateYear.text = "2014"
         return cell
     }
     
@@ -73,6 +87,13 @@ class FeedViewController: UIViewController {
     func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
         return 150
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if segue.identifier == "feedToEntry"{
+            let vc = segue.destinationViewController as EntryViewController
+        }
     }
 
     

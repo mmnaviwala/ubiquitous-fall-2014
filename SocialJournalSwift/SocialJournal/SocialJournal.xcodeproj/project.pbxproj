@@ -33,6 +33,7 @@
 		00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */; };
 		00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
+		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
 		AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5731A195F8100BE697D /* SignInController.swift */; };
 		AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */; };
@@ -83,6 +84,7 @@
 		00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
+		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AC9DE5731A195F8100BE697D /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
 				008CD4D41A192DB50024BB9A /* Supporting Files */,
 				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
+				9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
 				008CD4D71A192DB50024BB9A /* AppDelegate.swift in Sources */,
 				00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */,
+				9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */,
 				AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */,
 				00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */,
 				AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */,
