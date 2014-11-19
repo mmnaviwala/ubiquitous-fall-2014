@@ -11,6 +11,9 @@ import UIKit
 class ComposeViewController: UIViewController {
     var button: HamburgerButton! = nil
     
+    @IBOutlet weak var titleText: UITextField!    
+    @IBOutlet weak var contentText: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,13 +33,21 @@ class ComposeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func postNewEntry() {
-//        var newPost = PFObject(className: "Entry")
-//        newPost["content"] = <SomeContentField>
+    
+    @IBAction func addMedia(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func postNewEntry(sender: AnyObject) {
+        var newPost = PFObject(className: "Entry")
+        newPost["content"] = self.contentText.text;
 //        newPost["user"] = PFUser.currentUser()
-//        newPost["title"] = <SomeTitleField>
-//        // add for geolat and geolong
-//        //add for image and video
+        newPost["title"] = self.titleText.text;
+        println("Title: " + self.titleText.text);
+        println("Content: " + self.contentText.text);
+        
+        //add for geolat and geolong
+        //add for image and video
     }
     
     func toggle(sender: AnyObject!) {
