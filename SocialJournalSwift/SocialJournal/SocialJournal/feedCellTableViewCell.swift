@@ -10,13 +10,19 @@ import UIKit
 
 class feedCellTableViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var usernameBackground: UIImageView!
     @IBOutlet weak var userProfilePicture: UIImageView!
+    @IBOutlet weak var hearted: UIImageView!
+    @IBOutlet weak var heartCount: UILabel!
+    @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet weak var postBody: UILabel!
+    @IBOutlet weak var dateWeekday: UILabel!
+    @IBOutlet weak var dateDay: UILabel!
+    @IBOutlet weak var dateMonth: UILabel!
+    @IBOutlet weak var dateYear: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // usernameBackground.layer.masksToBounds = true
-        // usernameBackground.layer.cornerRadius = 10
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10
         
@@ -25,6 +31,7 @@ class feedCellTableViewCell: UITableViewCell {
         
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
+        
         // Initialization code
     }
 
