@@ -10,6 +10,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
+    @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
     
     override func viewDidLoad() {
@@ -34,6 +35,38 @@ class FeedViewController: UIViewController {
         self.button.showsMenu = !self.button.showsMenu
     }
     
+    
+    // UITableViewDataSource methods
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell:feedCellTableViewCell?=tableView.dequeueReusableCellWithIdentifier("feedCell") as? feedCellTableViewCell
+        
+        if(indexPath.row == 2) {
+            cell?.testLabel.text = "MEW"
+        }
+        return cell!
+    }
+    
+    // UITableViewDelegate methods
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        
+    }
+    
+    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        return 100
+    }
+
     
 }
 
