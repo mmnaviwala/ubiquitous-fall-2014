@@ -57,12 +57,59 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func addMedia(sender: AnyObject) {
         
     }
+    func getTagsFromTitleAndContent() -> Array<String> {
+        //get the tags here, if no tags return an empty array ... not nil
+        return ["#TooCoolForSchool", "#ImOut"]
+    }
+    
+    func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
+        let tags = getTagsFromTitleAndContent()
+        if (!tags.isEmpty) {
+            for tag in tags {
+                var query = PFQuery(className: "Tags")
+                
+                query.whereKey("tag", equalTo: tag)
+                query.getFirstObjectInBackgroundWithBlock {
+                    (foundTag: PFObject!, error: NSError!) -> Void in
+                    if foundTag != nil {
+                        var newTag = PFObject(className: "Tags")
+                        
+                        newTag["tag"] = tag
+                        newTag.save()
+                        
+                        var newTagMapEntry = PFObject(className: "TagMap")
+                        
+                        newTagMapEntry["entry"] = entry
+                        newTagMapEntry["tag"] = newTag
+                        newTagMapEntry.saveEventually()
+                    } else {
+                        var newTagMapEntry = PFObject(className: "TagMap")
+                        
+                        newTagMapEntry["entry"] = entry
+                        newTagMapEntry["tag"] = foundTag
+                        newTagMapEntry.saveEventually()
+                    }
+                }
+                
+            }
+        }
+    }
+    
     
     @IBAction func postNewEntry(sender: AnyObject) {
-        var newPost = PFObject(className: "Entry")
-        newPost["content"] = self.contentText.text
+        var newEntry = PFObject(className: "Entry")
+        newEntry["content"] = self.contentText.text
 //        newPost["user"] = PFUser.currentUser()
-        newPost["title"] = self.titleText.text
+        newEntry["title"] = self.titleText.text
+//        newPost["location"] = PFGeoPoint(latitude:40.0, longitude:-30.0)
+//        if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
+//            saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
+//        }
+        
+        //segue back
+        
+        
+        
         
         println("Title: " + self.titleText.text)
         println("Content: " + self.contentText.text)
