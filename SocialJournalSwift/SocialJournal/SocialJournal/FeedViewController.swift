@@ -8,10 +8,12 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
+    var allEntries = []
+    @IBOutlet weak var feedTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +26,11 @@ class FeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            println(ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()))
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),{
+            self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser())
+            println(self.allEntries)
+            self.feedTableView.reloadData()
         })
     }
     
@@ -42,35 +47,59 @@ class FeedViewController: UIViewController {
     // UITableViewDataSource methods
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 10
+        return self.allEntries.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:feedCellTableViewCell=tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
+        var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         
-        cell.username.text = "anonDawg"
-//        cell.userProfilePicture.image =
-
-//        if(favorited) {
-//            cell.hearted.image =
-//        }
-
-        cell.heartCount.text = "9999"
-        cell.postTitle.text = "Post Title"
-        cell.postBody.text = "Post Body"
-        cell.dateWeekday.text = "Monday"
-        cell.dateDay.text = "24"
-        cell.dateMonth.text = "December"
-        cell.dateYear.text = "2014"
+        if (self.allEntries != []){
+            var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+            
+            //Date
+            var weekday: NSDateFormatter = NSDateFormatter()
+            var day: NSDateFormatter = NSDateFormatter()
+            var month: NSDateFormatter = NSDateFormatter()
+            var year: NSDateFormatter = NSDateFormatter()
+            weekday.setLocalizedDateFormatFromTemplate("EEEE")
+            day.setLocalizedDateFormatFromTemplate("dd")
+            month.setLocalizedDateFormatFromTemplate("MMMM")
+            year.setLocalizedDateFormatFromTemplate("YYYY")
+            var dateStringWeekday: NSString = weekday.stringFromDate(entry.createdAt)
+            var dateStringDay: NSString = day.stringFromDate(entry.createdAt)
+            var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
+            var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
+        
+            cell.username.text = "anonDawg"
+            //        cell.userProfilePicture.image =
+            
+            //        if(favorited) {
+            //            cell.hearted.image =
+            //        }
+            var entryTitle:String = entry["title"] as String!
+            var entryText:String = entry["content"] as String!
+            
+            cell.heartCount.text = String(ParseQueries.getHeartCountForEntry(entry))
+            cell.postTitle.text = entryTitle
+            cell.postBody.text = entryText
+            cell.dateWeekday.text = dateStringWeekday
+            cell.dateDay.text = dateStringDay
+            cell.dateMonth.text = dateStringMonth
+            cell.dateYear.text = dateStringYear
+        
+        }
+        
         return cell
     }
     
     // UITableViewDelegate methods
+    
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         

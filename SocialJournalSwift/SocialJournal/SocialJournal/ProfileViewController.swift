@@ -12,20 +12,27 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var currentUserProfilePicture: UIImageView!
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var theCollectionView: UICollectionView!
+    @IBOutlet weak var noDataFoundLabel: UILabel!
     
     var button: HamburgerButton! = nil
     
-    var currentUser = PFUser.currentUser()
+    // this needs to be set from somewhere else
+    // so when other profiles, we can set the "currentUser"
+    // to whatever user is selected
+    var currentUser:PFUser = PFUser()
 
-    var currentCollectionViewDataArray = [""]
-    var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
-    var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
+    var currentCollectionViewDataArray = []
+    
+    var followingArray = []
+    var followersArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // button color can be changed in HamburgerButton.swift
-        // "strokeColor" on line 43. By default its white
+        if (self.currentUser.objectId == nil){
+            self.currentUser = PFUser.currentUser()
+        }
+        
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -34,7 +41,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-
+        
+        self.currentUserName.text = "@" + currentUser.username
         
         theCollectionView.delegate = self
         theCollectionView.dataSource = self
@@ -45,6 +53,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture.clipsToBounds = true;
         currentUserProfilePicture.layer.borderWidth = 6.0
         currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
+        
+        self.noDataFoundLabel.hidden = true
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.followersArray = ParseQueries.getFollowers(self.currentUser)
+            self.theCollectionView.reloadData()
+        })
         
     }
     
@@ -71,57 +86,52 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (currentCollectionViewDataArray.count == 0){
+            self.noDataFoundLabel.hidden = false
+        }else{
+            self.noDataFoundLabel.hidden = true
+        }
         return currentCollectionViewDataArray.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as collectionViewCell
-        cell.userNameLabel.text = currentCollectionViewDataArray[indexPath.row]
-         cell.layer.cornerRadius = 6
-         cell.layer.borderWidth = 1.0
-         cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
+        if (currentCollectionViewDataArray != []){
+            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+            var eachUser:PFObject = eachObject["user"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            cell.userNameLabel.text = actualUser.username
+        }
+        cell.layer.cornerRadius = 6
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
         
         return cell
     }
     
-    @IBAction func followButtonClicked(sender: UIButton) {
-        var userProfileOn = PFUser.currentUser()    // this is not gonna be currentUser
-        
-//        // Create follow activity
-//        PFObject *followActivity = [PFObject objectWithClassName:kPAPActivityClassKey];
-//        [followActivity setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
-//        [followActivity setObject:user forKey:kPAPActivityToUserKey];
-//        [followActivity setObject:kPAPActivityTypeFollow forKey:kPAPActivityTypeKey];
-//        
-//        // Set the proper ACL
-//        PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
-//        [followACL setPublicReadAccess:YES];
-//        followActivity.ACL = followACL;
-//        
-//        // Save the activity and set the block passed as the completion block
-//        [followActivity saveEventually:completionBlock];
-        
-        
-        // Set the button so it says unfollow
-        sender.setTitle("Unfollow", forState: UIControlState.Normal)
-        sender.layer.backgroundColor = UIColor.redColor().CGColor
-        
-        // Create follow activity
-        var followActivity = PFObject(className: "Activity")
-        followActivity.setObject(currentUser, forKey: "fromUser")
-        followActivity.setObject(userProfileOn, forKey: "toUser")
-        followActivity.setObject("Follow", forKey: "type")
-        
-        // Set the proper ACL
-        var followACL = PFACL(user: currentUser)
-        followACL.setPublicReadAccess(true)
-        followActivity.ACL = followACL
-        
-        // Save the activity and set the block passed as the completion block
-        followActivity.saveEventually()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "goToProfileFromCollectionCell"){
+            
+            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
+            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
+            
+            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+            var eachUser:PFObject = eachObject["user"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            
+            let vc = segue.destinationViewController as ProfileViewController
+            vc.currentUser = actualUser
+        }
     }
     
     
+    
+    
+    @IBAction func followButtonClicked(sender: UIButton) {
+        // Set the button so it says unfollow
+        sender.setTitle("Unfollow", forState: UIControlState.Normal)
+        sender.layer.backgroundColor = UIColor.redColor().CGColor
+    }
     
     // Lets worry about this functionality later on
     @IBAction func addRemovePerson(sender: AnyObject) {
