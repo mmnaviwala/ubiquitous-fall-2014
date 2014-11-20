@@ -47,17 +47,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
     }
     
-    func getFollowing(currentUser:PFUser) -> [PFObject] {
-        var query = PFQuery(className: "Followers")
-        query.whereKey("user", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFObject]
-    }
-    
-    func getFollowers(currentUser:PFUser) -> [PFObject] {
-        var query = PFQuery(className: "Followers")
-        query.whereKey("follower", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFObject]
-    }
     
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu

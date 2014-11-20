@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="n7h-WL-g5o">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -865,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBC-wN-MwF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-127" y="81"/>
+            <point key="canvasLocation" x="-224" y="6"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wfQ-4r-wrD">
@@ -1075,7 +1075,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v75-nm-dBx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-127" y="-1141"/>
+            <point key="canvasLocation" x="-20" y="-1273"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rjs-9m-rFe">
@@ -1155,6 +1155,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="rWJ-xo-X90"/>
         <segue reference="v8L-5b-OO1"/>
-        <segue reference="bcP-45-tv5"/>
+        <segue reference="ZRs-k0-M2B"/>
     </inferredMetricsTieBreakers>
 </document>
