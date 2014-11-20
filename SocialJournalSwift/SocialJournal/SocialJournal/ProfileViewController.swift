@@ -16,6 +16,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var button: HamburgerButton! = nil
     
+    // this needs to be set from somewhere else
+    // so when other profiles, we can set the "currentUser"
+    // to whatever user is selected
     var currentUser = PFUser.currentUser()
 
     var currentCollectionViewDataArray = []
@@ -34,7 +37,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-
+        
+        self.currentUserName.text = "@" + currentUser.username
         
         theCollectionView.delegate = self
         theCollectionView.dataSource = self
@@ -99,6 +103,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
         
         return cell
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println(indexPath.row)
+        // goToProfileFromCollectionCell
     }
     
     @IBAction func followButtonClicked(sender: UIButton) {
