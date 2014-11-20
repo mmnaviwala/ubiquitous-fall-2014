@@ -10,26 +10,26 @@ import Foundation
 
 class ParseQueries {
     
-    func getFollowing(currentUser:PFUser!) -> [PFObject] {
+    func getFollowing(currentUser:PFUser!) -> [PFUser] {
         var query = PFQuery(className: "Followers")
         query.whereKey("user", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFObject]
+        return query.findObjects() as [PFUser]
     }
     
-    func getFollowers(currentUser:PFUser!) -> [PFObject] {
+    func getFollowers(currentUser:PFUser!) -> [PFUser] {
         var query = PFQuery(className: "Followers")
         query.whereKey("follower", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFObject]
+        return query.findObjects() as [PFUser]
     }
     
-    func getEntriesFromFollowed(user:PFObject) -> [PFObject] {
+    func getEntriesFromFollowed(user:PFUser) -> [PFObject] {
         var query = PFQuery(className: "Entries")
         query.whereKey("username", equalTo: user)
         return query.findObjects() as [PFObject]
     }
     
     func getAllEntriesForCurrentUser(currentUser:PFUser!) -> [PFObject] {
-        var following:[PFObject] = getFollowing(currentUser)
+        var following:[PFUser] = getFollowing(currentUser)
         return following.map({ followed -> [PFObject] in return self.getEntriesFromFollowed(followed)}).reduce([],+)
     }
     

@@ -45,6 +45,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture.clipsToBounds = true;
         currentUserProfilePicture.layer.borderWidth = 6.0
         currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
+        
     }
     
     
