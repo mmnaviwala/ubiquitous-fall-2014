@@ -26,7 +26,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var heartCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,20 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-
+     
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        self.dayLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "MMMM"
+        self.monthLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "dd"
+        self.dateLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "yyyy"
+        self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
+        
         self.titleText.layer.borderWidth = 3.0
         self.contentText.layer.borderWidth = 3.0
         self.mediaView.layer.borderWidth = 3.0
