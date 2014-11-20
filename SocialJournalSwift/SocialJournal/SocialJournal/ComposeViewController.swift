@@ -57,9 +57,35 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func addMedia(sender: AnyObject) {
         
     }
+/*
+ * Method: getTagsFromTitleAndContent()
+ * pass text to this method and it will return an array of hashtags
+ * a hashtag is any of the following:
+ * #yes #YESyesyes # no #n o #YesYes
+ * no whitespace in a hashtag
+ */
     func getTagsFromTitleAndContent() -> Array<String> {
         //get the tags here, if no tags return an empty array ... not nil
-        return ["#TooCoolForSchool", "#ImOut"]
+        var result = [String]();
+
+        //initialize the arrays
+        var titleTags = self.titleText.text.componentsSeparatedByString(" ")
+        var contentTags = self.contentText.text.componentsSeparatedByString(" ")
+        var allTags = titleTags + contentTags
+    
+        for word in allTags{
+            if countElements(word) != 0{
+                var temp = (word as NSString).substringToIndex(1)
+                if temp == "#" && countElements(word) > 1 &&
+                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil{
+                        
+                    result.append(word);
+                    //println(word)
+                }
+            }
+        }
+        println(result)
+        return result;
     }
     
     func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
@@ -110,13 +136,13 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        
         println("Title: " + self.titleText.text)
         println("Content: " + self.contentText.text)
         
-        //println("Latitude: " + NSString(format: "%@", self.locationManager.location.coordinate.latitude))
-        //println("Longitude: " + self.locationManager.location.coordinate.longitude.description);
+        println("Latitude: \(self.locationManager.location.coordinate.longitude.description)")
+        println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
         //println("Nearest City: " + self.contentText.text);
+        self.getTagsFromTitleAndContent()
     }
     
     func toggle(sender: AnyObject!) {
@@ -124,13 +150,13 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        println("updating location")
-//        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
-//            if placemarks.count > 0 {
-//                let pm = placemarks[0] as CLPlacemark
-//                println(pm.locality);2
-//            }
-//        })
+        //println("updating location")
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as CLPlacemark
+                //println(pm.locality);
+            }
+        })
     }
     
     /*
