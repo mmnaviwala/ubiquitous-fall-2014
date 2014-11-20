@@ -31,6 +31,8 @@ class feedCellTableViewCell: UITableViewCell {
         
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
+        self.userProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor
+        self.userProfilePicture.layer.borderWidth = 1.0
         
         // Initialization code
     }
