@@ -61,6 +61,20 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+            
+            //Date
+            var weekday: NSDateFormatter = NSDateFormatter()
+            var day: NSDateFormatter = NSDateFormatter()
+            var month: NSDateFormatter = NSDateFormatter()
+            var year: NSDateFormatter = NSDateFormatter()
+            weekday.setLocalizedDateFormatFromTemplate("EEEE")
+            day.setLocalizedDateFormatFromTemplate("dd")
+            month.setLocalizedDateFormatFromTemplate("MMMM")
+            year.setLocalizedDateFormatFromTemplate("YYYY")
+            var dateStringWeekday: NSString = weekday.stringFromDate(entry.createdAt)
+            var dateStringDay: NSString = day.stringFromDate(entry.createdAt)
+            var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
+            var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
         
             cell.username.text = "anonDawg"
             //        cell.userProfilePicture.image =
@@ -68,17 +82,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             //        if(favorited) {
             //            cell.hearted.image =
             //        }
-            
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
             
-            cell.heartCount.text = "9999"
+            cell.heartCount.text = String(ParseQueries.getHeartCountForEntry(entry))
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
-            cell.dateWeekday.text = "Monday"
-            cell.dateDay.text = "24"
-            cell.dateMonth.text = "December"
-            cell.dateYear.text = "2014"
+            cell.dateWeekday.text = dateStringWeekday
+            cell.dateDay.text = dateStringDay
+            cell.dateMonth.text = dateStringMonth
+            cell.dateYear.text = dateStringYear
         
         }
         
@@ -86,6 +99,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // UITableViewDelegate methods
+    
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
