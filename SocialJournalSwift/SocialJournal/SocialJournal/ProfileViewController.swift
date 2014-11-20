@@ -29,13 +29,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("\n===\nCurrent User Before: ")
-        println(self.currentUser)
         if (self.currentUser.objectId == nil){
             self.currentUser = PFUser.currentUser()
         }
-        println("\n=====\nCurrent User After: ")
-        println(self.currentUser)
         
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
@@ -112,36 +108,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         return cell
     }
-
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-//        var eachUser:PFObject = eachObject["user"] as PFObject
-//        var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
-//        self.userToPass = actualUser
-//        println("\nCell selected. User being passed is ")
-//        println(self.userToPass)
-    }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "goToProfileFromCollectionCell"){
-//            let vc = segue.destinationViewController as ProfileViewController
-//            println("Inside prepare for segue... User being passed is ")
-//            println(self.userToPass)
-//            vc.currentUser = self.userToPass
-//            
-//            println("``````````")
-//            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
-//            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
-//            println(indexPath.row)
-//            
-//            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-//            var eachUser:PFObject = eachObject["user"] as PFObject
-//            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
-//            self.userToPass = actualUser
-//            println("\nCell selected. User being passed is ")
-//            println(self.userToPass)
             
             let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
             let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
