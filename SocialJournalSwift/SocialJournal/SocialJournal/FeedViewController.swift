@@ -34,9 +34,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.spinner.startAnimating()
             self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser())
-            //println(self.allEntries)
-            self.feedTableView.reloadData()
-        })
+            println(self.allEntries)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.spinner.stopAnimating()
+                self.feedTableView.reloadData()
+            })
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,7 +133,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let vc = segue.destinationViewController as EntryViewController
             vc.entry = self.allEntries[selectedSection] as PFObject
-            println(vc.entry)
         }
     }
 
