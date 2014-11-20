@@ -59,11 +59,11 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         self.addMediaButton.layer.cornerRadius = 15.0
         self.profileImageView.layer.cornerRadius = 15.0
         
-        self.titleText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.contentText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.mediaView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.addMediaButton.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.profileImageView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.titleText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.contentText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.mediaView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.addMediaButton.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
+        self.profileImageView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
