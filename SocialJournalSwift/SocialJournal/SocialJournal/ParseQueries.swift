@@ -10,37 +10,37 @@ import Foundation
 
 class ParseQueries {
     
-    func getFollowing(currentUser:PFUser!) -> [PFUser] {
+    class func getFollowing(currentUser:PFUser) -> [PFObject] {
         var query = PFQuery(className: "Followers")
         query.whereKey("user", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFUser]
-    }
-    
-    func getFollowers(currentUser:PFUser!) -> [PFUser] {
-        var query = PFQuery(className: "Followers")
-        query.whereKey("follower", equalTo: PFUser.currentUser())
-        return query.findObjects() as [PFUser]
-    }
-    
-    func getEntriesFromFollowed(user:PFUser) -> [PFObject] {
-        var query = PFQuery(className: "Entries")
-        query.whereKey("username", equalTo: user)
         return query.findObjects() as [PFObject]
     }
     
-    func getAllEntriesForCurrentUser(currentUser:PFUser!) -> [PFObject] {
-        var following:[PFUser] = getFollowing(currentUser)
-        return following.map({ followed -> [PFObject] in return self.getEntriesFromFollowed(followed)}).reduce([],+)
+    class func getFollowers(currentUser:PFUser) -> [PFObject] {
+        var query = PFQuery(className: "Followers")
+        query.whereKey("following", equalTo: PFUser.currentUser())
+        return query.findObjects() as [PFObject]
     }
     
-    func getTagsForEntry(entry:PFObject) -> [String] {
+    class func getEntriesFromUser(user:PFUser) -> [PFObject] {
+        var query = PFQuery(className: "Entry")
+        query.whereKey("user", equalTo: user) 
+        return query.findObjects() as [PFObject]
+    }
+    
+    class func getAllEntriesForCurrentUser(currentUser:PFUser!) -> [PFObject] {
+        var following:[PFObject] = getFollowing(currentUser)
+        return following.map({ followed -> [PFObject] in return self.getEntriesFromUser(followed["following"] as PFUser )}).reduce([],+)
+    }
+    
+    class func getTagsForEntry(entry:PFObject) -> [String] {
         var queryForTags = PFQuery(className: "TagMap")
         queryForTags.whereKey("entry", equalTo: entry)
         return (queryForTags.findObjects() as [PFObject]).map({ (tag:PFObject) -> String in return tag["tag"] as String })
     }
     
-    func getHeartCountForEntry(entry:PFObject) -> Int {
-        var queryForHeartCount = PFQuery(className: "Entries")
+    class func getHeartCountForEntry(entry:PFObject) -> Int {
+        var queryForHeartCount = PFQuery(className: "Entry")
         queryForHeartCount.whereKey("entry", equalTo: entry)
         return queryForHeartCount.countObjects()
     }
