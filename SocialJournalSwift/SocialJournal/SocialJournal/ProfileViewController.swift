@@ -12,14 +12,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var currentUserProfilePicture: UIImageView!
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var theCollectionView: UICollectionView!
+    @IBOutlet weak var noDataFoundLabel: UILabel!
     
     var button: HamburgerButton! = nil
     
     var currentUser = PFUser.currentUser()
 
-    var currentCollectionViewDataArray = [""]
-    var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
-    var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
+    var currentCollectionViewDataArray = []
+//    var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
+//    var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
+    
+    var followingArray = []
+    var followersArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture.layer.borderWidth = 6.0
         currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
         
+        self.noDataFoundLabel.hidden = true
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.followersArray = ParseQueries.getFollowers(self.currentUser)
+            self.theCollectionView.reloadData()
+        })
+        
     }
     
     
@@ -71,15 +82,25 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (currentCollectionViewDataArray.count == 0){
+            self.noDataFoundLabel.hidden = false
+        }else{
+            self.noDataFoundLabel.hidden = true
+        }
         return currentCollectionViewDataArray.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as collectionViewCell
-        cell.userNameLabel.text = currentCollectionViewDataArray[indexPath.row]
-         cell.layer.cornerRadius = 6
-         cell.layer.borderWidth = 1.0
-         cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
+        if (currentCollectionViewDataArray != []){
+            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+            var eachUser:PFObject = eachObject["user"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            cell.userNameLabel.text = actualUser.username
+        }
+        cell.layer.cornerRadius = 6
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
         
         return cell
     }

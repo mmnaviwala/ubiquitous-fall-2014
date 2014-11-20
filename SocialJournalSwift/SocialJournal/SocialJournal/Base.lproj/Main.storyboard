@@ -773,6 +773,15 @@
                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CY5-1L-jAh">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="636"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data found..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxv-V1-Fuy">
+                                                <rect key="frame" x="244" y="304" width="280" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                     </view>
                                     <blurEffect style="light"/>
                                 </visualEffectView>
@@ -827,7 +836,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iTq-8N-tby">
-                                <rect key="frame" x="659" y="26" width="93.000000135951382" height="30"/>
+                                <rect key="frame" x="659" y="26" width="93.000000136023957" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -847,6 +856,7 @@
                     <connections>
                         <outlet property="currentUserName" destination="1Qx-9U-WZG" id="rwJ-dP-RGW"/>
                         <outlet property="currentUserProfilePicture" destination="XAc-SV-LAO" id="AEm-qC-qHf"/>
+                        <outlet property="noDataFoundLabel" destination="uxv-V1-Fuy" id="lxp-LI-qGS"/>
                         <outlet property="theCollectionView" destination="JFz-vu-iqW" id="i4q-OS-y5v"/>
                     </connections>
                 </viewController>
