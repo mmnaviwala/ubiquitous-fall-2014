@@ -9,12 +9,12 @@
 import UIKit
 import CoreLocation
 
-class ComposeViewController: UIViewController, CLLocationManagerDelegate {
+class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     var button: HamburgerButton! = nil
     var locationManager: CLLocationManager!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var heartImageView: UIImageView!
+    @IBOutlet weak var mediaImageView: UIImageView!
     
     @IBOutlet weak var titleText: UITextField!    
     @IBOutlet weak var contentText: UITextView!
@@ -26,7 +26,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var heartCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,20 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-
+     
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        self.dayLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "MMMM"
+        self.monthLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "dd"
+        self.dateLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        dateFormatter.dateFormat = "yyyy"
+        self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
+        
         self.titleText.layer.borderWidth = 3.0
         self.contentText.layer.borderWidth = 3.0
         self.mediaView.layer.borderWidth = 3.0
@@ -59,22 +71,18 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         self.addMediaButton.layer.cornerRadius = 15.0
         self.profileImageView.layer.cornerRadius = 15.0
         
-        self.titleText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.contentText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.mediaView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.addMediaButton.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
-        self.profileImageView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.titleText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.contentText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.mediaView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+        self.addMediaButton.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
+        self.profileImageView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func addMedia(sender: AnyObject) {
-        
-    }
-/*
+    /*
  * Method: getTagsFromTitleAndContent()
  * pass text to this method and it will return an array of hashtags
  * a hashtag is any of the following:
@@ -105,7 +113,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
-        println(result)
+        //println(result)
         return result;
     }
     
@@ -154,8 +162,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
         }
         
-        println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
-        println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
+        //println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
+        //println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
     }
     
     func toggle(sender: AnyObject!) {
@@ -170,6 +178,19 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
                 //println(pm.locality);
             }
         })
+    }
+    
+    @IBAction func addMedia(sender: AnyObject) {
+        let pickerC = UIImagePickerController()
+        pickerC.delegate = self
+        self.presentViewController(pickerC, animated: true, completion: nil)
+    }
+
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.mediaImageView.alpha = 1.0
+        self.addMediaButton.alpha = 0.0
+        self.mediaImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
     /*
