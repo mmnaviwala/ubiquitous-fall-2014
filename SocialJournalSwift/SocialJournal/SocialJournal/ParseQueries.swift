@@ -45,4 +45,17 @@ class ParseQueries {
         return queryForHeartCount.countObjects()
     }
     
+    class func followUser(currentUser: PFUser, userToFollow: PFUser) {
+        var newFollows = PFObject(className: "Following")
+        newFollows["user"] = currentUser
+        newFollows["following"] = userToFollow
+        newFollows.saveEventually()
+    }
+    
+//    class func unFollowUser(currentUser: PFUser, userToFollow: PFUser) {
+//        var userQuery = PFQuery(className: "Followers")
+//        userQuery.whereKey("user", equalTo: currentUser)
+//        var users
+//    }
+    
 }
