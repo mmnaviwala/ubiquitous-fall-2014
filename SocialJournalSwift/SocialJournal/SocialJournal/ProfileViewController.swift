@@ -19,8 +19,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var currentUser = PFUser.currentUser()
 
     var currentCollectionViewDataArray = []
-//    var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
-//    var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
     
     var followingArray = []
     var followersArray = []
@@ -28,8 +26,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // button color can be changed in HamburgerButton.swift
-        // "strokeColor" on line 43. By default its white
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -106,40 +102,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func followButtonClicked(sender: UIButton) {
-        var userProfileOn = PFUser.currentUser()    // this is not gonna be currentUser
-        
-//        // Create follow activity
-//        PFObject *followActivity = [PFObject objectWithClassName:kPAPActivityClassKey];
-//        [followActivity setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
-//        [followActivity setObject:user forKey:kPAPActivityToUserKey];
-//        [followActivity setObject:kPAPActivityTypeFollow forKey:kPAPActivityTypeKey];
-//        
-//        // Set the proper ACL
-//        PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
-//        [followACL setPublicReadAccess:YES];
-//        followActivity.ACL = followACL;
-//        
-//        // Save the activity and set the block passed as the completion block
-//        [followActivity saveEventually:completionBlock];
-        
-        
         // Set the button so it says unfollow
         sender.setTitle("Unfollow", forState: UIControlState.Normal)
         sender.layer.backgroundColor = UIColor.redColor().CGColor
-        
-        // Create follow activity
-        var followActivity = PFObject(className: "Activity")
-        followActivity.setObject(currentUser, forKey: "fromUser")
-        followActivity.setObject(userProfileOn, forKey: "toUser")
-        followActivity.setObject("Follow", forKey: "type")
-        
-        // Set the proper ACL
-        var followACL = PFACL(user: currentUser)
-        followACL.setPublicReadAccess(true)
-        followActivity.ACL = followACL
-        
-        // Save the activity and set the block passed as the completion block
-        followActivity.saveEventually()
     }
     
     
