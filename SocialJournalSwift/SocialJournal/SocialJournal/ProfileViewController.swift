@@ -11,9 +11,12 @@ import UIKit
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var currentUserProfilePicture: UIImageView!
     @IBOutlet weak var currentUserName: UILabel!
+    @IBOutlet weak var theCollectionView: UICollectionView!
     
     var button: HamburgerButton! = nil
-    @IBOutlet weak var theCollectionView: UICollectionView!
+    
+    var currentUser = PFUser.currentUser()
+
     var currentCollectionViewDataArray = [""]
     var followingArray = ["@theMightMidget", "@kungFuPanda", "@theCerealKiller", "@spaceMonkeyMafia", "@theMuffinStuffer"]
     var followersArray = ["@frenchToastMafia", "@crackSmokingMonkey", "@awesomeD", "@madIsotope", "@fartMonster", "@dropItLikeItsHot", "@trialAndError", "@kungFuPanda"]
@@ -91,6 +94,46 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
+    @IBAction func followButtonClicked(sender: UIButton) {
+        var userProfileOn = PFUser.currentUser()    // this is not gonna be currentUser
+        
+//        // Create follow activity
+//        PFObject *followActivity = [PFObject objectWithClassName:kPAPActivityClassKey];
+//        [followActivity setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
+//        [followActivity setObject:user forKey:kPAPActivityToUserKey];
+//        [followActivity setObject:kPAPActivityTypeFollow forKey:kPAPActivityTypeKey];
+//        
+//        // Set the proper ACL
+//        PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
+//        [followACL setPublicReadAccess:YES];
+//        followActivity.ACL = followACL;
+//        
+//        // Save the activity and set the block passed as the completion block
+//        [followActivity saveEventually:completionBlock];
+        
+        
+        // Set the button so it says unfollow
+        sender.setTitle("Unfollow", forState: UIControlState.Normal)
+        sender.layer.backgroundColor = UIColor.redColor().CGColor
+        
+        // Create follow activity
+        var followActivity = PFObject(className: "Activity")
+        followActivity.setObject(currentUser, forKey: "fromUser")
+        followActivity.setObject(userProfileOn, forKey: "toUser")
+        followActivity.setObject("Follow", forKey: "type")
+        
+        // Set the proper ACL
+        var followACL = PFACL(user: currentUser)
+        followACL.setPublicReadAccess(true)
+        followActivity.ACL = followACL
+        
+        // Save the activity and set the block passed as the completion block
+        followActivity.saveEventually()
+    }
+    
+    
+    
+    // Lets worry about this functionality later on
     @IBAction func addRemovePerson(sender: AnyObject) {
                 if (sender.backgroundImageForState(UIControlState.Normal) == UIImage(named: "AddPerson")){
             sender.setBackgroundImage(UIImage(named: "RemovePerson"), forState: .Normal)
