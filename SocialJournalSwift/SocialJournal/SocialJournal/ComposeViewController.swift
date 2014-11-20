@@ -19,6 +19,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var titleText: UITextField!    
     @IBOutlet weak var contentText: UITextView!
     
+    @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var addMediaButton: UIButton!
     
     @IBOutlet weak var dayLabel: UILabel!
@@ -46,7 +47,23 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
 
-
+        self.titleText.layer.borderWidth = 3.0
+        self.contentText.layer.borderWidth = 3.0
+        self.mediaView.layer.borderWidth = 3.0
+        self.addMediaButton.layer.borderWidth = 3.0
+        self.profileImageView.layer.cornerRadius = 15.0
+        
+        self.titleText.layer.cornerRadius = 15.0
+        self.contentText.layer.cornerRadius = 15.0
+        self.mediaView.layer.cornerRadius = 15.0
+        self.addMediaButton.layer.cornerRadius = 15.0
+        self.profileImageView.layer.cornerRadius = 15.0
+        
+        self.titleText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.contentText.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.mediaView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.addMediaButton.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
+        self.profileImageView.layer.borderColor = UIColor(red: 140.0/255, green: 168.0/255, blue: 41.0/255, alpha: 1.0).CGColor
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
@@ -72,13 +89,17 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         var titleTags = self.titleText.text.componentsSeparatedByString(" ")
         var contentTags = self.contentText.text.componentsSeparatedByString(" ")
         var allTags = titleTags + contentTags
+        
+        var tagDictionary = [String: Int]()
     
         for word in allTags{
             if countElements(word) != 0{
                 var temp = (word as NSString).substringToIndex(1)
-                if temp == "#" && countElements(word) > 1 &&
-                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil{
-                        
+                if (temp == "#" && countElements(word) > 1 &&
+                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
+                    tagDictionary[word] == nil){
+                    
+                    tagDictionary[word] = allTags.count
                     result.append(word);
                     //println(word)
                 }
