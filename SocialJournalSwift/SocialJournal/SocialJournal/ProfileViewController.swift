@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     // this needs to be set from somewhere else
     // so when other profiles, we can set the "currentUser"
     // to whatever user is selected
-    var currentUser = PFUser.currentUser()
+    var currentUser:PFUser = PFUser()
 
     var currentCollectionViewDataArray = []
     
@@ -28,6 +28,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("\n===\nCurrent User Before: ")
+        println(self.currentUser)
+        if (self.currentUser.objectId == nil){
+            self.currentUser = PFUser.currentUser()
+        }
+        println("\n=====\nCurrent User After: ")
+        println(self.currentUser)
         
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
@@ -106,17 +114,55 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
-        // goToProfileFromCollectionCell
+//        var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+//        var eachUser:PFObject = eachObject["user"] as PFObject
+//        var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+//        self.userToPass = actualUser
+//        println("\nCell selected. User being passed is ")
+//        println(self.userToPass)
     }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "goToProfileFromCollectionCell"){
+//            let vc = segue.destinationViewController as ProfileViewController
+//            println("Inside prepare for segue... User being passed is ")
+//            println(self.userToPass)
+//            vc.currentUser = self.userToPass
+//            
+//            println("``````````")
+//            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
+//            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
+//            println(indexPath.row)
+//            
+//            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+//            var eachUser:PFObject = eachObject["user"] as PFObject
+//            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+//            self.userToPass = actualUser
+//            println("\nCell selected. User being passed is ")
+//            println(self.userToPass)
+            
+            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
+            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
+            
+            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+            var eachUser:PFObject = eachObject["user"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            
+            let vc = segue.destinationViewController as ProfileViewController
+            vc.currentUser = actualUser
+        }
+    }
+    
+    
+    
     
     @IBAction func followButtonClicked(sender: UIButton) {
         // Set the button so it says unfollow
         sender.setTitle("Unfollow", forState: UIControlState.Normal)
         sender.layer.backgroundColor = UIColor.redColor().CGColor
     }
-    
-    
     
     // Lets worry about this functionality later on
     @IBAction func addRemovePerson(sender: AnyObject) {
