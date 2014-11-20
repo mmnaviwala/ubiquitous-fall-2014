@@ -20,12 +20,44 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var dateDay: UILabel!
     @IBOutlet weak var dateMonth: UILabel!
     @IBOutlet weak var dateYear: UILabel!
+    var entry = PFObject(className: "Entry")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
+        
+        //Date
+        var weekday: NSDateFormatter = NSDateFormatter()
+        var day: NSDateFormatter = NSDateFormatter()
+        var month: NSDateFormatter = NSDateFormatter()
+        var year: NSDateFormatter = NSDateFormatter()
+        weekday.setLocalizedDateFormatFromTemplate("EEEE")
+        day.setLocalizedDateFormatFromTemplate("dd")
+        month.setLocalizedDateFormatFromTemplate("MMMM")
+        year.setLocalizedDateFormatFromTemplate("YYYY")
+        var dateStringWeekday: NSString = weekday.stringFromDate(self.entry.createdAt)
+        var dateStringDay: NSString = day.stringFromDate(self.entry.createdAt)
+        var dateStringMonth: NSString = month.stringFromDate(self.entry.createdAt)
+        var dateStringYear: NSString = year.stringFromDate(self.entry.createdAt)
+        
+        self.username.text = "anonDawg"
+        //        cell.userProfilePicture.image =
+        
+        //        if(favorited) {
+        //            cell.hearted.image =
+        //        }
+        var entryTitle:String = entry["title"] as String!
+        var entryText:String = entry["content"] as String!
+        
+        self.heartCount.text = String(ParseQueries.getHeartCountForEntry(self.entry))
+        self.postTitle.text = entryTitle
+        self.postBody.text = entryText
+        self.dateWeekday.text = dateStringWeekday
+        self.dateDay.text = dateStringDay
+        self.dateMonth.text = dateStringMonth
+        self.dateYear.text = dateStringYear
 
         // Do any additional setup after loading the view.
     }

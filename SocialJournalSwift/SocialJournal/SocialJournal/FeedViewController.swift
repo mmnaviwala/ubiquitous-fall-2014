@@ -15,7 +15,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEntries = []
     @IBOutlet weak var feedTableView: UITableView!
     
-//    var currentEntry = PFObject(className: "Entry")
+    var currentEntry = PFObject(className: "Entry")
 //    var something:PFObject? = nil
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),{
             self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser())
-            println(self.allEntries)
+            //println(self.allEntries)
             self.feedTableView.reloadData()
         })
     }
@@ -104,11 +104,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // UITableViewDelegate methods
     
-    
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        
-    }
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         var headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 1))
         headerView.backgroundColor = UIColor.clearColor()
@@ -128,7 +123,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "feedToEntry"{
+            var selectedRowIndexPath: NSIndexPath = self.feedTableView.indexPathForSelectedRow()!
+            var selectedSection: NSInteger = selectedRowIndexPath.section
+            
             let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.allEntries[selectedSection] as PFObject
+            println(vc.entry)
         }
     }
 
