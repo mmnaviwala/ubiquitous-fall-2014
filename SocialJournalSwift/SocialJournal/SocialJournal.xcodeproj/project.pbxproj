@@ -34,6 +34,7 @@
 		00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */; };
 		00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */; };
 		29C7018E1A1E412D00001464 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C7018D1A1E412D00001464 /* MapKit.framework */; };
+		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
@@ -87,6 +88,7 @@
 		00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		29C7018D1A1E412D00001464 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -162,24 +164,25 @@
 			isa = PBXGroup;
 			children = (
 				008CD4D61A192DB50024BB9A /* AppDelegate.swift */,
-				008CD4D81A192DB50024BB9A /* ViewController.swift */,
-				00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */,
-				AC9DE5721A195F8100BE697D /* ProfileViewController.swift */,
 				AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */,
-				AC9DE5731A195F8100BE697D /* SignInController.swift */,
-				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
-				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
-				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
+				00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */,
+				9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */,
 				9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */,
+				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
-				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
-				008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */,
-				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
-				008CD4D41A192DB50024BB9A /* Supporting Files */,
-				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
-				9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */,
+				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
+				29C7018F1A1E43B800001464 /* MapViewController.swift */,
+				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
 				007B29421A1D0BB500786913 /* ParseQueries.swift */,
+				AC9DE5721A195F8100BE697D /* ProfileViewController.swift */,
+				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
+				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
+				00CB83961A1AFD2D000A613F /* SettingsViewController.swift */,
+				008CD4FA1A192F810024BB9A /* SideBarTableViewController.swift */,
+				AC9DE5731A195F8100BE697D /* SignInController.swift */,
+				008CD4D41A192DB50024BB9A /* Supporting Files */,
+				008CD4D81A192DB50024BB9A /* ViewController.swift */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				00CB83971A1AFD2D000A613F /* SettingsViewController.swift in Sources */,
 				007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */,
 				008CD4F91A192DCA0024BB9A /* SWRevealViewController.m in Sources */,
+				29C701901A1E43B800001464 /* MapViewController.swift in Sources */,
 				9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */,
 				AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */,
 				AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */,

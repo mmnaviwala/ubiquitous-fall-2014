@@ -406,7 +406,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                    <rect key="frame" x="0.0" y="0.0" width="7063" height="30"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="7767" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw">
@@ -670,7 +670,7 @@
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="locationButtonPressed:" destination="iTh-Tj-8kK" eventType="touchUpInside" id="stU-5s-UNS"/>
+                                                            <segue destination="S6T-cY-j6g" kind="push" id="whT-bi-AW5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kwG-UD-huR">
@@ -710,6 +710,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itu-xG-Orv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4158" y="-2356"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="YRo-eE-5h2">
+            <objects>
+                <viewController title="Map View Controller" id="S6T-cY-j6g" customClass="MapViewController" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="eaE-SG-hON">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </mapView>
+                    <navigationItem key="navigationItem" id="yuX-gs-oeR"/>
+                    <connections>
+                        <outlet property="mapView" destination="eaE-SG-hON" id="Z1Z-uT-GIC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0k-IS-jlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5147" y="-2356"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="G5j-7U-U5q">

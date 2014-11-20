@@ -113,7 +113,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                 }
             }
         }
-        println(result)
+        //println(result)
         return result;
     }
     
@@ -162,8 +162,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
         }
         
-        println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
-        println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
+        //println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
+        //println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
     }
     
     func toggle(sender: AnyObject!) {
