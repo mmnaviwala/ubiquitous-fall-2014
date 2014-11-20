@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var theCollectionView: UICollectionView!
     @IBOutlet weak var noDataFoundLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var button: HamburgerButton! = nil
     
@@ -62,10 +63,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.followButton.hidden = false
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            self.spinner.startAnimating()
             self.followersArray = ParseQueries.getFollowers(self.currentUser)
-            self.theCollectionView.reloadData()
-        })
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.spinner.stopAnimating()
+                self.theCollectionView.reloadData()
+            })
+        }
         
     }
     
