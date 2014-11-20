@@ -397,16 +397,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="c3n-Ky-KP3">
-                                                    <rect key="frame" x="-1" y="0.0" width="737" height="159"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="1440" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Asn-5R-WFI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="737" height="159"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="1440" height="159"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                     <blurEffect style="dark"/>
                                                 </visualEffectView>
                                                 <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                    <rect key="frame" x="-1" y="0.0" width="10579" height="30"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="10702" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw">
@@ -480,14 +480,14 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel is being a cullero right now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxr-Hr-QG6">
-                                                    <rect key="frame" x="246" y="38" width="450" height="32"/>
+                                                    <rect key="frame" x="245" y="38" width="450" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z0C-SX-cP6">
-                                                    <rect key="frame" x="246" y="78" width="450" height="64"/>
+                                                    <rect key="frame" x="245" y="78" width="450" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
@@ -807,6 +807,10 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="nFl-Dy-46J">
+                                                <rect key="frame" x="366" y="259" width="37" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                     </view>
                                     <blurEffect style="light"/>
@@ -885,6 +889,7 @@
                         <outlet property="currentUserProfilePicture" destination="XAc-SV-LAO" id="AEm-qC-qHf"/>
                         <outlet property="followButton" destination="iTq-8N-tby" id="HEL-6c-EWJ"/>
                         <outlet property="noDataFoundLabel" destination="uxv-V1-Fuy" id="lxp-LI-qGS"/>
+                        <outlet property="spinner" destination="nFl-Dy-46J" id="ESN-HC-2Yi"/>
                         <outlet property="theCollectionView" destination="JFz-vu-iqW" id="i4q-OS-y5v"/>
                     </connections>
                 </viewController>
