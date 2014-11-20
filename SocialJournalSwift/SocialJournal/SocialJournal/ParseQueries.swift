@@ -12,13 +12,13 @@ class ParseQueries {
     
     class func getFollowing(currentUser:PFUser) -> [PFObject] {
         var query = PFQuery(className: "Followers")
-        query.whereKey("user", equalTo: PFUser.currentUser())
+        query.whereKey("user", equalTo: currentUser)
         return query.findObjects() as [PFObject]
     }
     
     class func getFollowers(currentUser:PFUser) -> [PFObject] {
         var query = PFQuery(className: "Followers")
-        query.whereKey("following", equalTo: PFUser.currentUser())
+        query.whereKey("following", equalTo: currentUser)
         return query.findObjects() as [PFObject]
     }
     
