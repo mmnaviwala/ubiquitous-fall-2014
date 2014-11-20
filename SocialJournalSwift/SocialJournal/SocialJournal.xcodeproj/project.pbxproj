@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007435A01A1B7E8F0013A576 /* RegisterViewController.swift */; };
+		007B29431A1D0BB500786913 /* ParseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B29421A1D0BB500786913 /* ParseQueries.swift */; };
 		0087BB0B1A1B0F4F00E08E2F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB091A1B0F4F00E08E2F /* Bolts.framework */; };
 		0087BB0C1A1B0F4F00E08E2F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB0A1A1B0F4F00E08E2F /* Parse.framework */; };
 		0087BB0E1A1B0F9C00E08E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0087BB0D1A1B0F9C00E08E2F /* AudioToolbox.framework */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		007435A01A1B7E8F0013A576 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		007B29421A1D0BB500786913 /* ParseQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQueries.swift; sourceTree = "<group>"; };
 		0087BB091A1B0F4F00E08E2F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0087BB0A1A1B0F4F00E08E2F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0087BB0D1A1B0F9C00E08E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -173,6 +175,7 @@
 				008CD4D41A192DB50024BB9A /* Supporting Files */,
 				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
 				9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */,
+				007B29421A1D0BB500786913 /* ParseQueries.swift */,
 			);
 			path = SocialJournal;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
+				007B29431A1D0BB500786913 /* ParseQueries.swift in Sources */,
 				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
 				008CD4D71A192DB50024BB9A /* AppDelegate.swift in Sources */,
