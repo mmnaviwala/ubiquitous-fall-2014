@@ -305,6 +305,10 @@
                                             <action selector="addMedia:" destination="La0-IW-IXO" eventType="touchUpInside" id="KtH-gj-pcM"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9eM-7X-cGr">
+                                        <rect key="frame" x="225" y="0.0" width="286" height="286"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -332,6 +336,7 @@
                         <outlet property="contentText" destination="8ve-hH-4YX" id="dk2-3B-x1b"/>
                         <outlet property="dateLabel" destination="MlR-3r-Zbg" id="Bmk-Vx-T5f"/>
                         <outlet property="dayLabel" destination="ztV-u9-e62" id="DH7-NL-wl4"/>
+                        <outlet property="mediaImageView" destination="9eM-7X-cGr" id="XqA-qD-Goz"/>
                         <outlet property="mediaView" destination="kkT-5k-39f" id="cPQ-nO-cXr"/>
                         <outlet property="monthLabel" destination="2ML-he-M05" id="pqr-Za-fTe"/>
                         <outlet property="profileImageView" destination="gnf-7L-L78" id="yyx-KC-atT"/>

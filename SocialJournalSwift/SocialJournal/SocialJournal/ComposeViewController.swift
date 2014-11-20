@@ -9,12 +9,12 @@
 import UIKit
 import CoreLocation
 
-class ComposeViewController: UIViewController, CLLocationManagerDelegate {
+class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     var button: HamburgerButton! = nil
     var locationManager: CLLocationManager!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var heartImageView: UIImageView!
+    @IBOutlet weak var mediaImageView: UIImageView!
     
     @IBOutlet weak var titleText: UITextField!    
     @IBOutlet weak var contentText: UITextView!
@@ -82,11 +82,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func addMedia(sender: AnyObject) {
-        
-    }
-/*
+    /*
  * Method: getTagsFromTitleAndContent()
  * pass text to this method and it will return an array of hashtags
  * a hashtag is any of the following:
@@ -182,6 +178,19 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
                 //println(pm.locality);
             }
         })
+    }
+    
+    @IBAction func addMedia(sender: AnyObject) {
+        let pickerC = UIImagePickerController()
+        pickerC.delegate = self
+        self.presentViewController(pickerC, animated: true, completion: nil)
+    }
+
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.mediaImageView.alpha = 1.0
+        self.addMediaButton.alpha = 0.0
+        self.mediaImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
     /*
