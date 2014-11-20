@@ -14,6 +14,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var button: HamburgerButton! = nil
     var allEntries = []
     @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
 //    var currentEntry = PFObject(className: "Entry")
 //    var something:PFObject? = nil
@@ -30,11 +31,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            self.spinner.startAnimating()
             self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser())
             println(self.allEntries)
-            self.feedTableView.reloadData()
-        })
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.spinner.stopAnimating()
+                self.feedTableView.reloadData()
+            })
+        }
     }
     
     override func didReceiveMemoryWarning() {
