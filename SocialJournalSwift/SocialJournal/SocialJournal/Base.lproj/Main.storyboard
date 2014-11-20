@@ -406,7 +406,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                    <rect key="frame" x="-1" y="0.0" width="8470" height="30"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="9173" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw">
@@ -480,13 +480,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel is being a cullero right now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxr-Hr-QG6">
-                                                    <rect key="frame" x="246" y="38" width="449" height="32"/>
+                                                    <rect key="frame" x="246" y="38" width="450" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z0C-SX-cP6">
-                                                    <rect key="frame" x="246" y="78" width="449" height="64"/>
+                                                    <rect key="frame" x="246" y="78" width="450" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
@@ -864,7 +864,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iTq-8N-tby">
                                 <rect key="frame" x="659" y="26" width="93.000000136032455" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15294117647058825" green="0.60392156862745094" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Follow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -882,6 +882,7 @@
                     <connections>
                         <outlet property="currentUserName" destination="1Qx-9U-WZG" id="rwJ-dP-RGW"/>
                         <outlet property="currentUserProfilePicture" destination="XAc-SV-LAO" id="AEm-qC-qHf"/>
+                        <outlet property="followButton" destination="iTq-8N-tby" id="HEL-6c-EWJ"/>
                         <outlet property="noDataFoundLabel" destination="uxv-V1-Fuy" id="lxp-LI-qGS"/>
                         <outlet property="theCollectionView" destination="JFz-vu-iqW" id="i4q-OS-y5v"/>
                     </connections>

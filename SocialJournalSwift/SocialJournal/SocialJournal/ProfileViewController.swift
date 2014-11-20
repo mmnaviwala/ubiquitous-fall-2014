@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var theCollectionView: UICollectionView!
     @IBOutlet weak var noDataFoundLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     var button: HamburgerButton! = nil
     
@@ -55,6 +56,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
         
         self.noDataFoundLabel.hidden = true
+        if (currentUser.objectId == PFUser.currentUser().objectId){
+            self.followButton.hidden = true
+        }else{
+            self.followButton.hidden = false
+        }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             self.followersArray = ParseQueries.getFollowers(self.currentUser)
@@ -129,13 +135,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBAction func followButtonClicked(sender: UIButton) {
         // Set the button so it says unfollow
-        sender.setTitle("Unfollow", forState: UIControlState.Normal)
-        sender.layer.backgroundColor = UIColor.redColor().CGColor
+        if(sender.titleForState(UIControlState.Normal) == "Follow"){
+            sender.setTitle("Unfollow", forState: UIControlState.Normal)
+            sender.layer.backgroundColor = UIColor.redColor().CGColor
+        }else{
+            sender.setTitle("Follow", forState: UIControlState.Normal)
+            sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
+        }
     }
     
     // Lets worry about this functionality later on
     @IBAction func addRemovePerson(sender: AnyObject) {
-                if (sender.backgroundImageForState(UIControlState.Normal) == UIImage(named: "AddPerson")){
+        if (sender.backgroundImageForState(UIControlState.Normal) == UIImage(named: "AddPerson")){
             sender.setBackgroundImage(UIImage(named: "RemovePerson"), forState: .Normal)
             sender.layer.backgroundColor = UIColor.redColor().CGColor
         }else {
