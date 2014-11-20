@@ -15,6 +15,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEntries = []
     @IBOutlet weak var feedTableView: UITableView!
     
+//    var currentEntry = PFObject(className: "Entry")
+//    var something:PFObject? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
