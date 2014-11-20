@@ -146,24 +146,15 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func postNewEntry(sender: AnyObject) {
         var newEntry = PFObject(className: "Entry")
         newEntry["content"] = self.contentText.text
-//        newPost["user"] = PFUser.currentUser()
+        newEntry["user"] = PFUser.currentUser()
         newEntry["title"] = self.titleText.text
-//        newPost["location"] = PFGeoPoint(latitude:40.0, longitude:-30.0)
-//        if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
-//            saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
-//        }
-        
-        //segue back
-        
-        
-        
-        println("Title: " + self.titleText.text)
-        println("Content: " + self.contentText.text)
+//        newEntry["location"] = PFGeoPoint(latitude:self.locationManager.location.coordinate.latitude.description, longitude:self.locationManager.location.coordinate.longitude.description)
+        if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
+            saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
+        }
         
         println("Latitude: \(self.locationManager.location.coordinate.longitude.description)")
         println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
-        //println("Nearest City: " + self.contentText.text);
-        self.getTagsFromTitleAndContent()
     }
     
     func toggle(sender: AnyObject!) {
