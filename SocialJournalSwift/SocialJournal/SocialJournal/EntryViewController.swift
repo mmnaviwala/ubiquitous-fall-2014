@@ -20,6 +20,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var dateDay: UILabel!
     @IBOutlet weak var dateMonth: UILabel!
     @IBOutlet weak var dateYear: UILabel!
+    var entry = PFObject(className: "Entry")
 
     override func viewDidLoad() {
         super.viewDidLoad()
