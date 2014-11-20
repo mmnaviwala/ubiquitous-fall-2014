@@ -154,7 +154,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
         }
         
-        println("Latitude: \(self.locationManager.location.coordinate.longitude.description)")
+        println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
         println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
     }
     
