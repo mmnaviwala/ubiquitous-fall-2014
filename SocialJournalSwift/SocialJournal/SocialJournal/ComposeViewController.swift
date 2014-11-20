@@ -148,7 +148,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate {
         newEntry["content"] = self.contentText.text
         newEntry["user"] = PFUser.currentUser()
         newEntry["title"] = self.titleText.text
-//        newEntry["location"] = PFGeoPoint(latitude:self.locationManager.location.coordinate.latitude.description, longitude:self.locationManager.location.coordinate.longitude.description)
+        newEntry["location"] = PFGeoPoint(latitude:(NSString(string: self.locationManager.location.coordinate.latitude.description)).doubleValue,
+                                          longitude:(NSString(string: self.locationManager.location.coordinate.longitude.description)).doubleValue)
         if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
         }
