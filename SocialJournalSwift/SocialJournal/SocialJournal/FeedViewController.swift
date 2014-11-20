@@ -24,6 +24,7 @@ class FeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
+        
     }
     
     override func didReceiveMemoryWarning() {
