@@ -55,6 +55,9 @@ class SignInController: UIViewController {
                 // Do stuff after successful login.
             } else {
                 // The login failed. Check error to see why.
+                let errorString = error.userInfo?["error"] as? NSString
+                let alertView = UIAlertView(title: "Error", message: errorString?.capitalizedString, delegate: self, cancelButtonTitle: "Ok")
+                alertView.show()
             }
         }
         
