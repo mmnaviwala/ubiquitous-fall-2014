@@ -20,7 +20,6 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var dateDay: UILabel!
     @IBOutlet weak var dateMonth: UILabel!
     @IBOutlet weak var dateYear: UILabel!
-    var entry = PFObject(className: "Entry")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +27,10 @@ class EntryViewController: UIViewController {
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
         
-//        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-//        style.lineSpacing = 17;
-//        textView.attributedText = [[NSAttributedString alloc]
-//        initWithString:@"Predefined Text"
-//        attributes:@{NSParagraphStyleAttributeName : style}];
-//        textView.text = @"Your text"
-        
-//        var style = NSMutableParagraphStyle()
-//        style.lineSpacing = 20
-//        let attributes = [NSParagraphStyleAttributeName : style]
-//        self.postBody.attributedText = NSAttributedString(string: self.postBody.text, attributes:attributes)
+        var style = NSMutableParagraphStyle()
+        style.lineSpacing = 20
+        let attributes = [NSParagraphStyleAttributeName : style]
+        self.postBody.attributedText = NSAttributedString(string: self.postBody.text, attributes:attributes)
         
         
 
