@@ -15,7 +15,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var hearted: UIImageView!
     @IBOutlet weak var heartCount: UILabel!
     @IBOutlet weak var postTitle: UILabel!
-    @IBOutlet weak var postBody: UILabel!
+    @IBOutlet weak var postBody: UITextView!
     @IBOutlet weak var dateWeekday: UILabel!
     @IBOutlet weak var dateDay: UILabel!
     @IBOutlet weak var dateMonth: UILabel!
@@ -23,6 +23,9 @@ class EntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.userProfilePicture.layer.cornerRadius = 50
+        self.userProfilePicture.layer.masksToBounds = true
 
         // Do any additional setup after loading the view.
     }
