@@ -156,8 +156,11 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         newEntry["content"] = self.contentText.text
         newEntry["user"] = PFUser.currentUser()
         newEntry["title"] = self.titleText.text
-        newEntry["location"] = PFGeoPoint(latitude:(NSString(string: self.locationManager.location.coordinate.latitude.description)).doubleValue,
-                                          longitude:(NSString(string: self.locationManager.location.coordinate.longitude.description)).doubleValue)
+        
+        var lat:String = self.locationManager.location.coordinate.latitude.description
+        var lon:String = self.locationManager.location.coordinate.longitude.description
+        println(lat + " : " + lon)
+        newEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
         if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
         }
