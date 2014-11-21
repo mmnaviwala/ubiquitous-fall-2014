@@ -58,7 +58,9 @@ class EntryViewController: UIViewController {
         self.dateDay.text = dateStringDay
         self.dateMonth.text = dateStringMonth
         self.dateYear.text = dateStringYear
-        
+
+        self.postBody.textColor = UIColor.whiteColor()
+        self.postBody.font = UIFont(name: "HelveticaNeue-Light", size: 22)
         
 
         // Do any additional setup after loading the view.

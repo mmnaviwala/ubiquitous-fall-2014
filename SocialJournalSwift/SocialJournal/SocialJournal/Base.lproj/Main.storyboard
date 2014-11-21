@@ -397,16 +397,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="c3n-Ky-KP3">
-                                                    <rect key="frame" x="-1" y="0.0" width="1440" height="159"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="2143" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Asn-5R-WFI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1440" height="159"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="2143" height="159"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                     <blurEffect style="dark"/>
                                                 </visualEffectView>
                                                 <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                    <rect key="frame" x="-1" y="0.0" width="10702" height="30"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="10703" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw">
@@ -572,7 +572,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -694,7 +694,7 @@
                                 <rect key="frame" x="16" y="249" width="736" height="692"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NEC-HU-96L">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="692"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="692"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="zHx-rD-7B3">
