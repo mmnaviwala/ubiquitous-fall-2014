@@ -28,20 +28,6 @@ class EntryViewController: UIViewController {
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
         
-        //Date
-        var weekday: NSDateFormatter = NSDateFormatter()
-        var day: NSDateFormatter = NSDateFormatter()
-        var month: NSDateFormatter = NSDateFormatter()
-        var year: NSDateFormatter = NSDateFormatter()
-        weekday.setLocalizedDateFormatFromTemplate("EEEE")
-        day.setLocalizedDateFormatFromTemplate("dd")
-        month.setLocalizedDateFormatFromTemplate("MMMM")
-        year.setLocalizedDateFormatFromTemplate("YYYY")
-        var dateStringWeekday: NSString = weekday.stringFromDate(self.entry.createdAt)
-        var dateStringDay: NSString = day.stringFromDate(self.entry.createdAt)
-        var dateStringMonth: NSString = month.stringFromDate(self.entry.createdAt)
-        var dateStringYear: NSString = year.stringFromDate(self.entry.createdAt)
-        
         self.username.text = "anonDawg"
         //        cell.userProfilePicture.image =
         
@@ -54,16 +40,29 @@ class EntryViewController: UIViewController {
         self.heartCount.text = String(ParseQueries.getHeartCountForEntry(self.entry))
         self.postTitle.text = entryTitle
         self.postBody.text = entryText
-        self.dateWeekday.text = dateStringWeekday
-        self.dateDay.text = dateStringDay
-        self.dateMonth.text = dateStringMonth
-        self.dateYear.text = dateStringYear
+        assignDate(self.entry.createdAt)
 
         self.postBody.textColor = UIColor.whiteColor()
         self.postBody.font = UIFont(name: "HelveticaNeue-Light", size: 22)
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func assignDate(date:NSDate) {
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE")
+        self.dateWeekday.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd")
+        self.dateDay.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+        self.dateMonth.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY")
+        self.dateYear.text = dateFormatter.stringFromDate(date)
     }
 
     override func didReceiveMemoryWarning() {
