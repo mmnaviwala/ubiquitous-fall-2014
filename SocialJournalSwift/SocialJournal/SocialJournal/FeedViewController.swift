@@ -54,6 +54,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // UITableViewDataSource methods
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.feedTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.allEntries.count
     }
