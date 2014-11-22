@@ -71,6 +71,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        println("===")
+        println(textField)
         if(textField == usernameTextField){
             passwordTextField.becomeFirstResponder()
         }
@@ -81,6 +83,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             confirmPasswordTextField.resignFirstResponder()
         }
         return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.beginAnimations("", context: nil)
+        UIView.setAnimationDuration(0.3)
+        self.view.bounds.origin.y = 200
+        UIView.commitAnimations()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        UIView.beginAnimations("", context: nil)
+        UIView.setAnimationDuration(0.3)
+        self.view.bounds.origin.y = 0
+        UIView.commitAnimations()
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
 
     /*
