@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var smallImage: UIImageView!
     @IBOutlet weak var whiteView: UIView!
@@ -19,6 +19,9 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.confirmPasswordTextField.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -65,6 +68,19 @@ class RegisterViewController: UIViewController {
             }, completion: { finished in
                 // do something for completion of needed
         })
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField == usernameTextField){
+            passwordTextField.becomeFirstResponder()
+        }
+        if(textField == passwordTextField){
+            confirmPasswordTextField.becomeFirstResponder()
+        }
+        if(textField == confirmPasswordTextField){
+            confirmPasswordTextField.resignFirstResponder()
+        }
+        return false
     }
 
     /*
