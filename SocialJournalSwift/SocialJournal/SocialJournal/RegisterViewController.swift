@@ -71,8 +71,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        println("===")
-        println(textField)
         if(textField == usernameTextField){
             passwordTextField.becomeFirstResponder()
         }
