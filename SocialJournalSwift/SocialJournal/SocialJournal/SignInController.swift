@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInController: UIViewController {
+class SignInController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var smallImage: UIImageView!
     @IBOutlet weak var whiteView: UIView!
@@ -18,6 +18,8 @@ class SignInController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -71,6 +73,16 @@ class SignInController: UIViewController {
             }, completion: { finished in
                 // do something for completion of needed
         })
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField == usernameTextField){
+            passwordTextField.becomeFirstResponder()
+        }
+        if(textField == passwordTextField){
+            passwordTextField.resignFirstResponder()
+        }
+        return false
     }
     
 }
