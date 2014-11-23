@@ -11,16 +11,16 @@ import Foundation
 class ParseQueries {
     
     
-    class func queryForFollowing() -> PFQuery {
+    class func queryForFollowing(currentUser:PFUser!) -> PFQuery {
         var query:PFQuery = PFQuery(className: "Activity")
-        query.whereKey("fromUser", equalTo: PFUser.currentUser())
+        query.whereKey("fromUser", equalTo: currentUser)
         query.whereKey("type", equalTo: "follow")
         return query
     }
     
-    class func queryForFollowers() -> PFQuery {
+    class func queryForFollowers(currentUser:PFUser!) -> PFQuery {
         var query:PFQuery = PFQuery(className: "Activity")
-        query.whereKey("toUser", equalTo: PFUser.currentUser())
+        query.whereKey("toUser", equalTo: currentUser)
         query.whereKey("type", equalTo: "follow")
         return query
     }
