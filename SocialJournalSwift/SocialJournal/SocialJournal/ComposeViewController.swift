@@ -114,55 +114,38 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         
         var tagDictionary = [String: Int]()
     
-        for word in allTags{
-            if countElements(word) != 0{
-                var temp = (word as NSString).substringToIndex(1)
-                if (temp == "#" && countElements(word) > 1 &&
-                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
-                    tagDictionary[word] == nil){
-                    
-                    tagDictionary[word] = allTags.count
-                    result.append(word);
-                    //println(word)
-                }
-            }
-        }
-        //println(result)
-        return result;
-    }
-    
-    func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
-        let tags = getTagsFromTitleAndContent()
-        if (!tags.isEmpty) {
-            for tag in tags {
-                var query = PFQuery(className: "Tags")
-                
-                query.whereKey("tag", equalTo: tag)
-                query.getFirstObjectInBackgroundWithBlock {
-                    (foundTag: PFObject!, error: NSError!) -> Void in
-                    if foundTag != nil {
-                        var newTag = PFObject(className: "Tags")
-                        
-                        newTag["tag"] = tag
-                        newTag.save()
-                        
-                        var newTagMapEntry = PFObject(className: "TagMap")
-                        
-                        newTagMapEntry["entry"] = entry
-                        newTagMapEntry["tag"] = newTag
-                        newTagMapEntry.saveEventually()
-                    } else {
-                        var newTagMapEntry = PFObject(className: "TagMap")
-                        
-                        newTagMapEntry["entry"] = entry
-                        newTagMapEntry["tag"] = foundTag
-                        newTagMapEntry.saveEventually()
-                    }
-                }
-                
-            }
-        }
-    }
+//    func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
+//        let tags = getTagsFromTitleAndContent()
+//        if (!tags.isEmpty) {
+//            for tag in tags {
+//                var query = PFQuery(className: "Tags")
+//                
+//                query.whereKey("tag", equalTo: tag)
+//                query.getFirstObjectInBackgroundWithBlock {
+//                    (foundTag: PFObject!, error: NSError!) -> Void in
+//                    if foundTag != nil {
+//                        var newTag = PFObject(className: "Tags")
+//                        
+//                        newTag["tag"] = tag
+//                        newTag.save()
+//                        
+//                        var newTagMapEntry = PFObject(className: "TagMap")
+//                        
+//                        newTagMapEntry["entry"] = entry
+//                        newTagMapEntry["tag"] = newTag
+//                        newTagMapEntry.saveEventually()
+//                    } else {
+//                        var newTagMapEntry = PFObject(className: "TagMap")
+//                        
+//                        newTagMapEntry["entry"] = entry
+//                        newTagMapEntry["tag"] = foundTag
+//                        newTagMapEntry.saveEventually()
+//                    }
+//                }
+//                
+//            }
+//        }
+//    }
     
     //shows the main add media view, allowing access to all of its subviews
     @IBAction func addMediaButtonPushed(sender: AnyObject) {
@@ -181,9 +164,11 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         var lon:String = self.locationManager.location.coordinate.longitude.description
         //println(lat + " : " + lon)
         newEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
-        if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
-            saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
-        }
+        newEntry.saveEventually()
+        
+        
+        //Preform segue here
+        
         
         //println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
         //println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")

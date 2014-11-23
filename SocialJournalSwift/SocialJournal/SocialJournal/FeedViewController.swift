@@ -33,7 +33,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.spinner.startAnimating()
-            self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser())
+          //  self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()) //We are no longer using this query, plase use queryForEntries
             println(self.allEntries)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 self.spinner.stopAnimating()
@@ -50,6 +50,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
+    
     
     
     // UITableViewDataSource methods

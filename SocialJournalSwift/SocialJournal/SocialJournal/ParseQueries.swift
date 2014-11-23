@@ -10,6 +10,42 @@ import Foundation
 
 class ParseQueries {
     
+    
+    class func queryForFollowing(currentUser:PFUser!) -> PFQuery {
+        var query:PFQuery = PFQuery(className: "Activity")
+        query.whereKey("fromUser", equalTo: currentUser)
+        query.whereKey("type", equalTo: "follow")
+        return query
+    }
+    
+    class func queryForFollowers(currentUser:PFUser!) -> PFQuery {
+        var query:PFQuery = PFQuery(className: "Activity")
+        query.whereKey("toUser", equalTo: currentUser)
+        query.whereKey("type", equalTo: "follow")
+        return query
+    }
+    
+    class func queryForAllUsers(currentUser:PFUser!) -> PFQuery {
+        var query:PFQuery = PFQuery(className: "User")
+        query.whereKey("objectId", notEqualTo: currentUser.objectId)
+        return query
+    }
+    
+    class func queryForEntries(currentUser:PFUser!) -> PFQuery {
+        var followingQuery:PFQuery = PFQuery(className: "Activity")
+        followingQuery.whereKey("fromUser", equalTo: currentUser)
+        followingQuery.whereKey("type", equalTo: "follow")
+        
+        var entryQuery:PFQuery = PFQuery(className: "Entry")
+        entryQuery.whereKey("toUser", matchesKey: "user", inQuery: followingQuery)
+        
+        return entryQuery
+    }
+    
+    
+    //////////Old Queries Depracated
+    
+    
     class func getFollowing(currentUser:PFUser) -> [PFObject] {
         var query = PFQuery(className: "Followers")
         query.whereKey("user", equalTo: currentUser)
