@@ -72,80 +72,74 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         
         dateFormatter.dateFormat = "yyyy"
         self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
-        
-//        self.titleText.layer.borderWidth = 3.0
-//        self.contentText.layer.borderWidth = 3.0
-//        self.mediaView.layer.borderWidth = 3.0
-//        self.addMediaButton.layer.borderWidth = 3.0
-//        self.profileImageView.layer.cornerRadius = 15.0
-//        
-//        self.titleText.layer.cornerRadius = 15.0
-//        self.contentText.layer.cornerRadius = 15.0
-//        self.mediaView.layer.cornerRadius = 15.0
-//        self.addMediaButton.layer.cornerRadius = 15.0
-//        self.profileImageView.layer.cornerRadius = 15.0
-//        
-//        self.titleText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-//        self.contentText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-//        self.mediaView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-//        self.addMediaButton.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
-//        self.profileImageView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
+       
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
- * Method: getTagsFromTitleAndContent()
- * pass text to this method and it will return an array of hashtags
- * a hashtag is any of the following:
- * #yes #YESyesyes # no #n o #YesYes
- * no whitespace in a hashtag
- */
-    func getTagsFromTitleAndContent() -> Array<String> {
-        //get the tags here, if no tags return an empty array ... not nil
-        var result = [String]();
-
-        //initialize the arrays
-        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
-        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
-        var allTags = titleTags + contentTags
-        
-        var tagDictionary = [String: Int]()
     
-//    func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
-//        let tags = getTagsFromTitleAndContent()
-//        if (!tags.isEmpty) {
-//            for tag in tags {
-//                var query = PFQuery(className: "Tags")
-//                
-//                query.whereKey("tag", equalTo: tag)
-//                query.getFirstObjectInBackgroundWithBlock {
-//                    (foundTag: PFObject!, error: NSError!) -> Void in
-//                    if foundTag != nil {
-//                        var newTag = PFObject(className: "Tags")
-//                        
-//                        newTag["tag"] = tag
-//                        newTag.save()
-//                        
-//                        var newTagMapEntry = PFObject(className: "TagMap")
-//                        
-//                        newTagMapEntry["entry"] = entry
-//                        newTagMapEntry["tag"] = newTag
-//                        newTagMapEntry.saveEventually()
-//                    } else {
-//                        var newTagMapEntry = PFObject(className: "TagMap")
-//                        
-//                        newTagMapEntry["entry"] = entry
-//                        newTagMapEntry["tag"] = foundTag
-//                        newTagMapEntry.saveEventually()
-//                    }
-//                }
-//                
-//            }
-//        }
-//    }
+    func getTagsFromTitleAndContent() -> Array<String> {
+            //get the tags here, if no tags return an empty array ... not nil
+            var result = [String]();
+    
+            //initialize the arrays
+            var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
+            var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
+            var allTags = titleTags + contentTags
+    
+            var tagDictionary = [String: Int]()
+    
+            for word in allTags{
+        if countElements(word) != 0{
+                    var temp = (word as NSString).substringToIndex(1)
+                    if (temp == "#" && countElements(word) > 1 &&
+                        word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
+                        tagDictionary[word] == nil){
+    
+                        tagDictionary[word] = allTags.count
+                           result.append(word);
+                        //println(word)
+                    }
+                }
+            }
+               //println(result)
+               return result;
+        }
+    
+    func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
+        let tags = getTagsFromTitleAndContent()
+        if (!tags.isEmpty) {
+            for tag in tags {
+                var query = PFQuery(className: "Tags")
+    
+                query.whereKey("tag", equalTo: tag)
+                query.getFirstObjectInBackgroundWithBlock {
+                    (foundTag: PFObject!, error: NSError!) -> Void in
+                    if foundTag != nil {
+                        var newTag = PFObject(className: "Tags")
+    
+                        newTag["tag"] = tag
+                        newTag.save()
+    
+                        var newTagMapEntry = PFObject(className: "TagMap")
+    
+                        newTagMapEntry["entry"] = entry
+                        newTagMapEntry["tag"] = newTag
+                            newTagMapEntry.saveEventually()
+                    } else {
+                        var newTagMapEntry = PFObject(className: "TagMap")
+    
+                        newTagMapEntry["entry"] = entry
+                        newTagMapEntry["tag"] = foundTag
+                        newTagMapEntry.saveEventually()
+                    }
+                }
+                    
+            }
+        }
+    }
     
     //shows the main add media view, allowing access to all of its subviews
     @IBAction func addMediaButtonPushed(sender: AnyObject) {
@@ -169,9 +163,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         
         //Preform segue here
         
-        
-        //println("Latitude: \(self.locationManager.location.coordinate.latitude.description)")
-        //println("Longitude: \(self.locationManager.location.coordinate.longitude.description)")
     }
     
     func toggle(sender: AnyObject!) {
