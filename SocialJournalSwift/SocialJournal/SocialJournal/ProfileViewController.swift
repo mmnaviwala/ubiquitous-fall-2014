@@ -74,19 +74,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    func queryForFollowing() -> PFQuery {
-        var query:PFQuery = PFQuery(className: "Activity")
-        query.whereKey("fromUser", equalTo: PFUser.currentUser())
-        query.whereKey("type", equalTo: "follow")
-        return query
-    }
-    
-    func queryForFollowers() -> PFQuery {
-        var query:PFQuery = PFQuery(className: "Activity")
-        query.whereKey("toUser", equalTo: PFUser.currentUser())
-        query.whereKey("type", equalTo: "follow")
-        return query
-}
 
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
