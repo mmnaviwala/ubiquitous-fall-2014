@@ -13,19 +13,33 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     var button: HamburgerButton! = nil
     var locationManager: CLLocationManager!
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var mediaImageView: UIImageView!
+    //main view
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     
-    @IBOutlet weak var titleText: UITextField!    
-    @IBOutlet weak var contentText: UITextView!
     
-    @IBOutlet weak var mediaView: UIView!
-    @IBOutlet weak var addMediaButton: UIButton!
-    
-    @IBOutlet weak var dayLabel: UILabel!
+    //date view
+    @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    
+    //add media view
+    @IBOutlet weak var addMediaView: UIView!
+    @IBOutlet weak var addMediaButton: UIButton!
+    
+    //media view
+    @IBOutlet weak var mediaView: UIView!
+    @IBOutlet weak var mediaImageView: UIImageView!
+    
+    //buttons view
+    @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var urlNameTextField: UITextField!
+    @IBOutlet weak var urlDestinationTextField: UITextField!
+    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var removeImageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +62,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
      
         var dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        self.dayLabel.text = dateFormatter.stringFromDate(NSDate())
+        self.weekdayLabel.text = dateFormatter.stringFromDate(NSDate())
         
         dateFormatter.dateFormat = "MMMM"
         self.monthLabel.text = dateFormatter.stringFromDate(NSDate())
@@ -59,23 +73,23 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         dateFormatter.dateFormat = "yyyy"
         self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
         
-        self.titleText.layer.borderWidth = 3.0
-        self.contentText.layer.borderWidth = 3.0
-        self.mediaView.layer.borderWidth = 3.0
-        self.addMediaButton.layer.borderWidth = 3.0
-        self.profileImageView.layer.cornerRadius = 15.0
-        
-        self.titleText.layer.cornerRadius = 15.0
-        self.contentText.layer.cornerRadius = 15.0
-        self.mediaView.layer.cornerRadius = 15.0
-        self.addMediaButton.layer.cornerRadius = 15.0
-        self.profileImageView.layer.cornerRadius = 15.0
-        
-        self.titleText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-        self.contentText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-        self.mediaView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
-        self.addMediaButton.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
-        self.profileImageView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
+//        self.titleText.layer.borderWidth = 3.0
+//        self.contentText.layer.borderWidth = 3.0
+//        self.mediaView.layer.borderWidth = 3.0
+//        self.addMediaButton.layer.borderWidth = 3.0
+//        self.profileImageView.layer.cornerRadius = 15.0
+//        
+//        self.titleText.layer.cornerRadius = 15.0
+//        self.contentText.layer.cornerRadius = 15.0
+//        self.mediaView.layer.cornerRadius = 15.0
+//        self.addMediaButton.layer.cornerRadius = 15.0
+//        self.profileImageView.layer.cornerRadius = 15.0
+//        
+//        self.titleText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+//        self.contentText.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+//        self.mediaView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.7).CGColor
+//        self.addMediaButton.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
+//        self.profileImageView.layer.borderColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0).CGColor
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
@@ -94,8 +108,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         var result = [String]();
 
         //initialize the arrays
-        var titleTags = self.titleText.text.componentsSeparatedByString(" ")
-        var contentTags = self.contentText.text.componentsSeparatedByString(" ")
+        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
+        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
         var allTags = titleTags + contentTags
         
         var tagDictionary = [String: Int]()
@@ -150,16 +164,22 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         }
     }
     
+    //shows the main add media view, allowing access to all of its subviews
+    @IBAction func addMediaButtonPushed(sender: AnyObject) {
+        self.addMediaView.alpha = 1.0;
+        self.addMediaButton.alpha = 0.0;
+        
+    }
     
     @IBAction func postNewEntry(sender: AnyObject) {
         var newEntry = PFObject(className: "Entry")
-        newEntry["content"] = self.contentText.text
+        newEntry["content"] = self.contentTextView.text
         newEntry["user"] = PFUser.currentUser()
-        newEntry["title"] = self.titleText.text
+        newEntry["title"] = self.titleTextField.text
         
         var lat:String = self.locationManager.location.coordinate.latitude.description
         var lon:String = self.locationManager.location.coordinate.longitude.description
-        println(lat + " : " + lon)
+        //println(lat + " : " + lon)
         newEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
         if newEntry.save() {  //Will save synchronously, might need to add spinner for the entire if statement
             saveTagsFromPost(newEntry, tags: getTagsFromTitleAndContent())
@@ -183,10 +203,14 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         })
     }
     
-    @IBAction func addMedia(sender: AnyObject) {
+    @IBAction func addImage(sender: AnyObject) {
         let pickerC = UIImagePickerController()
         pickerC.delegate = self
         self.presentViewController(pickerC, animated: true, completion: nil)
+    }
+    
+    @IBAction func removeImage(sender: AnyObject) {
+        self.mediaImageView.image = nil
     }
 
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
@@ -194,6 +218,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         self.mediaImageView.alpha = 1.0
         self.addMediaButton.alpha = 0.0
         self.mediaImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.backgroundImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
     /*
