@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.spinner.startAnimating()
-            self.followersArray = ParseQueries.getFollowers(self.currentUser)
+//            self.followersArray = ParseQueries.getFollowers(self.currentUser)  ///We are not longer using this query
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 self.spinner.stopAnimating()
                 self.theCollectionView.reloadData()
@@ -74,7 +74,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    func queryForFollowing() -> PFQuery {
+        var query:PFQuery = PFQuery(className: "Activity")
+        query.whereKey("fromUser", equalTo: PFUser.currentUser())
+        query.whereKey("type", equalTo: "follow")
+        return query
+    }
     
+    func queryForFollowers() -> PFQuery {
+        var query:PFQuery = PFQuery(className: "Activity")
+        query.whereKey("toUser", equalTo: PFUser.currentUser())
+        query.whereKey("type", equalTo: "follow")
+        return query
+}
+
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
