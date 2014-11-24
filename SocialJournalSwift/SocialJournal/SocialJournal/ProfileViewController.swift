@@ -271,7 +271,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
             
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-            var eachUser:PFObject = eachObject["fromUser"] as PFObject
+            var eachUser:PFObject
+            if (currentCollectionViewDataArray == followersArray){
+                eachUser = eachObject["fromUser"] as PFObject
+            }else{
+                eachUser = eachObject["toUser"] as PFObject
+            }
             var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
             
             let vc = segue.destinationViewController as ProfileViewController
