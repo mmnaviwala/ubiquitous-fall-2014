@@ -9,6 +9,50 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet var keyword: UITextField!
+    
+    
+    @IBOutlet var virtualName: UITextField!
+    
+    
+    @IBOutlet var displayChange: UITextView!
+    
+    var virtualNameDictionary = Dictionary<String,String>()
+    
+    @IBAction func SaveChanges(sender: AnyObject) {
+        
+        
+        displayChange.text = ""
+        
+        for(key, value) in virtualNameDictionary
+        {
+            if(keyword.text == key)
+            {
+                virtualNameDictionary.removeValueForKey(key);
+            }
+        }
+        
+        virtualNameDictionary[keyword.text] = virtualName.text;
+        
+        
+        for(key, value) in virtualNameDictionary
+        {
+            displayChange.text = displayChange.text.stringByAppendingFormat("userName= \(key): virtualName= \(value) \n")
+            
+        }
+        
+        keyword.text = ""
+        virtualName.text = ""
+        
+    }
+    
+    
+    @IBAction func signOut(sender: AnyObject) {
+        
+        //PFUser.logout()
+    }
+    
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
