@@ -65,31 +65,23 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.followButton.hidden = false
         }
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//            self.spinner.startAnimating()
-////            self.followersArray = ParseQueries.getFollowers(self.currentUser)  ///We are not longer using this query
-//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                self.spinner.stopAnimating()
-//                self.theCollectionView.reloadData()
-//            })
-//        }
-//        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//            self.spinner.startAnimating()
-////            self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()) //We are no longer using this query, plase use queryForEntries
-//            println(self.allEntries)
-//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                self.spinner.stopAnimating()
-//                self.theTableView.reloadData()
-//            })
-//        }
-        
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.followersArray = objects
                 self.theCollectionView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+        
+        query = ParseQueries.queryForEntries(PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.allEntries = objects
+                self.theTableView.reloadData()
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
@@ -113,17 +105,19 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             currentCollectionViewDataArray = followingArray
             theTableView.hidden = true
             theCollectionView.hidden = false
+            theCollectionView.reloadData()
         case 1:
             currentCollectionViewDataArray = followersArray
             theTableView.hidden = true
             theCollectionView.hidden = false
+            theCollectionView.reloadData()
         case 2:
             theTableView.hidden = false
             theCollectionView.hidden = true
+            theTableView.reloadData()
         default:
             break;
         }
-        theCollectionView.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -189,6 +183,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if (allEntries.count == 0){
+            self.noDataFoundLabel.hidden = false
+        }else{
+            self.noDataFoundLabel.hidden = true
+        }
         return self.allEntries.count
     }
     

@@ -1105,7 +1105,7 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <blurEffect style="light"/>
+                                                    <blurEffect style="dark"/>
                                                 </visualEffectView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnonDawg" id="Fkh-br-B78">
                                                     <rect key="frame" x="8" y="38" width="100" height="104"/>
@@ -1217,7 +1217,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iTq-8N-tby">
-                                <rect key="frame" x="659" y="26" width="93.000000136032455" height="30"/>
+                                <rect key="frame" x="659" y="26" width="93" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.15294117647058825" green="0.60392156862745094" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
