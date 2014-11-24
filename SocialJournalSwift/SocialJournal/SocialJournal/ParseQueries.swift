@@ -26,7 +26,7 @@ class ParseQueries {
     }
     
     class func queryForAllUsers(currentUser:PFUser!) -> PFQuery {
-        var query:PFQuery = PFQuery(className: "User")
+        var query:PFQuery = PFUser.query()
         query.whereKey("objectId", notEqualTo: currentUser.objectId)
         return query
     }

@@ -8,9 +8,11 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var button: HamburgerButton! = nil
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
@@ -23,6 +25,10 @@ class SearchViewController: UIViewController {
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
         
         // Do any additional setup after loading the view.
+        
+
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +38,18 @@ class SearchViewController: UIViewController {
     
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
 
     /*
