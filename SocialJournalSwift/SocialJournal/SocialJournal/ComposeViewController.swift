@@ -143,9 +143,14 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     
     //shows the main add media view, allowing access to all of its subviews
     @IBAction func addMediaButtonPushed(sender: AnyObject) {
-        self.addMediaView.alpha = 1.0;
-        self.addMediaButton.alpha = 0.0;
+        self.addMediaView.alpha = 1.0
+        self.addMediaButton.alpha = 0.0
+        self.mediaView.alpha = 1.0
+        self.buttonsView.alpha = 1.0
         
+        let pickerC = UIImagePickerController()
+        pickerC.delegate = self
+        self.presentViewController(pickerC, animated: true, completion: nil)
     }
     
     @IBAction func postNewEntry(sender: AnyObject) {
@@ -160,9 +165,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         newEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
         newEntry.saveEventually()
         
-        
         //Preform segue here
-        
     }
     
     func toggle(sender: AnyObject!) {
@@ -179,7 +182,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         })
     }
     
-    @IBAction func addImage(sender: AnyObject) {
+    @IBAction func editImage(sender: AnyObject) {
         let pickerC = UIImagePickerController()
         pickerC.delegate = self
         self.presentViewController(pickerC, animated: true, completion: nil)
@@ -187,6 +190,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     
     @IBAction func removeImage(sender: AnyObject) {
         self.mediaImageView.image = nil
+        self.backgroundImageView.image = UIImage(named: "Lake")
     }
 
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
