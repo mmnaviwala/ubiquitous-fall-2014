@@ -42,6 +42,12 @@ class ParseQueries {
         return entryQuery
     }
     
+    class func queryForMyEntries(currentUser:PFUser!) -> PFQuery {
+        var entryQuery = PFQuery(className: "Entry")
+        entryQuery.whereKey("user", notEqualTo: currentUser)
+        return entryQuery
+    }
+    
     
     //////////Old Queries Depracated
     
