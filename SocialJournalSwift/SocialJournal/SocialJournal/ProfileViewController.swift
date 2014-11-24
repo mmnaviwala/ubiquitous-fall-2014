@@ -65,9 +65,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.followButton.hidden = false
         }
         
+        // ==========================================================
+        // Get the followers
+        self.spinner.startAnimating()
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
             if error == nil {
                 self.followersArray = objects
                 self.theCollectionView.reloadData()
@@ -76,9 +80,28 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
         
-        query = ParseQueries.queryForEntries(PFUser.currentUser())
+        // ==========================================================
+        // Get the following
+        self.spinner.startAnimating()
+        query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
+            if error == nil {
+                self.followingArray = objects
+                self.theCollectionView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+
+        // ==========================================================
+        // Get the entries
+        self.spinner.startAnimating()
+        query = ParseQueries.queryForEntries(self.currentUser)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
             if error == nil {
                 self.allEntries = objects
                 self.theTableView.reloadData()
@@ -120,6 +143,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    
+//    ==================================================================================================
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (currentCollectionViewDataArray.count == 0){
             self.noDataFoundLabel.hidden = false
@@ -133,7 +159,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as collectionViewCell
         if (currentCollectionViewDataArray != []){
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-            var eachUser:PFObject = eachObject["fromUser"] as PFObject
+            var eachUser:PFObject
+            if (currentCollectionViewDataArray == followersArray){
+                eachUser = eachObject["fromUser"] as PFObject
+            }else{
+                eachUser = eachObject["toUser"] as PFObject
+            }
             var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
             cell.userNameLabel.text = actualUser.username
         }
@@ -144,39 +175,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "goToProfileFromCollectionCell"){
-            
-            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
-            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
-            
-            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-            var eachUser:PFObject = eachObject["fromUser"] as PFObject
-            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
-            
-            let vc = segue.destinationViewController as ProfileViewController
-            vc.currentUser = actualUser
-        }
-    }
     
     
-    
-    
-    @IBAction func followButtonClicked(sender: UIButton) {
-        // Set the button so it says unfollow
-        if(sender.titleForState(UIControlState.Normal) == "Follow"){
-            sender.setTitle("Unfollow", forState: UIControlState.Normal)
-            sender.layer.backgroundColor = UIColor.redColor().CGColor
-        }else{
-            sender.setTitle("Follow", forState: UIControlState.Normal)
-            sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
-        }
-    }
-    
-    
-    
-    
-    
+//    ==================================================================================================
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.theTableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -258,14 +259,43 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return 150
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        
-//        if segue.identifier == "feedToEntry"{
-//            var selectedRowIndexPath: NSIndexPath = self.theTableView.indexPathForSelectedRow()!
-//            var selectedSection: NSInteger = selectedRowIndexPath.section
-//            
-//            let vc = segue.destinationViewController as EntryViewController
-//            vc.entry = self.allEntries[selectedSection] as PFObject
-//        }
-//    }
+    
+    
+    
+//    ==================================================================================================
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "goToProfileFromCollectionCell"){
+            
+            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
+            let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
+            
+            var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
+            var eachUser:PFObject = eachObject["fromUser"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            
+            let vc = segue.destinationViewController as ProfileViewController
+            vc.currentUser = actualUser
+        }
+        
+        if segue.identifier == "feedToEntry"{
+            var selectedRowIndexPath: NSIndexPath = self.theTableView.indexPathForSelectedRow()!
+            var selectedSection: NSInteger = selectedRowIndexPath.section
+            
+            let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.allEntries[selectedSection] as PFObject
+        }
+    }
+    
+    @IBAction func followButtonClicked(sender: UIButton) {
+        // Set the button so it says unfollow
+        if(sender.titleForState(UIControlState.Normal) == "Follow"){
+            sender.setTitle("Unfollow", forState: UIControlState.Normal)
+            sender.layer.backgroundColor = UIColor.redColor().CGColor
+        }else{
+            sender.setTitle("Follow", forState: UIControlState.Normal)
+            sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
+        }
+    }
+    
 }
