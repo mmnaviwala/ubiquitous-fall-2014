@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         // ==========================================================
         // Get the following
         self.spinner.startAnimating()
-        query = ParseQueries.queryForFollowers(self.currentUser)
+        query = ParseQueries.queryForFollowing(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             self.spinner.stopAnimating()
