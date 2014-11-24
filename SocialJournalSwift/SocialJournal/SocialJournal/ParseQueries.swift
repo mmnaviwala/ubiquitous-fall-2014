@@ -37,7 +37,7 @@ class ParseQueries {
         followingQuery.whereKey("type", equalTo: "follow")
         
         var entryQuery:PFQuery = PFQuery(className: "Entry")
-        entryQuery.whereKey("toUser", matchesKey: "user", inQuery: followingQuery)
+        entryQuery.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
         
         return entryQuery
     }

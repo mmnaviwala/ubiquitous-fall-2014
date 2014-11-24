@@ -692,7 +692,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">

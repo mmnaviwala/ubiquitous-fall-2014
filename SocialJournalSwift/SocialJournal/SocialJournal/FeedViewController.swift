@@ -31,14 +31,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            self.spinner.startAnimating()
-          //  self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()) //We are no longer using this query, plase use queryForEntries
-            println(self.allEntries)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.spinner.stopAnimating()
+        
+        var query = ParseQueries.queryForEntries(PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.allEntries = objects
                 self.feedTableView.reloadData()
-            })
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
         }
     }
     
