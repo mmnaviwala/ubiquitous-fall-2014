@@ -20,9 +20,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var button: HamburgerButton! = nil
     var allEntries = []
     
-    // this needs to be set from somewhere else
-    // so when other profiles, we can set the "currentUser"
-    // to whatever user is selected
     var currentUser:PFUser = PFUser()
 
     var currentCollectionViewDataArray = []
@@ -170,18 +167,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
         }
     }
-    
-    // Lets worry about this functionality later on
-    @IBAction func addRemovePerson(sender: AnyObject) {
-        if (sender.backgroundImageForState(UIControlState.Normal) == UIImage(named: "AddPerson")){
-            sender.setBackgroundImage(UIImage(named: "RemovePerson"), forState: .Normal)
-            sender.layer.backgroundColor = UIColor.redColor().CGColor
-        }else {
-            sender.setBackgroundImage(UIImage(named: "AddPerson"), forState: .Normal)
-            sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
-        }
-    }
-    
     
     
     
