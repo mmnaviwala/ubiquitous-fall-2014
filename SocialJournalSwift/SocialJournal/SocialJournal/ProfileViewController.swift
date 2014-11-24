@@ -65,23 +65,34 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.followButton.hidden = false
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            self.spinner.startAnimating()
-//            self.followersArray = ParseQueries.getFollowers(self.currentUser)  ///We are not longer using this query
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.spinner.stopAnimating()
-                self.theCollectionView.reloadData()
-            })
-        }
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+//            self.spinner.startAnimating()
+////            self.followersArray = ParseQueries.getFollowers(self.currentUser)  ///We are not longer using this query
+//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//                self.spinner.stopAnimating()
+//                self.theCollectionView.reloadData()
+//            })
+//        }
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+//            self.spinner.startAnimating()
+////            self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()) //We are no longer using this query, plase use queryForEntries
+//            println(self.allEntries)
+//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//                self.spinner.stopAnimating()
+//                self.theTableView.reloadData()
+//            })
+//        }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            self.spinner.startAnimating()
-//            self.allEntries = ParseQueries.getAllEntriesForCurrentUser(PFUser.currentUser()) //We are no longer using this query, plase use queryForEntries
-            println(self.allEntries)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.spinner.stopAnimating()
-                self.theTableView.reloadData()
-            })
+        var query = ParseQueries.queryForFollowers(self.currentUser)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.followersArray = objects
+                self.theCollectionView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
         }
         
     }
@@ -128,7 +139,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as collectionViewCell
         if (currentCollectionViewDataArray != []){
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-            var eachUser:PFObject = eachObject["user"] as PFObject
+            var eachUser:PFObject = eachObject["fromUser"] as PFObject
             var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
             cell.userNameLabel.text = actualUser.username
         }
@@ -146,7 +157,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
             
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
-            var eachUser:PFObject = eachObject["user"] as PFObject
+            var eachUser:PFObject = eachObject["fromUser"] as PFObject
             var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
             
             let vc = segue.destinationViewController as ProfileViewController
