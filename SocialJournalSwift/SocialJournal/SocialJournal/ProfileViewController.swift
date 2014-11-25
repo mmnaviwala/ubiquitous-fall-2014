@@ -18,14 +18,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var theTableView: UITableView!
     
     var button: HamburgerButton! = nil
-    var allEntries = []
     
     var currentUser:PFUser = PFUser()
 
     var currentCollectionViewDataArray = []
-    
     var followingArray = []
     var followersArray = []
+    var allEntries = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +33,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.currentUser = PFUser.currentUser()
         }
         
+        self.currentUserName.text = "@" + currentUser.username
+        
+        if (currentUser.objectId == PFUser.currentUser().objectId){
+            self.followButton.hidden = true
+        }else{
+            self.followButton.hidden = false
+        }
+        
+        currentUserProfilePicture = prettifyImage(currentUserProfilePicture)
+        setupTheHamburgerIcon()
+        setDefaults()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTheHamburgerIcon() {
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -42,31 +61,32 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-        
-        self.currentUserName.text = "@" + currentUser.username
-        
+    }
+    
+    func toggle(sender: AnyObject!) {
+        self.button.showsMenu = !self.button.showsMenu
+    }
+    
+    func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
+        imageViewToModify.layer.cornerRadius = currentUserProfilePicture.frame.size.width / 2;
+        imageViewToModify.clipsToBounds = true;
+        imageViewToModify.layer.borderWidth = 6.0
+        imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
+        return imageViewToModify
+    }
+    
+    func setDefaults() {
         theCollectionView.delegate = self
         theCollectionView.dataSource = self
         
-        currentCollectionViewDataArray = followingArray // following is the default selection
-        
-        currentUserProfilePicture.layer.cornerRadius = currentUserProfilePicture.frame.size.width / 2;
-        currentUserProfilePicture.clipsToBounds = true;
-        currentUserProfilePicture.layer.borderWidth = 6.0
-        currentUserProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor;
+        self.noDataFoundLabel.hidden = true
         
         theTableView.hidden = true
         theCollectionView.hidden = false
-        
-        self.noDataFoundLabel.hidden = true
-        if (currentUser.objectId == PFUser.currentUser().objectId){
-            self.followButton.hidden = true
-        }else{
-            self.followButton.hidden = false
-        }
-        
-        // ==========================================================
-        // Get the followers
+        fetchAndSetFollowers()
+    }
+    
+    func fetchAndSetFollowers() {
         self.spinner.startAnimating()
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
@@ -74,31 +94,33 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.spinner.stopAnimating()
             if error == nil {
                 self.followersArray = objects
+                self.currentCollectionViewDataArray = self.followersArray
                 self.theCollectionView.reloadData()
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
         }
-        
-        // ==========================================================
-        // Get the following
+    }
+    
+    func fetchAndSetFollowing() {
         self.spinner.startAnimating()
-        query = ParseQueries.queryForFollowing(self.currentUser)
+        var query = ParseQueries.queryForFollowing(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             self.spinner.stopAnimating()
             if error == nil {
                 self.followingArray = objects
+                self.currentCollectionViewDataArray = self.followingArray
                 self.theCollectionView.reloadData()
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
         }
-
-        // ==========================================================
-        // Get the entries
+    }
+    
+    func fetchAndSetMyEntriesTable() {
         self.spinner.startAnimating()
-        query = ParseQueries.queryForMyEntries(self.currentUser)
+        var query = ParseQueries.queryForMyEntries(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             self.spinner.stopAnimating()
@@ -109,35 +131,22 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
         }
-        
-    }
-    
-
-    func toggle(sender: AnyObject!) {
-        self.button.showsMenu = !self.button.showsMenu
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            currentCollectionViewDataArray = followingArray
             theTableView.hidden = true
             theCollectionView.hidden = false
-            theCollectionView.reloadData()
+            fetchAndSetFollowers()
         case 1:
-            currentCollectionViewDataArray = followersArray
             theTableView.hidden = true
             theCollectionView.hidden = false
-            theCollectionView.reloadData()
+            fetchAndSetFollowing()
         case 2:
             theTableView.hidden = false
             theCollectionView.hidden = true
-            theTableView.reloadData()
+            fetchAndSetMyEntriesTable()
         default:
             break;
         }
@@ -240,8 +249,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         return cell
     }
-    
-    // UITableViewDelegate methods
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         var headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 1))
