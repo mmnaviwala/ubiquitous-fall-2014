@@ -596,14 +596,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="c3n-Ky-KP3">
-                                                    <rect key="frame" x="-4" y="0.0" width="7062" height="159"/>
+                                                    <rect key="frame" x="-4" y="0.0" width="7765" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Asn-5R-WFI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="7062" height="159"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="7765" height="159"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1406" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="2109" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw">
@@ -773,7 +773,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999475938" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -1083,14 +1083,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="RSg-cb-t5V">
-                                                    <rect key="frame" x="-4" y="0.0" width="7062" height="159"/>
+                                                    <rect key="frame" x="-4" y="0.0" width="7764" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MdT-3o-pm0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="7062" height="159"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="7764" height="159"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" id="s5I-TX-fYS" userLabel="BlueBackground">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1406" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="2108" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QvX-gy-inT">
@@ -1197,6 +1197,7 @@
                                             <outlet property="postTitle" destination="jej-uG-8RL" id="kSK-Th-tV0"/>
                                             <outlet property="userProfilePicture" destination="Fkh-br-B78" id="AOz-1E-FLQ"/>
                                             <outlet property="username" destination="QvX-gy-inT" id="3Bs-jp-VTK"/>
+                                            <segue destination="iTh-Tj-8kK" kind="push" identifier="feedToEntry" id="b46-bd-jq3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1637,7 +1638,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="hYT-zi-chh"/>
         <segue reference="DNn-Fo-hMg"/>
-        <segue reference="aXJ-vG-G72"/>
+        <segue reference="b46-bd-jq3"/>
         <segue reference="cV5-4H-0Bj"/>
+        <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
 </document>
