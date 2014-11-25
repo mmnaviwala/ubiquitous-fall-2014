@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController{
+    
+    
+    
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +26,23 @@ class SettingsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-    }
+        
+      
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
+        }
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
+    
+    
+    
+   
 
+  
+  
     /*
     // MARK: - Navigation
 
@@ -43,4 +53,5 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
 }
