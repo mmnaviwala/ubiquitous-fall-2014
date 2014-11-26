@@ -11,7 +11,9 @@ import UIKit
 class NotificationsViewController: UIViewController {
     
     var button: HamburgerButton! = nil
+    var notifications = []
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,19 @@ class NotificationsViewController: UIViewController {
         self.button.showsMenu = !self.button.showsMenu
     }
     
-    
+    func getNotifications() {
+        var query:PFQuery = ParseQueries.queryForNotifications(PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.notifications = objects as [PFObject]
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+    }
+
+
 }
 
