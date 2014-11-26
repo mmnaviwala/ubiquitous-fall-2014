@@ -47,7 +47,11 @@ class ParseQueries {
         entryQuery.whereKey("user", equalTo: currentUser)
         return entryQuery
     }
-    
+    class func queryForNotifications(currentUser:PFUser!) -> PFQuery {
+        var query = PFQuery(className: "Activity")
+        query.whereKey("toUser", equalTo: currentUser)
+        return query
+    }
     
     //////////Old Queries Depracated
     
