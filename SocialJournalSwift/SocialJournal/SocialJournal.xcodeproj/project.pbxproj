@@ -35,7 +35,7 @@
 		00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */; };
 		29C7018E1A1E412D00001464 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C7018D1A1E412D00001464 /* MapKit.framework */; };
 		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
-		89C411B01A24232D007E8676 /* ChangeVirtualNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C411AF1A24232D007E8676 /* ChangeVirtualNames.swift */; };
+		892258AE1A25511F007BFCAC /* ReplaceWithVirtualName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
@@ -90,7 +90,7 @@
 		00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		29C7018D1A1E412D00001464 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		89C411AF1A24232D007E8676 /* ChangeVirtualNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeVirtualNames.swift; sourceTree = "<group>"; };
+		892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceWithVirtualName.swift; path = ../ReplaceWithVirtualName.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -174,9 +174,9 @@
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
-				89C411AF1A24232D007E8676 /* ChangeVirtualNames.swift */,
 				29C7018F1A1E43B800001464 /* MapViewController.swift */,
 				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
+				892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */,
 				007B29421A1D0BB500786913 /* ParseQueries.swift */,
 				AC9DE5721A195F8100BE697D /* ProfileViewController.swift */,
 				007435A01A1B7E8F0013A576 /* RegisterViewController.swift */,
@@ -331,12 +331,12 @@
 				AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */,
 				00CB83971A1AFD2D000A613F /* SettingsViewController.swift in Sources */,
 				007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */,
-				89C411B01A24232D007E8676 /* ChangeVirtualNames.swift in Sources */,
 				008CD4F91A192DCA0024BB9A /* SWRevealViewController.m in Sources */,
 				29C701901A1E43B800001464 /* MapViewController.swift in Sources */,
 				9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */,
 				AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */,
 				AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */,
+				892258AE1A25511F007BFCAC /* ReplaceWithVirtualName.swift in Sources */,
 				008CD4FF1A1934220024BB9A /* HamburgerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

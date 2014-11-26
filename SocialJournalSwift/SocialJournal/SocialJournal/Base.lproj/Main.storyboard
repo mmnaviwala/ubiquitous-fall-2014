@@ -1443,6 +1443,11 @@
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.19641203700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hE-i0-I6k">
                                 <rect key="frame" x="30" y="364" width="711" height="55"/>
@@ -1451,6 +1456,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follower" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e80-bV-PjV">
                                 <rect key="frame" x="30" y="463" width="711" height="55"/>
@@ -1459,6 +1469,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Feed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q6d-ww-xji">
                                 <rect key="frame" x="29" y="558" width="711" height="55"/>
@@ -1467,6 +1482,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="caj-GS-zMg">
                                 <rect key="frame" x="677" y="376" width="51" height="31"/>
@@ -1488,6 +1508,11 @@
                                 <state key="normal" title="Sign Out">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5w4-Sw-W6h">
                                 <rect key="frame" x="30" y="138" width="84" height="21"/>
@@ -1504,6 +1529,11 @@
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.19641203700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZS7-kB-0eH" kind="push" identifier="changeVirtualName" id="UrV-TU-4kw"/>
                                 </connections>
@@ -1517,10 +1547,10 @@
             </objects>
             <point key="canvasLocation" x="7102" y="1022"/>
         </scene>
-        <!--Replace With Your Virtual Names-->
+        <!--Change Virtual Names-->
         <scene sceneID="cLf-AJ-a07">
             <objects>
-                <viewController id="ZS7-kB-0eH" customClass="ChangeVirtualNames" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZS7-kB-0eH" customClass="ReplaceWithVirtualName" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fiE-P6-tTy">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1549,28 +1579,34 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uM9-6s-ma8">
-                                <rect key="frame" x="318" y="192" width="132" height="30"/>
+                                <rect key="frame" x="304" y="188" width="146" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save Changes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="ZS7-kB-0eH" eventType="touchUpInside" id="As9-gl-Qz2"/>
+                                </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4GI-H0-RTB">
-                                <rect key="frame" x="120" y="281" width="528" height="512"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8SX-oq-Sfm">
+                                <rect key="frame" x="100" y="282" width="559" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="ZS7-kB-0eH" id="rdk-3n-qVu"/>
-                                    <outlet property="delegate" destination="ZS7-kB-0eH" id="UO4-96-azi"/>
+                                    <outlet property="dataSource" destination="ZS7-kB-0eH" id="yk4-8G-2B4"/>
+                                    <outlet property="delegate" destination="ZS7-kB-0eH" id="B0R-nv-9Md"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Replace With Your Virtual Names" id="FZ1-Yx-Ca1"/>
+                    <navigationItem key="navigationItem" title="Change Virtual Names" id="FZ1-Yx-Ca1"/>
                     <connections>
-                        <outlet property="tableView" destination="4GI-H0-RTB" id="8qM-1g-f6Y"/>
+                        <outlet property="keyword" destination="kAh-mb-hkZ" id="Bvs-bG-Okq"/>
+                        <outlet property="tableView" destination="8SX-oq-Sfm" id="BKn-tD-vtc"/>
+                        <outlet property="virtualName" destination="wYe-hb-ydg" id="NQc-UT-Alq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87p-Op-h08" userLabel="First Responder" sceneMemberID="firstResponder"/>
