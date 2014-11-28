@@ -983,10 +983,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="TtU-Mo-uQK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="736" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1472" height="300"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mVR-2f-sjQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="736" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="1472" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PJg-OE-PQh">
@@ -1676,9 +1676,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="B73-YQ-s57"/>
+        <segue reference="ce0-5R-9At"/>
         <segue reference="hYT-zi-chh"/>
-        <segue reference="DNn-Fo-hMg"/>
+        <segue reference="b46-bd-jq3"/>
         <segue reference="cV5-4H-0Bj"/>
         <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
