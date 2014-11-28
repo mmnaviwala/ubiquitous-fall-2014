@@ -14,7 +14,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet var keyword: UITextField!
     
-    let cellIdentifier = "cellIdentifier"
+   // let cellIdentifier = "cellIdentifier"
     
     var virtualNameDictionary = Dictionary<String,String>()
     
@@ -39,6 +39,14 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         
         keyword.text = ""
         virtualName.text = ""
+        
+        
+        for (key,value)in virtualNameDictionary
+        {
+            println("\(key)   \(value)")
+        }
+        
+        
     }
 
 
@@ -51,7 +59,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         // Register the UITableViewCell class with the tableView
     
         
-        self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+       // self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         
         
         
@@ -74,7 +82,6 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     // UITableViewDataSource methods
     
     
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
@@ -85,7 +92,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return 10
         
     }
     
@@ -93,16 +100,23 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = self.tableView?.dequeueReusableCellWithIdentifier(self.cellIdentifier) as UITableViewCell
         
-        //var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
+       // var row = indexPath.row
         
+        cell.backgroundColor = UIColor.clearColor()
         
+        // var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         
-        //cell.textLabel.text = self.tableData[indexPath.row]
+        if self.virtualNameDictionary.isEmpty
+        {
+         println("sfwe")
+         cell.keyword.text = Array(self.virtualNameDictionary.keys)[indexPath.row+1]
+         cell.virtualName.text = Array(self.virtualNameDictionary.values)[indexPath.row+1]
         
-        
-        
+        //cell.keyword.text = "nmb"
+        //cell.virtualName.text = "nqs"
+        }
         return cell
         
     }

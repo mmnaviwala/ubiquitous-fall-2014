@@ -36,6 +36,7 @@
 		29C7018E1A1E412D00001464 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C7018D1A1E412D00001464 /* MapKit.framework */; };
 		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
 		892258AE1A25511F007BFCAC /* ReplaceWithVirtualName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */; };
+		895F8C531A28E8BF00D6AE8C /* VirtualNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895F8C521A28E8BF00D6AE8C /* VirtualNameTableViewCell.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
@@ -91,6 +92,7 @@
 		29C7018D1A1E412D00001464 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceWithVirtualName.swift; path = ../ReplaceWithVirtualName.swift; sourceTree = "<group>"; };
+		895F8C521A28E8BF00D6AE8C /* VirtualNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualNameTableViewCell.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
+				895F8C521A28E8BF00D6AE8C /* VirtualNameTableViewCell.swift */,
 				29C7018F1A1E43B800001464 /* MapViewController.swift */,
 				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
 				892258AD1A25511F007BFCAC /* ReplaceWithVirtualName.swift */,
@@ -323,6 +326,7 @@
 				007B29431A1D0BB500786913 /* ParseQueries.swift in Sources */,
 				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
+				895F8C531A28E8BF00D6AE8C /* VirtualNameTableViewCell.swift in Sources */,
 				008CD4D71A192DB50024BB9A /* AppDelegate.swift in Sources */,
 				00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */,
 				9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */,
