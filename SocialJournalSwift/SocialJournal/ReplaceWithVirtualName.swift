@@ -17,6 +17,8 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
    // let cellIdentifier = "cellIdentifier"
     
     var virtualNameDictionary = Dictionary<String,String>()
+    var keyArray = Array <String>()
+    var valueArray = Array<String>()
     
     @IBOutlet var tableView: UITableView?
 
@@ -43,9 +45,10 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         
         for (key,value)in virtualNameDictionary
         {
+            keyArray.append(key)
+            valueArray.append(value)
             println("\(key)   \(value)")
         }
-        
         
     }
 
@@ -104,11 +107,11 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
        // var row = indexPath.row
         
-        cell.backgroundColor = UIColor.clearColor()
+       // cell.backgroundColor = UIColor.clearColor()
         
         // var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         
-        if self.virtualNameDictionary.isEmpty
+       /* if self.virtualNameDictionary.isEmpty
         {
          println("sfwe")
          cell.keyword.text = Array(self.virtualNameDictionary.keys)[indexPath.row+1]
@@ -116,7 +119,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         
         //cell.keyword.text = "nmb"
         //cell.virtualName.text = "nqs"
-        }
+        }*/
         return cell
         
     }
