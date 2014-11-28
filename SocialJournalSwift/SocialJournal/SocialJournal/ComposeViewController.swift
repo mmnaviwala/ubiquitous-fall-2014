@@ -41,6 +41,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var removeImageButton: UIButton!
     
+    var currentEntry = PFObject(className: "Entry")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -154,18 +156,19 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     @IBAction func postNewEntry(sender: AnyObject) {
-        var newEntry = PFObject(className: "Entry")
-        newEntry["content"] = self.contentTextView.text
-        newEntry["user"] = PFUser.currentUser()
-        newEntry["title"] = self.titleTextField.text
+        //var newEntry = PFObject(className: "Entry")
+        self.currentEntry["content"] = self.contentTextView.text
+        self.currentEntry["user"] = PFUser.currentUser()
+        self.currentEntry["title"] = self.titleTextField.text
         
         var lat:String = self.locationManager.location.coordinate.latitude.description
         var lon:String = self.locationManager.location.coordinate.longitude.description
         //println(lat + " : " + lon)
-        newEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
-        newEntry.saveEventually()
+        self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
+        self.currentEntry.save()
         
         //Preform segue here
+        self.performSegueWithIdentifier("composeToEntryView", sender: sender)
     }
     
     func toggle(sender: AnyObject!) {
@@ -201,14 +204,12 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         self.backgroundImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
-    /*
-    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "composeToEntryView"{
+            let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.currentEntry as PFObject
+        }
     }
-    */
 
 }

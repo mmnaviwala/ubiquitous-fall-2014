@@ -518,7 +518,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Post" id="btA-lT-snz">
                             <connections>
                                 <action selector="postNewEntry:" destination="La0-IW-IXO" id="Yz4-P4-STz"/>
-                                <segue destination="KnP-Dv-HUE" kind="push" identifier="postToProfile" id="DNn-Fo-hMg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -540,6 +539,7 @@
                         <outlet property="urlNameTextField" destination="E27-Lu-Hdq" id="Zbc-Ap-STT"/>
                         <outlet property="weekdayLabel" destination="ztV-u9-e62" id="i7s-XO-JIi"/>
                         <outlet property="yearLabel" destination="Hqx-a9-893" id="Ec0-vW-Tg9"/>
+                        <segue destination="iTh-Tj-8kK" kind="push" identifier="composeToEntryView" id="0qr-Mk-Uf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaE-lL-4su" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1123,14 +1123,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="RSg-cb-t5V">
-                                                    <rect key="frame" x="-4" y="0.0" width="7764" height="159"/>
+                                                    <rect key="frame" x="-4" y="0.0" width="8467" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MdT-3o-pm0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="7764" height="159"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="8467" height="159"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" id="s5I-TX-fYS" userLabel="BlueBackground">
-                                                                <rect key="frame" x="0.0" y="0.0" width="2108" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="2811" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QvX-gy-inT">
