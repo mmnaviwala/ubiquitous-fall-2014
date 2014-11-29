@@ -34,6 +34,9 @@ class feedCellTableViewCell: UITableViewCell {
         self.userProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor
         self.userProfilePicture.layer.borderWidth = 1.0
         
+        self.contentView.frame = self.bounds;
+        self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+        
         // Initialization code
     }
 
