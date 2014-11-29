@@ -1,12 +1,38 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBAction func changePassword(sender: AnyObject) {
+    }
+    
+    @IBOutlet weak var followingLabel: UILabel!
+    
+    @IBOutlet weak var followerLabel: UILabel!
+    
+    @IBOutlet weak var newsFeedLabel: UILabel!
+    
+    @IBAction func signOut(sender: AnyObject) {
+    }
+    
+    @IBOutlet weak var followingSwitch: UISwitch!
+
+    @IBOutlet weak var followerSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var newsFeedSwitch: UISwitch!
+    
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         super.viewDidLoad()
+        self.followingLabel.layer.cornerRadius = 8
+        self.followingLabel.layer.masksToBounds = true
+        self.followerLabel.layer.cornerRadius = 8
+        self.followerLabel.layer.masksToBounds = true
+        self.newsFeedLabel.layer.cornerRadius = 8
+        self.newsFeedLabel.layer.masksToBounds = true
+        
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)

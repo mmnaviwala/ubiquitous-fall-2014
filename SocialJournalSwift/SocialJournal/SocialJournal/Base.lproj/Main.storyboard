@@ -1449,6 +1449,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changePassword:" destination="cGK-8H-UVX" eventType="touchUpInside" id="fB0-ck-Ppy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hE-i0-I6k">
                                 <rect key="frame" x="30" y="364" width="711" height="55"/>
@@ -1515,6 +1518,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signOut:" destination="cGK-8H-UVX" eventType="touchUpInside" id="C13-wr-t56"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5w4-Sw-W6h">
                                 <rect key="frame" x="30" y="138" width="84" height="21"/>
@@ -1544,6 +1550,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="rsT-kT-ojY"/>
+                    <connections>
+                        <outlet property="followerLabel" destination="e80-bV-PjV" id="sE2-4D-Awe"/>
+                        <outlet property="followerSwitch" destination="w6P-dU-E6F" id="CID-wZ-rZ7"/>
+                        <outlet property="followingLabel" destination="4hE-i0-I6k" id="qea-hA-Rc9"/>
+                        <outlet property="followingSwitch" destination="caj-GS-zMg" id="5Ek-yR-7JA"/>
+                        <outlet property="newsFeedLabel" destination="q6d-ww-xji" id="kJh-zJ-x5q"/>
+                        <outlet property="newsFeedSwitch" destination="vDe-qQ-krD" id="cmh-HZ-8p5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GH3-bk-3a1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1605,16 +1619,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keyword" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Urb-Mv-Nwr">
-                                                    <rect key="frame" x="36" y="19" width="135" height="43"/>
+                                                    <rect key="frame" x="36" y="19" width="187" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VirtualName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wTf-pY-cJG">
-                                                    <rect key="frame" x="351" y="19" width="166" height="43"/>
+                                                    <rect key="frame" x="319" y="19" width="198" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
