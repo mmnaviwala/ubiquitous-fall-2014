@@ -91,6 +91,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.notifcationLabel.text = "Error: No Comment, Like or Follow detected."
             }
         }
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
     
