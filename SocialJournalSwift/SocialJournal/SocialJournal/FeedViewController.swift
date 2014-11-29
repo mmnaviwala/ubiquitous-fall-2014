@@ -32,9 +32,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
         
         
+        self.spinner.startAnimating()
         var query = ParseQueries.queryForEntries(PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
             if error == nil {
                 self.allEntries = objects
                 self.feedTableView.reloadData()
