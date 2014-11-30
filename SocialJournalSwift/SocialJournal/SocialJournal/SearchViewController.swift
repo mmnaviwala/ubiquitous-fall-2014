@@ -93,31 +93,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        /*
-        if (allObjects[indexPath.row].isKindOfClass(PFUser)){
-            println("its a user. yaaaay!")
-            
-            var cell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell", forIndexPath: indexPath) as SearchUserCell
-            
-            var user = searchResults[indexPath.row] as PFUser
-            cell.userName.text = user.username
-            
-            return cell
-        }else{
-            println("NOT a user")
-            
-            var cell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell", forIndexPath: indexPath) as SearchPostCell
-            
-            var object = searchResults[indexPath.row]
-            cell.postTitle.text = object["title"] as String!
-            
-            return cell
-        }
-        */
-        
-        
-        
-        
         var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
         
@@ -155,15 +130,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
         self.searchResults = self.allObjects.filter({( object: PFObject) -> Bool in
-//            let stringMatch = user.username.rangeOfString(searchText)
-//            return (stringMatch != nil)
-            var user = object as PFUser
-            if ((user.username) != nil){
-                let stringMatch = user.username.rangeOfString(searchText)
-                return (stringMatch != nil)
-            }else{
-                return false
+            
+            var userStringMatch = false
+            var postStringMatch = false
+            if(object.isKindOfClass(PFUser)){
+                var user = object as PFUser
+                if user.username.lowercaseString.rangeOfString(searchText) != nil{
+                    userStringMatch = true
+                }
+            }else {
+                var title:String = object["title"] as String
+                if title.lowercaseString.rangeOfString(searchText) != nil{
+                    postStringMatch = true
+                }
             }
+            return (userStringMatch || postStringMatch)
+            
         })
     }
     
