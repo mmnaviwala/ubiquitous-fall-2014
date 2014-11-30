@@ -19,10 +19,10 @@ class SearchPostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.userProfilePicture.layer.cornerRadius = 50
-//        self.userProfilePicture.layer.masksToBounds = true
-//        self.userProfilePicture.layer.borderColor = UIColor.whiteColor().CGColor
-//        self.userProfilePicture.layer.borderWidth = 1.0
+        self.userProfilePicture.layer.cornerRadius = self.userProfilePicture.frame.size.width / 2;
+        self.userProfilePicture.clipsToBounds = true;
+        self.userProfilePicture.layer.borderWidth = 1.0
+        self.userProfilePicture.layer.borderColor = UIColor.lightGrayColor().CGColor;
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
