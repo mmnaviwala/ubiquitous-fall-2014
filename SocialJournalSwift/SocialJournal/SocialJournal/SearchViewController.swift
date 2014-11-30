@@ -17,6 +17,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         setupTheHamburgerIcon()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func setupTheHamburgerIcon() {
@@ -40,11 +43,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        println(indexPath.row)
+        var cell = UITableViewCell()
+        if (indexPath.row % 2 == 0){
+            cell = tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
+        }else{
+            cell = tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
