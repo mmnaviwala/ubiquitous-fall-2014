@@ -38,6 +38,7 @@ class ParseQueries {
         
         var entryQuery:PFQuery = PFQuery(className: "Entry")
         entryQuery.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
+        entryQuery.orderByDescending("createdAt")
         
         return entryQuery
     }
@@ -45,16 +46,20 @@ class ParseQueries {
     class func queryForMyEntries(currentUser:PFUser!) -> PFQuery {
         var entryQuery = PFQuery(className: "Entry")
         entryQuery.whereKey("user", equalTo: currentUser)
+        entryQuery.orderByDescending("createdAt")
         return entryQuery
     }
     class func queryForNotifications(currentUser:PFUser!) -> PFQuery {
         var query = PFQuery(className: "Activity")
         query.whereKey("toUser", equalTo: currentUser)
+        query.orderByDescending("createdAt")
         return query
     }
     
     class func queryForAllEntries() -> PFQuery {
-        return PFQuery(className: "Entry")
+        var query = PFQuery(className: "Entry")
+        query.orderByDescending("createdAt")
+        return query
     }
     
     //////////Old Queries Depracated
