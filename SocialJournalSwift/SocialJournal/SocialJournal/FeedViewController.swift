@@ -15,6 +15,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEntries = []
     @IBOutlet weak var feedTableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    var refreshControl:UIRefreshControl!
     
     var currentEntry = PFObject(className: "Entry")
 //    var something:PFObject? = nil
@@ -22,6 +23,22 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTheHamburgerIcon()
+        
+        self.spinner.startAnimating()
+        fetchData()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.attributedTitle = NSAttributedString(string:"Pull to refresh", attributes:
+            [NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 18.0)!])
+        refreshControl.addTarget(self, action: "fetchData", forControlEvents: UIControlEvents.ValueChanged)
+        feedTableView.addSubview(refreshControl)
+        
+    }
+    
+    func setupTheHamburgerIcon() {
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -30,18 +47,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-        
-        
-        self.spinner.startAnimating()
+    }
+    
+    func fetchData() {
         var query = ParseQueries.queryForEntries(PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
-            self.spinner.stopAnimating()
             if error == nil {
                 self.allEntries = objects
                 self.feedTableView.reloadData()
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+            
+            if((self.refreshControl) != nil){
+                self.refreshControl.endRefreshing()
+            }
+            
+            if(self.spinner.isAnimating()){
+                self.spinner.stopAnimating()
             }
         }
     }
