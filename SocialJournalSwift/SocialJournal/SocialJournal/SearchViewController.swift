@@ -93,43 +93,55 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var arrayForTableView = []
-        if (tableView == self.searchDisplayController!.searchResultsTableView){
-            arrayForTableView = searchResults
-        }else {
-            arrayForTableView = allObjects
-        }
-        
+        /*
         if (allObjects[indexPath.row].isKindOfClass(PFUser)){
+            println("its a user. yaaaay!")
+            
             var cell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell", forIndexPath: indexPath) as SearchUserCell
             
-            var user = allObjects[indexPath.row] as PFUser
+            var user = searchResults[indexPath.row] as PFUser
             cell.userName.text = user.username
             
             return cell
         }else{
+            println("NOT a user")
+            
             var cell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell", forIndexPath: indexPath) as SearchPostCell
             
-            var object = allObjects[indexPath.row]
+            var object = searchResults[indexPath.row]
             cell.postTitle.text = object["title"] as String!
             
             return cell
         }
+        */
         
         
         
-        /*
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell", forIndexPath: indexPath) as SearchUserCell
+        
+        var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
+        var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
+        
+        var currentTableViewArray = []
         
         if (tableView == self.searchDisplayController!.searchResultsTableView) {
-            var user = searchResults[indexPath.row] as PFUser
-            cell.userName.text = user.username
+            currentTableViewArray = searchResults
         } else {
-            var user = allObjects[indexPath.row] as PFUser
-            cell.userName.text = user.username
+            currentTableViewArray = allObjects
         }
-        return cell
-        */
+        
+        if (currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
+            var user = currentTableViewArray[indexPath.row] as PFUser
+            userCell.userName.text = user.username
+            
+            return userCell
+        }else{
+            var object = currentTableViewArray[indexPath.row] as PFObject
+            postCell.postTitle.text = object["title"] as String!
+
+            return postCell
+        }
+        
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
