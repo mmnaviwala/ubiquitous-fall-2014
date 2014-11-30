@@ -1377,7 +1377,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="XH8-1E-hzn">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="XH8-1E-hzn">
                                 <rect key="frame" x="367" y="873" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -1696,8 +1696,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hYT-zi-chh"/>
-        <segue reference="B73-YQ-s57"/>
         <segue reference="ce0-5R-9At"/>
+        <segue reference="VnR-Og-EQv"/>
         <segue reference="oMX-eH-0Ag"/>
         <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
