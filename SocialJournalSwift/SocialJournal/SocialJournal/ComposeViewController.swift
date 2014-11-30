@@ -50,7 +50,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestAlwaysAuthorization()
+        // self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
 
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
