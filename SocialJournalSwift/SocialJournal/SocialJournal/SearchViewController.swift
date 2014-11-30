@@ -48,7 +48,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchAllEntries() {
-        var query = ParseQueries.queryForEntries(PFUser.currentUser())
+        var query = ParseQueries.queryForAllEntries()
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
