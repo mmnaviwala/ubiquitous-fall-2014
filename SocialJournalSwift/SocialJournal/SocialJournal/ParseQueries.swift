@@ -53,6 +53,10 @@ class ParseQueries {
         return query
     }
     
+    class func queryForAllEntries -> PFQuery {
+        return PFQuery(className: "Entry")
+    }
+    
     //////////Old Queries Depracated
     
     
