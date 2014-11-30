@@ -26,16 +26,33 @@ class SettingsViewController: UIViewController {
                 let oldPassword = theTextFields[0].text
                 let newPassword = theTextFields[1].text
                 let confirmPassword = theTextFields[2].text
+                if currentUser.password != oldPassword{
+                    
+                    let alertController3 = UIAlertController(title: "Error", message: "Old Password is wrong", preferredStyle: .Alert)
+                    
+                    let OkAction = UIAlertAction(title: "OK",style: UIAlertActionStyle.Default,handler: {(alert: UIAlertAction!) in })
+                    
+                    alertController3.addAction(OkAction)
+                    alertController3.popoverPresentationController?.sourceView = sender as UIView;
+                    self.presentViewController(alertController3, animated: true, completion: nil)
+
+                    
+                }
+                
                 if confirmPassword != newPassword{
-                    let alertController2 = UIAlertController(title: "Error", message: "password Doesn't Match", preferredStyle: .Alert)
+                    let alertController2 = UIAlertController(title: "Error", message: "New and Confirm password Doesn't Match", preferredStyle: .Alert)
+                    
+                    let OkAction = UIAlertAction(title: "OK",style: UIAlertActionStyle.Default,handler: {(alert: UIAlertAction!) in })
+                    
+                    alertController2.addAction(OkAction)
                     alertController2.popoverPresentationController?.sourceView = sender as UIView;
                     self.presentViewController(alertController2, animated: true, completion: nil)
                 }
                 
-                println("\(oldPassword)\(newPassword)\(confirmPassword)")
+                currentUser.password = newPassword
+                currentUser.saveInBackground()
             }
-            //currentUser.password = self.alertController?.textFields[2]
-            //PFUser.currentUser.saveInBackground();
+            
         
         })
         
@@ -79,6 +96,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var newsFeedLabel: UILabel!
     
     @IBAction func signOut(sender: AnyObject) {
+        
+        PFUser.logOut()
     }
     
     @IBOutlet weak var followingSwitch: UISwitch!
