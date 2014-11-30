@@ -16,6 +16,8 @@ class SignInController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
@@ -44,9 +46,10 @@ class SignInController: UIViewController, UITextFieldDelegate {
 //            self.performSegueWithIdentifier("segueToProfileViewController", sender: self)
 //        });
 
-        
+        spinner.startAnimating()
         PFUser.logInWithUsernameInBackground(usernameTextField.text, password:passwordTextField.text) {
             (user: PFUser!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
             if user != nil {
                 self.basicAnimation()
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in

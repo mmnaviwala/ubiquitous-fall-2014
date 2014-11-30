@@ -1377,6 +1377,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="XH8-1E-hzn">
+                                <rect key="frame" x="367" y="873" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1385,6 +1389,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="nh4-xe-J9q" id="0Kc-RD-gXH"/>
                         <outlet property="smallImage" destination="fWK-pF-gve" id="gbC-HK-8or"/>
+                        <outlet property="spinner" destination="XH8-1E-hzn" id="rJs-DQ-ipJ"/>
                         <outlet property="usernameTextField" destination="fb4-hm-Jv5" id="QvZ-cA-NYW"/>
                         <outlet property="whiteView" destination="bSI-KA-uXd" id="Ztd-gT-8Ut"/>
                     </connections>
@@ -1593,6 +1598,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="OHp-Dc-dAH">
+                                <rect key="frame" x="366" y="878" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1602,6 +1611,7 @@
                         <outlet property="confirmPasswordTextField" destination="hEV-wa-q0D" id="IIT-LK-aOi"/>
                         <outlet property="passwordTextField" destination="9CO-wx-0jr" id="Edy-fn-f1P"/>
                         <outlet property="smallImage" destination="pia-qV-fNS" id="IyY-IN-xSG"/>
+                        <outlet property="spinner" destination="OHp-Dc-dAH" id="haP-yu-0B2"/>
                         <outlet property="usernameTextField" destination="cMp-pa-u90" id="AoI-HS-FN0"/>
                         <outlet property="whiteView" destination="Yzw-qt-efP" id="P3Y-g3-pHq"/>
                     </connections>
@@ -1686,9 +1696,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hYT-zi-chh"/>
+        <segue reference="B73-YQ-s57"/>
         <segue reference="ce0-5R-9At"/>
-        <segue reference="VnR-Og-EQv"/>
-        <segue reference="cV5-4H-0Bj"/>
+        <segue reference="oMX-eH-0Ag"/>
         <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
 </document>
