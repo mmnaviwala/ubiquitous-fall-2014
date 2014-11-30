@@ -13,6 +13,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // var userNames = ["@cleanCodeMafia", "@theBigDawg", "@teslaRocks"]
     var searchResults: [PFObject] = []
     var allObjects: [PFObject] = []
+    var currentTableViewArray = []
+    var entryToPassWhenRowSelected = PFObject(className: "Entry")
+    var userToPassWhenRowSelected = PFObject(className: "User")
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -96,8 +99,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
         
-        var currentTableViewArray = []
-        
         if (tableView == self.searchDisplayController!.searchResultsTableView) {
             currentTableViewArray = searchResults
         } else {
@@ -124,6 +125,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(self.currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
+            self.userToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
+            self.performSegueWithIdentifier("fromSearchToProfile", sender: self)
+        }else{
+            self.entryToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
+            self.performSegueWithIdentifier("fromSearchToEntryView", sender: self)
+        }
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
     
@@ -157,6 +166,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "fromSearchToEntryView"{
+            let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.entryToPassWhenRowSelected
+        }
+        
+        if (segue.identifier == "fromSearchToProfile"){
+            let vc = segue.destinationViewController as ProfileViewController
+            vc.currentUser = self.userToPassWhenRowSelected as PFUser
+        }
     }
     
 

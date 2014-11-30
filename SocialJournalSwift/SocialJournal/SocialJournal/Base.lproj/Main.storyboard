@@ -567,7 +567,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="90" id="LE7-WJ-LuN" customClass="SearchUserCell" customModule="SocialJournal" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="90" id="LE7-WJ-LuN" customClass="SearchUserCell" customModule="SocialJournal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LE7-WJ-LuN" id="io4-a2-WEf">
@@ -591,7 +591,7 @@
                                             <outlet property="userProfilePicture" destination="aZl-Iv-e88" id="2AU-XA-aby"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchPostCell" rowHeight="90" id="YoF-7h-92b" customClass="SearchPostCell" customModule="SocialJournal" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchPostCell" rowHeight="90" id="YoF-7h-92b" customClass="SearchPostCell" customModule="SocialJournal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YoF-7h-92b" id="q6n-m8-TMd">
@@ -641,6 +641,8 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="yhK-3p-jFu" id="r8b-uD-Dkl"/>
                         <outlet property="tableView" destination="LOm-17-YRK" id="du2-Ua-hG3"/>
+                        <segue destination="iTh-Tj-8kK" kind="push" identifier="fromSearchToEntryView" id="yff-0z-cTf"/>
+                        <segue destination="KnP-Dv-HUE" kind="push" identifier="fromSearchToProfile" id="qPU-hG-sdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJ8-ib-Hfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -654,7 +656,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="7175" y="-1255"/>
+            <point key="canvasLocation" x="7135" y="-663"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="gGP-vJ-pen">
@@ -762,14 +764,14 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel is being a cullero right now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxr-Hr-QG6">
-                                                                <rect key="frame" x="246" y="38" width="457" height="30"/>
+                                                                <rect key="frame" x="243" y="38" width="460" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z0C-SX-cP6">
-                                                                <rect key="frame" x="246" y="76" width="457" height="62"/>
+                                                                <rect key="frame" x="243" y="76" width="460" height="62"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
@@ -1535,7 +1537,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W1i-Qs-dbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6191" y="-1255"/>
+            <point key="canvasLocation" x="6183" y="-663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dva-Bl-EJB">
@@ -1780,9 +1782,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="yff-0z-cTf"/>
         <segue reference="hYT-zi-chh"/>
-        <segue reference="B73-YQ-s57"/>
-        <segue reference="ce0-5R-9At"/>
+        <segue reference="qPU-hG-sdf"/>
         <segue reference="oMX-eH-0Ag"/>
         <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
