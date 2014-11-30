@@ -8,8 +8,11 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     var button: HamburgerButton! = nil
+    // var userNames = ["@cleanCodeMafia", "@theBigDawg", "@teslaRocks"]
+    var searchResults: [PFUser] = []
+    var allUsers: [PFUser] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +23,30 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        self.searchDisplayController?.searchResultsTableView.dequeueReusableCellWithIdentifier("searchUserCell")
+        self.searchDisplayController?.searchResultsTableView.registerClass(SearchUserCell.self, forCellReuseIdentifier: "searchUserCell")
+        self.searchDisplayController?.searchResultsTableView.dataSource = self;
+        self.searchDisplayController?.searchResultsTableView.delegate = self;
+        
+        fetchAllUsers()
+        
+    }
+    
+    func fetchAllUsers() {
+        var query = ParseQueries.queryForAllUsers(PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects {
+                    self.allUsers.append(object.fetchIfNeeded() as PFUser)
+                }
+                println(self.allUsers)
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
     }
     
     func setupTheHamburgerIcon() {
@@ -43,16 +70,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            return searchResults.count
+        }else {
+            return allUsers.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println(indexPath.row)
-        var cell = UITableViewCell()
-        if (indexPath.row % 2 == 0){
-            cell = tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
-        }else{
-            cell = tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell", forIndexPath: indexPath) as SearchUserCell
+        println(cell)
+        
+        if (tableView == self.searchDisplayController!.searchResultsTableView) {
+            var user = searchResults[indexPath.row]
+            cell.userName.text = user.username
+        } else {
+            var user = allUsers[indexPath.row]
+            cell.userName.text = user.username
         }
         return cell
     }
@@ -64,6 +98,25 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        self.searchResults = self.allUsers.filter({( user: PFUser) -> Bool in
+            let stringMatch = user.username.rangeOfString(searchText)
+            return (stringMatch != nil)
+        })
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
+    
 
     /*
     // MARK: - Navigation
