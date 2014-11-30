@@ -112,8 +112,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return userCell
         }else{
             var object = currentTableViewArray[indexPath.row] as PFObject
+            
             postCell.postTitle.text = object["title"] as String!
-
+            
+            var contentString = object["content"] as String!
+            var contentLength = (countElements(contentString) > 200) ? 200 : countElements(contentString)
+            // limiting the post content on the cells to 200 at most
+            
+            let substringRange = Range(start: contentString.startIndex, end: advance(contentString.startIndex, contentLength))
+            postCell.postContent.text = contentString.substringWithRange(substringRange)
+            
+            var postUser = (object["user"]).fetchIfNeeded() as PFUser
+            postCell.userName.text = postUser.username
+            
             return postCell
         }
         
@@ -121,7 +132,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90
+        return 100
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
