@@ -10,7 +10,6 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     var button: HamburgerButton! = nil
-    // var userNames = ["@cleanCodeMafia", "@theBigDawg", "@teslaRocks"]
     var searchResults: [PFObject] = []
     var allObjects: [PFObject] = []
     var currentTableViewArray = []
@@ -29,7 +28,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         fetchAllUsers()
         fetchAllEntries()
-//        self.searchDisplayController?.searchBar.scopeButtonTitles = ["users", "posts"]
         
     }
     
