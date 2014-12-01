@@ -10,24 +10,14 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     var button: HamburgerButton! = nil
-    var searchResults: [PFObject] = []
-    var allObjects: [PFObject] = []
-    var currentTableViewArray = []
-    var entryToPassWhenRowSelected = PFObject(className: "Entry")
-    var userToPassWhenRowSelected = PFObject(className: "User")
-    
-    
-    
     
     var allUsers: [PFObject] = []
     var allEntries: [PFObject] = []
     var searchResultsForUsers: [PFObject] = []
     var searchResultsForEntries: [PFObject] = []
+    var currentTableViewArray = []
     var objectToPass:PFObject? = nil
-    
-    
-    
-
+ 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -198,13 +188,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(self.currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
-            self.userToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            if (indexPath.section == 0) {
+                self.objectToPass = searchResultsForUsers[indexPath.row]
+            }else{
+                self.objectToPass = searchResultsForEntries[indexPath.row]
+            }
+        }else {
+            if (indexPath.section == 0) {
+                self.objectToPass = allUsers[indexPath.row]
+            }else{
+                self.objectToPass = allEntries[indexPath.row]
+            }
+        }
+        
+        if(indexPath.section == 0){
             self.performSegueWithIdentifier("fromSearchToProfile", sender: self)
         }else{
-            self.entryToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
             self.performSegueWithIdentifier("fromSearchToEntryView", sender: self)
         }
+        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
@@ -236,14 +239,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         if segue.identifier == "fromSearchToEntryView"{
             let vc = segue.destinationViewController as EntryViewController
-            vc.entry = self.entryToPassWhenRowSelected
+            vc.entry = self.objectToPass
         }
         
         if (segue.identifier == "fromSearchToProfile"){
             let vc = segue.destinationViewController as ProfileViewController
-            vc.currentUser = self.userToPassWhenRowSelected as PFUser
+            vc.currentUser = self.objectToPass as PFUser
         }
     }
     
