@@ -1245,7 +1245,7 @@
         <!--Sign In Controller-->
         <scene sceneID="86E-pc-28C">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" id="26X-xq-UXv" customClass="SignInController" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInView" autoresizesArchivedViewToFullSize="NO" id="26X-xq-UXv" customClass="SignInController" customModule="SocialJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OyE-Sj-1Sm">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>

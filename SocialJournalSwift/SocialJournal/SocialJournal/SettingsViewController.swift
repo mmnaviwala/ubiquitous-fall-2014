@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
                 let oldPassword = theTextFields[0].text
                 let newPassword = theTextFields[1].text
                 let confirmPassword = theTextFields[2].text
-                if currentUser.password != oldPassword{
+              /*  if currentUser.password != oldPassword{
                     
                     let alertController3 = UIAlertController(title: "Error", message: "Old Password is wrong", preferredStyle: .Alert)
                     
@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController {
                     self.presentViewController(alertController3, animated: true, completion: nil)
 
                     
-                }
+                }*/
                 
                 if confirmPassword != newPassword{
                     let alertController2 = UIAlertController(title: "Error", message: "New and Confirm password Doesn't Match", preferredStyle: .Alert)
@@ -91,21 +91,23 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var followingLabel: UILabel!
     
-    @IBOutlet weak var followerLabel: UILabel!
+    @IBOutlet weak var followerLabel: UILabel!  //CommentsLabel
     
-    @IBOutlet weak var newsFeedLabel: UILabel!
+    @IBOutlet weak var newsFeedLabel: UILabel!  //HeartsLabel
     
     @IBAction func signOut(sender: AnyObject) {
         
         PFUser.logOut()
+        let vc : AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("signInView")
+        self.showViewController(vc as UIViewController, sender: vc)
     }
     
     @IBOutlet weak var followingSwitch: UISwitch!
 
-    @IBOutlet weak var followerSwitch: UISwitch!
+    @IBOutlet weak var followerSwitch: UISwitch! //Comments Switch
     
     
-    @IBOutlet weak var newsFeedSwitch: UISwitch!
+    @IBOutlet weak var newsFeedSwitch: UISwitch! // Hearts Switch
     
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
