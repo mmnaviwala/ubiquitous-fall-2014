@@ -884,7 +884,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -1018,10 +1018,10 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="IwL-VB-zv3" userLabel="Text View Visual Effect View">
-                                <rect key="frame" x="16" y="249" width="736" height="692"/>
+                                <rect key="frame" x="16" y="249" width="736" height="625"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NEC-HU-96L">
-                                    <rect key="frame" x="0.0" y="0.0" width="736" height="692"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="625"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="zHx-rD-7B3">
@@ -1043,6 +1043,35 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" id="Gh7-zX-S0X" userLabel="Show comments Visual Effect View">
+                                <rect key="frame" x="34" y="882" width="701" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Xce-dL-evO">
+                                    <rect key="frame" x="0.0" y="0.0" width="701" height="59"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Do8-M5-jDj">
+                                            <rect key="frame" x="0.0" y="0.0" width="701" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                            <state key="normal" title="Show Comments">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="commentButtonClicked:" destination="iTh-Tj-8kK" eventType="touchUpInside" id="LKA-aE-WSO"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1057,6 +1086,7 @@
                         <outlet property="postBody" destination="zHx-rD-7B3" id="LQh-BH-b3S"/>
                         <outlet property="postTitle" destination="I4A-Jz-f6m" id="599-sh-AL5"/>
                         <outlet property="shareButton" destination="kwG-UD-huR" id="eqf-Ij-ka0"/>
+                        <outlet property="showCommentsVisualView" destination="Gh7-zX-S0X" id="VEF-Ex-HiM"/>
                         <outlet property="userProfilePicture" destination="3xF-HK-ojP" id="4uF-9Y-mzH"/>
                         <outlet property="username" destination="rVc-zU-LYa" id="6lL-T7-vNd"/>
                     </connections>
@@ -1819,7 +1849,7 @@
         <segue reference="hYT-zi-chh"/>
         <segue reference="qPU-hG-sdf"/>
         <segue reference="VnR-Og-EQv"/>
-        <segue reference="oMX-eH-0Ag"/>
         <segue reference="aXJ-vG-G72"/>
+        <segue reference="oMX-eH-0Ag"/>
     </inferredMetricsTieBreakers>
 </document>

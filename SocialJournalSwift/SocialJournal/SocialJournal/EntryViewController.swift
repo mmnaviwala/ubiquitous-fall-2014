@@ -10,6 +10,9 @@ import UIKit
 
 class EntryViewController: UIViewController {
     
+    @IBOutlet weak var showCommentsVisualView: UIVisualEffectView!
+    var showCommentsToggle = true
+    
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var heartLike: UIButton!
@@ -48,6 +51,9 @@ class EntryViewController: UIViewController {
 
         self.postBody.textColor = UIColor.whiteColor()
         self.postBody.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+        
+        showCommentsVisualView.layer.borderWidth = 1.0
+        showCommentsVisualView.layer.borderColor = UIColor.whiteColor().CGColor
         
 
         // Do any additional setup after loading the view.
@@ -91,7 +97,29 @@ class EntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-       
+    
+    
+    @IBAction func commentButtonClicked(sender: UIButton) {
+        var currentFrame = showCommentsVisualView.frame
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(0.3)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+        
+        if (showCommentsToggle){
+            showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y-300, currentFrame.size.width, currentFrame.size.height+300)
+            sender.layer.backgroundColor = UIColor.blackColor().CGColor
+            sender.setTitle("Hide Comments", forState: UIControlState.Normal)
+            showCommentsToggle = !showCommentsToggle
+        }else{
+            showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y+300, currentFrame.size.width, currentFrame.size.height-300)
+            sender.layer.backgroundColor = UIColor.clearColor().CGColor
+            sender.setTitle("Show Comments", forState: UIControlState.Normal)
+            showCommentsToggle = !showCommentsToggle
+        }
+        
+        UIView.commitAnimations()
+    }
+    
     /*
     // MARK: - Navigation
 
