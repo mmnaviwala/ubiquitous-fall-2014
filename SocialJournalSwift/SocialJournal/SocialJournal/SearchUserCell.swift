@@ -20,6 +20,8 @@ class SearchUserCell: UITableViewCell {
         self.userProfilePicture.clipsToBounds = true;
         self.userProfilePicture.layer.borderWidth = 1.0
         self.userProfilePicture.layer.borderColor = UIColor.lightGrayColor().CGColor;
+        
+        self.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

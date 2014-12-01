@@ -96,9 +96,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
-            return "Users"
+            return "USERS"
         } else if (section == 1){
-            return "Posts"
+            return "ENTRIES"
         }else{
             return ""
         }
