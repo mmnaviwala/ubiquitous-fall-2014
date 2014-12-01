@@ -149,10 +149,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         */
         
-        if (section == 0) {
-            return allUsers.count
-        }else{
-            return allEntries.count
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            if (section == 0) {
+                return searchResultsForUsers.count
+            }else{
+                return searchResultsForEntries.count
+            }
+        }else {
+            if (section == 0) {
+                return allUsers.count
+            }else{
+                return allEntries.count
+            }
         }
         
     }
@@ -209,6 +217,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
+        println("section => " + String(indexPath.section))
+        println("row => " + String(indexPath.row))
+        
         if (indexPath.section == 0){
             var user = currentTableViewArray[indexPath.row] as PFUser
             userCell.userName.text = user.username
@@ -263,25 +274,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func filterContentForSearchText(searchText: String) {
-        // Filter the array using the filter method
-        self.searchResults = self.allObjects.filter({( object: PFObject) -> Bool in
-            
-            var userStringMatch = false
-            var postStringMatch = false
-            if(object.isKindOfClass(PFUser)){
-                var user = object as PFUser
-                if user.username.lowercaseString.rangeOfString(searchText) != nil{
-                    userStringMatch = true
-                }
-            }else {
-                var title:String = object["title"] as String
-                if title.lowercaseString.rangeOfString(searchText) != nil{
-                    postStringMatch = true
-                }
-            }
-            return (userStringMatch || postStringMatch)
-            
+        self.searchResultsForUsers = self.allUsers.filter({(object: PFObject) -> Bool in
+            let user = object as PFUser
+            let userStringMatch = user.username.lowercaseString.rangeOfString(searchText)
+            return (userStringMatch != nil)
         })
+        
+        self.searchResultsForEntries = self.allEntries.filter({(object: PFObject) -> Bool in
+            let title = object["title"] as String
+            let postStringMatch = title.lowercaseString.rangeOfString(searchText)
+            return (postStringMatch != nil)
+        })
+        
+        
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
