@@ -8,10 +8,11 @@
 
 import UIKit
 
-class EntryViewController: UIViewController {
+class EntryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var showCommentsVisualView: UIVisualEffectView!
     var showCommentsToggle = true
+    @IBOutlet weak var commentsTable: UITableView!
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
@@ -119,6 +120,41 @@ class EntryViewController: UIViewController {
         
         UIView.commitAnimations()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.commentsTable.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell:CommentCell = tableView.dequeueReusableCellWithIdentifier("commentCell") as CommentCell
+        cell.userName.text = "username here"
+        cell.theComment.text = "comment\nsupports 4 lines at most\nlast line"
+        cell.backgroundColor = UIColor.clearColor()
+        return cell
+    }
+    
+    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        return 100
+    }
+    
+    
+    
+    
+    
     
     /*
     // MARK: - Navigation
