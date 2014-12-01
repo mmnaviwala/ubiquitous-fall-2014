@@ -18,6 +18,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var currentTableViewArray = []
     var objectToPass:PFObject? = nil
  
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,6 +31,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         fetchAllUsers()
         fetchAllEntries()
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        messageLabel.hidden = false
+        searchDisplayController?.searchResultsTableView.backgroundColor = UIColor.clearColor()
         
     }
     
@@ -87,7 +92,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            messageLabel.hidden = true
+            return 2
+        }else{
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -121,11 +131,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 return searchResultsForEntries.count
             }
         }else {
-            if (section == 0) {
-                return allUsers.count
-            }else{
-                return allEntries.count
-            }
+            return 0
         }
         
     }
@@ -236,6 +242,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
+    }
+    
+    func searchDisplayControllerDidEndSearch(controller: UISearchDisplayController) {
+        messageLabel.hidden = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
