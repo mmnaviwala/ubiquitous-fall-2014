@@ -12,7 +12,7 @@ class EntryViewController: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
-    @IBOutlet weak var hearted: UIImageView!
+    @IBOutlet weak var heartLike: UIButton!
     @IBOutlet weak var heartCount: UILabel!
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var postBody: UITextView!
@@ -20,6 +20,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var dateDay: UILabel!
     @IBOutlet weak var dateMonth: UILabel!
     @IBOutlet weak var dateYear: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
     var entry = PFObject(className: "Entry")
 
     override func viewDidLoad() {
@@ -28,7 +29,10 @@ class EntryViewController: UIViewController {
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
         
-        self.username.text = "anonDawg"
+        var eachUser:PFObject = entry["user"] as PFObject
+        var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+        
+        self.username.text = actualUser.username
         //        cell.userProfilePicture.image =
         
         //        if(favorited) {
@@ -65,6 +69,24 @@ class EntryViewController: UIViewController {
         self.dateYear.text = dateFormatter.stringFromDate(date)
     }
 
+    @IBAction func touchShare(sender: AnyObject) {
+        let firstActivityItem = entry["title"] as String!
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.shareButton
+        activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.shareButton.frame.width/2, 0, 0, 0)
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+
+    }
+    
+    @IBAction func heartPost(sender: AnyObject) {
+        println("I like this post")
+        
+        let image = UIImage(named: "HeartRed") as UIImage?
+        self.heartLike.setImage(image, forState: .Normal)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -104,6 +104,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
             
+            //User
+            var eachUser:PFObject = entry["user"] as PFObject
+            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            
             //Date
             var weekday: NSDateFormatter = NSDateFormatter()
             var day: NSDateFormatter = NSDateFormatter()
@@ -117,8 +121,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var dateStringDay: NSString = day.stringFromDate(entry.createdAt)
             var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
             var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
+            
+            
         
-            cell.username.text = "anonDawg"
+            
+        
+            cell.username.text = actualUser.username
             //        cell.userProfilePicture.image =
             
             //        if(favorited) {
