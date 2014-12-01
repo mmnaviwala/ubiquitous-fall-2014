@@ -26,7 +26,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var dateYear: UILabel!
     @IBOutlet weak var shareButton: UIButton!
     var entry = PFObject(className: "Entry")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,14 +49,14 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.postTitle.text = entryTitle
         self.postBody.text = entryText
         assignDate(self.entry.createdAt)
-
+        
         self.postBody.textColor = UIColor.whiteColor()
         self.postBody.font = UIFont(name: "HelveticaNeue-Light", size: 22)
         
         showCommentsVisualView.layer.borderWidth = 1.0
         showCommentsVisualView.layer.borderColor = UIColor.whiteColor().CGColor
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -75,7 +75,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY")
         self.dateYear.text = dateFormatter.stringFromDate(date)
     }
-
+    
     @IBAction func touchShare(sender: AnyObject) {
         let firstActivityItem = entry["title"] as String!
         let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
@@ -84,7 +84,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.shareButton.frame.width/2, 0, 0, 0)
         
         self.presentViewController(activityViewController, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func heartPost(sender: AnyObject) {
@@ -98,7 +98,60 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-       
+    
+    
+    @IBAction func commentButtonClicked(sender: UIButton) {
+        var currentFrame = showCommentsVisualView.frame
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(0.3)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+        
+        if (showCommentsToggle){
+            showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y-300, currentFrame.size.width, currentFrame.size.height+300)
+            sender.layer.backgroundColor = UIColor.blackColor().CGColor
+            sender.setTitle("Hide Comments", forState: UIControlState.Normal)
+            showCommentsToggle = !showCommentsToggle
+        }else{
+            showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y+300, currentFrame.size.width, currentFrame.size.height-300)
+            sender.layer.backgroundColor = UIColor.clearColor().CGColor
+            sender.setTitle("Show Comments", forState: UIControlState.Normal)
+            showCommentsToggle = !showCommentsToggle
+        }
+        
+        UIView.commitAnimations()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.commentsTable.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell:CommentCell = tableView.dequeueReusableCellWithIdentifier("commentCell") as CommentCell
+        cell.userName.text = "username here"
+        cell.theComment.text = "comment\nsupports 4 lines at most\nlast line"
+        cell.backgroundColor = UIColor.clearColor()
+        return cell
+    }
+    
+    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        return 100
+    }
+    
+    
     @IBAction func locationButtonPressed(sender: AnyObject) {
         if self.entry["location"] != nil{
             self.performSegueWithIdentifier("entryToMapView", sender: sender)
@@ -109,11 +162,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }
-        //        if self.entry["location"].latitude == 0.0 &&
-//            self.entry["location"].longitude == 0.0{
-//            println(self.entry["location"].latitude.description + " **:** " + self.entry["location"].longitude.description)
-//        }
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "entryToMapView"{
@@ -121,6 +171,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             vc.currentEntry = self.entry as PFObject
         }
     }
+    
 
-
+    
 }

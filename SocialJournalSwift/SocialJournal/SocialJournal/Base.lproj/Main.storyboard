@@ -1075,14 +1075,14 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actual comment. Max 4 lines" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DbO-gu-D9c">
-                                                                <rect key="frame" x="125" y="8" width="568" height="83.5"/>
+                                                                <rect key="frame" x="125" y="8" width="568" height="84"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="euC-VR-luf">
-                                                                <rect key="frame" x="8" y="78" width="93" height="13.5"/>
+                                                                <rect key="frame" x="8" y="78" width="93" height="14"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1891,7 +1891,7 @@
         <segue reference="hYT-zi-chh"/>
         <segue reference="qPU-hG-sdf"/>
         <segue reference="VnR-Og-EQv"/>
+        <segue reference="NsE-RY-cFS"/>
         <segue reference="oMX-eH-0Ag"/>
-        <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
 </document>
