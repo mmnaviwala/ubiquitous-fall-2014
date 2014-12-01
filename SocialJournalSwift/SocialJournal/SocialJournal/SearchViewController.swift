@@ -15,6 +15,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var currentTableViewArray = []
     var entryToPassWhenRowSelected = PFObject(className: "Entry")
     var userToPassWhenRowSelected = PFObject(className: "User")
+    
+    
+    
+    
+    var allUsers: [PFObject] = []
+    var allEntries: [PFObject] = []
+    var searchResultsForUsers: [PFObject] = []
+    var searchResultsForEntries: [PFObject] = []
+    var objectToPass:PFObject? = nil
+    
+    
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,9 +48,17 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
+                
+                for object in objects {
+                    self.allUsers.append(object as PFUser)
+                }
+                
+                /*
                 for object in objects {
                     self.allObjects.append(object.fetchIfNeeded() as PFUser)
                 }
+                */
+                
                 println("Users fetched")
                 self.tableView.reloadData()
             } else {
@@ -52,9 +72,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
+                
+                
+                for object in objects {
+                    self.allEntries.append(object as PFObject)
+                }
+                
+                /*
                 for object in objects {
                     self.allObjects.append(object.fetchIfNeeded())
                 }
+                */
+                
                 println("Entries fetched")
                 self.tableView.reloadData()
             } else {
@@ -84,16 +113,52 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.button.showsMenu = !self.button.showsMenu
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(section == 0){
+            return "Users"
+        } else if (section == 1){
+            return "Posts"
+        }else{
+            return ""
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
+        
+        header.textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+        header.textLabel.frame = header.frame
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        /*
         if (tableView == self.searchDisplayController?.searchResultsTableView){
             return searchResults.count
         }else {
             return allObjects.count
         }
+        */
+        
+        if (section == 0) {
+            return allUsers.count
+        }else{
+            return allEntries.count
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        /*
         var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
         
@@ -122,6 +187,58 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             
             var postUser = (object["user"]).fetchIfNeeded() as PFUser
             postCell.userName.text = postUser.username
+            
+            return postCell
+        }
+        */
+        
+        var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
+        var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
+        
+        if (tableView == self.searchDisplayController!.searchResultsTableView) {
+            if (indexPath.section == 0){
+                currentTableViewArray = searchResultsForUsers
+            }else{
+                currentTableViewArray = searchResultsForEntries
+            }
+        } else {
+            if (indexPath.section == 0){
+                currentTableViewArray = allUsers
+            }else{
+                currentTableViewArray = allEntries
+            }
+        }
+        
+        if (indexPath.section == 0){
+            var user = currentTableViewArray[indexPath.row] as PFUser
+            userCell.userName.text = user.username
+            
+            return userCell
+        }else{
+            var object = currentTableViewArray[indexPath.row] as PFObject
+            
+            postCell.postTitle.text = object["title"] as String!
+            
+            var contentString = object["content"] as String!
+            var contentLength = (countElements(contentString) > 200) ? 200 : countElements(contentString)
+            // limiting the post content on the cells to 200 at most
+            
+            let substringRange = Range(start: contentString.startIndex, end: advance(contentString.startIndex, contentLength))
+            postCell.postContent.text = contentString.substringWithRange(substringRange)
+
+            // Async call to fetch user info
+            object["user"].fetchIfNeededInBackgroundWithBlock {
+                (object: PFObject!, error: NSError!) -> Void in
+                if error == nil {
+                    postCell.userName.text = object["username"] as String!
+                } else {
+                    NSLog("Error: %@ %@", error, error.userInfo!)
+                }
+                
+            }
+            
+//            var postUser = (object["user"]).fetchIfNeeded() as PFUser
+//            postCell.userName.text = postUser.username
             
             return postCell
         }
