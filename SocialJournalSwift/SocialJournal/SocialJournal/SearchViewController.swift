@@ -48,17 +48,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                
                 for object in objects {
                     self.allUsers.append(object as PFUser)
                 }
-                
-                /*
-                for object in objects {
-                    self.allObjects.append(object.fetchIfNeeded() as PFUser)
-                }
-                */
-                
                 println("Users fetched")
                 self.tableView.reloadData()
             } else {
@@ -72,18 +64,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                
-                
                 for object in objects {
                     self.allEntries.append(object as PFObject)
                 }
-                
-                /*
-                for object in objects {
-                    self.allObjects.append(object.fetchIfNeeded())
-                }
-                */
-                
                 println("Entries fetched")
                 self.tableView.reloadData()
             } else {
@@ -141,14 +124,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        /*
-        if (tableView == self.searchDisplayController?.searchResultsTableView){
-            return searchResults.count
-        }else {
-            return allObjects.count
-        }
-        */
-        
         if (tableView == self.searchDisplayController?.searchResultsTableView){
             if (section == 0) {
                 return searchResultsForUsers.count
@@ -166,39 +141,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*
-        var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
-        var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
-        
-        if (tableView == self.searchDisplayController!.searchResultsTableView) {
-            currentTableViewArray = searchResults
-        } else {
-            currentTableViewArray = allObjects
-        }
-        
-        if (currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
-            var user = currentTableViewArray[indexPath.row] as PFUser
-            userCell.userName.text = user.username
-            
-            return userCell
-        }else{
-            var object = currentTableViewArray[indexPath.row] as PFObject
-            
-            postCell.postTitle.text = object["title"] as String!
-            
-            var contentString = object["content"] as String!
-            var contentLength = (countElements(contentString) > 200) ? 200 : countElements(contentString)
-            // limiting the post content on the cells to 200 at most
-            
-            let substringRange = Range(start: contentString.startIndex, end: advance(contentString.startIndex, contentLength))
-            postCell.postContent.text = contentString.substringWithRange(substringRange)
-            
-            var postUser = (object["user"]).fetchIfNeeded() as PFUser
-            postCell.userName.text = postUser.username
-            
-            return postCell
-        }
-        */
         
         var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
@@ -216,9 +158,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 currentTableViewArray = allEntries
             }
         }
-        
-        println("section => " + String(indexPath.section))
-        println("row => " + String(indexPath.row))
         
         if (indexPath.section == 0){
             var user = currentTableViewArray[indexPath.row] as PFUser
@@ -247,9 +186,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 
             }
-            
-//            var postUser = (object["user"]).fetchIfNeeded() as PFUser
-//            postCell.userName.text = postUser.username
             
             return postCell
         }
