@@ -70,14 +70,28 @@ class EntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
        
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func locationButtonPressed(sender: AnyObject) {
+        if self.entry["location"] != nil{
+            self.performSegueWithIdentifier("entryToMapView", sender: sender)
+        }else{
+            let alertController = UIAlertController(title: "Sorry!", message:
+                "There is no location attached to this post.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        //        if self.entry["location"].latitude == 0.0 &&
+//            self.entry["location"].longitude == 0.0{
+//            println(self.entry["location"].latitude.description + " **:** " + self.entry["location"].longitude.description)
+//        }
     }
-    */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if segue.identifier == "entryToMapView"{
+            let vc = segue.destinationViewController as MapViewController
+            vc.currentEntry = self.entry as PFObject
+        }
+    }
+
 
 }

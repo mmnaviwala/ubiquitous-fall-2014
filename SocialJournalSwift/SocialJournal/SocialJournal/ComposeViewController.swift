@@ -161,14 +161,27 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         self.currentEntry["user"] = PFUser.currentUser()
         self.currentEntry["title"] = self.titleTextField.text
         
-        var lat:String = self.locationManager.location.coordinate.latitude.description
-        var lon:String = self.locationManager.location.coordinate.longitude.description
-        //println(lat + " : " + lon)
         self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
-        self.currentEntry.save()
         
-        //Preform segue here
-        self.performSegueWithIdentifier("composeToEntryView", sender: sender)
+        self.currentEntry.saveInBackgroundWithBlock{
+            (success: Bool!, error:NSError!) -> Void in
+            
+            if success! {
+                var query = PFQuery(className:"Entry")
+                query.getObjectInBackgroundWithId(self.currentEntry.objectId) {
+                    (entry: PFObject!, error: NSError!) -> Void in
+                    if error == nil {
+                        self.currentEntry = entry
+                        //Preform segue here
+                        self.performSegueWithIdentifier("composeToEntryView", sender: sender)
+                    } else {
+                        println(error)
+                    }
+                }
+            } else {
+                println("error")
+            }
+        }
     }
     
     func toggle(sender: AnyObject!) {
@@ -205,7 +218,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-
         if segue.identifier == "composeToEntryView"{
             let vc = segue.destinationViewController as EntryViewController
             vc.entry = self.currentEntry as PFObject
