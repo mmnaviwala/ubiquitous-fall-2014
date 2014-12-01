@@ -10,12 +10,15 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     var button: HamburgerButton! = nil
-    var searchResults: [PFObject] = []
-    var allObjects: [PFObject] = []
+    
+    var allUsers: [PFObject] = []
+    var allEntries: [PFObject] = []
+    var searchResultsForUsers: [PFObject] = []
+    var searchResultsForEntries: [PFObject] = []
     var currentTableViewArray = []
-    var entryToPassWhenRowSelected = PFObject(className: "Entry")
-    var userToPassWhenRowSelected = PFObject(className: "User")
-
+    var objectToPass:PFObject? = nil
+ 
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,6 +32,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         fetchAllUsers()
         fetchAllEntries()
         
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        messageLabel.hidden = false
+        searchDisplayController?.searchResultsTableView.backgroundColor = UIColor.clearColor()
+        
     }
     
     func fetchAllUsers() {
@@ -37,7 +44,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 for object in objects {
-                    self.allObjects.append(object.fetchIfNeeded() as PFUser)
+                    self.allUsers.append(object as PFUser)
                 }
                 println("Users fetched")
                 self.tableView.reloadData()
@@ -53,7 +60,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 for object in objects {
-                    self.allObjects.append(object.fetchIfNeeded())
+                    self.allEntries.append(object as PFObject)
                 }
                 println("Entries fetched")
                 self.tableView.reloadData()
@@ -84,12 +91,49 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.button.showsMenu = !self.button.showsMenu
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (tableView == self.searchDisplayController?.searchResultsTableView){
-            return searchResults.count
-        }else {
-            return allObjects.count
+            messageLabel.hidden = true
+            return 2
+        }else{
+            return 0
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(section == 0){
+            return "USERS"
+        } else if (section == 1){
+            return "ENTRIES"
+        }else{
+            return ""
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
+        
+        header.textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+        header.textLabel.frame = header.frame
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            if (section == 0) {
+                return searchResultsForUsers.count
+            }else{
+                return searchResultsForEntries.count
+            }
+        }else {
+            return 0
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -98,12 +142,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
         
         if (tableView == self.searchDisplayController!.searchResultsTableView) {
-            currentTableViewArray = searchResults
+            if (indexPath.section == 0){
+                currentTableViewArray = searchResultsForUsers
+            }else{
+                currentTableViewArray = searchResultsForEntries
+            }
         } else {
-            currentTableViewArray = allObjects
+            if (indexPath.section == 0){
+                currentTableViewArray = allUsers
+            }else{
+                currentTableViewArray = allEntries
+            }
         }
         
-        if (currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
+        if (indexPath.section == 0){
             var user = currentTableViewArray[indexPath.row] as PFUser
             userCell.userName.text = user.username
             
@@ -119,9 +171,17 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             
             let substringRange = Range(start: contentString.startIndex, end: advance(contentString.startIndex, contentLength))
             postCell.postContent.text = contentString.substringWithRange(substringRange)
-            
-            var postUser = (object["user"]).fetchIfNeeded() as PFUser
-            postCell.userName.text = postUser.username
+
+            // Async call to fetch user info
+            object["user"].fetchIfNeededInBackgroundWithBlock {
+                (object: PFObject!, error: NSError!) -> Void in
+                if error == nil {
+                    postCell.userName.text = object["username"] as String!
+                } else {
+                    NSLog("Error: %@ %@", error, error.userInfo!)
+                }
+                
+            }
             
             return postCell
         }
@@ -134,37 +194,44 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(self.currentTableViewArray[indexPath.row].isKindOfClass(PFUser)){
-            self.userToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
+        if (tableView == self.searchDisplayController?.searchResultsTableView){
+            if (indexPath.section == 0) {
+                self.objectToPass = searchResultsForUsers[indexPath.row]
+            }else{
+                self.objectToPass = searchResultsForEntries[indexPath.row]
+            }
+        }else {
+            if (indexPath.section == 0) {
+                self.objectToPass = allUsers[indexPath.row]
+            }else{
+                self.objectToPass = allEntries[indexPath.row]
+            }
+        }
+        
+        if(indexPath.section == 0){
             self.performSegueWithIdentifier("fromSearchToProfile", sender: self)
         }else{
-            self.entryToPassWhenRowSelected = self.currentTableViewArray[indexPath.row] as PFObject
             self.performSegueWithIdentifier("fromSearchToEntryView", sender: self)
         }
+        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
     
     func filterContentForSearchText(searchText: String) {
-        // Filter the array using the filter method
-        self.searchResults = self.allObjects.filter({( object: PFObject) -> Bool in
-            
-            var userStringMatch = false
-            var postStringMatch = false
-            if(object.isKindOfClass(PFUser)){
-                var user = object as PFUser
-                if user.username.lowercaseString.rangeOfString(searchText) != nil{
-                    userStringMatch = true
-                }
-            }else {
-                var title:String = object["title"] as String
-                if title.lowercaseString.rangeOfString(searchText) != nil{
-                    postStringMatch = true
-                }
-            }
-            return (userStringMatch || postStringMatch)
-            
+        self.searchResultsForUsers = self.allUsers.filter({(object: PFObject) -> Bool in
+            let user = object as PFUser
+            let userStringMatch = user.username.lowercaseString.rangeOfString(searchText)
+            return (userStringMatch != nil)
         })
+        
+        self.searchResultsForEntries = self.allEntries.filter({(object: PFObject) -> Bool in
+            let title = object["title"] as String
+            let postStringMatch = title.lowercaseString.rangeOfString(searchText)
+            return (postStringMatch != nil)
+        })
+        
+        
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
@@ -177,15 +244,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return true
     }
     
+    func searchDisplayControllerDidEndSearch(controller: UISearchDisplayController) {
+        messageLabel.hidden = false
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         if segue.identifier == "fromSearchToEntryView"{
             let vc = segue.destinationViewController as EntryViewController
-            vc.entry = self.entryToPassWhenRowSelected
+            vc.entry = self.objectToPass
         }
         
         if (segue.identifier == "fromSearchToProfile"){
             let vc = segue.destinationViewController as ProfileViewController
-            vc.currentUser = self.userToPassWhenRowSelected as PFUser
+            vc.currentUser = self.objectToPass as PFUser
         }
     }
     

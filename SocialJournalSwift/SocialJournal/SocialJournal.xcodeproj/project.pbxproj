@@ -38,6 +38,7 @@
 		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
+		AC5563631A2D0EEF00824D18 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5563621A2D0EEF00824D18 /* CommentCell.swift */; };
 		AC9BE99A1A2AB15F0019E9B7 /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BE9991A2AB15F0019E9B7 /* SearchUserCell.swift */; };
 		AC9BE99C1A2AB1710019E9B7 /* SearchPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BE99B1A2AB1710019E9B7 /* SearchPostCell.swift */; };
 		AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DE5721A195F8100BE697D /* ProfileViewController.swift */; };
@@ -95,6 +96,7 @@
 		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		AC5563621A2D0EEF00824D18 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		AC9BE9991A2AB15F0019E9B7 /* SearchUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
 		AC9BE99B1A2AB1710019E9B7 /* SearchPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPostCell.swift; sourceTree = "<group>"; };
 		AC9DE5721A195F8100BE697D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
+				AC5563621A2D0EEF00824D18 /* CommentCell.swift */,
 				29C7018F1A1E43B800001464 /* MapViewController.swift */,
 				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
 				007B29421A1D0BB500786913 /* ParseQueries.swift */,
@@ -336,6 +339,7 @@
 				AC9BE99C1A2AB1710019E9B7 /* SearchPostCell.swift in Sources */,
 				AC9BE99A1A2AB15F0019E9B7 /* SearchUserCell.swift in Sources */,
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
+				AC5563631A2D0EEF00824D18 /* CommentCell.swift in Sources */,
 				007B29431A1D0BB500786913 /* ParseQueries.swift in Sources */,
 				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
