@@ -60,8 +60,6 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         
         
         
-        // Register the UITableViewCell class with the tableView
-    
         
        //self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "displayCell")
         
@@ -105,12 +103,11 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
+        let cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
        // var row = indexPath.row
-        
+       
         cell.backgroundColor = UIColor.clearColor()
         
-
         
          cell.keyword.text = self.keyArray[indexPath.row]
          cell.virtualName.text = self.valueArray[indexPath.row]
@@ -123,6 +120,14 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         return cell
         
     }
+    
+  /* func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,forRowAtIndexPath indexPath: NSIndexPath){
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete{
+            tableView.deleteRowsAtIndexPaths([indexPath],withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        }
+    }*/
 
 
 

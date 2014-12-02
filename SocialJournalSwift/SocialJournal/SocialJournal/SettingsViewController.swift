@@ -109,6 +109,49 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var newsFeedSwitch: UISwitch! // Hearts Switch
     
+    
+    func followingNotification(){
+        if self.followingSwitch.on{
+            
+            //code for turn on the followingNotification
+
+        }
+        if self.followingSwitch.off{
+            
+            //code for turn off the followingNotification
+            
+        }
+        
+    }
+    
+    func commentsNotification(){
+        if self.followerSwitch.on{
+            
+            //code for turn on the commentsNotification
+            
+        }
+        if self.followerSwitch.off{
+            
+            //code for turn off the commentsNotification
+            
+        }
+        
+    }
+    
+    func heartsNotification(){
+        if self.newsFeedSwitch.on{
+            
+            //code for turn on the heartsNotification
+        }
+        if self.newsFeedSwitch.off{
+            //code for turn off the heartsNotification
+            
+        }
+        
+    }
+    
+    
+    
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
