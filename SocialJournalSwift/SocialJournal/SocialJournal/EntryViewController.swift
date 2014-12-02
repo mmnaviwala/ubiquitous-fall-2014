@@ -203,6 +203,34 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @IBAction func submitCommentButtonTapped(sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Submit new comment", message: nil, preferredStyle: .Alert)
+
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { (_) in
+            println("Comment entered => " + (alertController.textFields![0] as UITextField).text)
+        }
+        submitAction.enabled = false
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Your comment..."
+            
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
+                submitAction.enabled = textField.text != ""
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(submitAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+    }
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "entryToMapView"{
