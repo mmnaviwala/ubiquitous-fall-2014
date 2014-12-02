@@ -97,7 +97,37 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func heartPost(sender: AnyObject) {
-        println("I like this post")
+        
+        var query = PFQuery(className: "Activity")
+        query.whereKey("fromUser", equalTo: PFUser.currentUser())
+        query.whereKey("toUser", equalTo: self.entry["user"] as PFUser)
+        query.whereKey("entry", equalTo: self.entry)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                if objects.count == 0 {
+                    self.entry["user"].fetchIfNeededInBackgroundWithBlock {
+                        (object: PFObject!, error: NSError!) -> Void in
+                        if error == nil {
+                            
+                            var activity = PFObject(className: "Activity")
+                            activity["fromUser"] = PFUser.currentUser()
+                            activity["toUser"] = object as PFUser
+                            activity["type"] = "like"
+                            activity["entry"] = self.entry
+                            activity.saveInBackground()
+                        } else {
+                            NSLog("Error: %@ %@", error, error.userInfo!)
+                        }
+                    }
+                } else {
+                    objects[0].deleteInBackground()
+                }
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+
+        }
         
         let image = UIImage(named: "HeartRed") as UIImage?
         self.heartLike.setImage(image, forState: .Normal)
