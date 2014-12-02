@@ -105,28 +105,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
             
             //User
-            var eachUser:PFObject = entry["user"] as PFObject
-            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+            entry["user"].fetchIfNeededInBackgroundWithBlock {
+                (object: PFObject!, error: NSError!) -> Void in
+                if error == nil {
+                    cell.username.text = object["username"] as String!
+                } else {
+                    NSLog("Error: %@ %@", error, error.userInfo!)
+                }
+                
+            }
             
-            //Date
-            var weekday: NSDateFormatter = NSDateFormatter()
-            var day: NSDateFormatter = NSDateFormatter()
-            var month: NSDateFormatter = NSDateFormatter()
-            var year: NSDateFormatter = NSDateFormatter()
-            weekday.setLocalizedDateFormatFromTemplate("EEEE")
-            day.setLocalizedDateFormatFromTemplate("dd")
-            month.setLocalizedDateFormatFromTemplate("MMMM")
-            year.setLocalizedDateFormatFromTemplate("YYYY")
-            var dateStringWeekday: NSString = weekday.stringFromDate(entry.createdAt)
-            var dateStringDay: NSString = day.stringFromDate(entry.createdAt)
-            var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
-            var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
-            
-            
-        
-            
-        
-            cell.username.text = actualUser.username
             //        cell.userProfilePicture.image =
             
             //        if(favorited) {
@@ -138,14 +126,27 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.heartCount.text = String(ParseQueries.getHeartCountForEntry(entry))
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
-            cell.dateWeekday.text = dateStringWeekday
-            cell.dateDay.text = dateStringDay
-            cell.dateMonth.text = dateStringMonth
-            cell.dateYear.text = dateStringYear
+            assignDate(entry.createdAt, cell: cell)
         
         }
         
         return cell
+    }
+    
+    func assignDate(date:NSDate, cell:feedCellTableViewCell) {
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE")
+        cell.dateWeekday.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd")
+        cell.dateDay.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+        cell.dateMonth.text = dateFormatter.stringFromDate(date)
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY")
+        cell.dateYear.text = dateFormatter.stringFromDate(date)
     }
     
     // UITableViewDelegate methods

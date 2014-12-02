@@ -33,10 +33,19 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
         
-        var eachUser:PFObject = entry["user"] as PFObject
-        var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
+        //
         
-        self.username.text = actualUser.username
+        entry["user"].fetchIfNeededInBackgroundWithBlock {
+            (object: PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                self.username.text = object["username"] as String!
+                println(object["username"])
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+            
+        }
+        
         //        cell.userProfilePicture.image =
         
         //        if(favorited) {
