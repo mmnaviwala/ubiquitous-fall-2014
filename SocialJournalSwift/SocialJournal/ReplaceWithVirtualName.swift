@@ -26,7 +26,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func save(sender: AnyObject) {
 
-        self.tableView?.reloadData()
+        
                 
         for(key, value) in virtualNameDictionary
         {
@@ -47,7 +47,7 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         {
             keyArray.append(key)
             valueArray.append(value)
-            println("\(key)   \(value)")
+           // println("\(key)   \(value)")
         }
         
         self.tableView?.reloadData()
@@ -110,13 +110,14 @@ class ReplaceWithVirtualName: UIViewController, UITableViewDataSource, UITableVi
         
         cell.backgroundColor = UIColor.clearColor()
         
-        // var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
+
         
          cell.keyword.text = self.keyArray[indexPath.row]
          cell.virtualName.text = self.valueArray[indexPath.row]
         
         //cell.keyword.text = " "
        //cell.virtualName.text = " "
+        
         
         
         return cell
