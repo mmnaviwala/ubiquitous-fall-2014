@@ -116,7 +116,7 @@ class SettingsViewController: UIViewController {
             //code for turn on the followingNotification
 
         }
-        if self.followingSwitch.off{
+        else{
             
             //code for turn off the followingNotification
             
@@ -129,8 +129,8 @@ class SettingsViewController: UIViewController {
             
             //code for turn on the commentsNotification
             
-        }
-        if self.followerSwitch.off{
+        }else{
+       
             
             //code for turn off the commentsNotification
             
@@ -143,7 +143,7 @@ class SettingsViewController: UIViewController {
             
             //code for turn on the heartsNotification
         }
-        if self.newsFeedSwitch.off{
+        else{
             //code for turn off the heartsNotification
             
         }
