@@ -9,12 +9,26 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet weak var followingLabel: UILabel!
+    
+    @IBOutlet weak var commentsLabel: UILabel!
+    
+    @IBOutlet weak var heartsLabel: UILabel!
+    
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         super.viewDidLoad()
+        
+        self.followingLabel.layer.cornerRadius = 8
+        self.followingLabel.layer.masksToBounds = true
+        self.commentsLabel.layer.cornerRadius = 8
+        self.commentsLabel.layer.masksToBounds = true
+        self.heartsLabel.layer.cornerRadius = 8
+        self.heartsLabel.layer.masksToBounds = true
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
