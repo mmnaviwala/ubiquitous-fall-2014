@@ -151,11 +151,47 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var heartsSwitch: UISwitch!
     
+
     
+    func checkfollowingNotification(){
+        
+        if self.followingSwitch.on{
+            
+            //code for turn on the followingNotification
+            
+        }
+            else{
+            
+            //code for turn off the followingNotification
+            
+        }
+        
+    }
+
+    func checkcommentsNotification(){
+            
+            if self.commentsSwitch.on{
+            //code for turn on the COMMENTSNotification
+            }
+            else{
+            //code for turn off the commentsNotification
+            }
+    }
+    
+    func checkheartsNotification(){
+                if self.heartsSwitch.on{
+                //code for turn on the hearts notification
+
+               }else{
+                //code for turn off the hearts notification
+                }
+                
+                
+        
+    }
 
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
