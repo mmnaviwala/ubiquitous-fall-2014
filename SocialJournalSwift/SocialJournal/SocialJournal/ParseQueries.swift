@@ -95,7 +95,8 @@ class ParseQueries {
     }
     
     class func getHeartCountForEntry(entry:PFObject) -> Int {
-        var queryForHeartCount = PFQuery(className: "Entry")
+        var queryForHeartCount = PFQuery(className: "Activity")
+        queryForHeartCount.whereKey("type", equalTo: "like")
         queryForHeartCount.whereKey("entry", equalTo: entry)
         return queryForHeartCount.countObjects()
     }
