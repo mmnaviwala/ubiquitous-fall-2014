@@ -24,7 +24,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         setupTheHamburgerIcon()
-        
+        self.spinner.center = self.view.center
         self.spinner.startAnimating()
         fetchData()
         

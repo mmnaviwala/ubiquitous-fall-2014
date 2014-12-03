@@ -87,6 +87,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowers() {
+        self.spinner.center = self.view.center
         self.spinner.startAnimating()
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
@@ -103,6 +104,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowing() {
+        self.spinner.center = self.view.center
         self.spinner.startAnimating()
         var query = ParseQueries.queryForFollowing(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
@@ -119,6 +121,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetMyEntriesTable() {
+        self.spinner.center = self.view.center
         self.spinner.startAnimating()
         var query = ParseQueries.queryForMyEntries(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
