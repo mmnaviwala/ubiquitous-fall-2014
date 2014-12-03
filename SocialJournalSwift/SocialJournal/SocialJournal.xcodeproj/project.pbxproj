@@ -36,6 +36,8 @@
 		00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */; };
 		29C7018E1A1E412D00001464 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C7018D1A1E412D00001464 /* MapKit.framework */; };
 		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
+		894C59DE1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */; };
+		894C59E01A2EC6220050B1B6 /* VirtualNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC5563631A2D0EEF00824D18 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5563621A2D0EEF00824D18 /* CommentCell.swift */; };
@@ -94,6 +96,8 @@
 		00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		29C7018D1A1E412D00001464 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceWithVirtualName.swift; sourceTree = "<group>"; };
+		894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualNameTableViewCell.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC5563621A2D0EEF00824D18 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 				008CD4DD1A192DB50024BB9A /* Images.xcassets */,
 				008CD4DF1A192DB50024BB9A /* LaunchScreen.xib */,
 				008CD4DA1A192DB50024BB9A /* Main.storyboard */,
+				894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */,
+				894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */,
 				AC5563621A2D0EEF00824D18 /* CommentCell.swift */,
 				29C7018F1A1E43B800001464 /* MapViewController.swift */,
 				AC9DE57A1A1AF82E00BE697D /* NotificationsViewController.swift */,
@@ -340,6 +346,7 @@
 				AC9BE99A1A2AB15F0019E9B7 /* SearchUserCell.swift in Sources */,
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
 				AC5563631A2D0EEF00824D18 /* CommentCell.swift in Sources */,
+				894C59E01A2EC6220050B1B6 /* VirtualNameTableViewCell.swift in Sources */,
 				007B29431A1D0BB500786913 /* ParseQueries.swift in Sources */,
 				AC9DE5791A1AF7AE00BE697D /* FeedViewController.swift in Sources */,
 				008CD4D91A192DB50024BB9A /* ViewController.swift in Sources */,
@@ -358,6 +365,7 @@
 				AC9DE57B1A1AF82E00BE697D /* NotificationsViewController.swift in Sources */,
 				AC9DE5771A195F9B00BE697D /* collectionViewCell.swift in Sources */,
 				008CD4FF1A1934220024BB9A /* HamburgerButton.swift in Sources */,
+				894C59DE1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
