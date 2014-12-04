@@ -33,8 +33,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.userProfilePicture.layer.cornerRadius = 50
         self.userProfilePicture.layer.masksToBounds = true
         
-        //
-        
         entry["user"].fetchIfNeededInBackgroundWithBlock {
             (object: PFObject!, error: NSError!) -> Void in
             if error == nil {
@@ -45,12 +43,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             
         }
-        
-        //        cell.userProfilePicture.image =
-        
-        //        if(favorited) {
-        //            cell.hearted.image =
-        //        }
         var entryTitle:String = entry["title"] as String!
         var entryText:String = entry["content"] as String!
         
@@ -65,8 +57,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         showCommentsVisualView.layer.borderWidth = 1.0
         showCommentsVisualView.layer.borderColor = UIColor.whiteColor().CGColor
         
-        
-        // Do any additional setup after loading the view.
     }
     
     func assignDate(date:NSDate) {
@@ -106,6 +96,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 if objects.count == 0 {
+                    self.heartLike.tintColor = UIColor.redColor()
+                    self.heartLike.setImage(UIImage(named: "HeartRed"), forState: .Normal)
                     self.entry["user"].fetchIfNeededInBackgroundWithBlock {
                         (object: PFObject!, error: NSError!) -> Void in
                         if error == nil {
@@ -116,21 +108,20 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
                             activity["type"] = "like"
                             activity["entry"] = self.entry
                             activity.saveInBackground()
+                            
                         } else {
                             NSLog("Error: %@ %@", error, error.userInfo!)
                         }
                     }
                 } else {
                     objects[0].deleteInBackground()
+                    self.heartLike.tintColor = UIColor.whiteColor()
+                    self.heartLike.setImage(UIImage(named: "HeartWhite"), forState: .Normal)
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
-
         }
-        
-        let image = UIImage(named: "HeartRed") as UIImage?
-        self.heartLike.setImage(image, forState: .Normal)
     }
     
     override func didReceiveMemoryWarning() {
