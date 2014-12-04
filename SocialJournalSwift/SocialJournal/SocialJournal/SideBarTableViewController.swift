@@ -13,9 +13,7 @@ class SideBarTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        verticallyCenterTableView()
         
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -23,16 +21,24 @@ class SideBarTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     
     }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        verticallyCenterTableView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        verticallyCenterTableView()
+    }
 
     func verticallyCenterTableView() {
         self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight|UIViewAutoresizing.FlexibleWidth
+        self.tableView.layoutIfNeeded()
         var contentSize = self.tableView.contentSize
         var boundsSize = self.tableView.bounds.size
         var yOffset:CGFloat = 0.0
         if (contentSize.height < boundsSize.height){
-            yOffset = floor((boundsSize.height - contentSize.height)/4)
+            yOffset = floor((boundsSize.height - contentSize.height)/2)
         }
-        // self.tableView.contentOffset = CGPointMake(0, yOffset);
         self.tableView.contentInset = UIEdgeInsets(top: yOffset, left: 0, bottom: 0, right: 0)
         
     }
