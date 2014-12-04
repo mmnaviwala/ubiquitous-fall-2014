@@ -499,7 +499,7 @@
 				INFOPLIST_FILE = SocialJournal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "54edb4ca-a4ee-42cf-8b45-64730acced76";
+				PROVISIONING_PROFILE = "20a44db1-59c3-4984-8ea9-d2b812c0ffb8";
 				SWIFT_OBJC_BRIDGING_HEADER = "SocialJournal/SocialJournal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -518,7 +518,7 @@
 				INFOPLIST_FILE = SocialJournal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "54edb4ca-a4ee-42cf-8b45-64730acced76";
+				PROVISIONING_PROFILE = "20a44db1-59c3-4984-8ea9-d2b812c0ffb8";
 				SWIFT_OBJC_BRIDGING_HEADER = "SocialJournal/SocialJournal-Bridging-Header.h";
 			};
 			name = Release;
