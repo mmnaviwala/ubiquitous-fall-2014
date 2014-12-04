@@ -11,90 +11,64 @@ import UIKit
 class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var keyword: UITextField!
-    
     @IBOutlet weak var virtualName: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
-    
     
     var virtualNameDictionary = Dictionary<String,String>()
     var keyArray = Array <String>()
-    
     var valueArray = Array<String>()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func saveChange(sender: AnyObject) {
-        
-        
-        for(key, value) in virtualNameDictionary
-        {
-            if(keyword.text == key)
-        {
-            virtualNameDictionary.removeValueForKey(key);
+        for(key, value) in virtualNameDictionary{
+            if(keyword.text == key){
+                virtualNameDictionary.removeValueForKey(key)
             }
         }
         
         virtualNameDictionary[keyword.text] = virtualName.text;
         
-        
         keyword.text = ""
         virtualName.text = ""
         
-        
-        for (key,value)in virtualNameDictionary
-        {
+        for (key,value)in virtualNameDictionary{
             keyArray.append(key)
             valueArray.append(value)
              println("\(key)   \(value)")
         }
         
+        saveToNSUserDefaults()
         self.tableView?.reloadData()
     }
     
-    
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
-        
     }
     
-    
+    func saveToNSUserDefaults(){
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(self.virtualNameDictionary, forKey: "virtualNamesDictionary")
+        userDefaults.synchronize()
+    }
     
     // UITableViewDataSource methods
-    
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
-        
     }
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.keyArray.count
-        
     }
     
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         
         var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
         // var row = indexPath.row
         
         cell.backgroundColor = UIColor.clearColor()
-        
         
         cell.keyword.text = self.keyArray[indexPath.row]
         cell.virtualName.text = self.valueArray[indexPath.row]
@@ -102,11 +76,6 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         //cell.keyword.text = "nmb "
         //cell.virtualName.text = " nmb"
         
-        
         return cell
-        
     }
-    
-    
-
 }

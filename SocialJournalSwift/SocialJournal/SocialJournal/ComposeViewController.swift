@@ -42,6 +42,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     @IBOutlet weak var removeImageButton: UIButton!
     
     var currentEntry = PFObject(className: "Entry")
+    var virtualNameDictionary = Dictionary<String,String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +76,17 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         dateFormatter.dateFormat = "yyyy"
         self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
        
+        getVirtualNamesFromNSUserDefaults()
         // Do any additional setup after loading the view.
     }
+    
+    func getVirtualNamesFromNSUserDefaults(){
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let virtualNames = userDefaults.objectForKey("virtualNamesDictionary") as? Dictionary<String,String>{
+            println(virtualNames)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
