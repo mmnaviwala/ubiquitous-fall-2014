@@ -10,9 +10,32 @@ import UIKit
 
 class SideBarTableViewController: UITableViewController {
     
+    @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var composeImageView: UIImageView!
+    @IBOutlet weak var searchImageView: UIImageView!
+    @IBOutlet weak var notificationsImageView: UIImageView!
+    @IBOutlet weak var settingsImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var iconColor = UIColor.grayColor()
+        
+        feedImageView.image = feedImageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        feedImageView.tintColor = iconColor
+        
+        composeImageView.image = composeImageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        composeImageView.tintColor = iconColor
+        
+        searchImageView.image = searchImageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        searchImageView.tintColor = iconColor
+        
+        notificationsImageView.image = notificationsImageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        notificationsImageView.tintColor = iconColor
+        
+        settingsImageView.image = settingsImageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        settingsImageView.tintColor = iconColor
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
