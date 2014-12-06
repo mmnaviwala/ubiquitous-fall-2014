@@ -45,6 +45,11 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         self.tableView?.reloadData()
     }
     
+    @IBAction func clearButtonPressed(sender: AnyObject) {
+        self.virtualNameDictionary.removeAll(keepCapacity: false)
+        self.tableView?.reloadData()
+    }
+    
     func getVirtualNamesFromNSUserDefaults(){
         var userDefaults = NSUserDefaults.standardUserDefaults()
         if let virtualNames = userDefaults.objectForKey("virtualNamesDictionary") as? Dictionary<String,String>{
