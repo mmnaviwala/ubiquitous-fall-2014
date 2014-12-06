@@ -63,8 +63,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
-    
-    
+
     @IBAction func changePassword(sender: AnyObject) {
         
         //let alertController: UIAlertController = UIAlertController(title: "Change Your Password", message: "Swiftly Now! Choose an option!", preferredStyle: .ActionSheet)
