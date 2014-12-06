@@ -214,6 +214,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.userProfilePicture.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
     
