@@ -103,32 +103,32 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func getTagsFromTitleAndContent() -> Array<String> {
-            //get the tags here, if no tags return an empty array ... not nil
-            var result = [String]();
+        //get the tags here, if no tags return an empty array ... not nil
+        var result = [String]();
     
-            //initialize the arrays
-            var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
-            var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
-            var allTags = titleTags + contentTags
+        //initialize the arrays
+        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
+        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
+        var allTags = titleTags + contentTags
     
-            var tagDictionary = [String: Int]()
+        var tagDictionary = [String: Int]()
     
-            for word in allTags{
-        if countElements(word) != 0{
-                    var temp = (word as NSString).substringToIndex(1)
-                    if (temp == "#" && countElements(word) > 1 &&
-                        word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
-                        tagDictionary[word] == nil){
-    
+        for word in allTags{
+            if countElements(word) != 0{
+                var temp = (word as NSString).substringToIndex(1)
+            
+                if (temp == "#" && countElements(word) > 1 &&
+                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
+                    tagDictionary[word] == nil){
                         tagDictionary[word] = allTags.count
-                           result.append(word);
+                        result.append(word)
                         //println(word)
-                    }
                 }
             }
-               //println(result)
-               return result;
         }
+        //println(result)
+        return result;
+    }
     
     func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
         let tags = getTagsFromTitleAndContent()
@@ -149,7 +149,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     
                         newTagMapEntry["entry"] = entry
                         newTagMapEntry["tag"] = newTag
-                            newTagMapEntry.saveEventually()
+                        newTagMapEntry.saveEventually()
                     } else {
                         var newTagMapEntry = PFObject(className: "TagMap")
     
@@ -194,11 +194,18 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                         //Preform segue here
                         self.performSegueWithIdentifier("composeToEntryView", sender: sender)
                     } else {
-                        println(error)
-                    }
+                        //if failure, give an alert
+                        let alertController = UIAlertController(title: "Oops!", message:
+                            "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)                    }
                 }
             } else {
-                println("error")
+                //if failure, give an alert
+                let alertController = UIAlertController(title: "Oops!", message:
+                    "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
