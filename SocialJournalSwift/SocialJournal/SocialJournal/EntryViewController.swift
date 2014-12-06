@@ -183,7 +183,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     @IBAction func locationButtonPressed(sender: AnyObject) {
-        if self.entry["location"] != nil{
+        if self.entry["location"].latitude != 0.0 && self.entry["location"].longitude != 0.0{
             self.performSegueWithIdentifier("entryToMapView", sender: sender)
         }else{
             let alertController = UIAlertController(title: "Sorry!", message:

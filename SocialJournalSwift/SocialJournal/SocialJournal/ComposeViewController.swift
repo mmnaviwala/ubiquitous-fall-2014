@@ -180,7 +180,11 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         self.currentEntry["content"] = replaceVirtualNames(self.contentTextView.text)
         self.currentEntry["title"] = replaceVirtualNames(self.titleTextField.text)
         
-        self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
+        if self.locationManager.location == nil{
+            self.currentEntry["location"] = PFGeoPoint(latitude: 0.0, longitude: 0.0)
+        }else{
+            self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
+        }
         
         self.currentEntry.saveInBackgroundWithBlock{
             (success: Bool!, error:NSError!) -> Void in
@@ -198,7 +202,8 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                         let alertController = UIAlertController(title: "Oops!", message:
                             "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
                         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)                    }
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                 }
             } else {
                 //if failure, give an alert
