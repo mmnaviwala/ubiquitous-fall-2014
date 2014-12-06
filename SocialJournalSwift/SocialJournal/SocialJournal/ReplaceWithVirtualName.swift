@@ -20,19 +20,20 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getVirtualNamesFromNSUserDefaults()
     }
     
     @IBAction func saveChange(sender: AnyObject) {
         self.virtualNameDictionary[keyword.text] = virtualName.text
         
         //reset both arrays to avoid extra elements
-        keyArray.removeAll(keepCapacity: false)
-        valueArray.removeAll(keepCapacity: false)
+        self.keyArray.removeAll(keepCapacity: false)
+        self.valueArray.removeAll(keepCapacity: false)
         
         //refill both arrays
         for (key, value) in virtualNameDictionary{
-            keyArray.append(key)
-            valueArray.append(value)
+            self.keyArray.append(key)
+            self.valueArray.append(value)
         }
         
         //reset text fields
@@ -44,6 +45,17 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         self.tableView?.reloadData()
     }
     
+    func getVirtualNamesFromNSUserDefaults(){
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let virtualNames = userDefaults.objectForKey("virtualNamesDictionary") as? Dictionary<String,String>{
+            self.virtualNameDictionary = virtualNames
+            //refill both arrays
+            for (key, value) in virtualNameDictionary{
+                self.keyArray.append(key)
+                self.valueArray.append(value)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -67,8 +79,8 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
         cell.backgroundColor = UIColor.clearColor()
         
-        cell.keyword.text = keyArray[indexPath.row]
-        cell.virtualName.text = valueArray[indexPath.row]
+        cell.keyword.text = self.keyArray[indexPath.row]
+        cell.virtualName.text = self.valueArray[indexPath.row]
         return cell
     }
 }
