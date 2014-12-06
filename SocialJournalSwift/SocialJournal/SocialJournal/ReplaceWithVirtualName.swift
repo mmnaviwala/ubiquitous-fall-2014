@@ -39,7 +39,7 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         self.keyword.text = ""
         self.virtualName.text = ""
         
-        println(self.virtualNameDictionary)
+        //println(self.virtualNameDictionary)
         saveToNSUserDefaults()
         self.tableView?.reloadData()
     }
