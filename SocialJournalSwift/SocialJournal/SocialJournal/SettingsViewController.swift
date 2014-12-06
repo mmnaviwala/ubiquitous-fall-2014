@@ -11,10 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var followingLabel: UILabel!
-    
     @IBOutlet weak var commentsLabel: UILabel!
-    
     @IBOutlet weak var heartsLabel: UILabel!
+    
+    @IBOutlet weak var userProfilePicture: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     var button: HamburgerButton! = nil
     override func viewDidLoad() {
@@ -29,6 +30,18 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
         self.commentsLabel.layer.masksToBounds = true
         self.heartsLabel.layer.cornerRadius = 8
         self.heartsLabel.layer.masksToBounds = true
+        
+        userProfilePicture = prettifyImage(userProfilePicture)
+        setupTheHamburgerIcon()
+        userNameLabel.text = PFUser.currentUser().username
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTheHamburgerIcon() {
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -38,11 +51,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
+        imageViewToModify.layer.cornerRadius = imageViewToModify.frame.size.width / 2;
+        imageViewToModify.clipsToBounds = true;
+        imageViewToModify.layer.borderWidth = 1.0
+        imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
+        return imageViewToModify
     }
+    
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
