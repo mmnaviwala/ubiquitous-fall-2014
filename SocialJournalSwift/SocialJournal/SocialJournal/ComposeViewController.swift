@@ -83,8 +83,18 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     func getVirtualNamesFromNSUserDefaults(){
         var userDefaults = NSUserDefaults.standardUserDefaults()
         if let virtualNames = userDefaults.objectForKey("virtualNamesDictionary") as? Dictionary<String,String>{
-            println(virtualNames)
+            self.virtualNameDictionary = virtualNames
+            //println(virtualNames)
         }
+    }
+    
+    func replaceVirtualNames(text:String) -> String{
+        var result = ""
+        for(key,value) in self.virtualNameDictionary{
+            result = text.stringByReplacingOccurrencesOfString(key, withString: value, options: NSStringCompareOptions.LiteralSearch, range: nil)
+        }
+        //println(result)
+        return result as String
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,10 +176,9 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     @IBAction func postNewEntry(sender: AnyObject) {
-        //var newEntry = PFObject(className: "Entry")
-        self.currentEntry["content"] = self.contentTextView.text
         self.currentEntry["user"] = PFUser.currentUser()
-        self.currentEntry["title"] = self.titleTextField.text
+        self.currentEntry["content"] = replaceVirtualNames(self.contentTextView.text)
+        self.currentEntry["title"] = replaceVirtualNames(self.titleTextField.text)
         
         self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
         
