@@ -14,6 +14,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var showCommentsToggle = true
     @IBOutlet weak var commentsTable: UITableView!
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var heartLike: UIButton!
@@ -37,12 +38,18 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             (object: PFObject!, error: NSError!) -> Void in
             if error == nil {
                 self.username.text = object["username"] as String!
-                println(object["username"])
+                println(object["username"] as String!)
+                println(PFUser.currentUser().username)
+                if(object["username"] as String! == PFUser.currentUser().username){
+                    self.deleteButton.hidden = false
+                }else{
+                    self.deleteButton.hidden = true
+                }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
-            
         }
+        
         var entryTitle:String = entry["title"] as String!
         var entryText:String = entry["content"] as String!
         
@@ -83,6 +90,18 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.shareButton.frame.width/2, 0, 0, 0)
         
         self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func clickDelete(sender: AnyObject) {
+        
+        var alert = UIAlertController(title: "Woah!!", message: "You sure you want to delete this masterpiece?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes, I want it to die", style: UIAlertActionStyle.Destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "No, no, no, my mistake", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
         
     }
     
@@ -150,13 +169,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         UIView.commitAnimations()
     }
-    
-    
-    
-    
-    
-    
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.commentsTable.deselectRowAtIndexPath(indexPath, animated: true)
