@@ -39,12 +39,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.followButton.hidden = true
         }else{
             self.followButton.hidden = false
+            configureInitialFollowButton()
+            //check to see if follower and adjust button state
         }
         
         currentUserProfilePicture = prettifyImage(currentUserProfilePicture)
         setupTheHamburgerIcon()
         setDefaults()
         
+    }
+    
+    func configureInitialFollowButton() {
+        var query = PFQuery(className: "Activity")
+        query.whereKey("fromUser", equalTo: PFUser.currentUser())
+        query.whereKey("toUser", equalTo: self.currentUser)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            self.spinner.stopAnimating()
+            if error == nil && objects.count > 0 {
+                self.followButton.setTitle("Unfollow", forState: UIControlState.Normal)
+                self.followButton.layer.backgroundColor = UIColor.redColor().CGColor
+            } else {
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -141,11 +158,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         case 0:
             theTableView.hidden = true
             theCollectionView.hidden = false
-            fetchAndSetFollowers()
+            fetchAndSetFollowing()
         case 1:
             theTableView.hidden = true
             theCollectionView.hidden = false
-            fetchAndSetFollowing()
+            fetchAndSetFollowers()
         case 2:
             theTableView.hidden = false
             theCollectionView.hidden = true
@@ -303,13 +320,35 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func followButtonClicked(sender: UIButton) {
-        // Set the button so it says unfollow
+
+        
         if(sender.titleForState(UIControlState.Normal) == "Follow"){
             sender.setTitle("Unfollow", forState: UIControlState.Normal)
             sender.layer.backgroundColor = UIColor.redColor().CGColor
+            
+            //follow the user
+            var newFollow = PFObject(className: "Activity")
+            newFollow["fromUser"] = PFUser.currentUser()
+            newFollow["toUser"] = self.currentUser
+            newFollow["type"] = "follow"
+            newFollow.saveInBackground()
         }else{
             sender.setTitle("Follow", forState: UIControlState.Normal)
             sender.layer.backgroundColor = UIColor(red: 39.0/255, green: 154.0/255, blue: 216.0/255, alpha: 1.0).CGColor
+            
+            //unfollow the user
+            var query = PFQuery(className: "Activity")
+            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("toUser", equalTo: self.currentUser)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                self.spinner.stopAnimating()
+                if error == nil && objects.count > 0 {
+                    objects[0].deleteEventually()
+                } else {
+                    NSLog("Error: %@ %@", error, error.userInfo!)
+                }
+            }
         }
     }
     
