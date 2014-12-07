@@ -38,12 +38,18 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             (object: PFObject!, error: NSError!) -> Void in
             if error == nil {
                 self.username.text = object["username"] as String!
-                println(object["username"])
+                println(object["username"] as String!)
+                println(PFUser.currentUser().username)
+                if(object["username"] as String! == PFUser.currentUser().username){
+                    self.deleteButton.hidden = false
+                }else{
+                    self.deleteButton.hidden = true
+                }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
-            
         }
+        
         var entryTitle:String = entry["title"] as String!
         var entryText:String = entry["content"] as String!
         
@@ -85,6 +91,10 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.presentViewController(activityViewController, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func clickDelete(sender: AnyObject) {
+        println("DELETE ME GABE!!! PLEASE!!!!! I WANT TO DIE")
     }
     
     @IBAction func heartPost(sender: AnyObject) {
