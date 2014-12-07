@@ -14,6 +14,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var showCommentsToggle = true
     @IBOutlet weak var commentsTable: UITableView!
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var heartLike: UIButton!
@@ -150,13 +151,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         UIView.commitAnimations()
     }
-    
-    
-    
-    
-    
-    
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.commentsTable.deselectRowAtIndexPath(indexPath, animated: true)
