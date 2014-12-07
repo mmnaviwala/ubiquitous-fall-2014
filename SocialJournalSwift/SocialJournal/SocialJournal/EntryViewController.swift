@@ -94,7 +94,15 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func clickDelete(sender: AnyObject) {
-        println("DELETE ME GABE!!! PLEASE!!!!! I WANT TO DIE")
+        
+        var alert = UIAlertController(title: "Woah!!", message: "You sure you want to delete this masterpiece?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes, I want it to die", style: UIAlertActionStyle.Destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "No, no, no, my mistake", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+        
     }
     
     @IBAction func heartPost(sender: AnyObject) {
