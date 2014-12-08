@@ -113,7 +113,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if imageData != nil {
                 cell.userProfilePicture.image = UIImage(data: imageData!)
             }
+            var query = PFQuery(className: "Activity")
+            query.whereKey("entry", equalTo: entry)
+            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("type", equalTo: "like")
+            var likes = query.findObjects()
             
+            if likes.count > 0 {
+                cell.hearted.tintColor = UIColor.redColor()
+                cell.hearted.image = UIImage(named: "HeartRed")
+            }
             //        if(favorited) {
             //            cell.hearted.image =
             //        }

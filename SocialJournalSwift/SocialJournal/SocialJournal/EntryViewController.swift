@@ -72,6 +72,17 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         showCommentsVisualView.layer.borderWidth = 1.0
         showCommentsVisualView.layer.borderColor = UIColor.whiteColor().CGColor
         
+        var query = PFQuery(className: "Activity")
+        query.whereKey("entry", equalTo: entry)
+        query.whereKey("fromUser", equalTo: PFUser.currentUser())
+        query.whereKey("type", equalTo: "like")
+        var likes = query.findObjects()
+        
+        if likes.count > 0 {
+            self.heartLike.tintColor = UIColor.redColor()
+            self.heartLike.setImage(UIImage(named: "HeartRed"), forState: .Normal)
+        }
+        
         getCommentsForEntry()
         
     }
