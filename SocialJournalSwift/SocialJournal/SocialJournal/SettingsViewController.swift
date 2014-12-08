@@ -31,15 +31,20 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
         self.heartsLabel.layer.cornerRadius = 8
         self.heartsLabel.layer.masksToBounds = true
         
-        let userImageFile = PFUser.currentUser()["profileImage"] as PFFile
+        let userImageFile = PFUser.currentUser()["profileImage"] as? PFFile
         
-        userImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData!, error: NSError!) -> Void in
-            if error == nil {
-                self.userProfilePicture.image = UIImage(data:imageData)
+        if userImageFile != nil {
+            userImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    self.userProfilePicture.image = UIImage(data:imageData)
+                }
+                self.userProfilePicture = self.prettifyImage(self.userProfilePicture)
             }
+        } else {
             self.userProfilePicture = self.prettifyImage(self.userProfilePicture)
         }
+
 
         setupTheHamburgerIcon()
         userNameLabel.text = PFUser.currentUser().username
