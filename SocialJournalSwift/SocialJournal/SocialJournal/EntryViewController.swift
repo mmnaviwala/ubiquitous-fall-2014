@@ -9,6 +9,7 @@
 import UIKit
 
 class EntryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var button: HamburgerButton! = nil
     
     @IBOutlet weak var showCommentsVisualView: UIVisualEffectView!
     var showCommentsToggle = true
@@ -38,7 +39,12 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         var user:PFUser = self.entry["user"] as PFUser
         self.username.text = user.username
         
-
+        
+        if(self.navigationItem.hidesBackButton){
+            self.setupTheHamburgerIcon()
+            self.navigationItem.setHidesBackButton(false, animated: true)
+        }
+        
         if(self.username.text == PFUser.currentUser().username){
             self.deleteButton.hidden = false
         }else{
@@ -182,9 +188,24 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }    
+    
+    
+    func setupTheHamburgerIcon() {
+        self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
+        self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
+        self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
+        // self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
+        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
     }
     
-    
+    func toggle(sender: AnyObject!) {
+        self.button.showsMenu = !self.button.showsMenu
+    }
+
     @IBAction func commentButtonClicked(sender: UIButton) {
         var currentFrame = showCommentsVisualView.frame
         UIView.beginAnimations(nil, context: nil)

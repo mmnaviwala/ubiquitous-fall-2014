@@ -281,6 +281,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         if segue.identifier == "composeToEntryView"{
             let vc = segue.destinationViewController as EntryViewController
             vc.entry = self.currentEntry as PFObject
+            vc.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
 
