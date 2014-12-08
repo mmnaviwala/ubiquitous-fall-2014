@@ -28,6 +28,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var shareButton: UIButton!
     var entry = PFObject(className: "Entry")
     
+    var comments = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,24 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         showCommentsVisualView.layer.borderWidth = 1.0
         showCommentsVisualView.layer.borderColor = UIColor.whiteColor().CGColor
         
+        getCommentsForEntry()
+        
+    }
+    
+    func getCommentsForEntry() {
+        var query = PFQuery(className: "Activity")
+        query.whereKey("type", equalTo: "comment")
+        query.whereKey("entry", equalTo: self.entry)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.comments = objects
+                self.commentsTable.reloadData()
+                println(objects)
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
     }
     
     func assignDate(date:NSDate) {
@@ -175,15 +195,17 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return self.comments.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        var comment:PFObject = self.comments[indexPath.row] as PFObject
+        comment["fromUser"].fetchIfNeeded()
         var cell:CommentCell = tableView.dequeueReusableCellWithIdentifier("commentCell") as CommentCell
-        cell.userName.text = "username here"
-        cell.theComment.text = "comment\nsupports 4 lines at most\nlast line"
+        cell.userName.text = comment["fromUser"].username
+        cell.theComment.text = (comment["content"] as String)
         cell.backgroundColor = UIColor.clearColor()
         return cell
     }
