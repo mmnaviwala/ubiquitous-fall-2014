@@ -13,6 +13,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
     var allEntries = []
+    var allUsers:[PFUser?] = []
+    var allUsersProfileImage:[UIImage?] = []
+    var allLikes:[Int] = []
     @IBOutlet weak var feedTableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     var refreshControl:UIRefreshControl!
@@ -56,6 +59,26 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if error == nil {
                 self.allEntries = objects
                 self.feedTableView.reloadData()
+                for entry:PFObject in self.allEntries as [PFObject] {
+                    //get user
+                    var user = entry["user"] as PFUser
+                    user.fetchIfNeeded()
+                    self.allUsers.append(user)
+                    //get profile image
+                    var userImageFile:PFFile? = user["profileImage"] as? PFFile
+                    var imageData = userImageFile?.getData()
+                    if imageData != nil {
+                        self.allUsersProfileImage.append(UIImage(data: imageData!)!)
+                    }else {
+                        self.allUsersProfileImage.append(nil)
+                    }
+                    //get like bool
+                    var query = PFQuery(className: "Activity")
+                    query.whereKey("entry", equalTo: entry)
+                    query.whereKey("type", equalTo: "like")
+                    var likes = query.findObjects()
+                    self.allLikes.append(likes.count)
+                }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
@@ -103,33 +126,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
-            var user:PFUser = entry["user"] as PFUser
-            user.fetchIfNeeded()
             
-            cell.username.text = user.username
+            cell.username.text = self.allUsers[indexPath.section]!.username
             //set image
-            var userImageFile:PFFile? = user["profileImage"] as? PFFile
-            var imageData = userImageFile?.getData()
-            if imageData != nil {
-                cell.userProfilePicture.image = UIImage(data: imageData!)
-            }
-            var query = PFQuery(className: "Activity")
-            query.whereKey("entry", equalTo: entry)
-            query.whereKey("fromUser", equalTo: PFUser.currentUser())
-            query.whereKey("type", equalTo: "like")
-            var likes = query.findObjects()
             
-            if likes.count > 0 {
-                cell.hearted.tintColor = UIColor.redColor()
-                cell.hearted.image = UIImage(named: "HeartRed")
+            if self.allUsersProfileImage[indexPath.section] != nil {
+                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
             }
+            
+//            if self.allLikes[indexPath.section] > 0 {
+//                cell.hearted.tintColor = UIColor.redColor()
+//                cell.hearted.image = UIImage(named: "HeartRed")
+//            }
             //        if(favorited) {
             //            cell.hearted.image =
             //        }
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
             
-            cell.heartCount.text = String(ParseQueries.getHeartCountForEntry(entry))
+            cell.heartCount.text = String(self.allLikes[indexPath.section])
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
             assignDate(entry.createdAt, cell: cell)
