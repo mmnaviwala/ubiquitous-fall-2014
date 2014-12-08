@@ -79,7 +79,15 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         var cell:NotificationTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("notificationCell") as NotificationTableViewCell
         if self.notifications != [] {
             var activity:PFObject = self.notifications[indexPath.row] as PFObject
-            var fromUser:PFUser = activity["fromUser"].fetchIfNeeded() as PFUser
+            var fromUser:PFUser = activity["fromUser"]as PFUser
+            fromUser.fetchIfNeeded()
+
+            var userImageFile:PFFile? = fromUser["profileImage"] as? PFFile
+            var imageData = userImageFile?.getData()
+            if imageData != nil {
+                cell.fromUserPicture.image = UIImage(data: imageData!)
+            }
+
             switch activity["type"] as String! {
             case "follow":
                 cell.notifcationLabel.text = "\(fromUser.username) is now Following you!"
@@ -91,6 +99,8 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.notifcationLabel.text = "Error: No Comment, Like or Follow detected."
             }
         }
+        
+        
         cell.backgroundColor = UIColor.clearColor()
         return cell
     }
