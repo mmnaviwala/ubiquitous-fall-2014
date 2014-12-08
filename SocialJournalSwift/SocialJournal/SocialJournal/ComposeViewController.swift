@@ -75,9 +75,31 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         
         dateFormatter.dateFormat = "yyyy"
         self.yearLabel.text = dateFormatter.stringFromDate(NSDate())
+        
+        var userImageFile:PFFile? = nil
+        
+        userImageFile = PFUser.currentUser()["profileImage"] as? PFFile
+        if userImageFile != nil {
+            userImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    self.profilePictureImageView.image = UIImage(data:imageData)
+                }
+                self.profilePictureImageView = self.prettifyImage(self.profilePictureImageView)
+            }
+        }
+        
        
         getVirtualNamesFromNSUserDefaults()
         // Do any additional setup after loading the view.
+    }
+    
+    func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
+        imageViewToModify.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2;
+        imageViewToModify.clipsToBounds = true;
+        imageViewToModify.layer.borderWidth = 6.0
+        imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
+        return imageViewToModify
     }
     
     func getVirtualNamesFromNSUserDefaults(){
