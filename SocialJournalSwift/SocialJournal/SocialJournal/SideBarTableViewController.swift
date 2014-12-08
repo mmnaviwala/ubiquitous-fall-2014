@@ -10,6 +10,7 @@ import UIKit
 
 class SideBarTableViewController: UITableViewController {
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var composeImageView: UIImageView!
     @IBOutlet weak var searchImageView: UIImageView!
@@ -42,6 +43,22 @@ class SideBarTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Set profile image
+        var userImageFile:PFFile? = nil
+        
+        userImageFile = PFUser.currentUser()["profileImage"] as? PFFile
+        if userImageFile != nil {
+            userImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    self.profileImageView.image = UIImage(data:imageData)
+                }
+            }
+        }
+        self.profileImageView.layer.cornerRadius = 10
+        self.profileImageView.layer.masksToBounds = true
+
+        
     
     }
     

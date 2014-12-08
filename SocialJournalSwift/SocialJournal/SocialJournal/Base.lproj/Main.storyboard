@@ -190,6 +190,7 @@
                         <outlet property="composeImageView" destination="mrD-6Z-5r9" id="BGg-hy-y7O"/>
                         <outlet property="feedImageView" destination="EK8-fe-Psc" id="JiK-Iz-uvv"/>
                         <outlet property="notificationsImageView" destination="7uX-D1-uOw" id="IOU-1J-dSa"/>
+                        <outlet property="profileImageView" destination="Vyn-AM-o62" id="BR6-iw-3CQ"/>
                         <outlet property="searchImageView" destination="mkD-cD-Bp0" id="bah-aU-fvP"/>
                         <outlet property="settingsImageView" destination="vNn-me-SIi" id="Bct-14-6OU"/>
                     </connections>
@@ -971,7 +972,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="736" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
