@@ -28,20 +28,37 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        var userImageFile:PFFile? = nil
+
         if (self.currentUser.objectId == nil){
             self.currentUser = PFUser.currentUser()
         }
         
         self.currentUserName.text = "@" + currentUser.username
         
+        
         if (currentUser.objectId == PFUser.currentUser().objectId){
             self.followButton.hidden = true
+            userImageFile = PFUser.currentUser()["profileImage"] as? PFFile
         }else{
             self.followButton.hidden = false
+            userImageFile = self.currentUser["profileImage"] as? PFFile
             configureInitialFollowButton()
             //check to see if follower and adjust button state
         }
+        
+        if userImageFile != nil {
+            userImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    self.currentUserProfilePicture.image = UIImage(data:imageData)
+                }
+                self.currentUserProfilePicture = self.prettifyImage(self.currentUserProfilePicture)
+            }
+        } else {
+            self.currentUserProfilePicture = self.prettifyImage(self.currentUserProfilePicture)
+        }
+        
         
         currentUserProfilePicture = prettifyImage(currentUserProfilePicture)
         setupTheHamburgerIcon()
