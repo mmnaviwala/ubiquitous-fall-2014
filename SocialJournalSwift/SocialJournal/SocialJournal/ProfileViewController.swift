@@ -69,6 +69,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         var query = PFQuery(className: "Activity")
         query.whereKey("fromUser", equalTo: PFUser.currentUser())
         query.whereKey("toUser", equalTo: self.currentUser)
+        query.whereKey("type", equalTo: "follow")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             self.spinner.stopAnimating()
@@ -116,7 +117,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         theTableView.hidden = true
         theCollectionView.hidden = false
-        fetchAndSetFollowers()
+        fetchAndSetFollowing()
     }
     
     func fetchAndSetFollowers() {
