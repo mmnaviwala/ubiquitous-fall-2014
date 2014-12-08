@@ -211,7 +211,13 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         let alertController = UIAlertController(title: "Submit new comment", message: nil, preferredStyle: .Alert)
 
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (_) in
-            println("Comment entered => " + (alertController.textFields![0] as UITextField).text)
+            var newComment = PFObject(className: "Activity")
+            newComment["fromUser"] = PFUser.currentUser()
+            newComment["toUser"] = self.entry["user"]
+            newComment["type"] = "comment"
+            newComment["content"] = (alertController.textFields![0] as UITextField).text
+            newComment["entry"] = self.entry
+            newComment.saveInBackground()
         }
         submitAction.enabled = false
         
