@@ -198,45 +198,52 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     @IBAction func postNewEntry(sender: AnyObject) {
-        self.currentEntry["user"] = PFUser.currentUser()
-        self.currentEntry["content"] = replaceVirtualNames(self.contentTextView.text)
-        self.currentEntry["title"] = replaceVirtualNames(self.titleTextField.text)
         
-        if self.locationManager.location == nil{
-            self.currentEntry["location"] = PFGeoPoint(latitude: 0.0, longitude: 0.0)
-        }else{
-            self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
-        }
-        
-        self.currentEntry.saveInBackgroundWithBlock{
-            (success: Bool!, error:NSError!) -> Void in
+        if self.titleTextField.text != "" && self.contentTextView.text != ""{
+            self.currentEntry["user"] = PFUser.currentUser()
+            self.currentEntry["content"] = self.replaceVirtualNames(self.contentTextView.text)
+            self.currentEntry["title"] = replaceVirtualNames(self.titleTextField.text)
             
-            if success! {
-                var query = PFQuery(className:"Entry")
-                query.getObjectInBackgroundWithId(self.currentEntry.objectId) {
-                    (entry: PFObject!, error: NSError!) -> Void in
-                    if error == nil {
-                        self.currentEntry = entry
-                        //Preform segue here
-                        self.performSegueWithIdentifier("composeToEntryView", sender: sender)
-                    } else {
-                        //if failure, give an alert
-                        let alertController = UIAlertController(title: "Oops!", message:
-                            "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)
-                    }
-                }
-            } else {
-                //if failure, give an alert
-                let alertController = UIAlertController(title: "Oops!", message:
-                    "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+            //check to make sure location isnt nil
+            if self.locationManager.location == nil{
+                self.currentEntry["location"] = PFGeoPoint(latitude: 0.0, longitude: 0.0)
+            }else{
+                self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
             }
+            
+            self.currentEntry.saveInBackgroundWithBlock{
+                (success: Bool!, error:NSError!) -> Void in
+                
+                if success! {
+                    var query = PFQuery(className:"Entry")
+                    query.getObjectInBackgroundWithId(self.currentEntry.objectId) {
+                        (entry: PFObject!, error: NSError!) -> Void in
+                        if error == nil {
+                            self.currentEntry = entry
+                            //Preform segue here
+                            self.performSegueWithIdentifier("composeToEntryView", sender: sender)
+                        } else {
+                            //if failure, give an alert
+                            let alertController = UIAlertController(title: "Oops!", message:
+                                "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    //if failure, give an alert
+                    let alertController = UIAlertController(title: "Oops!", message:
+                        "Something went wrong, we were unable to process your new post.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }
+        }else { // if either the title or content is empty
+            let alertController = UIAlertController(title: "Incomplete Post", message: "Please make sure the Title and Content are not empty.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
-    
     func toggle(sender: AnyObject!) {
         self.button.showsMenu = !self.button.showsMenu
     }
