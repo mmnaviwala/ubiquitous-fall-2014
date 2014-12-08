@@ -39,14 +39,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if (currentUser.objectId == PFUser.currentUser().objectId){
             self.followButton.hidden = true
-            userImageFile = PFUser.currentUser()["profileImage"] as? PFFile
         }else{
             self.followButton.hidden = false
-            userImageFile = self.currentUser["profileImage"] as? PFFile
             configureInitialFollowButton()
             //check to see if follower and adjust button state
         }
         
+        userImageFile = self.currentUser["profileImage"] as? PFFile
         if userImageFile != nil {
             userImageFile!.getDataInBackgroundWithBlock {
                 (imageData: NSData!, error: NSError!) -> Void in
@@ -213,6 +212,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
             cell.userNameLabel.text = actualUser.username
+            //set image for user
+            var userImageFile:PFFile? = actualUser["profileImage"] as? PFFile
+            var imageData = userImageFile?.getData()
+            if imageData != nil {
+                cell.userProfilePicture.image = UIImage(data: imageData!)
+            }
         }
         cell.layer.cornerRadius = 6
         cell.layer.borderWidth = 1.0
