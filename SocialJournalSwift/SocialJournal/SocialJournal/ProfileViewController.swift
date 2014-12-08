@@ -270,7 +270,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
             var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
             
-            cell.username.text = "anonDawg"
+            cell.username.text = PFUser.currentUser().username
             //        cell.userProfilePicture.image =
             
             //        if(favorited) {
@@ -286,6 +286,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.dateDay.text = dateStringDay
             cell.dateMonth.text = dateStringMonth
             cell.dateYear.text = dateStringYear
+            
+            //set image
+            var userImageFile:PFFile? = PFUser.currentUser()["profileImage"] as? PFFile
+            var imageData = userImageFile?.getData()
+            if imageData != nil {
+                cell.userProfilePicture.image = UIImage(data: imageData!)
+            }
             
         }
         
