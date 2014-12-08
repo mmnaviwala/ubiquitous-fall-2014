@@ -31,7 +31,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
         self.heartsLabel.layer.cornerRadius = 8
         self.heartsLabel.layer.masksToBounds = true
         
-        userProfilePicture = prettifyImage(userProfilePicture)
+        let userImageFile = PFUser.currentUser()["profileImage"] as PFFile
+        
+        userImageFile.getDataInBackgroundWithBlock {
+            (imageData: NSData!, error: NSError!) -> Void in
+            if error == nil {
+                self.userProfilePicture.image = UIImage(data:imageData)
+            }
+            self.userProfilePicture = self.prettifyImage(self.userProfilePicture)
+        }
+
         setupTheHamburgerIcon()
         userNameLabel.text = PFUser.currentUser().username
     }
@@ -214,7 +223,20 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        self.userProfilePicture.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        var image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        //resize the image
+        UIGraphicsBeginImageContext(CGSizeMake(500, 500))
+        image!.drawInRect(CGRectMake(0, 0, 500, 500))
+        self.userProfilePicture.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let imageData = UIImageJPEGRepresentation(self.userProfilePicture.image, 0.05)
+        let imageFile = PFFile(name:"profile.jpg", data:imageData)
+        
+        var user = PFUser.currentUser()
+        user["profileImage"] = imageFile
+        user.saveInBackground()
     }
     
     
