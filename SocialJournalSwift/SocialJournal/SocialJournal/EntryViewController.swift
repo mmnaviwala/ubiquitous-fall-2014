@@ -79,7 +79,6 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             if error == nil {
                 self.comments = objects
                 self.commentsTable.reloadData()
-                println(objects)
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
