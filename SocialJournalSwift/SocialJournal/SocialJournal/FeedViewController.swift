@@ -103,19 +103,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+            var user:PFUser = entry["user"] as PFUser
+            user.fetchIfNeeded()
             
-            //User
-            entry["user"].fetchIfNeededInBackgroundWithBlock {
-                (object: PFObject!, error: NSError!) -> Void in
-                if error == nil {
-                    cell.username.text = object["username"] as String!
-                } else {
-                    NSLog("Error: %@ %@", error, error.userInfo!)
-                }
-                
+            cell.username.text = user.username
+            //set image
+            var userImageFile:PFFile? = user["profileImage"] as? PFFile
+            var imageData = userImageFile?.getData()
+            if imageData != nil {
+                cell.userProfilePicture.image = UIImage(data: imageData!)
             }
-            
-            //        cell.userProfilePicture.image =
             
             //        if(favorited) {
             //            cell.hearted.image =

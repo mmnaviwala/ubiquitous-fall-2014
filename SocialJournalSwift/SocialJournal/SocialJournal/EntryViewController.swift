@@ -33,24 +33,30 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.userProfilePicture.layer.cornerRadius = 50
-        self.userProfilePicture.layer.masksToBounds = true
+
+        self.entry["user"].fetchIfNeeded()
+        var user:PFUser = self.entry["user"] as PFUser
+        self.username.text = user.username
         
-        entry["user"].fetchIfNeededInBackgroundWithBlock {
-            (object: PFObject!, error: NSError!) -> Void in
-            if error == nil {
-                self.username.text = object["username"] as String!
-                println(object["username"] as String!)
-                println(PFUser.currentUser().username)
-                if(object["username"] as String! == PFUser.currentUser().username){
-                    self.deleteButton.hidden = false
-                }else{
-                    self.deleteButton.hidden = true
+
+        if(self.username.text == PFUser.currentUser().username){
+            self.deleteButton.hidden = false
+        }else{
+            self.deleteButton.hidden = true
+        }
+        var userImageFile:PFFile? = nil
+        
+        userImageFile = user["profileImage"] as? PFFile
+        if userImageFile != nil {
+            userImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    self.userProfilePicture.image = UIImage(data:imageData)
                 }
-            } else {
-                NSLog("Error: %@ %@", error, error.userInfo!)
             }
         }
+        self.userProfilePicture.layer.cornerRadius = 50
+        self.userProfilePicture.layer.masksToBounds = true
         
         var entryTitle:String = entry["title"] as String!
         var entryText:String = entry["content"] as String!
@@ -201,11 +207,21 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var comment:PFObject = self.comments[indexPath.row] as PFObject
-        comment["fromUser"].fetchIfNeeded()
+        var user:PFUser = comment["fromUser"] as PFUser
+        user.fetchIfNeeded()
+        
         var cell:CommentCell = tableView.dequeueReusableCellWithIdentifier("commentCell") as CommentCell
-        cell.userName.text = comment["fromUser"].username
+        cell.userName.text = user.username
         cell.theComment.text = (comment["content"] as String)
         cell.backgroundColor = UIColor.clearColor()
+        
+        var userImageFile:PFFile? = user["profileImage"] as? PFFile
+        var imageData = userImageFile?.getData()
+        if imageData != nil {
+            cell.userProfilePicture.image = UIImage(data: imageData!)
+        }
+        
+        
         return cell
     }
     
