@@ -121,8 +121,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowers() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -138,8 +137,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowing() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForFollowing(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -155,8 +153,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetMyEntriesTable() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForMyEntries(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -170,14 +167,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    func setAndStartTheSpinner(){
+        self.spinner.center = self.view.center
+        self.spinner.startAnimating()
+    }
+    
+    func setTheCollectionViewToBeEmpty(){
+        currentCollectionViewDataArray = []
+        theCollectionView.reloadData()
+    }
+    
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             theTableView.hidden = true
+            setTheCollectionViewToBeEmpty()
             theCollectionView.hidden = false
             fetchAndSetFollowing()
         case 1:
             theTableView.hidden = true
+            setTheCollectionViewToBeEmpty()
             theCollectionView.hidden = false
             fetchAndSetFollowers()
         case 2:
@@ -211,15 +220,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }else{
                 eachUser = eachObject["toUser"] as PFObject
             }
-            var actualUser:PFUser = eachUser.fetchIfNeeded() as PFUser
-            cell.userNameLabel.text = actualUser.username
-            //set image for user
-            var userImageFile:PFFile? = actualUser["profileImage"] as? PFFile
-            var imageData = userImageFile?.getData()
-            if imageData != nil {
-                cell.userProfilePicture.image = UIImage(data: imageData!)
+            
+            eachUser.fetchIfNeededInBackgroundWithBlock {
+                (object: PFObject!, error: NSError!) -> Void in
+                if error == nil {
+                    cell.userNameLabel.text = object["username"] as String!
+                    
+                    var userImageFile:PFFile? = object["profileImage"] as? PFFile
+                    userImageFile?.getDataInBackgroundWithBlock{
+                        (imageData: NSData!, error: NSError!) -> Void in
+                        if !(error != nil) {
+                            if imageData != nil {
+                                cell.userProfilePicture.image = UIImage(data: imageData!)
+                            }
+                        }
+                    }
+                    
+                } else {
+                    NSLog("Error: %@ %@", error, error.userInfo!)
+                }
+                
             }
         }
+        
         cell.layer.cornerRadius = 6
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
@@ -276,6 +299,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             query.whereKey("entry", equalTo: entry)
             query.whereKey("fromUser", equalTo: PFUser.currentUser())
             query.whereKey("type", equalTo: "like")
+
+            
+            // Turn into async calls
             var likes = query.findObjects()
             
             if likes.count > 0 {
@@ -285,7 +311,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
             
+            // Turn into async calls
             cell.heartCount.text = String(ParseQueries.getHeartCountForEntry(entry))
+            
+            
+            
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
             cell.dateWeekday.text = dateStringWeekday
@@ -295,10 +325,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             //set image
             var userImageFile:PFFile? = PFUser.currentUser()["profileImage"] as? PFFile
-            var imageData = userImageFile?.getData()
-            if imageData != nil {
-                cell.userProfilePicture.image = UIImage(data: imageData!)
+            userImageFile?.getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                if !(error != nil) {
+                    if imageData != nil {
+                        cell.userProfilePicture.image = UIImage(data: imageData!)
+                    }
+                }
             }
+            
             
         }
         
