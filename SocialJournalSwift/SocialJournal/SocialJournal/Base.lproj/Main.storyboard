@@ -1899,10 +1899,10 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="min-H4-mUQ" userLabel="Account Visual Effect View">
-                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342628"/>
+                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342654"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="p1u-An-Iyd">
-                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342628"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342654"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="ceF-9v-neg" userLabel="White line">

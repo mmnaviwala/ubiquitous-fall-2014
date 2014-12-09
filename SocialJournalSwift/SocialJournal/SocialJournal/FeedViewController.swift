@@ -13,6 +13,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
     var allEntries = []
+    var heartbeat = [0.0]
     var allUsers:[PFUser?] = []
     var allUsersProfileImage:[UIImage?] = []
     var allLikes:[Int] = []
@@ -154,6 +155,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
             assignDate(entry.createdAt, cell: cell)
+            assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]))
         
         }
         
@@ -174,6 +176,30 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY")
         cell.dateYear.text = dateFormatter.stringFromDate(date)
+    }
+    
+    func assignHeartbeatRanking(date:NSDate, heartCount:String) {
+        
+        var heartInt = (heartCount as NSString).doubleValue
+        var order = log10((max(heartInt, 1)))
+        var seconds = date.timeIntervalSince1970 - 1134028003
+        var format = (Double(order) + (seconds / 45000))
+        var hotness = round(format * 100) / 100.0
+        
+        if(heartbeat.count == 0){
+            heartbeat.removeLast()
+            heartbeat.append(hotness)
+        }else{
+            heartbeat.append(hotness)
+        }
+        println(hotness)
+        
+        sort(&heartbeat)
+        
+        for beats in heartbeat{
+            println(beats)
+        }
+        
     }
     
     // UITableViewDelegate methods
