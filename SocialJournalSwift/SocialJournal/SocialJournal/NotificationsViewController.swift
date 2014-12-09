@@ -94,7 +94,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             var activity:PFObject = self.notifications[indexPath.row] as PFObject
             var fromUser:PFUser = activity["fromUser"]as PFUser
             fromUser.fetchIfNeeded()
-            println(fromUser.allKeys())
+
             var userImageFile:PFFile? = fromUser["profileImage"] as? PFFile
             var imageData = userImageFile?.getData()
             if imageData != nil {
