@@ -192,7 +192,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }else{
             heartbeat.append(hotness)
         }
-        println(hotness)
         
         sort(&heartbeat)
         
