@@ -155,6 +155,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func heartPost(sender: AnyObject) {
         
+        var newHeartCount = 0
         var query = PFQuery(className: "Activity")
         query.whereKey("fromUser", equalTo: PFUser.currentUser())
         query.whereKey("toUser", equalTo: self.entry["user"] as PFUser)
@@ -165,6 +166,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
                 if objects.count == 0 {
                     self.heartLike.tintColor = UIColor.redColor()
                     self.heartLike.setImage(UIImage(named: "HeartRed"), forState: .Normal)
+                    newHeartCount = self.heartCount.text!.toInt()! + 1
+                    self.heartCount.text = String(newHeartCount)
                     self.entry["user"].fetchIfNeededInBackgroundWithBlock {
                         (object: PFObject!, error: NSError!) -> Void in
                         if error == nil {
@@ -184,6 +187,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
                     objects[0].deleteInBackground()
                     self.heartLike.tintColor = UIColor.whiteColor()
                     self.heartLike.setImage(UIImage(named: "HeartWhite"), forState: .Normal)
+                    newHeartCount = self.heartCount.text!.toInt()! - 1
+                    self.heartCount.text = String(newHeartCount)
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
