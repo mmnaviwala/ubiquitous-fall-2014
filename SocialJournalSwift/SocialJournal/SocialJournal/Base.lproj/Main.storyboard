@@ -1414,9 +1414,10 @@
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartRed" id="Pdb-wZ-THM">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartWhite" id="Pdb-wZ-THM">
                                                                         <rect key="frame" x="22" y="5" width="20" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PI1-DG-egH">
                                                                         <rect key="frame" x="50" y="0.0" width="64" height="29"/>
@@ -2291,7 +2292,6 @@
     </scenes>
     <resources>
         <image name="AnonDawg" width="215" height="215"/>
-        <image name="HeartRed" width="512" height="512"/>
         <image name="HeartWhite" width="512" height="512"/>
         <image name="Lake" width="2524" height="2524"/>
         <image name="addMediaIcon" width="512" height="512"/>
@@ -2315,10 +2315,10 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hYT-zi-chh"/>
-        <segue reference="qPU-hG-sdf"/>
-        <segue reference="B73-YQ-s57"/>
-        <segue reference="aXJ-vG-G72"/>
         <segue reference="oMX-eH-0Ag"/>
+        <segue reference="aXJ-vG-G72"/>
+        <segue reference="VnR-Og-EQv"/>
+        <segue reference="qPU-hG-sdf"/>
+        <segue reference="hYT-zi-chh"/>
     </inferredMetricsTieBreakers>
 </document>
