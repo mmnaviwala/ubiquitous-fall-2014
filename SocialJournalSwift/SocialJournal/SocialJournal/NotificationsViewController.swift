@@ -64,7 +64,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.entryToPass = self.notifications[indexPath.row] as PFObject
+        self.entryToPass = self.notifications[indexPath.section] as PFObject
         
         switch self.entryToPass["type"] as String! {
         case "follow":
@@ -91,7 +91,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:NotificationTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("notificationCell") as NotificationTableViewCell
         if self.notifications != [] {
-            var activity:PFObject = self.notifications[indexPath.row] as PFObject
+            var activity:PFObject = self.notifications[indexPath.section] as PFObject
             var fromUser:PFUser = activity["fromUser"]as PFUser
             fromUser.fetchIfNeeded()
 
