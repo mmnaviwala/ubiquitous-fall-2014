@@ -121,8 +121,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowers() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForFollowers(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -138,8 +137,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetFollowing() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForFollowing(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -155,8 +153,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func fetchAndSetMyEntriesTable() {
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
+        setAndStartTheSpinner()
         var query = ParseQueries.queryForMyEntries(self.currentUser)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -170,14 +167,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    func setAndStartTheSpinner(){
+        self.spinner.center = self.view.center
+        self.spinner.startAnimating()
+    }
+    
+    func setTheCollectionViewToBeEmpty(){
+        currentCollectionViewDataArray = []
+        theCollectionView.reloadData()
+    }
+    
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             theTableView.hidden = true
+            setTheCollectionViewToBeEmpty()
             theCollectionView.hidden = false
             fetchAndSetFollowing()
         case 1:
             theTableView.hidden = true
+            setTheCollectionViewToBeEmpty()
             theCollectionView.hidden = false
             fetchAndSetFollowers()
         case 2:
