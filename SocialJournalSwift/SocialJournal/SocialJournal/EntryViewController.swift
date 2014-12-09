@@ -64,8 +64,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
-        self.userProfilePicture.layer.cornerRadius = 50
-        self.userProfilePicture.layer.masksToBounds = true
+        
+        self.userProfilePicture = prettifyImage(self.userProfilePicture)
         
         var entryTitle:String = entry["title"] as String!
         var entryText:String = entry["content"] as String!
@@ -94,6 +94,14 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         getCommentsForEntry()
         
+    }
+    
+    func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
+        imageViewToModify.layer.cornerRadius = imageViewToModify.frame.size.width / 2;
+        imageViewToModify.clipsToBounds = true;
+        imageViewToModify.layer.borderWidth = 1.0
+        imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
+        return imageViewToModify
     }
     
     func getCommentsForEntry() {

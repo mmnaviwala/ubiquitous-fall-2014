@@ -97,7 +97,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
         imageViewToModify.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2;
         imageViewToModify.clipsToBounds = true;
-        imageViewToModify.layer.borderWidth = 6.0
+        imageViewToModify.layer.borderWidth = 1.0
         imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
         return imageViewToModify
     }

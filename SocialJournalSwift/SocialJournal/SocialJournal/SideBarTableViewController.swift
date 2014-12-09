@@ -55,11 +55,19 @@ class SideBarTableViewController: UITableViewController {
                 }
             }
         }
-        self.profileImageView.layer.cornerRadius = 10
-        self.profileImageView.layer.masksToBounds = true
+        
+        self.profileImageView = prettifyImage(self.profileImageView)
 
         
     
+    }
+    
+    func prettifyImage(imageViewToModify: UIImageView) -> UIImageView{
+        imageViewToModify.layer.cornerRadius = imageViewToModify.frame.size.width / 2;
+        imageViewToModify.clipsToBounds = true;
+        imageViewToModify.layer.borderWidth = 1.0
+        imageViewToModify.layer.borderColor = UIColor.whiteColor().CGColor;
+        return imageViewToModify
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
