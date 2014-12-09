@@ -12,7 +12,8 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     var button: HamburgerButton! = nil
     var notifications = []
-    
+    var entryToPass = PFObject(className: "Entry")
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -63,6 +64,18 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.entryToPass = self.notifications[indexPath.row] as PFObject
+        
+        switch self.entryToPass["type"] as String! {
+        case "follow":
+            self.performSegueWithIdentifier("notificationToProfileView", sender: self)
+        case "like":
+            self.performSegueWithIdentifier("notificationToEntryView", sender: self)
+        case "comment":
+            self.performSegueWithIdentifier("notificationToEntryView", sender: self)
+        default:
+            return
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -123,17 +136,18 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         return 150
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
-//        if segue.identifier == "feedToEntry"{
-//            var selectedRowIndexPath: NSIndexPath = self.feedTableView.indexPathForSelectedRow()!
-//            var selectedSection: NSInteger = selectedRowIndexPath.section
-//            
-//            let vc = segue.destinationViewController as EntryViewController
-//            vc.entry = self.allEntries[selectedSection] as PFObject
-//        }
+        if segue.identifier == "notificationToProfileView"{
+            let vc = segue.destinationViewController as ProfileViewController
+            vc.currentUser = self.entryToPass["fromUser"] as PFUser
+        }
+        if segue.identifier == "notificationToEntryView"{
+            let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.entryToPass as PFObject
+        }
+
     }
+
     
 
 
