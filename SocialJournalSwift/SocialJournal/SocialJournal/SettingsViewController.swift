@@ -169,8 +169,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
     @IBAction func signOut(sender: AnyObject) {
     
         PFUser.logOut()
-        let vc : AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("signInView")
-        self.showViewController(vc as UIViewController, sender: vc)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("signInView") as UIViewController
+        self.presentViewController(vc, animated: true, completion: nil)
    
     
     }
