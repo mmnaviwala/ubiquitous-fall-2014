@@ -297,7 +297,14 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             newComment["type"] = "comment"
             newComment["content"] = (alertController.textFields![0] as UITextField).text
             newComment["entry"] = self.entry
-            newComment.saveInBackground()
+            newComment.saveInBackgroundWithBlock {
+                (success: Bool!, error: NSError!) -> Void in
+                if (success != nil) {
+                    self.getCommentsForEntry()
+                } else {
+                    NSLog("%@", error)
+                }
+            }
         }
         submitAction.enabled = false
         
