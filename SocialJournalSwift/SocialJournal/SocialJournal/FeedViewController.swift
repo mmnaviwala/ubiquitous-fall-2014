@@ -42,6 +42,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        feedTableView.reloadData()
+        feedTableView.reloadInputViews()
+    }
+    
     func setupTheHamburgerIcon() {
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
