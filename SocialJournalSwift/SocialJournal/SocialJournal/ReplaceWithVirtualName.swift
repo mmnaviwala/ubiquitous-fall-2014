@@ -21,6 +21,50 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         getVirtualNamesFromNSUserDefaults()
+
+        var addButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Bordered, target: self, action: "addOrDeleteRows")
+        self.navigationItem.rightBarButtonItem = addButton
+        
+    }
+    
+    func addOrDeleteRows(){
+        if (self.editing){
+            super.setEditing(false, animated: false)
+            tableView.setEditing(true, animated: true)
+            tableView.reloadData()
+            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            self.navigationItem.rightBarButtonItem?.style = UIBarButtonItemStyle.Plain
+        }else{
+            super.setEditing(true, animated: true)
+            tableView.setEditing(true, animated: true)
+            tableView.reloadData()
+            self.navigationItem.rightBarButtonItem?.title = "Done"
+            self.navigationItem.rightBarButtonItem?.style = UIBarButtonItemStyle.Done
+        }
+        
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if (self.editing == false){
+            return UITableViewCellEditingStyle.None
+        }
+        
+        if (self.editing && indexPath.row == countElements(virtualNameDictionary)){
+            return UITableViewCellEditingStyle.Insert
+        }else{
+            return UITableViewCellEditingStyle.Delete
+        }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete){
+            println("delete row")
+        }
+        else if (editingStyle == UITableViewCellEditingStyle.Insert){
+            println("add something")
+        }
+        
     }
     
     @IBAction func saveChange(sender: AnyObject) {
@@ -85,12 +129,22 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countElements(virtualNameDictionary)
+        if(self.editing){
+            return countElements(virtualNameDictionary) + 1
+        }else{
+            return countElements(virtualNameDictionary)
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
         cell.backgroundColor = UIColor.clearColor()
+        
+        if(indexPath.row == countElements(virtualNameDictionary) && self.editing){
+            cell.keyword.text = "FROM"
+            cell.virtualName.text = "TO"
+            return cell
+        }
         
         cell.keyword.text = self.keyArray[indexPath.row]
         cell.virtualName.text = self.valueArray[indexPath.row]
