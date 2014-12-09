@@ -24,7 +24,15 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
     }
     
     @IBAction func saveChange(sender: AnyObject) {
-        self.virtualNameDictionary[keyword.text] = virtualName.text
+        //check if its an empty virtual name
+        if keyword.text != "" && virtualName.text != ""{
+            self.virtualNameDictionary[keyword.text] = virtualName.text
+        }else{
+            let alertController = UIAlertController(title: "Sorry", message:
+                "Virtual names and their replacements cannot be empty.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
         
         //reset both arrays to avoid extra elements
         self.keyArray.removeAll(keepCapacity: false)
