@@ -111,7 +111,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func replaceVirtualNames(text:String) -> String{
-        var result = ""
+        var result = text
         for(key,value) in self.virtualNameDictionary{
             result = text.stringByReplacingOccurrencesOfString(key, withString: value, options: NSStringCompareOptions.LiteralSearch, range: nil)
         }
@@ -202,7 +202,7 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         if self.titleTextField.text != "" && self.contentTextView.text != ""{
             self.currentEntry["user"] = PFUser.currentUser()
             self.currentEntry["content"] = self.replaceVirtualNames(self.contentTextView.text)
-            self.currentEntry["title"] = replaceVirtualNames(self.titleTextField.text)
+            self.currentEntry["title"] = self.replaceVirtualNames(self.titleTextField.text)
             
             //check to make sure location isnt nil
             if self.locationManager.location == nil{
