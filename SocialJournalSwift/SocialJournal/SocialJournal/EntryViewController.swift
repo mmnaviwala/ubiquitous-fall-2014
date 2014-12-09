@@ -140,11 +140,16 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func clickDelete(sender: AnyObject) {
         
-        var alert = UIAlertController(title: "DELETE WARNING", message: "Are you sure you want to delete this entry?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: {(alert: UIAlertAction!) in println("Delete")}))
+        var alert = UIAlertController(title: "DELETE ENTRY", message: "Are you sure you want to delete this entry?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: {(alert: UIAlertAction!) in (self.deleteEntry())}))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: {(alert: UIAlertAction!) in println("No Delete")}))
         
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func deleteEntry(){
+        println("delete")
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
