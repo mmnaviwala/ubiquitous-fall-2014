@@ -15,7 +15,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var showCommentsToggle = true
     @IBOutlet weak var commentsTable: UITableView!
     
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var heartLike: UIButton!
@@ -46,9 +46,12 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         if(self.username.text == PFUser.currentUser().username){
-            self.deleteButton.hidden = false
+            self.deleteButton.enabled = true
+            self.deleteButton.tintColor = UIColor.redColor()
+            
         }else{
-            self.deleteButton.hidden = true
+            self.deleteButton.tintColor = UIColor.clearColor()
+            self.deleteButton.enabled = false;
         }
         var userImageFile:PFFile? = nil
         
@@ -137,15 +140,13 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func clickDelete(sender: AnyObject) {
         
-        var alert = UIAlertController(title: "Woah!!", message: "You sure you want to delete this masterpiece?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Yes, I want it to die", style: UIAlertActionStyle.Destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: "No, no, no, my mistake", style: UIAlertActionStyle.Cancel, handler: nil))
+        var alert = UIAlertController(title: "DELETE WARNING", message: "Are you sure you want to delete this entry?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: {(alert: UIAlertAction!) in println("Delete")}))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: {(alert: UIAlertAction!) in println("No Delete")}))
         
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
-        
     }
+    
     
     @IBAction func heartPost(sender: AnyObject) {
         
