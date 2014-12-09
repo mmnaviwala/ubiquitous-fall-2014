@@ -134,15 +134,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
             }
             
-//            if self.allLikes[indexPath.section] > 0 {
-//                cell.hearted.tintColor = UIColor.redColor()
-//                cell.hearted.image = UIImage(named: "HeartRed")
-//            }
-            //        if(favorited) {
-            //            cell.hearted.image =
-            //        }
+            var query = PFQuery(className: "Activity")
+            query.whereKey("entry", equalTo: entry)
+            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("type", equalTo: "like")
+            var likes = query.findObjects()
+            
+            if likes.count > 0 {
+                cell.hearted.tintColor = UIColor.redColor()
+                cell.hearted.image = UIImage(named: "HeartRed")
+            }
+            
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
+            
+            
             
             cell.heartCount.text = String(self.allLikes[indexPath.section])
             cell.postTitle.text = entryTitle

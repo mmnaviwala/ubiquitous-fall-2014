@@ -272,11 +272,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
             
             cell.username.text = PFUser.currentUser().username
-            //        cell.userProfilePicture.image =
+            var query = PFQuery(className: "Activity")
+            query.whereKey("entry", equalTo: entry)
+            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("type", equalTo: "like")
+            var likes = query.findObjects()
             
-            //        if(favorited) {
-            //            cell.hearted.image =
-            //        }
+            if likes.count > 0 {
+                cell.hearted.tintColor = UIColor.redColor()
+                cell.hearted.image = UIImage(named: "HeartRed")
+            }
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
             
