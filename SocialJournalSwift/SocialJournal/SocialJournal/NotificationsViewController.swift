@@ -94,7 +94,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             var activity:PFObject = self.notifications[indexPath.row] as PFObject
             var fromUser:PFUser = activity["fromUser"]as PFUser
             fromUser.fetchIfNeeded()
-
+            println(fromUser.allKeys())
             var userImageFile:PFFile? = fromUser["profileImage"] as? PFFile
             var imageData = userImageFile?.getData()
             if imageData != nil {
@@ -143,7 +143,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         }
         if segue.identifier == "notificationToEntryView"{
             let vc = segue.destinationViewController as EntryViewController
-            vc.entry = self.entryToPass as PFObject
+            vc.entry = self.entryToPass["entry"].fetchIfNeeded() as PFObject
         }
 
     }
