@@ -72,6 +72,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     var user = entry["user"] as PFUser
                     user.fetchIfNeeded()
                     self.allUsers.append(user)
+                    entry["theUserName"] = user.username
                     //get profile image
                     var userImageFile:PFFile? = user["profileImage"] as? PFFile
                     var imageData = userImageFile?.getData()
@@ -136,7 +137,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
-            cell.username.text = self.allUsers[indexPath.section]!.username
+//            cell.username.text = self.allUsers[indexPath.section]!.username
+            cell.username.text = entry["theUserName"] as? String
             
             if self.allUsersProfileImage[indexPath.section] != nil {
                 cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
@@ -159,7 +161,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
-            cell.heartCount.text = String(self.allLikes[indexPath.section])
+            
+//            cell.heartCount.text = String(self.allLikes[indexPath.section])
+            cell.heartCount.text = entry["likeCount"].stringValue
+            
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
             assignDate(entry.createdAt, cell: cell)
