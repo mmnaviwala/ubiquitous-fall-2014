@@ -62,6 +62,23 @@ class ParseQueries {
         return query
     }
     
+    class func queryForAllTags() -> PFQuery {
+        var query = PFQuery(className: "Tags")
+        query.orderByAscending("tag")
+        return query
+    }
+    
+    class func queryForEntriesPerTag(tag:String) -> PFQuery {
+        var tagsQuery = PFQuery(className: "Tags")
+        tagsQuery.whereKey("tag", equalTo: tag)
+        
+        var tagMapQuery = PFQuery(className: "TagMap")
+        tagMapQuery.whereKey("entry", matchesKey: "entry", inQuery: tagsQuery)
+        tagMapQuery.orderByDescending("createdAt")
+        
+        return tagMapQuery
+    }
+    
     //////////Old Queries Depracated
     
     
