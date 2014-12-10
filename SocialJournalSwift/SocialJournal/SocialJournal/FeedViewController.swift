@@ -31,7 +31,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         setupTheHamburgerIcon()
         self.spinner.center = self.view.center
         self.spinner.startAnimating()
-        fetchData()
         
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.whiteColor()
@@ -44,6 +43,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewWillAppear(animated: Bool) {
+        fetchData()
         feedTableView.reloadData()
         feedTableView.reloadInputViews()
     }
@@ -63,7 +63,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                self.allEntries = objects
+                
+                 self.allEntries = objects
+                
                 self.feedTableView.reloadData()
                 for entry:PFObject in self.allEntries as [PFObject] {
                     //get user
@@ -83,6 +85,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     query.whereKey("entry", equalTo: entry)
                     query.whereKey("type", equalTo: "like")
                     var likes = query.findObjects()
+                    entry["likeCount"] = likes.count
+                    self.assignHeartBeatTEST(entry)
                     self.allLikes.append(likes.count)
                 }
             } else {
@@ -130,49 +134,68 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         cell.backgroundColor = UIColor.clearColor()
         
-        //set cell properties
-        if (selectFeedType.selectedSegmentIndex == 0)
-        {
-            if (self.allEntries != []){
-                var entry:PFObject = self.allEntries[indexPath.section] as PFObject
-                cell.username.text = self.allUsers[indexPath.section]!.username
-                
-                if self.allUsersProfileImage[indexPath.section] != nil {
-                    cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
-                }
-                
-                var query = PFQuery(className: "Activity")
-                query.whereKey("entry", equalTo: entry)
-                query.whereKey("fromUser", equalTo: PFUser.currentUser())
-                query.whereKey("type", equalTo: "like")
-                var likes = query.findObjects()
-                
-                if likes.count > 0 {
-                    cell.hearted.tintColor = UIColor.redColor()
-                    cell.hearted.image = UIImage(named: "HeartRed")
-                }
-                else{
-                    cell.hearted.tintColor = UIColor.whiteColor()
-                    cell.hearted.image = UIImage(named: "HeartWhite")
-                }
-                
-                var entryTitle:String = entry["title"] as String!
-                var entryText:String = entry["content"] as String!
-                cell.heartCount.text = String(self.allLikes[indexPath.section])
-                cell.postTitle.text = entryTitle
-                cell.postBody.text = entryText
-                assignDate(entry.createdAt, cell: cell)
-                assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]), entryCell: self.allEntries[indexPath.section] as PFObject)
-                }
-        }else {
-            println("heartbeat")
+        if (self.allEntries != []){
+            var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+            cell.username.text = self.allUsers[indexPath.section]!.username
+            
+            if self.allUsersProfileImage[indexPath.section] != nil {
+                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
+            }
+            
+            var query = PFQuery(className: "Activity")
+            query.whereKey("entry", equalTo: entry)
+            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("type", equalTo: "like")
+            var likes = query.findObjects()
+            
+            if likes.count > 0 {
+                cell.hearted.tintColor = UIColor.redColor()
+                cell.hearted.image = UIImage(named: "HeartRed")
+            }
+            else{
+                cell.hearted.tintColor = UIColor.whiteColor()
+                cell.hearted.image = UIImage(named: "HeartWhite")
+            }
+            
+            var entryTitle:String = entry["title"] as String!
+            var entryText:String = entry["content"] as String!
+            cell.heartCount.text = String(self.allLikes[indexPath.section])
+            cell.postTitle.text = entryTitle
+            cell.postBody.text = entryText
+            assignDate(entry.createdAt, cell: cell)
         }
         return cell
     }
     
     @IBAction func feedSelected(sender: AnyObject) {
-        feedTableView.reloadData()
-        feedTableView.reloadInputViews()
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            println("load default table")
+            
+            var descriptor = NSSortDescriptor(key: "heartBeat", ascending: true)
+            var sortDescriptors = [descriptor]
+            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
+            println(sortedArray)
+            self.allEntries = sortedArray
+            self.feedTableView.reloadData()
+            self.feedTableView.reloadInputViews()
+
+        case 1:
+            println("heart beat")
+            
+            var descriptor = NSSortDescriptor(key: "heartBeat", ascending: false)
+            var sortDescriptors = [descriptor]
+//            println(sortDescriptors)
+            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
+            println(sortedArray)
+            self.allEntries = sortedArray
+            self.feedTableView.reloadData()
+            self.feedTableView.reloadInputViews()
+            
+        default:
+            break;
+        }
     }
     func assignDate(date:NSDate, cell:feedCellTableViewCell) {
         var dateFormatter = NSDateFormatter()
@@ -190,21 +213,31 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.dateYear.text = dateFormatter.stringFromDate(date)
     }
     
-    func assignHeartbeatRanking(date:NSDate, heartCount:String, entryCell: PFObject) {
-        
-        var heartInt = (heartCount as NSString).doubleValue
+//    func assignHeartbeatRanking(date:NSDate, heartCount:String, entryCell: PFObject) {
+//        
+//        var heartInt = (heartCount as NSString).doubleValue
+//        var order = log10((max(heartInt, 1)))
+//        var seconds = date.timeIntervalSince1970 - 1134028003
+//        var format = (Double(order) + (seconds / 45000))
+//        var hotness = round(format * 100) / 100.0
+//        let heartbeatAndEntry = (hearbeatScore:hotness, heartbeatEntry:entryCell)
+//        
+//        
+//        heartbeat.append(heartbeatAndEntry)
+//        
+//        for beats in heartbeat{
+//            println(beats.0, beats.1)
+//        }
+//    }
+    
+    func assignHeartBeatTEST(entry: PFObject){
+        var heartInt = entry["likeCount"] as Double
         var order = log10((max(heartInt, 1)))
-        var seconds = date.timeIntervalSince1970 - 1134028003
+        var seconds = entry.createdAt.timeIntervalSince1970 - 1134028003
         var format = (Double(order) + (seconds / 45000))
         var hotness = round(format * 100) / 100.0
-        let heartbeatAndEntry = (hearbeatScore:hotness, heartbeatEntry:entryCell)
-        
-        
-        heartbeat.append(heartbeatAndEntry)
-        
-        for beats in heartbeat{
-            println(beats.0, beats.1)
-        }
+        entry["heartBeat"] = hotness
+        println(entry)
     }
     
     // UITableViewDelegate methods
