@@ -59,13 +59,12 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.Delete){
-            println("delete row")
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as VirtualNameTableViewCell
+            virtualNameDictionary.removeValueForKey(cell.keyword.text!)
+            self.tableView.reloadData()
         }
         else if (editingStyle == UITableViewCellEditingStyle.Insert){
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as AddNewVirtualNameTableViewCell
-            println(cell.keywordTextbox.text)
-            println(cell.virtualNameTextbox.text)
-            println("add something")
             
             keyword.text = cell.keywordTextbox.text
             virtualName.text = cell.virtualNameTextbox.text
