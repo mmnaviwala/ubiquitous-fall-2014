@@ -10,6 +10,7 @@ import UIKit
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var selectFeedType: UISegmentedControl!
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
     var allEntries = []
@@ -129,45 +130,51 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         cell.backgroundColor = UIColor.clearColor()
-        
-        if (self.allEntries != []){
-            var entry:PFObject = self.allEntries[indexPath.section] as PFObject
             
-            cell.username.text = self.allUsers[indexPath.section]!.username
-            //set image
-            
-            if self.allUsersProfileImage[indexPath.section] != nil {
-                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
-            }
-            
-            var query = PFQuery(className: "Activity")
-            query.whereKey("entry", equalTo: entry)
-            query.whereKey("fromUser", equalTo: PFUser.currentUser())
-            query.whereKey("type", equalTo: "like")
-            var likes = query.findObjects()
-            
-            if likes.count > 0 {
-                cell.hearted.tintColor = UIColor.redColor()
-                cell.hearted.image = UIImage(named: "HeartRed")
-            }
-            else{
-                cell.hearted.tintColor = UIColor.whiteColor()
-                cell.hearted.image = UIImage(named: "HeartWhite")
-            }
-            
-            var entryTitle:String = entry["title"] as String!
-            var entryText:String = entry["content"] as String!
-            cell.heartCount.text = String(self.allLikes[indexPath.section])
-            cell.postTitle.text = entryTitle
-            cell.postBody.text = entryText
-            assignDate(entry.createdAt, cell: cell)
-            assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]))
-        
+        if (selectFeedType.selectedSegmentIndex == 0)
+        {
+            if (self.allEntries != []){
+                var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+                cell.username.text = self.allUsers[indexPath.section]!.username
+                //set image
+                
+                if self.allUsersProfileImage[indexPath.section] != nil {
+                    cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
+                }
+                
+                var query = PFQuery(className: "Activity")
+                query.whereKey("entry", equalTo: entry)
+                query.whereKey("fromUser", equalTo: PFUser.currentUser())
+                query.whereKey("type", equalTo: "like")
+                var likes = query.findObjects()
+                
+                if likes.count > 0 {
+                    cell.hearted.tintColor = UIColor.redColor()
+                    cell.hearted.image = UIImage(named: "HeartRed")
+                }
+                else{
+                    cell.hearted.tintColor = UIColor.whiteColor()
+                    cell.hearted.image = UIImage(named: "HeartWhite")
+                }
+                
+                var entryTitle:String = entry["title"] as String!
+                var entryText:String = entry["content"] as String!
+                cell.heartCount.text = String(self.allLikes[indexPath.section])
+                cell.postTitle.text = entryTitle
+                cell.postBody.text = entryText
+                assignDate(entry.createdAt, cell: cell)
+                assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]))
+                }
+        }else {
+            println("heartbeat")
         }
-        
         return cell
     }
     
+    @IBAction func feedSelected(sender: AnyObject) {
+        feedTableView.reloadData()
+        feedTableView.reloadInputViews()
+    }
     func assignDate(date:NSDate, cell:feedCellTableViewCell) {
         var dateFormatter = NSDateFormatter()
         
