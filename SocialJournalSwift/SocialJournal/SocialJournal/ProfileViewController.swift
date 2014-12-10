@@ -297,7 +297,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.username.text = self.currentUser.username
             var query = PFQuery(className: "Activity")
             query.whereKey("entry", equalTo: entry)
-            query.whereKey("fromUser", equalTo: PFUser.currentUser())
+            query.whereKey("fromUser", equalTo: self.currentUser)
             query.whereKey("type", equalTo: "like")
 
             
