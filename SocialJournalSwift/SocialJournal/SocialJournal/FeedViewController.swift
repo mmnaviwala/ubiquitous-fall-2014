@@ -150,12 +150,13 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.hearted.tintColor = UIColor.redColor()
                 cell.hearted.image = UIImage(named: "HeartRed")
             }
+            else{
+                cell.hearted.tintColor = UIColor.whiteColor()
+                cell.hearted.image = UIImage(named: "HeartWhite")
+            }
             
             var entryTitle:String = entry["title"] as String!
             var entryText:String = entry["content"] as String!
-            
-            
-            
             cell.heartCount.text = String(self.allLikes[indexPath.section])
             cell.postTitle.text = entryTitle
             cell.postBody.text = entryText
