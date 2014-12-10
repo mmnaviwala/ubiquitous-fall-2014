@@ -14,7 +14,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
     var allEntries = []
-    var heartbeat = [0.0]
+    var heartbeat = [(Double,PFObject)]()
     var allUsers:[PFUser?] = []
     var allUsersProfileImage:[UIImage?] = []
     var allLikes:[Int] = []
@@ -52,7 +52,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
         self.button.addTarget(self.revealViewController(), action: "revealToggle:", forControlEvents: UIControlEvents.TouchUpInside)
-        // self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: self.button)
@@ -130,13 +129,13 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         cell.backgroundColor = UIColor.clearColor()
-            
+        
+        //set cell properties
         if (selectFeedType.selectedSegmentIndex == 0)
         {
             if (self.allEntries != []){
                 var entry:PFObject = self.allEntries[indexPath.section] as PFObject
                 cell.username.text = self.allUsers[indexPath.section]!.username
-                //set image
                 
                 if self.allUsersProfileImage[indexPath.section] != nil {
                     cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
@@ -163,7 +162,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.postTitle.text = entryTitle
                 cell.postBody.text = entryText
                 assignDate(entry.createdAt, cell: cell)
-                assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]))
+                assignHeartbeatRanking(entry.createdAt, heartCount: String(self.allLikes[indexPath.section]), entryCell: self.allEntries[indexPath.section] as PFObject)
                 }
         }else {
             println("heartbeat")
@@ -191,27 +190,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.dateYear.text = dateFormatter.stringFromDate(date)
     }
     
-    func assignHeartbeatRanking(date:NSDate, heartCount:String) {
+    func assignHeartbeatRanking(date:NSDate, heartCount:String, entryCell: PFObject) {
         
         var heartInt = (heartCount as NSString).doubleValue
         var order = log10((max(heartInt, 1)))
         var seconds = date.timeIntervalSince1970 - 1134028003
         var format = (Double(order) + (seconds / 45000))
         var hotness = round(format * 100) / 100.0
+        let heartbeatAndEntry = (hearbeatScore:hotness, heartbeatEntry:entryCell)
         
-        if(heartbeat.count == 0){
-            heartbeat.removeLast()
-            heartbeat.append(hotness)
-        }else{
-            heartbeat.append(hotness)
-        }
         
-        sort(&heartbeat)
+        heartbeat.append(heartbeatAndEntry)
         
         for beats in heartbeat{
-            println(beats)
+            println(beats.0, beats.1)
         }
-        
     }
     
     // UITableViewDelegate methods
