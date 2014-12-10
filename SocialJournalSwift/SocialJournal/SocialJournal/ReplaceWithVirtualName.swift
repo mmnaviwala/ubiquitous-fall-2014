@@ -10,8 +10,9 @@ import UIKit
 
 class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var keyword: UITextField!
-    @IBOutlet weak var virtualName: UITextField!
+    var keyword: UITextField = UITextField()
+    var virtualName: UITextField = UITextField()
+    
     @IBOutlet weak var tableView: UITableView!
     
     var virtualNameDictionary = Dictionary<String,String>()
@@ -117,15 +118,6 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         
         //println(self.virtualNameDictionary)
         saveToNSUserDefaults()
-        self.tableView?.reloadData()
-    }
-    
-    @IBAction func saveChange(sender: AnyObject) {
-        actuallySaveChange()
-    }
-    
-    @IBAction func clearButtonPressed(sender: AnyObject) {
-        self.virtualNameDictionary.removeAll(keepCapacity: false)
         self.tableView?.reloadData()
     }
     
