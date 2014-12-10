@@ -294,7 +294,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             var dateStringMonth: NSString = month.stringFromDate(entry.createdAt)
             var dateStringYear: NSString = year.stringFromDate(entry.createdAt)
             
-            cell.username.text = PFUser.currentUser().username
+            cell.username.text = self.currentUser.username
             var query = PFQuery(className: "Activity")
             query.whereKey("entry", equalTo: entry)
             query.whereKey("fromUser", equalTo: PFUser.currentUser())
@@ -324,7 +324,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.dateYear.text = dateStringYear
             
             //set image
-            var userImageFile:PFFile? = PFUser.currentUser()["profileImage"] as? PFFile
+            var userImageFile:PFFile? = self.currentUser["profileImage"] as? PFFile
             userImageFile?.getDataInBackgroundWithBlock{
                 (imageData: NSData!, error: NSError!) -> Void in
                 if !(error != nil) {
