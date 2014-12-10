@@ -211,6 +211,14 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                 self.currentEntry["location"] = PFGeoPoint(latitude:NSString(string: self.locationManager.location.coordinate.latitude.description).doubleValue, longitude:NSString(string: self.locationManager.location.coordinate.longitude.description).doubleValue)
             }
             
+            //
+            
+            if self.mediaImageView.image != nil {
+                let imageData = UIImageJPEGRepresentation(self.mediaImageView.image, 0.05)
+                let imageFile = PFFile(name: "image.jpg", data: imageData)
+                self.currentEntry["image"] = imageFile
+            }
+            
             self.currentEntry.saveInBackgroundWithBlock{
                 (success: Bool!, error:NSError!) -> Void in
                 
