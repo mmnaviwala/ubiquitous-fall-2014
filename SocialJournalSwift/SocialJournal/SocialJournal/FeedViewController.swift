@@ -186,22 +186,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         switch sender.selectedSegmentIndex {
         case 0:
-            println("load default table")
-            
-            var descriptor = NSSortDescriptor(key: "heartBeat", ascending: true)
+            var descriptor = NSSortDescriptor(key: "createdAt.timeIntervalSince1970", ascending: false)
             var sortDescriptors = [descriptor]
             var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
-            println(sortedArray)
             self.allEntries = sortedArray
             self.feedTableView.reloadData()
             self.feedTableView.reloadInputViews()
 
         case 1:
-            println("heart beat")
-            
             var descriptor = NSSortDescriptor(key: "heartBeat", ascending: false)
             var sortDescriptors = [descriptor]
-//            println(sortDescriptors)
             var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
             println(sortedArray)
             self.allEntries = sortedArray
@@ -228,22 +222,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.dateYear.text = dateFormatter.stringFromDate(date)
     }
     
-//    func assignHeartbeatRanking(date:NSDate, heartCount:String, entryCell: PFObject) {
-//        
-//        var heartInt = (heartCount as NSString).doubleValue
-//        var order = log10((max(heartInt, 1)))
-//        var seconds = date.timeIntervalSince1970 - 1134028003
-//        var format = (Double(order) + (seconds / 45000))
-//        var hotness = round(format * 100) / 100.0
-//        let heartbeatAndEntry = (hearbeatScore:hotness, heartbeatEntry:entryCell)
-//        
-//        
-//        heartbeat.append(heartbeatAndEntry)
-//        
-//        for beats in heartbeat{
-//            println(beats.0, beats.1)
-//        }
-//    }
     
     func assignHeartBeatTEST(entry: PFObject){
         var heartInt = entry["likeCount"] as Double
