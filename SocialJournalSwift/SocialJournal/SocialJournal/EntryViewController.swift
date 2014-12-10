@@ -233,12 +233,14 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if (showCommentsToggle){
             showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y-300, currentFrame.size.width, currentFrame.size.height+300)
-            sender.layer.backgroundColor = UIColor.blackColor().CGColor
+            // sender.layer.backgroundColor = UIColor.blackColor().CGColor
             sender.setTitle("Hide Comments", forState: UIControlState.Normal)
             showCommentsToggle = !showCommentsToggle
         }else{
             showCommentsVisualView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y+300, currentFrame.size.width, currentFrame.size.height-300)
-            sender.layer.backgroundColor = UIColor.clearColor().CGColor
+            // sender.layer.backgroundColor = UIColor.clearColor().CGColor
+            // 22, 126, 251
+            // sender.layer.backgroundColor = UIColor(red: 22/255, green: 126/225, blue: 251/255, alpha: 1).CGColor
             sender.setTitle("Show Comments", forState: UIControlState.Normal)
             showCommentsToggle = !showCommentsToggle
         }

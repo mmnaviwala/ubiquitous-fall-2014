@@ -257,7 +257,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         cell.layer.cornerRadius = 6
         cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.lightGrayColor().CGColor;
+        cell.layer.borderColor = UIColor.whiteColor().CGColor;
         
         return cell
     }
