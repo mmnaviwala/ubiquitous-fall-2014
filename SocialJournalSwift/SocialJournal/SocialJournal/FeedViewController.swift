@@ -77,8 +77,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     var userImageFile:PFFile? = user["profileImage"] as? PFFile
                     var imageData = userImageFile?.getData()
                     if imageData != nil {
+                        entry["theUserImage"] = imageData
                         self.allUsersProfileImage.append(UIImage(data: imageData!)!)
                     }else {
+                        entry["theUserImage"] = nil
                         self.allUsersProfileImage.append(nil)
                     }
                     //get like bool
@@ -137,11 +139,19 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.allEntries != []){
             var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+            
+//            println(entry)
+            
 //            cell.username.text = self.allUsers[indexPath.section]!.username
             cell.username.text = entry["theUserName"] as? String
             
-            if self.allUsersProfileImage[indexPath.section] != nil {
-                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
+//            if self.allUsersProfileImage[indexPath.section] != nil {
+//                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
+//            }
+            
+            if (entry["theUserImage"] != nil){
+                println("user image ok")
+                cell.userProfilePicture.image = UIImage(data: entry["theUserImage"] as NSData)
             }
             
             var query = PFQuery(className: "Activity")
@@ -242,7 +252,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var format = (Double(order) + (seconds / 45000))
         var hotness = round(format * 100) / 100.0
         entry["heartBeat"] = hotness
-        println(entry)
     }
     
     // UITableViewDelegate methods
