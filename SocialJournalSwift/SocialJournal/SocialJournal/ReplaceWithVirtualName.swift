@@ -62,12 +62,22 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
             println("delete row")
         }
         else if (editingStyle == UITableViewCellEditingStyle.Insert){
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as AddNewVirtualNameTableViewCell
+            println(cell.keywordTextbox.text)
+            println(cell.virtualNameTextbox.text)
             println("add something")
+            
+            keyword.text = cell.keywordTextbox.text
+            virtualName.text = cell.virtualNameTextbox.text
+            actuallySaveChange()
+            
+            cell.keywordTextbox.text = ""
+            cell.virtualNameTextbox.text = ""
         }
         
     }
     
-    @IBAction func saveChange(sender: AnyObject) {
+    func actuallySaveChange(){
         //check if its an empty virtual name
         if keyword.text != "" && virtualName.text != ""{
             self.virtualNameDictionary[keyword.text] = virtualName.text
@@ -97,6 +107,10 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         self.tableView?.reloadData()
     }
     
+    @IBAction func saveChange(sender: AnyObject) {
+        actuallySaveChange()
+    }
+    
     @IBAction func clearButtonPressed(sender: AnyObject) {
         self.virtualNameDictionary.removeAll(keepCapacity: false)
         self.tableView?.reloadData()
@@ -113,6 +127,7 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
             }
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -140,9 +155,8 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         var cell = self.tableView?.dequeueReusableCellWithIdentifier("displayCell") as VirtualNameTableViewCell
         cell.backgroundColor = UIColor.clearColor()
         
-        if(indexPath.row == countElements(virtualNameDictionary) && self.editing){
-            cell.keyword.text = "FROM"
-            cell.virtualName.text = "TO"
+        if(indexPath.row == countElements(virtualNameDictionary) && self.editing){var cell = self.tableView?.dequeueReusableCellWithIdentifier("addNewRowCell") as AddNewVirtualNameTableViewCell
+            cell.backgroundColor = UIColor.clearColor()
             return cell
         }
         
