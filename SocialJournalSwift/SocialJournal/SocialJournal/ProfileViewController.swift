@@ -28,8 +28,19 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadViewData()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        reloadViewData()
+        self.theTableView.reloadData()
+        self.theTableView.reloadInputViews()
+    }
+    
+    func reloadViewData() {
         var userImageFile:PFFile? = nil
-
+        
         if (self.currentUser.objectId == nil){
             self.currentUser = PFUser.currentUser()
         }
@@ -62,7 +73,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUserProfilePicture = prettifyImage(currentUserProfilePicture)
         setupTheHamburgerIcon()
         setDefaults()
-        
     }
     
     func configureInitialFollowButton() {
