@@ -75,19 +75,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchAllTags() {
-//        var query = ParseQueries.
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            if error == nil {
-//                for object in objects {
-//                    self.allTags.append(object as PFObject)
-//                }
-//                println("Tags fetched")
-//                self.tableView.reloadData()
-//            } else {
-//                NSLog("Error: %@ %@", error, error.userInfo!)
-//            }
-//        }
+        var query = ParseQueries.queryForAllTags()
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects {
+                    self.allTags.append(object as PFObject)
+                }
+                println("Tags fetched")
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
     }
     
     func setupTheHamburgerIcon() {
@@ -190,7 +190,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return userCell
         }else if (indexPath.section == 1){
             var object = currentTableViewArray[indexPath.row] as PFObject
-            //setup tag cell here
+            tagCell.tagLabel.text = object["tag"] as String!
             return tagCell
         }else{
             var object = currentTableViewArray[indexPath.row] as PFObject
@@ -254,11 +254,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return (userStringMatch != nil)
         })
         
-//        self.searchResultsForTags = self.allTags.filter({(object: PFObject) -> Bool in
-//            let tag = object["tag"] as String
-//            let tagStringMatch = tag.lowercaseString.rangeOfString(searchText)
-//            return (tagStringMatch != nil)
-//        })
+        self.searchResultsForTags = self.allTags.filter({(object: PFObject) -> Bool in
+            let tag = object["tag"] as String
+            let tagStringMatch = tag.lowercaseString.rangeOfString(searchText)
+            return (tagStringMatch != nil)
+        })
         
         self.searchResultsForEntries = self.allEntries.filter({(object: PFObject) -> Bool in
             let title = object["title"] as String

@@ -9,18 +9,10 @@ import UIKit
 
 class SearchTagCell: UITableViewCell {
     
-    @IBOutlet weak var userProfilePicture: UIImageView!
-    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.userProfilePicture.layer.cornerRadius = self.userProfilePicture.frame.size.width / 2;
-        self.userProfilePicture.clipsToBounds = true;
-        self.userProfilePicture.layer.borderWidth = 1.0
-        self.userProfilePicture.layer.borderColor = UIColor.lightGrayColor().CGColor;
-        
+        super.awakeFromNib()        
         self.backgroundColor = UIColor.clearColor()
     }
     
