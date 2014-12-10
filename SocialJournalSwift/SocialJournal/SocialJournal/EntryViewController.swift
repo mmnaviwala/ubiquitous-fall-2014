@@ -195,7 +195,11 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
                     objects[0].deleteInBackground()
                     self.heartLike.tintColor = UIColor.whiteColor()
                     self.heartLike.setImage(UIImage(named: "HeartWhite"), forState: .Normal)
-                    newHeartCount = self.heartCount.text!.toInt()! - 1
+                    if(self.heartCount.text!.toInt() == 0){
+                        self.heartCount.text = "0";
+                    }else{
+                        newHeartCount = self.heartCount.text!.toInt()! - 1
+                    }
                     self.heartCount.text = String(newHeartCount)
                 }
             } else {
