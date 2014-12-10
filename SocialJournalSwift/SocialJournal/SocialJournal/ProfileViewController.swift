@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var theTableView: UITableView!
+    @IBOutlet weak var theSegment: UISegmentedControl!
     
     var button: HamburgerButton! = nil
     
@@ -127,6 +128,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         theTableView.hidden = true
         theCollectionView.hidden = false
+        theSegment.selectedSegmentIndex = 0
         fetchAndSetFollowing()
     }
     
