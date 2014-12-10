@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="26X-xq-UXv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="26X-xq-UXv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Reveal View Controller-->
@@ -591,6 +591,13 @@
                                         <outlet property="delegate" destination="Gsq-St-SEp" id="6qJ-Nl-07L"/>
                                     </connections>
                                 </searchBar>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xEU-ow-Vkv" userLabel="Username">
+                                    <rect key="frame" x="0.0" y="968" width="768" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="100" id="LE7-WJ-LuN" customClass="SearchUserCell" customModule="SocialJournal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
@@ -615,6 +622,39 @@
                                         <connections>
                                             <outlet property="userName" destination="1lj-kQ-vwa" id="XVs-Li-anq"/>
                                             <outlet property="userProfilePicture" destination="aZl-Iv-e88" id="2AU-XA-aby"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchTagCell" rowHeight="100" id="21D-jP-m9s" customClass="SearchTagCell" customModule="SocialJournal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="21D-jP-m9s" id="7ak-5q-gR2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUser" id="mtv-gQ-stM">
+                                                    <rect key="frame" x="8" y="10" width="80" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hEg-M8-kjh" userLabel="Tag">
+                                                    <rect key="frame" x="96" y="0.0" width="634" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qsl-ZI-tSM" userLabel="Username">
+                                                    <rect key="frame" x="96" y="32" width="634" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="tagLabel" destination="hEg-M8-kjh" id="fkl-cM-Ar3"/>
+                                            <outlet property="userName" destination="Qsl-ZI-tSM" id="lHK-8n-hCO"/>
+                                            <outlet property="userProfilePicture" destination="mtv-gQ-stM" id="ycJ-1O-KdZ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchPostCell" rowHeight="100" id="YoF-7h-92b" customClass="SearchPostCell" customModule="SocialJournal" customModuleProvider="target">
@@ -718,10 +758,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="c3n-Ky-KP3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="2109" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="2812" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Asn-5R-WFI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="2109" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="2812" height="150"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUser" id="G8b-TS-IsU">
@@ -729,7 +769,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" id="W84-iQ-Hyv" userLabel="BlueBackground">
-                                                                <rect key="frame" x="0.0" y="0.0" width="2109" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="2812" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCJ-6X-iMw" userLabel="Username">
@@ -799,14 +839,14 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxr-Hr-QG6" userLabel="Post title">
-                                                                <rect key="frame" x="240" y="38" width="1869" height="30"/>
+                                                                <rect key="frame" x="240" y="38" width="2572" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z0C-SX-cP6" userLabel="Post content">
-                                                                <rect key="frame" x="240" y="76" width="1869" height="62"/>
+                                                                <rect key="frame" x="240" y="76" width="2572" height="62"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -962,7 +1002,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -2371,8 +2411,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hYT-zi-chh"/>
-        <segue reference="ENI-7h-zgz"/>
-        <segue reference="VnR-Og-EQv"/>
+        <segue reference="qPU-hG-sdf"/>
+        <segue reference="yff-0z-cTf"/>
         <segue reference="aXJ-vG-G72"/>
     </inferredMetricsTieBreakers>
 </document>

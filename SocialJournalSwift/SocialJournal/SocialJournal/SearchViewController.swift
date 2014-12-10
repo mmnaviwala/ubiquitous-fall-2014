@@ -13,8 +13,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     var allUsers: [PFObject] = []
     var allEntries: [PFObject] = []
+    var allTags: [PFObject] = []
     var searchResultsForUsers: [PFObject] = []
     var searchResultsForEntries: [PFObject] = []
+    var searchResultsForTags: [PFObject] = []
     var currentTableViewArray = []
     var objectToPass:PFObject? = nil
  
@@ -31,6 +33,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         fetchAllUsers()
         fetchAllEntries()
+        fetchAllTags()
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         messageLabel.hidden = false
@@ -71,6 +74,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func fetchAllTags() {
+//        var query = ParseQueries.
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]!, error: NSError!) -> Void in
+//            if error == nil {
+//                for object in objects {
+//                    self.allTags.append(object as PFObject)
+//                }
+//                println("Tags fetched")
+//                self.tableView.reloadData()
+//            } else {
+//                NSLog("Error: %@ %@", error, error.userInfo!)
+//            }
+//        }
+    }
+    
     func setupTheHamburgerIcon() {
         self.button = HamburgerButton(frame: CGRectMake(20, 20, 60, 60))
         self.button.addTarget(self, action: "toggle:", forControlEvents:.TouchUpInside)
@@ -94,7 +113,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (tableView == self.searchDisplayController?.searchResultsTableView){
             messageLabel.hidden = true
-            return 2
+            return 3
         }else{
             return 0
         }
@@ -108,8 +127,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if(section == 0){
             return "USERS"
         } else if (section == 1){
+            return "TAGS"
+        } else if (section == 2){
             return "ENTRIES"
-        }else{
+        } else{
             return ""
         }
     }
@@ -127,10 +148,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if (tableView == self.searchDisplayController?.searchResultsTableView){
             if (section == 0) {
                 return searchResultsForUsers.count
+            }else if (section == 1){
+                return searchResultsForTags.count
             }else{
                 return searchResultsForEntries.count
             }
-        }else {
+        } else{
             return 0
         }
         
@@ -139,17 +162,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var userCell = self.tableView.dequeueReusableCellWithIdentifier("searchUserCell") as SearchUserCell
+        var tagCell = self.tableView.dequeueReusableCellWithIdentifier("searchTagCell") as SearchTagCell
         var postCell = self.tableView.dequeueReusableCellWithIdentifier("searchPostCell") as SearchPostCell
         
         if (tableView == self.searchDisplayController!.searchResultsTableView) {
             if (indexPath.section == 0){
                 currentTableViewArray = searchResultsForUsers
+            }else if (indexPath.section == 1){
+                currentTableViewArray = searchResultsForTags
             }else{
                 currentTableViewArray = searchResultsForEntries
             }
         } else {
             if (indexPath.section == 0){
                 currentTableViewArray = allUsers
+            }else if (indexPath.section == 1){
+                currentTableViewArray = allTags
             }else{
                 currentTableViewArray = allEntries
             }
@@ -160,6 +188,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             userCell.userName.text = user.username
             
             return userCell
+        }else if (indexPath.section == 1){
+            var object = currentTableViewArray[indexPath.row] as PFObject
+            //setup tag cell here
+            return tagCell
         }else{
             var object = currentTableViewArray[indexPath.row] as PFObject
             
@@ -182,11 +214,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 
             }
-            
             return postCell
         }
-        
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -224,6 +253,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             let userStringMatch = user.username.lowercaseString.rangeOfString(searchText)
             return (userStringMatch != nil)
         })
+        
+//        self.searchResultsForTags = self.allTags.filter({(object: PFObject) -> Bool in
+//            let tag = object["tag"] as String
+//            let tagStringMatch = tag.lowercaseString.rangeOfString(searchText)
+//            return (tagStringMatch != nil)
+//        })
         
         self.searchResultsForEntries = self.allEntries.filter({(object: PFObject) -> Bool in
             let title = object["title"] as String

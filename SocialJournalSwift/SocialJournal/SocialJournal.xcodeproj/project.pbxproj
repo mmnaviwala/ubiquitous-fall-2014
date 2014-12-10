@@ -36,6 +36,7 @@
 		00FA629E1A1AFBE900B9A4FB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */; };
 		29C7018E1A1E412D00001464 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C7018D1A1E412D00001464 /* MapKit.framework */; };
 		29C701901A1E43B800001464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7018F1A1E43B800001464 /* MapViewController.swift */; };
+		29CF4EC41A38D0ED007EDE84 /* SearchTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */; };
 		894C59DE1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */; };
 		894C59E01A2EC6220050B1B6 /* VirtualNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
@@ -97,6 +98,7 @@
 		00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		29C7018D1A1E412D00001464 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29C7018F1A1E43B800001464 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagCell.swift; sourceTree = "<group>"; };
 		894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceWithVirtualName.swift; sourceTree = "<group>"; };
 		894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualNameTableViewCell.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
 				AC9BE9991A2AB15F0019E9B7 /* SearchUserCell.swift */,
+				29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */,
 				AC9BE99B1A2AB1710019E9B7 /* SearchPostCell.swift */,
 			);
 			name = "Search related files";
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CF4EC41A38D0ED007EDE84 /* SearchTagCell.swift in Sources */,
 				AC9BE99C1A2AB1710019E9B7 /* SearchPostCell.swift in Sources */,
 				AC9BE99A1A2AB15F0019E9B7 /* SearchUserCell.swift in Sources */,
 				008CD4FB1A192F810024BB9A /* SideBarTableViewController.swift in Sources */,
