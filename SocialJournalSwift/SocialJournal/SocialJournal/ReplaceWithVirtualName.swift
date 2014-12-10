@@ -61,7 +61,21 @@ class ReplaceWithVirtualName: UIViewController,UITableViewDataSource, UITableVie
         if (editingStyle == UITableViewCellEditingStyle.Delete){
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as VirtualNameTableViewCell
             virtualNameDictionary.removeValueForKey(cell.keyword.text!)
+            
+            //reset both arrays to avoid extra elements
+            self.keyArray.removeAll(keepCapacity: false)
+            self.valueArray.removeAll(keepCapacity: false)
+            
+            //refill both arrays
+            for (key, value) in virtualNameDictionary{
+                self.keyArray.append(key)
+                self.valueArray.append(value)
+            }
+            
+            //println(self.virtualNameDictionary)
+            saveToNSUserDefaults()
             self.tableView.reloadData()
+            
         }
         else if (editingStyle == UITableViewCellEditingStyle.Insert){
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as AddNewVirtualNameTableViewCell
