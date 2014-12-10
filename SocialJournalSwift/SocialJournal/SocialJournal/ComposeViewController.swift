@@ -153,7 +153,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func saveTagsFromPost(entry:PFObject, tags:Array<String>) {
-        let tags = getTagsFromTitleAndContent()
         if (!tags.isEmpty) {
             for tag in tags {
                 var query = PFQuery(className: "Tags")
@@ -161,11 +160,11 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                 query.whereKey("tag", equalTo: tag)
                 query.getFirstObjectInBackgroundWithBlock {
                     (foundTag: PFObject!, error: NSError!) -> Void in
-                    if foundTag != nil {
+                    if (foundTag == nil) {
                         var newTag = PFObject(className: "Tags")
     
                         newTag["tag"] = tag
-                        newTag.save()
+                        newTag.saveEventually()
     
                         var newTagMapEntry = PFObject(className: "TagMap")
     
@@ -227,7 +226,9 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                     query.getObjectInBackgroundWithId(self.currentEntry.objectId) {
                         (entry: PFObject!, error: NSError!) -> Void in
                         if error == nil {
+                            
                             self.currentEntry = entry
+                            self.saveTagsFromPost(self.currentEntry, tags: self.getTagsFromTitleAndContent())
                             //Preform segue here
                             self.performSegueWithIdentifier("composeToEntryView", sender: sender)
                         } else {
