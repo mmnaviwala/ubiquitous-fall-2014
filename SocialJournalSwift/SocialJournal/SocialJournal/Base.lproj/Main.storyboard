@@ -479,7 +479,7 @@
                                                     <rect key="frame" x="276" y="35" width="200" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <state key="normal" image="addMediaIcon">
+                                                    <state key="normal" image="addMediaIconWhite">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1292,7 +1292,7 @@
                                 <rect key="frame" x="516" y="78" width="114" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Media" image="addMediaIcon">
+                                <state key="normal" title="Media" image="addMediaIconWhite">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2500,7 +2500,7 @@
     <resources>
         <image name="HeartWhite" width="512" height="512"/>
         <image name="Lake" width="2524" height="2524"/>
-        <image name="addMediaIcon" width="512" height="512"/>
+        <image name="addMediaIconWhite" width="512" height="512"/>
         <image name="bellIcon" width="512" height="512"/>
         <image name="commentIcon2" width="128" height="128"/>
         <image name="composeIcon" width="512" height="512"/>
