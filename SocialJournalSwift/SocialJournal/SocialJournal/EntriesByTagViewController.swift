@@ -11,12 +11,33 @@ import UIKit
 class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    var currentTag: String = ""
     
     var entries: [PFObject] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(self.entries)
+        //println(self.entries)
+        println(currentTag)
+        fetchEntriesByTag(currentTag)
+    }
+    
+    func fetchEntriesByTag(tag: String) {
+        var query = ParseQueries.queryForEntriesPerTag(tag)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                println(objects)
+                for object in objects {
+                    self.entries.append(object as PFObject)
+                }
+                println(self.entries)
+                println("Entries by tag fetched")
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -107,8 +128,7 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         return 30.0
     }
     
-    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
-    {
+    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat{
         return 150
     }
 

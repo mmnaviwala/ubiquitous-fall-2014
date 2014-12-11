@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var searchResultsForUsers: [PFObject] = []
     var searchResultsForEntries: [PFObject] = []
     var searchResultsForTags: [PFObject] = []
-    var entriesForSelectedTag: [PFObject] = []
+    var selectedTag = ""
     var currentTableViewArray = []
     var objectToPass:PFObject? = nil
  
@@ -85,24 +85,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 println("Tags fetched")
                 self.tableView.reloadData()
-            } else {
-                NSLog("Error: %@ %@", error, error.userInfo!)
-            }
-        }
-    }
-    
-    func fetchEntriesByTag(tag: String) {
-        var query = ParseQueries.queryForEntriesPerTag(tag)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                println(objects)
-                for object in objects {
-                    self.entriesForSelectedTag.append(object as PFObject)
-                }
-                println(self.entriesForSelectedTag)
-                println("Entries by tag fetched")
-                self.performSegueWithIdentifier("searchToEntriesByTag", sender: self)
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
@@ -246,13 +228,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             if (indexPath.section == 0) {
                 self.objectToPass = searchResultsForUsers[indexPath.row]
             }else if(indexPath.section == 1){
-                var entry: PFObject = searchResultsForTags[indexPath.row]
-                
-//                self.entriesForSelectedTag = self.allEntries.filter({(object: PFObject) -> Bool in
-//                    let tag = object["tag"] as String!
-//                    let postStringMatch = tag.lowercaseString.rangeOfString(entry["tag"] as String!)
-//                    return (postStringMatch != nil)
-//                })
+                var object = searchResultsForTags[indexPath.row] as PFObject
+                self.selectedTag = object["tag"] as String!
             }else{
                 self.objectToPass = searchResultsForEntries[indexPath.row]
             }
@@ -260,7 +237,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             if (indexPath.section == 0) {
                 self.objectToPass = allUsers[indexPath.row]
             }else if(indexPath.section == 1){
-                self.objectToPass = allTags[indexPath.row]
+                var object = searchResultsForTags[indexPath.row] as PFObject
+                self.selectedTag = object["tag"] as String!
             }else{
                 self.objectToPass = allEntries[indexPath.row]
             }
@@ -269,7 +247,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if(indexPath.section == 0){
             self.performSegueWithIdentifier("fromSearchToProfile", sender: self)
         }else if (indexPath.section == 1){
-            //
+            self.performSegueWithIdentifier("searchToEntriesByTag", sender: self)
         }else{
             self.performSegueWithIdentifier("fromSearchToEntryView", sender: self)
         }
@@ -328,7 +306,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         if (segue.identifier == "searchToEntriesByTag"){
             let vc = segue.destinationViewController as EntriesByTagViewController
-            vc.entries = self.entriesForSelectedTag
+            vc.currentTag = self.selectedTag
         }
     }
     
