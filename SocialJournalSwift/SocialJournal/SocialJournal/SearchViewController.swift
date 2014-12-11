@@ -249,21 +249,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func filterContentForSearchText(searchText: String) {
         self.searchResultsForUsers = self.allUsers.filter({(object: PFObject) -> Bool in
-            let user = object as PFUser
-            let userStringMatch = user.username.lowercaseString.rangeOfString(searchText)
-            return (userStringMatch != nil)
+            var user = object as PFUser
+            var userName = user.username as NSString
+            userName = userName.lowercaseString
+            return userName.containsString(searchText.lowercaseString)
         })
         
         self.searchResultsForTags = self.allTags.filter({(object: PFObject) -> Bool in
-            let tag = object["tag"] as String
-            let tagStringMatch = tag.lowercaseString.rangeOfString(searchText)
-            return (tagStringMatch != nil)
+            var tag = object["tag"] as NSString
+            tag = tag.lowercaseString
+            return tag.containsString(searchText.lowercaseString)
         })
         
         self.searchResultsForEntries = self.allEntries.filter({(object: PFObject) -> Bool in
-            let title = object["title"] as String
-            let postStringMatch = title.lowercaseString.rangeOfString(searchText)
-            return (postStringMatch != nil)
+            var title = object["title"] as NSString
+            title = title.lowercaseString
+            return title.containsString(searchText.lowercaseString)
         })
         
         
