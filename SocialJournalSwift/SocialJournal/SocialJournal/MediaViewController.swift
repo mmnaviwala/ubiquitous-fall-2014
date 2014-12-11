@@ -16,7 +16,7 @@ class MediaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "https://www.youtube.com/watch?v=-7eA_TyogeU")
+        let url = NSURL(string: "https://www.google.com")
         let request = NSURLRequest(URL: url!)
         mediaWebView.loadRequest(request)
         
