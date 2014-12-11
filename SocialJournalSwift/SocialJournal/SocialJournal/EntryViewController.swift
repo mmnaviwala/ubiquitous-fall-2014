@@ -15,6 +15,7 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var showCommentsToggle = true
     @IBOutlet weak var commentsTable: UITableView!
     
+    @IBOutlet weak var mediaButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userProfilePicture: UIImageView!
