@@ -75,8 +75,9 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         if (self.entries != []){
             var entry:PFObject = self.entries[indexPath.section] as PFObject
             
-            println(entry["title"])
-            
+            cell.postTitle.text = entry["title"] as String!
+            cell.postBody.text = entry["content"] as String!
+            assignDate(entry.createdAt, cell: cell)
             
         }
         return cell
