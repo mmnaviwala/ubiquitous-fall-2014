@@ -244,8 +244,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if error == nil {
                     cell.userNameLabel.text = object["username"] as String!
                     
-                    if ((object["profileImage"]) != nil){
-                        var userImageFile:PFFile? = object["profileImage"] as? PFFile
+                    if ((object["image"]) != nil){
+                        var userImageFile:PFFile? = object["image"] as? PFFile
                         userImageFile?.getDataInBackgroundWithBlock{
                             (imageData: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
@@ -386,7 +386,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "goToProfileFromCollectionCell"){
             
-            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()
+            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
             let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
             
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject

@@ -12,7 +12,8 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet var tableView: UITableView!
     var currentTag: String = ""
-    
+    var currentEntry = PFObject(className: "Entry")
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     var entries: [PFObject] = []
         
     override func viewDidLoad() {
@@ -21,17 +22,21 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         tableView.delegate = self
         
-        //println(self.entries)
-        println(currentTag)
+//        println(self.entries)
+//        println(currentTag)
         fetchEntriesByTag(currentTag)
     }
     
     func fetchEntriesByTag(tag: String) {
+        
+        self.spinner.center = self.view.center
+        self.spinner.startAnimating()
+        
         var query = ParseQueries.queryForEntriesPerTag(tag)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                println(objects)
+//                println(objects)
                 for object in objects {
                     // self.entries.append(object as PFObject)
                     
@@ -46,18 +51,26 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
                     self.entries.append(entryObject.fetchIfNeeded())
                     
                 }
-                println("Appending complete")
-                println(self.entries)
-                println("Entries by tag fetched")
-                self.tableView.reloadData()
+//                println("Appending complete")
+//                println(self.entries)
+//                println("Entries by tag fetched")
+                self.spinner.stopAnimating()
+
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+            
+            self.tableView.reloadData()
+            if(self.spinner.isAnimating()){
+                self.spinner.stopAnimating()
             }
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.currentEntry = self.entries[indexPath.section] as PFObject
+        self.performSegueWithIdentifier("entriesByTagToEntry", sender: self)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -75,6 +88,18 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         if (self.entries != []){
             var entry:PFObject = self.entries[indexPath.section] as PFObject
             
+            //set image
+            var userImageFile:PFFile? = entry["profileImage"] as? PFFile
+            userImageFile?.getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                if !(error != nil) {
+                    if imageData != nil {
+                        cell.userProfilePicture.image = UIImage(data: imageData!)
+                    }
+                }
+            }
+
+
             cell.postTitle.text = entry["title"] as String!
             cell.postBody.text = entry["content"] as String!
             assignDate(entry.createdAt, cell: cell)
@@ -112,6 +137,13 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat{
         return 150
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "entriesByTagToEntry"{
+            let vc = segue.destinationViewController as EntryViewController
+            vc.entry = self.currentEntry as PFObject
+        }
     }
 
 }

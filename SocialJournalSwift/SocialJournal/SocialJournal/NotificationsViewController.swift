@@ -51,7 +51,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                 self.notifications = objects as [PFObject]
                 self.tableView.reloadData()
                 for object in self.notifications {
-                    println(object)
+                    //println(object)
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
