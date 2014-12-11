@@ -218,6 +218,10 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                 self.currentEntry["image"] = imageFile
             }
             
+            if self.urlDestinationTextField.text != "" {
+                self.currentEntry["videoUrl"] = self.urlDestinationTextField.text
+            }
+            
             self.currentEntry.saveInBackgroundWithBlock{
                 (success: Bool!, error:NSError!) -> Void in
                 
