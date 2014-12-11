@@ -169,6 +169,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate, 
     @IBAction func signOut(sender: AnyObject) {
     
         PFUser.logOut()
+        
+        //remove username and password from NSUserdefaults
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject("", forKey: "username")
+        userDefaults.setObject("", forKey: "password")
+        userDefaults.synchronize()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("signInView") as UIViewController
         self.presentViewController(vc, animated: true, completion: nil)
