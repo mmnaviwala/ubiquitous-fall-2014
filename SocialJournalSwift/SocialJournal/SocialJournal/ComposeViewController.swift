@@ -125,31 +125,53 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func getTagsFromTitleAndContent() -> Array<String> {
-        //get the tags here, if no tags return an empty array ... not nil
-        var result = [String]();
-    
-        //initialize the arrays
-        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
-        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
-        var allTags = titleTags + contentTags
-    
-        var tagDictionary = [String: Int]()
-    
-        for word in allTags{
-            if countElements(word) != 0{
-                var temp = (word as NSString).substringToIndex(1)
-            
-                if (temp == "#" && countElements(word) > 1 &&
-                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
-                    tagDictionary[word] == nil){
-                        tagDictionary[word] = allTags.count
-                        result.append(word)
-                        //println(word)
-                }
-            }
+//        //get the tags here, if no tags return an empty array ... not nil
+//        var result = [String]();
+//    
+//        //initialize the arrays
+//        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
+//        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
+//        var allTags = titleTags + contentTags
+//    
+//        var tagDictionary = [String: Int]()
+//    
+//        for word in allTags{
+//            if countElements(word) != 0{
+//                var temp = (word as NSString).substringToIndex(1)
+//            
+//                if (temp == "#" && countElements(word) > 1 &&
+//                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
+//                    tagDictionary[word] == nil){
+//                        tagDictionary[word] = allTags.count
+//                        result.append(word)
+//                        //println(word)
+//                }
+//            }
+//        }
+//        //println(result)
+//        return result;
+        
+        var allTags = [String]()
+        
+        var str = titleTextField.text
+        var regex = NSRegularExpression(pattern: "#(\\w+)", options: nil, error: nil)!
+        var titleMatches = regex.matchesInString(str, options: nil, range: NSRange(location: 0, length: str.utf16Count))
+        
+        for match in titleMatches{
+            var eachHashTag = (str as NSString).substringWithRange(match.range)
+            allTags.append(eachHashTag as String)
         }
-        //println(result)
-        return result;
+        
+        str = contentTextView.text
+        var contentMatches = regex.matchesInString(str, options: nil, range: NSRange(location: 0, length: str.utf16Count))
+        
+        for match in contentMatches{
+            var eachHashTag = (str as NSString).substringWithRange(match.range)
+            allTags.append(eachHashTag as String)
+        }
+        
+        // println(allTags)
+        return allTags
     }
     
     func saveTagsFromPost(entry:PFObject, tags:Array<String>) {

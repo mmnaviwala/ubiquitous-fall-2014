@@ -17,6 +17,10 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         //println(self.entries)
         println(currentTag)
         fetchEntriesByTag(currentTag)
@@ -29,8 +33,20 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
             if error == nil {
                 println(objects)
                 for object in objects {
-                    self.entries.append(object as PFObject)
+                    // self.entries.append(object as PFObject)
+                    
+//                    object.fetchIfNeededInBackgroundWithBlock{
+//                        (theObject: PFObject!, error: NSError!) -> Void in
+//                        if error == nil {
+//                            self.entries.append(theObject)
+//                        }
+//                    }
+                    
+                    var entryObject = object["entry"] as PFObject
+                    self.entries.append(entryObject.fetchIfNeeded())
+                    
                 }
+                println("Appending complete")
                 println(self.entries)
                 println("Entries by tag fetched")
                 self.tableView.reloadData()
@@ -59,44 +75,9 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         if (self.entries != []){
             var entry:PFObject = self.entries[indexPath.section] as PFObject
             
-            //            println(entry)
+            println(entry["title"])
             
-            //            cell.username.text = self.allUsers[indexPath.section]!.username
-            cell.username.text = entry["theUserName"] as? String
             
-            //            if self.allUsersProfileImage[indexPath.section] != nil {
-            //                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
-            //            }
-            
-            if (entry["theUserImage"] != nil){
-                println("user image ok")
-                cell.userProfilePicture.image = UIImage(data: entry["theUserImage"] as NSData)
-            }
-            
-            var query = PFQuery(className: "Activity")
-            query.whereKey("entry", equalTo: entry)
-            query.whereKey("fromUser", equalTo: PFUser.currentUser())
-            query.whereKey("type", equalTo: "like")
-            var likes = query.findObjects()
-            
-            if likes.count > 0 {
-                cell.hearted.tintColor = UIColor.redColor()
-                cell.hearted.image = UIImage(named: "HeartRed")
-            }
-            else{
-                cell.hearted.tintColor = UIColor.whiteColor()
-                cell.hearted.image = UIImage(named: "HeartWhite")
-            }
-            
-            var entryTitle:String = entry["title"] as String!
-            var entryText:String = entry["content"] as String!
-            
-            //            cell.heartCount.text = String(self.allLikes[indexPath.section])
-            cell.heartCount.text = entry["likeCount"].stringValue
-            
-            cell.postTitle.text = entryTitle
-            cell.postBody.text = entryText
-            assignDate(entry.createdAt, cell: cell)
         }
         return cell
     }

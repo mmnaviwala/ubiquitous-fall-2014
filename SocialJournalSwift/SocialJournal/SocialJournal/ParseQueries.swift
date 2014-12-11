@@ -73,7 +73,8 @@ class ParseQueries {
         tagsQuery.whereKey("tag", equalTo: tag)
         
         var tagMapQuery = PFQuery(className: "TagMap")
-        tagMapQuery.whereKey("entry", matchesKey: "entry", inQuery: tagsQuery)
+//        tagMapQuery.whereKey("entry", matchesKey: "entry", inQuery: tagsQuery) // Gabe's query. Doesn't return anything
+        tagMapQuery.whereKey("tag", matchesQuery: tagsQuery)
         tagMapQuery.orderByDescending("createdAt")
         
         return tagMapQuery
