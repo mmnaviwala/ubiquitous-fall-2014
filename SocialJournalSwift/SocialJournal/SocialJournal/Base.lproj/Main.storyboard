@@ -333,14 +333,14 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="cK1-J1-E7w" userLabel="Add Media Visual Effect View">
-                                <rect key="frame" x="8" y="732" width="752.00000016177239" height="272"/>
+                                <rect key="frame" x="8" y="732" width="752.00000016177228" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hqI-Ay-Rs8">
-                                    <rect key="frame" x="0.0" y="0.0" width="752.00000016177239" height="272"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="752.00000016177228" height="272"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view opaque="NO" contentMode="scaleToFill" id="JKO-RB-31c" userLabel="Add Media View">
-                                            <rect key="frame" x="0.0" y="0.0" width="752.00000016177239" height="272"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="752.00000016177228" height="272"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="kRR-Wu-qb7" userLabel="Media Visual Effect View">
@@ -385,7 +385,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </visualEffectView>
                                                 <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="TIE-Ka-FDk" userLabel="Buttons Visual Effect View">
-                                                    <rect key="frame" x="322.00000007001438" y="15" width="422" height="241"/>
+                                                    <rect key="frame" x="322.00000007001432" y="15" width="422" height="241"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dxM-Me-Qbd">
                                                         <rect key="frame" x="0.0" y="0.0" width="422" height="241"/>
@@ -732,10 +732,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="It2-kY-o8c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="5081" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="5816" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7Yd-xM-uC3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="5081" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="5816" height="150"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUser" id="4P2-GE-f05">
@@ -743,7 +743,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" id="wMu-an-F6T" userLabel="BlueBackground">
-                                                                <rect key="frame" x="0.0" y="0.0" width="5081" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="5816" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EH9-b7-i60" userLabel="Username">
@@ -798,7 +798,7 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ziT-ft-XN2" userLabel="Like count">
-                                                                        <rect key="frame" x="50" y="0.0" width="76" height="29"/>
+                                                                        <rect key="frame" x="50" y="0.0" width="60" height="29"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                         <color key="highlightedColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -813,14 +813,14 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vsZ-Z5-P1g" userLabel="Post title">
-                                                                <rect key="frame" x="246" y="38" width="4835" height="30"/>
+                                                                <rect key="frame" x="246" y="38" width="5570" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NWe-qj-SIz" userLabel="Post content">
-                                                                <rect key="frame" x="246" y="76" width="4835" height="62"/>
+                                                                <rect key="frame" x="246" y="76" width="5570" height="62"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -834,6 +834,18 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dateDay" destination="8Vp-77-3Rc" id="oZM-TJ-pZe"/>
+                                            <outlet property="dateMonth" destination="W2Y-IC-iNr" id="bwV-VM-G5u"/>
+                                            <outlet property="dateWeekday" destination="sfS-Db-xJs" id="4SL-m8-YgZ"/>
+                                            <outlet property="dateYear" destination="VcC-hc-yRf" id="OGb-Ie-WES"/>
+                                            <outlet property="heartCount" destination="ziT-ft-XN2" id="omf-ah-7nG"/>
+                                            <outlet property="hearted" destination="3f1-4J-BwN" id="wW7-W4-IBx"/>
+                                            <outlet property="postBody" destination="NWe-qj-SIz" id="QRk-k7-klp"/>
+                                            <outlet property="postTitle" destination="vsZ-Z5-P1g" id="KlX-59-bJY"/>
+                                            <outlet property="userProfilePicture" destination="4P2-GE-f05" id="mvI-jb-BEy"/>
+                                            <outlet property="username" destination="EH9-b7-i60" id="oqM-iw-YQg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1119,7 +1131,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999470185" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -2115,10 +2127,10 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="min-H4-mUQ" userLabel="Account Visual Effect View">
-                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342628"/>
+                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342654"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="p1u-An-Iyd">
-                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342628"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342654"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="ceF-9v-neg" userLabel="White line">
