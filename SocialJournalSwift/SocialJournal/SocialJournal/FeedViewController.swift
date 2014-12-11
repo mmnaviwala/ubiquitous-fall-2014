@@ -13,7 +13,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var selectFeedType: UISegmentedControl!
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
-    var allEntries:[(entry: PFObject, user: PFUser, userImage: UIImage?, likeCount: Int, userLiked: Bool)] = []
+    var allEntries:[(entry: PFObject, user: PFUser, userImage: UIImage?, likeCount: Int, userLiked: Bool, entryHeartBeat: Double)] = []
     var heartbeat = [(Double,PFObject)]()
     var allUsers:[PFUser?] = []
     var allUsersProfileImage:[UIImage?] = []
@@ -81,7 +81,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     query.whereKey("entry", equalTo: objects[i])
                     query.whereKey("type", equalTo: "like")
                     var likeCount = query.countObjects()
-                    self.assignHeartBeatTEST(objects[i] as PFObject)
+                    // self.assignHeartBeatTEST(objects[i] as PFObject)
                     
                     //does user like
                     var userLikeQuery = PFQuery(className: "Activity")
@@ -93,7 +93,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     if likes > 0 {
                         userLiked = true
                     }
-                    self.allEntries.insert((entry: objects[i] as PFObject, user: user, userImage: userImage, likeCount: likeCount, userLiked: userLiked), atIndex: i)
+                    var hotness = self.assignHeartBeatTEST(likeCount, entry: objects[i] as PFObject)
+                    self.allEntries.insert((entry: objects[i] as PFObject, user: user, userImage: userImage, likeCount: likeCount, userLiked: userLiked, entryHeartBeat: hotness), atIndex: i)
+                    
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
@@ -173,19 +175,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         switch sender.selectedSegmentIndex {
         case 0:
-            var descriptor = NSSortDescriptor(key: "createdAt.timeIntervalSince1970", ascending: false)
-//            var sortDescriptors = [descriptor]
-//            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
-//            self.allEntries = sortedArray
+            
+            allEntries.sort({$0.entry.createdAt.timeIntervalSince1970 > $1.entry.createdAt.timeIntervalSince1970})
+            
             self.feedTableView.reloadData()
             self.feedTableView.reloadInputViews()
 
         case 1:
-            var descriptor = NSSortDescriptor(key: "heartBeat", ascending: false)
-            var sortDescriptors = [descriptor]
-//            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
-//            println(sortedArray)
-//            self.allEntries = sortedArray
+            allEntries.sort({$0.entryHeartBeat > $1.entryHeartBeat})
+            
             self.feedTableView.reloadData()
             self.feedTableView.reloadInputViews()
             
@@ -210,13 +208,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    func assignHeartBeatTEST(entry: PFObject){
-//        var heartInt = entry["likeCount"] as Double
-//        var order = log10((max(heartInt, 1)))
-//        var seconds = entry.createdAt.timeIntervalSince1970 - 1134028003
-//        var format = (Double(order) + (seconds / 45000))
-//        var hotness = round(format * 100) / 100.0
+    func assignHeartBeatTEST(entryLikeCount: Int, entry: PFObject) -> Double{
+        var heartInt = Double(entryLikeCount)
+        var order = log10((max(heartInt, 1)))
+        var seconds = entry.createdAt.timeIntervalSince1970 - 1134028003
+        var format = (Double(order) + (seconds / 45000))
+        var hotness = round(format * 100) / 100.0
 //        entry["heartBeat"] = hotness
+        return hotness
     }
     
     // UITableViewDelegate methods
