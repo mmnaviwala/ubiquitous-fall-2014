@@ -188,7 +188,6 @@
 				AC9DE5761A195F9B00BE697D /* collectionViewCell.swift */,
 				AC5563621A2D0EEF00824D18 /* CommentCell.swift */,
 				00FA629D1A1AFBE900B9A4FB /* ComposeViewController.swift */,
-				29C6F9021A393563000C21D9 /* EntriesByTagViewController.swift */,
 				9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */,
 				9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */,
 				AC9DE5781A1AF7AE00BE697D /* FeedViewController.swift */,
@@ -246,6 +245,7 @@
 		AC9BE99D1A2AB17E0019E9B7 /* Search related files */ = {
 			isa = PBXGroup;
 			children = (
+				29C6F9021A393563000C21D9 /* EntriesByTagViewController.swift */,
 				00FA629B1A1AFB1D00B9A4FB /* SearchViewController.swift */,
 				AC9BE9991A2AB15F0019E9B7 /* SearchUserCell.swift */,
 				29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */,
