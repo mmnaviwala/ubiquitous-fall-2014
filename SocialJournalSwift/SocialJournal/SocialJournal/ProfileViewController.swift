@@ -189,6 +189,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         theCollectionView.reloadData()
     }
     
+    func setTheTableViewToBeEmpty(){
+        allEntries = []
+        theTableView.reloadData()
+    }
+    
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -202,6 +207,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             theCollectionView.hidden = false
             fetchAndSetFollowers()
         case 2:
+            setTheTableViewToBeEmpty()
             theTableView.hidden = false
             theCollectionView.hidden = true
             fetchAndSetMyEntriesTable()
