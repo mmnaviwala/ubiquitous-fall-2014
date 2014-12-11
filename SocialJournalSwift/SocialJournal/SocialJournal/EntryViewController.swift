@@ -35,7 +35,12 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        if(self.entry["videoUrl"] != nil || self.entry["image"] != nil){
+            self.mediaButton.hidden = false
+        }else{
+            self.mediaButton.hidden = true
+        }
+        
         self.entry["user"].fetchIfNeeded()
         var user:PFUser = self.entry["user"] as PFUser
         self.username.text = user.username
