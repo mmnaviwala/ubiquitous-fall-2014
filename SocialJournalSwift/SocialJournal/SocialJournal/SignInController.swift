@@ -22,6 +22,15 @@ class SignInController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        if let username = userDefaults.objectForKey("username") as? String{
+            usernameTextField.text = username
+        }
+        if let password = userDefaults.objectForKey("password") as? String{
+            passwordTextField.text = password
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -58,6 +67,11 @@ class SignInController: UIViewController, UITextFieldDelegate {
                     self.presentViewController(vc, animated: true, completion: nil)
                 });
                 // Do stuff after successful login.
+                //save username and password to NSUserdefaults
+                var userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setObject(self.usernameTextField.text, forKey: "username")
+                userDefaults.setObject(self.passwordTextField.text, forKey: "password")
+                userDefaults.synchronize()
             } else {
                 // The login failed. Check error to see why.
                 let errorString = error.userInfo?["error"] as? NSString
