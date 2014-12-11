@@ -331,14 +331,14 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="cK1-J1-E7w" userLabel="Add Media Visual Effect View">
-                                <rect key="frame" x="8" y="732" width="752.00000016177228" height="272"/>
+                                <rect key="frame" x="8" y="732" width="752.00000016177239" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hqI-Ay-Rs8">
-                                    <rect key="frame" x="0.0" y="0.0" width="752.00000016177228" height="272"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="752.00000016177239" height="272"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view opaque="NO" contentMode="scaleToFill" id="JKO-RB-31c" userLabel="Add Media View">
-                                            <rect key="frame" x="0.0" y="0.0" width="752.00000016177228" height="272"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="752.00000016177239" height="272"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="kRR-Wu-qb7" userLabel="Media Visual Effect View">
@@ -383,7 +383,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </visualEffectView>
                                                 <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="TIE-Ka-FDk" userLabel="Buttons Visual Effect View">
-                                                    <rect key="frame" x="322.00000007001432" y="15" width="422" height="241"/>
+                                                    <rect key="frame" x="322.00000007001438" y="15" width="422" height="241"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dxM-Me-Qbd">
                                                         <rect key="frame" x="0.0" y="0.0" width="422" height="241"/>
@@ -988,7 +988,7 @@
                                 <rect key="frame" x="16" y="186" width="736" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9P-MW-TF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="735.99999999476006" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started From the Bottom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="I4A-Jz-f6m">
@@ -1175,7 +1175,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="04e-EJ-jCH" kind="push" id="nbc-Zg-bfP"/>
+                                    <segue destination="04e-EJ-jCH" kind="push" identifier="entryToMediaView" id="nbc-Zg-bfP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1220,7 +1220,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lake" id="9Nr-2y-WOV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9Nr-2y-WOV">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="446"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1982,10 +1982,10 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="min-H4-mUQ" userLabel="Account Visual Effect View">
-                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342654"/>
+                                <rect key="frame" x="16" y="770" width="736" height="169.99999948342628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="p1u-An-Iyd">
-                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342654"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="736" height="169.99999948342628"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="ceF-9v-neg" userLabel="White line">

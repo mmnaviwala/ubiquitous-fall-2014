@@ -372,6 +372,10 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             let vc = segue.destinationViewController as MapViewController
             vc.currentEntry = self.entry as PFObject
         }
+        if segue.identifier == "entryToMediaView"{
+            let vc = segue.destinationViewController as MediaViewController
+            vc.entry = self.entry as PFObject
+        }
     }
     
 

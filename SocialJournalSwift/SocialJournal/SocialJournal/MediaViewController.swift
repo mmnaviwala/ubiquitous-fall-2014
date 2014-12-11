@@ -8,7 +8,11 @@
 
 import UIKit
 
+
+
 class MediaViewController: UIViewController {
+    
+    var entry = PFObject(className: "Entry")
 
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var mediaWebView: UIWebView!
@@ -16,22 +20,14 @@ class MediaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "https://www.google.com")
-        let request = NSURLRequest(URL: url!)
-        mediaWebView.loadRequest(request)
+        var url = NSURL(string: "")
         
-        if(mediaImageView.image == nil){
-            UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
-                var topFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
-                topFrame.origin.y -= topFrame.size.height
-                self.mediaWebView.frame = topFrame
-                
-                }, completion: { finished in
-                    println("Basket doors opened!")
-            })
+        if(self.entry["videoUrl"] != nil){
+            url = NSURL(string: self.entry["videoUrl"] as String)
+            var request = NSURLRequest(URL: url!)
+            mediaWebView.loadRequest(request)
         }
-        
-        if (url == ""){
+        else{
             self.mediaWebView.hidden = true
             UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
                 var bottomFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
@@ -39,9 +35,18 @@ class MediaViewController: UIViewController {
                 self.mediaImageView.frame = self.view.bounds
                 
                 
-                }, completion: { finished in
-                    println("Basket doors opened!")
-            })
+                }, completion: nil)
+        }
+        
+  
+        
+        if(mediaImageView.image == nil){
+            UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
+                var topFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
+                topFrame.origin.y -= topFrame.size.height
+                self.mediaWebView.frame = topFrame
+                
+                }, completion:nil)
         }
 
         
