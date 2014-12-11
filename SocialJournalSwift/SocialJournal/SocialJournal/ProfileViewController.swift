@@ -244,8 +244,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if error == nil {
                     cell.userNameLabel.text = object["username"] as String!
                     
-                    if ((object["image"]) != nil){
-                        var userImageFile:PFFile? = object["image"] as? PFFile
+                    if ((object["profileImage"]) != nil){
+                        var userImageFile:PFFile? = object["profileImage"] as? PFFile
                         userImageFile?.getDataInBackgroundWithBlock{
                             (imageData: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
