@@ -13,7 +13,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var selectFeedType: UISegmentedControl!
     @IBOutlet weak var leftImage: UIImageView!
     var button: HamburgerButton! = nil
-    var allEntries = []
+    var allEntries:[(entry: PFObject, user: PFUser, userImage: UIImage?, likeCount: Int, userLiked: Bool)] = []
     var heartbeat = [(Double,PFObject)]()
     var allUsers:[PFUser?] = []
     var allUsersProfileImage:[UIImage?] = []
@@ -64,36 +64,42 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 
-                 self.allEntries = objects
-                
-                self.feedTableView.reloadData()
-                for entry:PFObject in self.allEntries as [PFObject] {
+                for var i = 0; i < objects.count; i++ {
                     //get user
-                    var user = entry["user"] as PFUser
+                    var user = objects[i]["user"] as PFUser
                     user.fetchIfNeeded()
-                    self.allUsers.append(user)
-                    entry["theUserName"] = user.username
+                    
                     //get profile image
                     var userImageFile:PFFile? = user["profileImage"] as? PFFile
                     var imageData = userImageFile?.getData()
+                    var userImage:UIImage? = nil
                     if imageData != nil {
-                        entry["theUserImage"] = imageData
-                        self.allUsersProfileImage.append(UIImage(data: imageData!)!)
-                    }else {
-                        entry["theUserImage"] = nil
-                        self.allUsersProfileImage.append(nil)
+                        userImage = UIImage(data: imageData!)!
                     }
-                    //get like bool
+                    //get number of likes
                     var query = PFQuery(className: "Activity")
-                    query.whereKey("entry", equalTo: entry)
+                    query.whereKey("entry", equalTo: objects[i])
                     query.whereKey("type", equalTo: "like")
-                    entry["likeCount"] = query.countObjects()
-                    self.assignHeartBeatTEST(entry)
+                    var likeCount = query.countObjects()
+                    self.assignHeartBeatTEST(objects[i] as PFObject)
+                    
+                    //does user like
+                    var userLikeQuery = PFQuery(className: "Activity")
+                    userLikeQuery.whereKey("entry", equalTo: objects[i])
+                    userLikeQuery.whereKey("fromUser", equalTo: PFUser.currentUser())
+                    userLikeQuery.whereKey("type", equalTo: "like")
+                    var likes = query.countObjects()
+                    var userLiked = false
+                    if likes > 0 {
+                        userLiked = true
+                    }
+                    self.allEntries.insert((entry: objects[i] as PFObject, user: user, userImage: userImage, likeCount: likeCount, userLiked: userLiked), atIndex: i)
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
             }
-            
+            self.feedTableView.reloadData()
+
             if((self.refreshControl) != nil){
                 self.refreshControl.endRefreshing()
             }
@@ -135,30 +141,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cell:feedCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("feedCell") as feedCellTableViewCell
         cell.backgroundColor = UIColor.clearColor()
         
-        if (self.allEntries != []){
-            var entry:PFObject = self.allEntries[indexPath.section] as PFObject
+        if !self.allEntries.isEmpty {
+            cell.username.text = self.allEntries[indexPath.section].user.username
+
             
-//            println(entry)
-            
-//            cell.username.text = self.allUsers[indexPath.section]!.username
-            cell.username.text = entry["theUserName"] as? String
-            
-//            if self.allUsersProfileImage[indexPath.section] != nil {
-//                cell.userProfilePicture.image = self.allUsersProfileImage[indexPath.section]
-//            }
-            
-            if (entry["theUserImage"] != nil){
-                println("user image ok")
-                cell.userProfilePicture.image = UIImage(data: entry["theUserImage"] as NSData)
+            if (self.allEntries[indexPath.section].userImage != nil){
+                cell.userProfilePicture.image = self.allEntries[indexPath.section].userImage!
             }
             
-            var query = PFQuery(className: "Activity")
-            query.whereKey("entry", equalTo: entry)
-            query.whereKey("fromUser", equalTo: PFUser.currentUser())
-            query.whereKey("type", equalTo: "like")
-            var likes = query.findObjects()
             
-            if likes.count > 0 {
+            if self.allEntries[indexPath.section].userLiked {
                 cell.hearted.tintColor = UIColor.redColor()
                 cell.hearted.image = UIImage(named: "HeartRed")
             }
@@ -167,15 +159,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.hearted.image = UIImage(named: "HeartWhite")
             }
             
-            var entryTitle:String = entry["title"] as String!
-            var entryText:String = entry["content"] as String!
+            cell.postTitle.text = self.allEntries[indexPath.section].entry["title"] as String!
+            cell.postBody.text = self.allEntries[indexPath.section].entry["content"] as String!
             
-//            cell.heartCount.text = String(self.allLikes[indexPath.section])
-            cell.heartCount.text = entry["likeCount"].stringValue
+            cell.heartCount.text = String(self.allEntries[indexPath.section].likeCount)
             
-            cell.postTitle.text = entryTitle
-            cell.postBody.text = entryText
-            assignDate(entry.createdAt, cell: cell)
+            assignDate(self.allEntries[indexPath.section].entry.createdAt, cell: cell)
         }
         return cell
     }
@@ -185,18 +174,18 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         switch sender.selectedSegmentIndex {
         case 0:
             var descriptor = NSSortDescriptor(key: "createdAt.timeIntervalSince1970", ascending: false)
-            var sortDescriptors = [descriptor]
-            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
-            self.allEntries = sortedArray
+//            var sortDescriptors = [descriptor]
+//            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
+//            self.allEntries = sortedArray
             self.feedTableView.reloadData()
             self.feedTableView.reloadInputViews()
 
         case 1:
             var descriptor = NSSortDescriptor(key: "heartBeat", ascending: false)
             var sortDescriptors = [descriptor]
-            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
-            println(sortedArray)
-            self.allEntries = sortedArray
+//            var sortedArray = self.allEntries.sortedArrayUsingDescriptors(sortDescriptors)
+//            println(sortedArray)
+//            self.allEntries = sortedArray
             self.feedTableView.reloadData()
             self.feedTableView.reloadInputViews()
             
@@ -222,12 +211,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func assignHeartBeatTEST(entry: PFObject){
-        var heartInt = entry["likeCount"] as Double
-        var order = log10((max(heartInt, 1)))
-        var seconds = entry.createdAt.timeIntervalSince1970 - 1134028003
-        var format = (Double(order) + (seconds / 45000))
-        var hotness = round(format * 100) / 100.0
-        entry["heartBeat"] = hotness
+//        var heartInt = entry["likeCount"] as Double
+//        var order = log10((max(heartInt, 1)))
+//        var seconds = entry.createdAt.timeIntervalSince1970 - 1134028003
+//        var format = (Double(order) + (seconds / 45000))
+//        var hotness = round(format * 100) / 100.0
+//        entry["heartBeat"] = hotness
     }
     
     // UITableViewDelegate methods
@@ -255,7 +244,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var selectedSection: NSInteger = selectedRowIndexPath.section
             
             let vc = segue.destinationViewController as EntryViewController
-            vc.entry = self.allEntries[selectedSection] as PFObject
+            vc.entry = self.allEntries[selectedSection].entry as PFObject
         }
     }
 
