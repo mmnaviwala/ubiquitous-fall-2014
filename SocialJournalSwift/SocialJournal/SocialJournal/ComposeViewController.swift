@@ -106,16 +106,14 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         var userDefaults = NSUserDefaults.standardUserDefaults()
         if let virtualNames = userDefaults.objectForKey("virtualNamesDictionary") as? Dictionary<String,String>{
             self.virtualNameDictionary = virtualNames
-            //println(virtualNames)
         }
     }
     
     func replaceVirtualNames(text:String) -> String{
         var result = text
         for(key,value) in self.virtualNameDictionary{
-            result = text.stringByReplacingOccurrencesOfString(key, withString: value, options: NSStringCompareOptions.LiteralSearch, range: nil)
+            result = result.stringByReplacingOccurrencesOfString(key, withString: value, options: NSStringCompareOptions.LiteralSearch, range: nil)
         }
-        //println(result)
         return result as String
     }
     
@@ -125,32 +123,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func getTagsFromTitleAndContent() -> Array<String> {
-//        //get the tags here, if no tags return an empty array ... not nil
-//        var result = [String]();
-//    
-//        //initialize the arrays
-//        var titleTags = self.titleTextField.text.componentsSeparatedByString(" ")
-//        var contentTags = self.contentTextView.text.componentsSeparatedByString(" ")
-//        var allTags = titleTags + contentTags
-//    
-//        var tagDictionary = [String: Int]()
-//    
-//        for word in allTags{
-//            if countElements(word) != 0{
-//                var temp = (word as NSString).substringToIndex(1)
-//            
-//                if (temp == "#" && countElements(word) > 1 &&
-//                    word.substringFromIndex(advance(word.startIndex, 1)).rangeOfString("#") == nil &&
-//                    tagDictionary[word] == nil){
-//                        tagDictionary[word] = allTags.count
-//                        result.append(word)
-//                        //println(word)
-//                }
-//            }
-//        }
-//        //println(result)
-//        return result;
-        
         var allTags = [String]()
         
         var str = titleTextField.text
@@ -170,7 +142,6 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
             allTags.append(eachHashTag as String)
         }
         
-        // println(allTags)
         return allTags
     }
     
@@ -284,11 +255,9 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        //println("updating location")
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
             if placemarks.count > 0 {
                 let pm = placemarks[0] as CLPlacemark
-                //println(pm.locality);
             }
         })
     }

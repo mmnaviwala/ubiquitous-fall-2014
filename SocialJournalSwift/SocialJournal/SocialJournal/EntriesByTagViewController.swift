@@ -99,7 +99,9 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
                 }
             }
 
-
+            var user = entry["user"] as PFUser
+            user.fetchIfNeeded()
+            cell.username.text = user.username
             cell.postTitle.text = entry["title"] as String!
             cell.postBody.text = entry["content"] as String!
             assignDate(entry.createdAt, cell: cell)
