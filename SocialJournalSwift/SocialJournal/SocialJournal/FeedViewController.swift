@@ -87,10 +87,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     var query = PFQuery(className: "Activity")
                     query.whereKey("entry", equalTo: entry)
                     query.whereKey("type", equalTo: "like")
-                    var likes = query.findObjects()
-                    entry["likeCount"] = likes.count
+                    entry["likeCount"] = query.countObjects()
                     self.assignHeartBeatTEST(entry)
-                    self.allLikes.append(likes.count)
                 }
             } else {
                 NSLog("Error: %@ %@", error, error.userInfo!)
