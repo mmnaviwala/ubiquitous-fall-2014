@@ -167,7 +167,9 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
         
         for match in contentMatches{
             var eachHashTag = (str as NSString).substringWithRange(match.range)
-            allTags.append(eachHashTag as String)
+            if !contains(allTags, eachHashTag){
+                allTags.append(eachHashTag as String)
+            }
         }
         
         // println(allTags)
