@@ -20,6 +20,8 @@ class MediaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+
         var url = NSURL(string: "")
         
         if(self.entry["videoUrl"] != nil){
@@ -37,10 +39,18 @@ class MediaViewController: UIViewController {
                 
                 }, completion: nil)
         }
-        
-  
-        
-        if(mediaImageView.image == nil){
+        if(self.entry["image"] != nil){
+            
+            var userImageFile:PFFile? = self.entry["image"] as? PFFile
+            userImageFile?.getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                if !(error != nil) {
+                    if imageData != nil{
+                        self.mediaImageView.image = UIImage(data: imageData!)
+                    }
+                }
+            }
+        }else {
             UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
                 var topFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
                 topFrame.origin.y -= topFrame.size.height
