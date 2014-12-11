@@ -63,6 +63,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
+                self.selectFeedType.selectedSegmentIndex = 0
+                self.allEntries = []
                 
                 for var i = 0; i < objects.count; i++ {
                     //get user
