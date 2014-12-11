@@ -147,6 +147,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if (self.allEntries[indexPath.section].userImage != nil){
                 cell.userProfilePicture.image = self.allEntries[indexPath.section].userImage!
+            }else{
+                cell.userProfilePicture.image = UIImage(named: "defaultUser")
             }
             
             
@@ -158,10 +160,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.hearted.tintColor = UIColor.whiteColor()
                 cell.hearted.image = UIImage(named: "HeartWhite")
             }
-            
             cell.postTitle.text = self.allEntries[indexPath.section].entry["title"] as String!
             cell.postBody.text = self.allEntries[indexPath.section].entry["content"] as String!
-            
             cell.heartCount.text = String(self.allEntries[indexPath.section].likeCount)
             
             assignDate(self.allEntries[indexPath.section].entry.createdAt, cell: cell)
