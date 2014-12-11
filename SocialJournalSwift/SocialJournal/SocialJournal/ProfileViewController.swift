@@ -189,6 +189,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         theCollectionView.reloadData()
     }
     
+    func setTheTableViewToBeEmpty(){
+        allEntries = []
+        theTableView.reloadData()
+    }
+    
     @IBAction func segmentClicked(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -202,6 +207,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             theCollectionView.hidden = false
             fetchAndSetFollowers()
         case 2:
+            setTheTableViewToBeEmpty()
             theTableView.hidden = false
             theCollectionView.hidden = true
             fetchAndSetMyEntriesTable()
@@ -238,14 +244,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if error == nil {
                     cell.userNameLabel.text = object["username"] as String!
                     
-                    var userImageFile:PFFile? = object["profileImage"] as? PFFile
-                    userImageFile?.getDataInBackgroundWithBlock{
-                        (imageData: NSData!, error: NSError!) -> Void in
-                        if !(error != nil) {
-                            if imageData != nil {
-                                cell.userProfilePicture.image = UIImage(data: imageData!)
+                    if ((object["profileImage"]) != nil){
+                        var userImageFile:PFFile? = object["profileImage"] as? PFFile
+                        userImageFile?.getDataInBackgroundWithBlock{
+                            (imageData: NSData!, error: NSError!) -> Void in
+                            if (error == nil) {
+                                if imageData != nil {
+                                    cell.userProfilePicture.image = UIImage(data: imageData!)
+                                }
                             }
                         }
+                    }else{
+                        cell.userProfilePicture.image = UIImage(named: "defaultUser")
                     }
                     
                 } else {

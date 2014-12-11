@@ -85,9 +85,9 @@ class ComposeViewController: UIViewController, CLLocationManagerDelegate, UINavi
                 if error == nil {
                     self.profilePictureImageView.image = UIImage(data:imageData)
                 }
-                self.profilePictureImageView = self.prettifyImage(self.profilePictureImageView)
             }
         }
+        self.profilePictureImageView = self.prettifyImage(self.profilePictureImageView)
         
        
         getVirtualNamesFromNSUserDefaults()

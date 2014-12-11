@@ -92,6 +92,8 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.heartLike.setImage(UIImage(named: "HeartRed"), forState: .Normal)
         }
         
+        findAllHashTagsAndReFormatThem()
+        
         getCommentsForEntry()
         
     }
@@ -339,6 +341,29 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
     
+    func findAllHashTagsAndReFormatThem(){
+        
+        let str = postBody.text
+        let regex = NSRegularExpression(pattern: "#(\\w+)", options: nil, error: nil)!
+        
+        var matches = regex.matchesInString(str, options: nil, range: NSRange(location: 0, length: str.utf16Count))
+        var attributeDictionary = NSMutableDictionary(objects: [UIColor.whiteColor(), UIFont(name: "HelveticaNeue-Light", size: 22)!], forKeys: [NSForegroundColorAttributeName, NSFontAttributeName])
+        var result = NSMutableAttributedString(string: postBody.text, attributes: attributeDictionary)
+        
+        for match in matches{
+            var eachHashTag = (str as NSString).substringWithRange(match.range)
+            
+            attributeDictionary = NSMutableDictionary(objects: [UIColor.blackColor(), UIColor.whiteColor(), UIFont(name: "HelveticaNeue-Light", size: 20)!], forKeys: [NSForegroundColorAttributeName, NSBackgroundColorAttributeName, NSFontAttributeName])
+            var replace = NSMutableAttributedString(string: eachHashTag, attributes: attributeDictionary)
+            
+            result.replaceCharactersInRange(match.range, withAttributedString: replace)
+            postBody.attributedText = result
+            
+            
+        }
+        
+    }
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -346,6 +371,10 @@ class EntryViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "entryToMapView"{
             let vc = segue.destinationViewController as MapViewController
             vc.currentEntry = self.entry as PFObject
+        }
+        if segue.identifier == "entryToMediaView"{
+            let vc = segue.destinationViewController as MediaViewController
+            vc.entry = self.entry as PFObject
         }
     }
     
