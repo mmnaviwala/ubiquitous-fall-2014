@@ -386,7 +386,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "goToProfileFromCollectionCell"){
             
-            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()!
+            let indexPaths : NSArray = self.theCollectionView.indexPathsForSelectedItems()
             let indexPath : NSIndexPath = indexPaths[0] as NSIndexPath
             
             var eachObject: PFObject = currentCollectionViewDataArray[indexPath.row] as PFObject
