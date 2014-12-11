@@ -29,8 +29,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         setupTheHamburgerIcon()
-        self.spinner.center = self.view.center
-        self.spinner.startAnimating()
         
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.whiteColor()
@@ -59,12 +57,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchData() {
+        
+        self.spinner.center = self.view.center
+        self.spinner.startAnimating()
+        self.allEntries = []
+        
         var query = ParseQueries.queryForEntries(PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.selectFeedType.selectedSegmentIndex = 0
-                self.allEntries = []
                 
                 for var i = 0; i < objects.count; i++ {
                     //get user
@@ -97,6 +99,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                     var hotness = self.assignHeartBeatTEST(likeCount, entry: objects[i] as PFObject)
                     self.allEntries.insert((entry: objects[i] as PFObject, user: user, userImage: userImage, likeCount: likeCount, userLiked: userLiked, entryHeartBeat: hotness), atIndex: i)
+                    
+                    self.spinner.stopAnimating()
                     
                 }
             } else {
