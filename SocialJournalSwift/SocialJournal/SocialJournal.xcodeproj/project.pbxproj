@@ -39,6 +39,7 @@
 		29CF4EC41A38D0ED007EDE84 /* SearchTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */; };
 		894C59DE1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */; };
 		894C59E01A2EC6220050B1B6 /* VirtualNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */; };
+		9D0429111A390D5F00A601FC /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0429101A390D5F00A601FC /* MediaViewController.swift */; };
 		9D93FFEE1A1C15CB008994CD /* feedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */; };
 		9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */; };
 		AC3158E71A37C8960010E368 /* AddNewVirtualNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3158E61A37C8960010E368 /* AddNewVirtualNameTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 		29CF4EC31A38D0ED007EDE84 /* SearchTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagCell.swift; sourceTree = "<group>"; };
 		894C59DD1A2EC31F0050B1B6 /* ReplaceWithVirtualName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceWithVirtualName.swift; sourceTree = "<group>"; };
 		894C59DF1A2EC6220050B1B6 /* VirtualNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualNameTableViewCell.swift; sourceTree = "<group>"; };
+		9D0429101A390D5F00A601FC /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		9D93FFEC1A1C15CB008994CD /* feedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedCellTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC5FCB1A1C6AB40008C5AF /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		AC3158E61A37C8960010E368 /* AddNewVirtualNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewVirtualNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				AC9DE5731A195F8100BE697D /* SignInController.swift */,
 				008CD4D81A192DB50024BB9A /* ViewController.swift */,
 				009212F41A2906A300C5E1FF /* NotificationTableViewCell.swift */,
+				9D0429101A390D5F00A601FC /* MediaViewController.swift */,
 				AC9BE99D1A2AB17E0019E9B7 /* Search related files */,
 				008CD4D41A192DB50024BB9A /* Supporting Files */,
 			);
@@ -364,6 +367,7 @@
 				9DEC5FCC1A1C6AB40008C5AF /* EntryViewController.swift in Sources */,
 				AC9DE5741A195F8100BE697D /* ProfileViewController.swift in Sources */,
 				00FA629C1A1AFB1D00B9A4FB /* SearchViewController.swift in Sources */,
+				9D0429111A390D5F00A601FC /* MediaViewController.swift in Sources */,
 				AC9DE5751A195F8100BE697D /* SignInController.swift in Sources */,
 				00CB83971A1AFD2D000A613F /* SettingsViewController.swift in Sources */,
 				007435A11A1B7E8F0013A576 /* RegisterViewController.swift in Sources */,
