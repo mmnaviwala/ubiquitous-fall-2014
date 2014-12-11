@@ -16,25 +16,28 @@ class MediaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "")
+        let url = NSURL(string: "https://www.youtube.com/watch?v=-7eA_TyogeU")
         let request = NSURLRequest(URL: url!)
         mediaWebView.loadRequest(request)
+        
         if(mediaImageView.image == nil){
             UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
-                var basketTopFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
-                basketTopFrame.origin.y -= basketTopFrame.size.height
-                self.mediaWebView.frame = basketTopFrame
+                var topFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
+                topFrame.origin.y -= topFrame.size.height
+                self.mediaWebView.frame = topFrame
                 
                 }, completion: { finished in
                     println("Basket doors opened!")
             })
         }
         
-        if(url == ""){
+        if (url == ""){
+            self.mediaWebView.hidden = true
             UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
-                var basketTopFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
-                basketTopFrame.origin.y -= basketTopFrame.size.height
-                self.mediaWebView.frame = basketTopFrame
+                var bottomFrame = CGRectMake(0.0, self.view.frame.height, self.view.frame.width, self.view.frame.height)
+                bottomFrame.origin.y += bottomFrame.size.height
+                self.mediaImageView.frame = self.view.bounds
+                
                 
                 }, completion: { finished in
                     println("Basket doors opened!")
