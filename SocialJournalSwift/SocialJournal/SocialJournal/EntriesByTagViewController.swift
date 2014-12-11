@@ -128,8 +128,7 @@ class EntriesByTagViewController: UIViewController, UITableViewDataSource, UITab
         return 30.0
     }
     
-    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
-    {
+    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat{
         return 150
     }
 
